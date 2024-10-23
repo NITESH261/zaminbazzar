@@ -1,7 +1,8 @@
-import localFont from "next/font/local";
+import { cn } from '@/lib/utils';
+import localFont from 'next/font/local';
+import React from 'react'
 import "./globals.css";
-import { cn } from "@/lib/utils";
-
+import Navbar from '@/components/organism/Navbar';
 
 const galanoGrotesque = localFont({
     src: [
@@ -32,7 +33,6 @@ const galanoGrotesque = localFont({
         }
     ],
     variable: "--font-galano-Grotesque-alt"
-
 })
 
 export const metadata = {
@@ -42,11 +42,15 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
     return (
-        <html lang="en">
-            <body
-                className={cn("flex h-screen w-screen flex-col ", galanoGrotesque.variable)}
-            >
-                {children}
+        <html lang="en"
+        >
+            <body className={cn("h-screen font-galanoGrotesque w-screen", galanoGrotesque.variable)}>
+                <Navbar />
+                <main className="flex relative w-full h-[calc(100%-65px)] pt-4">
+                    <section className="flex flex-1 max-w-7xl mx-auto w-full">
+                        {children}
+                    </section>
+                </main>
             </body>
         </html>
     );
