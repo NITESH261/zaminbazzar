@@ -12,7 +12,7 @@ const galanoGrotesque = localFont({
             style: "normal"
         },
         {
-            path: "./fonts/GalanoGrotesqueAltMediumitalic.otf",
+            path: "./fonts/GalanoGrotesqueAltMediumItalic.otf",
             weight: "500",
             style: "italic"
         },
