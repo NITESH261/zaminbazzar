@@ -2,6 +2,9 @@ import React from 'react'
 import Logo from '../atoms/Logo'
 import { Button } from '../ui/button'
 import Link from 'next/link'
+import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from '../ui/sheet'
+import { MenuIcon } from 'lucide-react'
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '../ui/accordion'
 
 const Navbar = () => {
     return (
@@ -45,8 +48,55 @@ const Navbar = () => {
                         </Button>
                     </div>
                 </div>
+                <div className="flex lg:hidden flex-grow items-center justify-end">
+                    <Sheet>
+                        <SheetTrigger asChild>
+                            <Button variant="outline" className="rounded-md px-3 py-1">
+                                <MenuIcon />
+                            </Button>
+                        </SheetTrigger>
+                        <SheetContent className="divide-y">
+                            <SheetHeader className="py-2 px-4">
+                                <SheetTitle>
+                                    <div className="flex w-fit">
+                                        <Logo />
+                                    </div>
+                                </SheetTitle>
+                            </SheetHeader>
+                            <div className="flex w-full flex-col h-[calc(100%-56px)] overflow-y-auto scrollbar-hide">
+                                <ul className="flex w-full">
+                                    <li className='flex w-full'>
+                                        <Accordion type="single" collapsible className="w-full ">
+                                            {NavData.map((item, index) =>
+                                                <AccordionItem key={index} value={`item-${index}`}>
+                                                    <AccordionTrigger className="text-base px-4">{item.title}</AccordionTrigger>
+                                                    <AccordionContent className="px-4">
+                                                        <ul className="flex w-full flex-col gap-4 pl-3">
+                                                            {item.categories.map((item, index) =>
+                                                                <li key={index} className="flex flex-col gap-1 w-full">
+                                                                    <span className='text-sm font-medium'>{item.title}</span>
+                                                                    <ul className='flex w-full flex-col pl-3'>
+                                                                        {item.links.map((item, index) =>
+                                                                            <li key={index} className='w-full py-2'>
+                                                                                <Link href="/" className='text-sm'>{item.name}</Link>
+                                                                            </li>
+                                                                        )}
+                                                                    </ul>
+                                                                </li>
+                                                            )}
+                                                        </ul>
+                                                    </AccordionContent>
+                                                </AccordionItem>
+                                            )}
+                                        </Accordion>
+                                    </li>
+                                </ul>
+                            </div>
+                        </SheetContent>
+                    </Sheet>
+                </div>
             </div>
-        </div>
+        </div >
     )
 }
 
