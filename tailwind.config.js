@@ -11,6 +11,9 @@ module.exports = {
 			galanoGrotesque: ["var(--font-galano-Grotesque-alt)"]
 		},
 		extend: {
+			backgroundImage: {
+				'hero-pattern': "url('/path/to/image.jpg')",
+			},
 			colors: {
 				background: 'var(--background)',
 				foreground: 'var(--foreground)'
