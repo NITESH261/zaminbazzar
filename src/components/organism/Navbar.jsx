@@ -10,7 +10,7 @@ const Navbar = () => {
                 <div className="flex w-fit flex-grow-0">
                     <Logo />
                 </div>
-                <div className="flex flex-grow items-center justify-between h-full w-full gap-2">
+                <div className="hidden lg:flex flex-grow items-center justify-between h-full w-full gap-2">
                     <div className="flex w-full h-full justify-end">
                         <ul className='flex w-fit h-full gap-6'>
                             {NavData.map((item, index) => (

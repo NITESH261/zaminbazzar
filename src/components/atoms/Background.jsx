@@ -3,12 +3,12 @@ import Image from 'next/image'
 
 const Background = () => {
   return (
-    <div>
+    <div className='w-full flex h-ful'>
       <Image
         src="/assets/background/background2.jpg"
         layout="fill"
-        objectFit="cover"
         alt="Hero background"
+        className='object-cover w-full'
       />
     </div>
   )
