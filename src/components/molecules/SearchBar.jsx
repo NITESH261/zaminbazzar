@@ -1,16 +1,32 @@
-
-import { SearchIcon } from "lucide-react"
-import { Button } from "../ui/button"
-import { Command, CommandDialog, CommandEmpty, CommandGroup, CommandInput, CommandItem, CommandList } from "../ui/command"
-import { Skeleton } from "../ui/skeleton"
-import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "../ui/dialog"
+import { SearchIcon } from "lucide-react";
+import { Button } from "../ui/button";
+import {
+    Command,
+    CommandDialog,
+    CommandEmpty,
+    CommandGroup,
+    CommandInput,
+    CommandItem,
+    CommandList,
+} from "../ui/command";
+import { Skeleton } from "../ui/skeleton";
+import {
+    Dialog,
+    DialogContent,
+    DialogHeader,
+    DialogTitle,
+    DialogTrigger,
+} from "../ui/dialog";
 
 const SearchBar = () => {
     return (
         <>
             <Dialog>
                 <DialogTrigger asChild>
-                    <Button variant="outline" className="gap-2 w-full justify-start outline-none border-none">
+                    <Button
+                        variant="outline"
+                        className="gap-2 w-full justify-start outline-none border-none"
+                    >
                         <SearchIcon className="size-5 text-gray-500" />
                         <span className="text-gray-500">Search</span>
                     </Button>
@@ -36,6 +52,6 @@ const SearchBar = () => {
                 </DialogContent>
             </Dialog>
         </>
-    )
-}
-export default SearchBar
+    );
+};
+export default SearchBar;

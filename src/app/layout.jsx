@@ -1,39 +1,39 @@
-import { cn } from '@/lib/utils';
-import localFont from 'next/font/local';
-import React from 'react'
+import { cn } from "@/lib/utils";
+import localFont from "next/font/local";
+import React from "react";
 import "./globals.css";
-import Navbar from '@/components/organism/Navbar';
+import Navbar from "@/components/organism/Navbar";
 
 const galanoGrotesque = localFont({
     src: [
         {
             path: "./fonts/GalanoGrotesqueAltMedium.otf",
             weight: "500",
-            style: "normal"
+            style: "normal",
         },
         {
             path: "./fonts/GalanoGrotesqueAltMediumItalic.otf",
             weight: "500",
-            style: "italic"
+            style: "italic",
         },
         {
             path: "./fonts/GalanoGrotesqueRegular.otf",
             weight: "400",
-            style: "normal"
+            style: "normal",
         },
         {
             path: "./fonts/GalanoGrotesqueAltBold.otf",
             weight: "700",
-            style: "normal"
+            style: "normal",
         },
         {
             path: "./fonts/GalanoGrotesqueAltBoldItalic.otf",
             weight: "700",
-            style: "italic"
-        }
+            style: "italic",
+        },
     ],
-    variable: "--font-galano-Grotesque-alt"
-})
+    variable: "--font-galano-Grotesque-alt",
+});
 
 export const metadata = {
     title: "Create Next App",
@@ -42,10 +42,13 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
     return (
-        <html lang="en"
-            suppressHydrationWarning
-        >
-            <body className={cn("h-dvh flex flex-col font-galanoGrotesque w-screen overflow-hidden", galanoGrotesque.variable)}>
+        <html lang="en" suppressHydrationWarning>
+            <body
+                className={cn(
+                    "h-dvh flex flex-col font-galanoGrotesque w-screen overflow-hidden",
+                    galanoGrotesque.variable
+                )}
+            >
                 <div className="flex w-full flex-col overflow-y-auto overflow-x-hidden scrollbar">
                     <Navbar />
                     <main className="flex w-full flex-1 flex-col">
