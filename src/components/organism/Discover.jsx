@@ -3,7 +3,6 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '../ui/tabs'
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '../ui/card'
 import { DollarSignIcon } from 'lucide-react'
 import Link from 'next/link'
-import { Badge } from '../ui/badge'
 
 const Discover = () => {
     const cards = Array.from({ length: 3 }, (_, i) => i + 1);
@@ -15,20 +14,6 @@ const Discover = () => {
                         <h2 className="text-lg font-galanoGrotesque font-bold md:text-xl lg:text-2xl">
                             Discover how we can help
                         </h2>
-                    </div>
-                    <div className="flex w-full">
-                        {
-                            cards.map(card =>
-                                <Link key={card} href={"/"} className="w-80 group relative aspect-[3/2] bg-cover rounded-lg flex bg-[url('/assets/banner-img/card-img.webp')]">
-                                    <div className="flex w-full p-4 bg-gradient-to-b from-black/40 to-transparent rounded-lg">
-                                        <div className="flex w-full items-center h-fit justify-between">
-                                            <strong className="text-white group-hover:underline">New listing</strong>
-                                            <Badge className={"h-fit"}>296</Badge>
-                                        </div>
-                                    </div>
-                                </Link>
-                            )
-                        }
                     </div>
                     <div className="flex w-full overflow-x-hidden">
                         <Tabs defaultValue='buying' className='space-y-6 md:space-y-8'>
