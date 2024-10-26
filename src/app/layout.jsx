@@ -47,7 +47,7 @@ export default function RootLayout({ children }) {
             <body className={cn("h-screen flex flex-col font-galanoGrotesque w-screen", galanoGrotesque.variable)}>
                 <Navbar />
                 <main className="flex relative w-full h-[calc(100%-48px)]">
-                    <section className="flex flex-1 w-full">
+                    <section className="flex flex-col flex-1 w-full">
                         {children}
                     </section>
                 </main>
