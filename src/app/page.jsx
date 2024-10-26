@@ -1,6 +1,7 @@
 import Discover from '@/components/organism/Discover'
 import Hero from '@/components/organism/Hero'
 import Property from '@/components/organism/Property'
+import Recommendedcities from '@/components/organism/Recommendedcities'
 import React from 'react'
 
 const page = () => {
@@ -9,6 +10,7 @@ const page = () => {
             <Hero />
             <Property />
             <Discover />
+            <Recommendedcities />
         </>
     )
 }
