@@ -8,7 +8,7 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '..
 
 const Navbar = () => {
     return (
-        <div className='flex relative w-full border-b border-gray-200'>
+        <div className='flex sticky top-0 z-20 w-full bg-white border-b border-gray-200'>
             <div className="flex w-full h-12 items-center max-w-7xl mx-auto gap-4 px-4">
                 <div className="flex w-fit flex-grow-0">
                     <Logo />

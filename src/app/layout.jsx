@@ -44,13 +44,15 @@ export default function RootLayout({ children }) {
     return (
         <html lang="en"
         >
-            <body className={cn("h-screen flex flex-col font-galanoGrotesque w-screen", galanoGrotesque.variable)}>
-                <Navbar />
-                <main className="flex relative w-full h-[calc(100%-48px)]">
-                    <section className="flex flex-1 w-full">
-                        {children}
-                    </section>
-                </main>
+            <body className={cn("h-dvh flex flex-col font-galanoGrotesque w-screen overflow-hidden", galanoGrotesque.variable)}>
+                <div className="flex w-full flex-col overflow-y-auto overflow-x-hidden scrollbar">
+                    <Navbar />
+                    <main className="flex w-full flex-1 flex-col">
+                        <div className="flex h-auto w-full flex-1 flex-col items-center justify-center overflow-y-auto">
+                            {children}
+                        </div>
+                    </main>
+                </div>
             </body>
         </html>
     );

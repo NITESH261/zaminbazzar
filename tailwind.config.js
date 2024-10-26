@@ -78,12 +78,12 @@ module.exports = {
 						},
 
 						"&::-webkit-scrollbar-thumb": {
-							background: "#6d27d9",
+							background: "gray",
 							borderRadius: "35px",
 						},
 
 						"&::-webkit-scrollbar-thumb:hover": {
-							background: "#6d27d9",
+							background: "gray",
 						},
 
 						"&::-webkit-scrollbar-corner": {
@@ -92,7 +92,7 @@ module.exports = {
 					},
 					".scrollbar:hover": {
 						"&::-webkit-scrollbar-thumb": {
-							background: "#6d27d9",
+							background: "gray",
 						},
 					},
 				},
