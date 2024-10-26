@@ -1,3 +1,4 @@
+import { CTA } from '@/components/organism/CTA'
 import Discover from '@/components/organism/Discover'
 import Hero from '@/components/organism/Hero'
 import Property from '@/components/organism/Property'
@@ -9,6 +10,7 @@ const page = () => {
             <Hero />
             <Property />
             <Discover />
+            <CTA />
         </>
     )
 }
