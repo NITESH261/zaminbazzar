@@ -6,6 +6,7 @@ import { Button } from '../ui/button';
 import { LocateIcon } from 'lucide-react';
 import { MicIcon } from 'lucide-react';
 import { Input } from '../ui/input';
+import SearchBar from '../molecules/SearchBar';
 
 const Hero = () => {
     return (
@@ -46,12 +47,7 @@ const Hero = () => {
                                 <ChevronDown className='size-6' />
                             </div>
                             <div className="flex w-full px-5 items-center justify-center col-span-3">
-                                <div className="flex w-[10%]">
-                                    <Search className='size-5' />
-                                </div>
-                                <div className="flex w-full">
-                                    <Input className="outline-none border-none" placeholder="Searh Your Intrested location Plot" />
-                                </div>
+                                <SearchBar />
                             </div>
                             <div className="flex w-full gap-2 items-center justify-center">
                                 <span className='size-8 bg-blue-200 rounded-full items-center justify-center flex'>
@@ -60,9 +56,6 @@ const Hero = () => {
                                 <span className='size-8 bg-blue-200 rounded-full items-center justify-center flex'>
                                     <MicIcon className="size-5 text-blue-500" />
                                 </span>
-                                <Button >
-                                    Search
-                                </Button>
                             </div>
                         </div>
                     </div>
