@@ -43,6 +43,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
     return (
         <html lang="en"
+            suppressHydrationWarning
         >
             <body className={cn("h-dvh flex flex-col font-galanoGrotesque w-screen overflow-hidden", galanoGrotesque.variable)}>
                 <div className="flex w-full flex-col overflow-y-auto overflow-x-hidden scrollbar">
