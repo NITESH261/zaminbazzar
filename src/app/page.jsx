@@ -1,5 +1,6 @@
 import { CTA } from "@/components/organism/CTA";
 import Discover from "@/components/organism/Discover";
+import DreamPlots from "@/components/organism/DreamPlots";
 import Hero from "@/components/organism/Hero";
 import Property from "@/components/organism/Property";
 import Recommendedcities from "@/components/organism/Recommendedcities";
@@ -15,6 +16,7 @@ const page = () => {
             <Recommendedcities />
             <CTA />
             <TrendingNews />
+            <DreamPlots />
         </>
     );
 };
