@@ -1,16 +1,16 @@
 import React from "react";
-import Background from "../atoms/Background";
 import { ChevronDown } from "lucide-react";
 import { LocateIcon } from "lucide-react";
 import { MicIcon } from "lucide-react";
 import SearchBar from "../molecules/SearchBar";
+import BannerCarousel from "../atoms/BannerCarousel";
 
 const Hero = () => {
     return (
         <>
-            <div className="w-full h-72 md:mb-14 flex items-center justify-center relative">
-                <Background />
-                <div className="absolute flex flex-col gap-6 items-center justify-center h-full w-full bg-black/20">
+            <div className="w-full h-96 md:mb-14 flex items-center justify-center relative">
+                <BannerCarousel />
+                <div className="absolute flex flex-col gap-6 items-center justify-center h-full w-full bg-black/25">
                     <h1 className="font-galanoGrotesque text-white w-full max-w-3xl text-3xl md:text-4xl lg:text-5xl  break-normal text-center font-bold">
                         The #1 site real estate professionals trust
                     </h1>
