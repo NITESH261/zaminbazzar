@@ -9,6 +9,7 @@ import {
     CarouselPrevious,
 } from "../ui/carousel";
 import { Card, CardContent, CardHeader } from "../ui/card";
+import { Button } from "../ui/button";
 
 const PlotsData = [
     {
@@ -87,14 +88,14 @@ const DreamPlots = () => {
                             }}
                             className="flex w-full h-full"
                         >
-                            <CarouselContent className="h-full flex w-full">
+                            <CarouselContent>
                                 {PlotsData.map((plot, index) => (
                                     <CarouselItem
                                         key={`${index}-plot-img`}
-                                        className="sm:basis-1/2 flex h-full lg:basis-1/3 xl:basis-1/4"
+                                        className="sm:basis-1/2 lg:basis-1/3 xl:basis-1/4"
                                     >
-                                        <Card className="rounded-lg group hover:shadow-lg h-full w-full transition-all">
-                                            <CardHeader className="p-0 rounded-tl-lg">
+                                        <Card className="rounded-lg group hover:shadow-lg p-0 h-full w-full transition-all">
+                                            <CardHeader className="p-0 flex flex-grow-0 rounded-tl-lg">
                                                 <div className="flex relative aspect-video rounded-t-lg overflow-hidden">
                                                     <Image
                                                         src={`/assets/property/${plot.image}`}
@@ -104,12 +105,12 @@ const DreamPlots = () => {
                                                     />
                                                 </div>
                                             </CardHeader>
-                                            <CardContent className=" w-full p-4">
+                                            <CardContent className="w-full p-4">
                                                 <div className="w-full space-y-2">
                                                     <strong className="text-base">
                                                         {plot.title}
                                                     </strong>
-                                                    <p className="flex text-sm text-neutral-800">
+                                                    <p className="text-sm text-neutral-800">
                                                         {plot.description}
                                                     </p>
                                                 </div>
