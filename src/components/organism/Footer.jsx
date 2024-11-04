@@ -5,18 +5,19 @@ import { MdCall } from "react-icons/md";
 
 const Footer = () => {
     return (
-        <footer className="bg-[#8f644d] w-full flex">
+        <footer className="bg-neutral-950 w-full flex">
             <div className="mx-auto max-w-7xl px-6 pb-8 pt-16 sm:pt-24 lg:px-8 lg:pt-32">
-                <div className="xl:grid xl:grid-cols-3 xl:gap-8">
-                    <div className="space-y-8">
-                        <Image
-                            alt="Company name"
-                            src="/assets/logo/zamin-logo.gif"
-                            className="h-9 w-40 h-auto"
-                            width={0}
-                            height={0}
-                        />
-                        <p className="text-balance text-sm/6 text-gray-300">
+                <div className="xl:grid sm:grid-cols-1 sm:gap-8 xl:grid-cols-3 xl:gap-8">
+                    <div className="space-y-8 flex flex-col justify-center items-center">
+                        <div className='relative aspect-square w-full max-w-40 flex'>
+                            <Image
+                                alt="Company name"
+                                src="/assets/logo/zamin-logo.gif"
+                                className=" w-full h-full object-contain "
+                                fill
+                            />
+                        </div>
+                        <p className="text-balance text-sm/6 text-gray-300 text-center">
                             Making the world a better place through constructing elegant hierarchies.
                         </p>
                         <div className="flex gap-x-6">
@@ -28,7 +29,7 @@ const Footer = () => {
                             ))}
                         </div>
                     </div>
-                    <div className="mt-16 grid grid-cols-2 gap-8 xl:col-span-2 xl:mt-0">
+                    <div className="mt-16 grid sm:grid-cols-2  md:grid-cols-2 gap-8 xl:col-span-2 xl:mt-0">
                         <div className="md:grid md:grid-cols-1 md:gap-8">
                             <div>
                                 <h3 className="text-sm/6 font-semibold text-white">Contact Info</h3>
@@ -43,20 +44,9 @@ const Footer = () => {
                                     </li>
                                 </ul>
                             </div>
-                            {/* <div className="mt-10 md:mt-0">
-                                <h3 className="text-sm/6 font-semibold text-white">Support</h3>
-                                <ul role="list" className="mt-6 space-y-4">
-                                    {navigation.support.map((item) => (
-                                        <li key={item.name}>
-                                            <a href={item.href} className="text-sm/6 text-gray-400 hover:text-white">
-                                                {item.name}
-                                            </a>
-                                        </li>
-                                    ))}
-                                </ul>
-                            </div> */}
+
                         </div>
-                        <div className="md:grid md:grid-cols-2 md:gap-8">
+                        <div className="grid grid-cols-2  md:grid-cols-2 md:gap-8">
                             <div>
                                 <h3 className="text-sm/6 font-semibold text-white">Company</h3>
                                 <ul role="list" className="mt-6 space-y-4">
@@ -69,7 +59,7 @@ const Footer = () => {
                                     ))}
                                 </ul>
                             </div>
-                            <div className="mt-10 md:mt-0">
+                            <div className="md:mt-10 sm:mt-0">
                                 <h3 className="text-sm/6 font-semibold text-white">Legal</h3>
                                 <ul role="list" className="mt-6 space-y-4">
                                     {navigation.legal.map((item) => (
