@@ -24,74 +24,11 @@ const Navbar = () => {
                 <div className="flex w-fit flex-grow-0">
                     <Logo />
                 </div>
-                <div className="hidden lg:flex flex-grow items-center justify-between h-full w-full gap-2">
-                    <div className="flex w-full h-full justify-end">
-                        <ul className="flex w-fit h-full gap-6">
-                            {NavData.map((item, index) => (
-                                <li
-                                    key={index}
-                                    className="navlink w-fit h-full items-center flex group border-b-2 border-transparent hover:border-black transition-all"
-                                >
-                                    <Link
-                                        href={"/"}
-                                        className="flex w-full text-sm pt-1.5 px-2 transition-all group-hover:font-medium"
-                                    >
-                                        {item.title}
-                                    </Link>
-                                    <div className="flex group-hover:visible invisible transition-all w-full absolute top-full z-10 bg-white left-0 rounded-b-3xl border border-gray-200">
-                                        <div className="grid grid-cols-1 divide-x gap-4 md:grid-cols-2 lg:grid-cols-3 w-full h-72 max-w-7xl mx-auto px-4 py-4 md:py-6 lg:py-8">
-                                            {item.categories.map(
-                                                (item, index) => (
-                                                    <div
-                                                        key={index}
-                                                        className="flex w-full flex-col pl-4 gap-4"
-                                                    >
-                                                        <strong className="text-base">
-                                                            {item.title}
-                                                        </strong>
-                                                        <ul className="flex w-full flex-col pl-3 gap-1 text-sm">
-                                                            {item.links.map(
-                                                                (
-                                                                    item,
-                                                                    index
-                                                                ) => (
-                                                                    <li
-                                                                        key={
-                                                                            index
-                                                                        }
-                                                                        className="flex w-full"
-                                                                    >
-                                                                        <Link
-                                                                            href={
-                                                                                "/"
-                                                                            }
-                                                                            className="hover:font-normal py-1 hover:underline transition-all"
-                                                                        >
-                                                                            {
-                                                                                item.name
-                                                                            }
-                                                                        </Link>
-                                                                    </li>
-                                                                )
-                                                            )}
-                                                        </ul>
-                                                    </div>
-                                                )
-                                            )}
-                                        </div>
-                                    </div>
-                                </li>
-                            ))}
-                        </ul>
-                    </div>
-                    <div className="flex w-fit">
-                        <Button variant="ghost" className="font-thin">
-                            Log In
-                        </Button>
-                        <Button variant="default">Sign Up</Button>
-                    </div>
-                </div>
-                <div className="flex lg:hidden flex-grow items-center justify-end">
+                <div className="flex flex-grow items-center gap-4 justify-end">
+                    <Button variant="ghost" className="font-thin">
+                        Log In
+                    </Button>
+                    <Button variant="default">Sign Up</Button>
                     <Sheet>
                         <SheetTrigger asChild>
                             <Button
