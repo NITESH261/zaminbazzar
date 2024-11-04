@@ -1,56 +1,144 @@
-import { SearchIcon } from "lucide-react";
+"use client";
+
+import { zodResolver } from "@hookform/resolvers/zod";
+import { ChevronsUpDown } from "lucide-react";
 import { Button } from "../ui/button";
 import {
     Command,
-    CommandDialog,
     CommandEmpty,
     CommandGroup,
     CommandInput,
     CommandItem,
     CommandList,
 } from "../ui/command";
-import { Skeleton } from "../ui/skeleton";
 import {
-    Dialog,
-    DialogContent,
-    DialogHeader,
-    DialogTitle,
-    DialogTrigger,
-} from "../ui/dialog";
+    Form,
+    FormControl,
+    FormDescription,
+    FormField,
+    FormItem,
+    FormLabel,
+    FormMessage,
+} from "../ui/form";
+import { Popover, PopoverContent, PopoverTrigger } from "../ui/popover";
+import { Check } from "lucide-react";
+import { useForm } from "react-hook-form";
+import { z } from "zod";
+import { cn } from "@/lib/utils";
+
+const PropertyLocations = [
+    { label: "Navi Mumbai", value: "en" },
+    { label: "Chirle", value: "fr" },
+    { label: "Ranjanpada", value: "de" },
+    { label: "Dronagiri", value: "es" },
+    { label: "Vindhane", value: "pt" },
+    { label: "Panvel", value: "ru" },
+    { label: "New Thane", value: "ja" },
+];
+
+const FormSchema = z.object({
+    location: z.string({
+        required_error: "Please select a Location.",
+    }),
+});
 
 const SearchBar = () => {
+    const form = useForm({
+        resolver: zodResolver(FormSchema),
+    });
+
+    const onSubmit = (values) => {
+        console.log(values);
+    };
+
     return (
         <>
-            <Dialog>
-                <DialogTrigger asChild>
-                    <Button
-                        variant="outline"
-                        className="gap-2 w-full justify-start outline-none border-none"
-                    >
-                        <SearchIcon className="size-5 text-gray-500" />
-                        <span className="text-gray-500">Search</span>
-                    </Button>
-                </DialogTrigger>
-                <DialogContent className="p-2 top-[20%] max-w-xl">
-                    <DialogHeader className={"sr-only"}>
-                        <DialogTitle></DialogTitle>
-                    </DialogHeader>
-                    <Command>
-                        <CommandInput placeholder="Type to search..." />
-                        <CommandList>
-                            <CommandEmpty>Search your plpt</CommandEmpty>
-                            <CommandGroup heading="Result">
-                                <CommandItem>
-                                    <Skeleton className="w-full" />
-                                </CommandItem>
-                                <CommandItem className="gap-5 rounded-md text-balance justify-between">
-                                    <span>plots</span>
-                                </CommandItem>
-                            </CommandGroup>
-                        </CommandList>
-                    </Command>
-                </DialogContent>
-            </Dialog>
+            <Form {...form} className="w-full">
+                <form
+                    onSubmit={form.handleSubmit(onSubmit)}
+                    className="flex w-full gap-4 items-center justify-center"
+                >
+                    <FormField
+                        control={form.control}
+                        name="location"
+                        className="w-full flex"
+                        render={({ field }) => (
+                            <FormItem className="flex flex-col w-full relative">
+                                <Popover className="w-full flex">
+                                    <PopoverTrigger asChild>
+                                        <FormControl>
+                                            <Button
+                                                variant="ghost"
+                                                role="combobox"
+                                                className={cn(
+                                                    "w-full justify-between",
+                                                    !field.value &&
+                                                        "text-muted-foreground"
+                                                )}
+                                            >
+                                                {field.value
+                                                    ? PropertyLocations.find(
+                                                          (location) =>
+                                                              location.value ===
+                                                              field.value
+                                                      )?.label
+                                                    : "Select location"}
+                                                <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
+                                            </Button>
+                                        </FormControl>
+                                    </PopoverTrigger>
+                                    <PopoverContent className="w-full relative flex z-10 p-0">
+                                        <Command className="w-[757px] max-w-3xl flex">
+                                            <CommandInput
+                                                placeholder="Search location..."
+                                                className=" w-full"
+                                            />
+                                            <CommandList className="w-full">
+                                                <CommandEmpty>
+                                                    No location found.
+                                                </CommandEmpty>
+                                                <CommandGroup>
+                                                    {PropertyLocations.map(
+                                                        (location) => (
+                                                            <CommandItem
+                                                                value={
+                                                                    location.label
+                                                                }
+                                                                key={
+                                                                    location.value
+                                                                }
+                                                                onSelect={() => {
+                                                                    form.setValue(
+                                                                        "location",
+                                                                        location.value
+                                                                    );
+                                                                }}
+                                                            >
+                                                                <Check
+                                                                    className={cn(
+                                                                        "mr-2 h-4 w-4",
+                                                                        location.value ===
+                                                                            field.value
+                                                                            ? "opacity-100"
+                                                                            : "opacity-0"
+                                                                    )}
+                                                                />
+                                                                {location.label}
+                                                            </CommandItem>
+                                                        )
+                                                    )}
+                                                </CommandGroup>
+                                            </CommandList>
+                                        </Command>
+                                    </PopoverContent>
+                                </Popover>
+                                <FormMessage className="-bottom-2 absolute left-4 text-xs" />
+                            </FormItem>
+                        )}
+                    />
+                    <Button type="submit">Search</Button>
+                </form>
+            </Form>
         </>
     );
 };

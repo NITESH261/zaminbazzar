@@ -1,7 +1,4 @@
 import React from "react";
-import { ChevronDown } from "lucide-react";
-import { LocateIcon } from "lucide-react";
-import { MicIcon } from "lucide-react";
 import SearchBar from "../molecules/SearchBar";
 import BannerCarousel from "../atoms/BannerCarousel";
 
@@ -40,22 +37,8 @@ const Hero = () => {
                                 </li>
                             </ul>
                         </div>
-                        <div className="grid grid-cols-1 md:grid-cols-5 md:divide-x w-full h-14">
-                            <div className="hidden md:flex w-full items-center justify-center">
-                                <span className="text-sm">All Residential</span>
-                                <ChevronDown className="size-6" />
-                            </div>
-                            <div className="flex w-full px-5 items-center justify-center md:col-span-3">
-                                <SearchBar />
-                            </div>
-                            <div className="hidden md:flex w-full gap-2 items-center justify-center">
-                                <span className="size-8 bg-blue-200 rounded-full items-center justify-center flex">
-                                    <LocateIcon className="size-5 text-blue-500" />
-                                </span>
-                                <span className="size-8 bg-blue-200 rounded-full items-center justify-center flex">
-                                    <MicIcon className="size-5 text-blue-500" />
-                                </span>
-                            </div>
+                        <div className="flex w-full px-4 h-14">
+                            <SearchBar />
                         </div>
                     </div>
                 </div>
