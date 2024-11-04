@@ -1,5 +1,5 @@
-import React from 'react';
-import Image from 'next/image';
+import React from "react";
+import Image from "next/image";
 import { IoLocation } from "react-icons/io5";
 import { MdCall } from "react-icons/md";
 
@@ -9,7 +9,7 @@ const Footer = () => {
             <div className="mx-auto max-w-7xl px-6 pb-8 pt-16 sm:pt-24 lg:px-8 lg:pt-32">
                 <div className="xl:grid sm:grid-cols-1 sm:gap-8 xl:grid-cols-3 xl:gap-8">
                     <div className="space-y-8 flex flex-col justify-center items-center">
-                        <div className='relative aspect-square w-full max-w-40 flex'>
+                        <div className="relative aspect-square w-full max-w-40 flex">
                             <Image
                                 alt="Company name"
                                 src="/assets/logo/zamin-logo.gif"
@@ -18,13 +18,21 @@ const Footer = () => {
                             />
                         </div>
                         <p className="text-balance text-sm/6 text-gray-300 text-center">
-                            Making the world a better place through constructing elegant hierarchies.
+                            Making the world a better place through constructing
+                            elegant hierarchies.
                         </p>
                         <div className="flex gap-x-6">
                             {navigation.social.map((item) => (
-                                <a key={item.name} href={item.href} className="text-gray-400 hover:text-gray-300">
+                                <a
+                                    key={item.name}
+                                    href={item.href}
+                                    className="text-gray-400 hover:text-gray-300"
+                                >
                                     <span className="sr-only">{item.name}</span>
-                                    <item.icon aria-hidden="true" className="h-6 w-6" />
+                                    <item.icon
+                                        aria-hidden="true"
+                                        className="h-6 w-6"
+                                    />
                                 </a>
                             ))}
                         </div>
@@ -32,39 +40,63 @@ const Footer = () => {
                     <div className="mt-16 grid sm:grid-cols-2  md:grid-cols-2 gap-8 xl:col-span-2 xl:mt-0">
                         <div className="md:grid md:grid-cols-1 md:gap-8">
                             <div>
-                                <h3 className="text-sm/6 font-semibold text-white">Contact Info</h3>
+                                <h3 className="text-sm/6 font-semibold text-white">
+                                    Contact Info
+                                </h3>
                                 <ul>
-                                    <li><div className='flex text-gray-400 pt-5'>
-                                        <span className='p-1'><IoLocation className=' text-green-500 ' /></span>G-Square Business Park, 3rd floor, Office No.303 & 304, opposite Sanpada Railway Station, Navi Mumbai, Maharashtra 400703
-                                    </div></li>
                                     <li>
-                                        <div className='flex text-gray-400 pt-5'>
-                                            <span className='p-1'><MdCall className='text-white' /></span> <a href="tel:9555599299">9555599299</a>
+                                        <div className="flex text-gray-400 pt-5">
+                                            <span className="p-1">
+                                                <IoLocation />
+                                            </span>
+                                            G-Square Business Park, 3rd floor,
+                                            Office No.303 & 304, opposite
+                                            Sanpada Railway Station, Navi
+                                            Mumbai, Maharashtra 400703
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div className="flex text-gray-400 pt-5">
+                                            <span className="p-1">
+                                                <MdCall className="text-white" />
+                                            </span>{" "}
+                                            <a href="tel:9555599299">
+                                                9555599299
+                                            </a>
                                         </div>
                                     </li>
                                 </ul>
                             </div>
-
                         </div>
                         <div className="grid grid-cols-2  md:grid-cols-2 md:gap-8">
                             <div>
-                                <h3 className="text-sm/6 font-semibold text-white">Company</h3>
+                                <h3 className="text-sm/6 font-semibold text-white">
+                                    Company
+                                </h3>
                                 <ul role="list" className="mt-6 space-y-4">
                                     {navigation.company.map((item) => (
                                         <li key={item.name}>
-                                            <a href={item.href} className="text-sm/6 text-gray-400 hover:text-white">
+                                            <a
+                                                href={item.href}
+                                                className="text-sm/6 text-gray-400 hover:text-white"
+                                            >
                                                 {item.name}
                                             </a>
                                         </li>
                                     ))}
                                 </ul>
                             </div>
-                            <div className="md:mt-10 sm:mt-0">
-                                <h3 className="text-sm/6 font-semibold text-white">Legal</h3>
+                            <div>
+                                <h3 className="text-sm/6 font-semibold text-white">
+                                    Legal
+                                </h3>
                                 <ul role="list" className="mt-6 space-y-4">
                                     {navigation.legal.map((item) => (
                                         <li key={item.name}>
-                                            <a href={item.href} className="text-sm/6 text-gray-400 hover:text-white">
+                                            <a
+                                                href={item.href}
+                                                className="text-sm/6 text-gray-400 hover:text-white"
+                                            >
                                                 {item.name}
                                             </a>
                                         </li>
@@ -75,7 +107,10 @@ const Footer = () => {
                     </div>
                 </div>
                 <div className="mt-16 border-t border-white/10 pt-8 sm:mt-20 lg:mt-24">
-                    <p className="text-sm/6 text-gray-400">&copy; 2024 Your Company, Inc. All rights reserved.</p>
+                    <p className="text-sm/6 text-gray-400 text-center">
+                        &copy; {new Date().getFullYear()} Your Company, Inc. All
+                        rights reserved.
+                    </p>
                 </div>
             </div>
         </footer>
@@ -84,37 +119,34 @@ const Footer = () => {
 
 export default Footer;
 
-
 const navigation = {
-
-
     solutions: [
-        { name: 'Marketing', href: '#' },
-        { name: 'Analytics', href: '#' },
-        { name: 'Automation', href: '#' },
-        { name: 'Commerce', href: '#' },
-        { name: 'Insights', href: '#' },
+        { name: "Marketing", href: "#" },
+        { name: "Analytics", href: "#" },
+        { name: "Automation", href: "#" },
+        { name: "Commerce", href: "#" },
+        { name: "Insights", href: "#" },
     ],
     support: [
-        { name: 'Submit ticket', href: '#' },
-        { name: 'Documentation', href: '#' },
-        { name: 'Guides', href: '#' },
+        { name: "Submit ticket", href: "#" },
+        { name: "Documentation", href: "#" },
+        { name: "Guides", href: "#" },
     ],
     company: [
-        { name: 'About', href: '#' },
-        { name: 'Blog', href: '#' },
-        { name: 'Jobs', href: '#' },
-        { name: 'Press', href: '#' },
+        { name: "About", href: "#" },
+        { name: "Blog", href: "#" },
+        { name: "Jobs", href: "#" },
+        { name: "Press", href: "#" },
     ],
     legal: [
-        { name: 'Terms of service', href: '#' },
-        { name: 'Privacy policy', href: '#' },
-        { name: 'License', href: '#' },
+        { name: "Terms of service", href: "#" },
+        { name: "Privacy policy", href: "#" },
+        { name: "License", href: "#" },
     ],
     social: [
         {
-            name: 'Facebook',
-            href: '#',
+            name: "Facebook",
+            href: "#",
             icon: (props) => (
                 <svg fill="currentColor" viewBox="0 0 24 24" {...props}>
                     <path
@@ -126,8 +158,8 @@ const navigation = {
             ),
         },
         {
-            name: 'Instagram',
-            href: '#',
+            name: "Instagram",
+            href: "#",
             icon: (props) => (
                 <svg fill="currentColor" viewBox="0 0 24 24" {...props}>
                     <path
@@ -139,8 +171,8 @@ const navigation = {
             ),
         },
         {
-            name: 'X',
-            href: '#',
+            name: "X",
+            href: "#",
             icon: (props) => (
                 <svg fill="currentColor" viewBox="0 0 24 24" {...props}>
                     <path d="M13.6823 10.6218L20.2391 3H18.6854L12.9921 9.61788L8.44486 3H3.2002L10.0765 13.0074L3.2002 21H4.75404L10.7663 14.0113L15.5685 21H20.8131L13.6819 10.6218H13.6823ZM11.5541 13.0956L10.8574 12.0991L5.31391 4.16971H7.70053L12.1742 10.5689L12.8709 11.5655L18.6861 19.8835H16.2995L11.5541 13.096V13.0956Z" />
@@ -148,8 +180,8 @@ const navigation = {
             ),
         },
         {
-            name: 'GitHub',
-            href: '#',
+            name: "GitHub",
+            href: "#",
             icon: (props) => (
                 <svg fill="currentColor" viewBox="0 0 24 24" {...props}>
                     <path
@@ -161,8 +193,8 @@ const navigation = {
             ),
         },
         {
-            name: 'YouTube',
-            href: '#',
+            name: "YouTube",
+            href: "#",
             icon: (props) => (
                 <svg fill="currentColor" viewBox="0 0 24 24" {...props}>
                     <path
@@ -174,4 +206,4 @@ const navigation = {
             ),
         },
     ],
-}
+};
