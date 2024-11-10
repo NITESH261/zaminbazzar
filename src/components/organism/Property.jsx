@@ -22,7 +22,7 @@ const Property = () => {
     return (
         <>
             <div className="flex w-full">
-                <div className="flex flex-col gap-4 md:gap-6 w-full max-w-7xl mx-auto px-4 py-4 md:py-6 lg:py-8">
+                <div className="flex flex-col gap-4 md:gap-6 w-full max-w-7xl mx-auto px-4 py-4 md:py-6 lg:py-8 xl:py-10">
                     <div className="flex w-full">
                         <h2 className="text-lg font-bold md:text-xl lg:text-2xl">
                             Popular Properties

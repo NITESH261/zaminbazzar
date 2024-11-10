@@ -1,5 +1,5 @@
-import React from "react";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "../ui/tabs";
+import { DollarSignIcon } from "lucide-react";
+import Link from "next/link";
 import {
     Card,
     CardContent,
@@ -7,15 +7,14 @@ import {
     CardHeader,
     CardTitle,
 } from "../ui/card";
-import { DollarSignIcon } from "lucide-react";
-import Link from "next/link";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "../ui/tabs";
 
 const Discover = () => {
     const cards = Array.from({ length: 3 }, (_, i) => i + 1);
     return (
         <>
             <div className="flex w-full">
-                <div className="flex flex-col gap-4 w-full max-w-7xl mx-auto px-4 py-4 md:py-6 lg:py-8">
+                <div className="flex flex-col gap-4 w-full max-w-7xl mx-auto px-4 py-4 md:py-6 lg:py-8 xl:py-10">
                     <div className="flex w-full">
                         <h2 className="text-lg font-galanoGrotesque font-bold md:text-xl lg:text-2xl">
                             Discover how we can help

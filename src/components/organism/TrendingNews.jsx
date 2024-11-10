@@ -1,5 +1,4 @@
 import Link from "next/link";
-import React from "react";
 import { Badge } from "../ui/badge";
 
 const TrendingNews = () => {
@@ -7,7 +6,7 @@ const TrendingNews = () => {
     return (
         <>
             <div className="flex w-full bg-gray-200">
-                <div className="flex flex-col gap-4 md:gap-6 w-full max-w-7xl mx-auto px-4 py-4 md:py-6 lg:py-8 xl:py-14">
+                <div className="flex flex-col gap-4 md:gap-6 w-full max-w-7xl mx-auto px-4 py-4 md:py-6 lg:py-8 xl:py-10 xl:py-14">
                     <div className="flex w-full overflow-x-auto xl:overflow-x-hidden scrollbar-hide">
                         <div className="flex xl:grid xl:grid-cols-4 gap-4 w-fit xl:w-full">
                             {cards.map((card) => (

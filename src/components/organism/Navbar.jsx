@@ -22,37 +22,37 @@ const Navbar = () => {
                     <div className="flex w-full h-full justify-end">
                         <ul className='flex w-fit h-full gap-6'>
                             {NavData.map((item, index) => (
-                                item.data?
-                                (<li key={index} className='navlink w-fit h-full items-center flex group border-b-2 border-transparent hover:border-black transition-all'>
-                                    <Link href={"/"} className='flex w-full text-sm pt-1.5 px-2 transition-all group-hover:font-medium'>{item.label}</Link>
-                                    <div className="flex group-hover:visible invisible transition-all w-full absolute top-full z-10 bg-white left-0 rounded-b-3xl border border-gray-200">
-                                        <div className="grid grid-cols-1 divide-x gap-4 md:grid-cols-2 lg:grid-cols-3 w-full h-72 max-w-7xl mx-auto px-4 py-4 md:py-6 lg:py-8">
-                                            {item.data?.map((item, index) => (
-                                                <div key={index} className="flex w-full flex-col pl-4 gap-4">
-                                                    <strong className='text-base'>{item.title}</strong>
-                                                    <ul className='flex w-full flex-col pl-3 gap-1 text-sm'>
-                                                        {item.links.map((item, index) => (
-                                                            <li key={index} className='flex w-full'>
-                                                                <Link href={"/"} className='hover:font-normal py-1 hover:underline transition-all'>{item.name}</Link>
-                                                            </li>
-                                                        ))}
-                                                    </ul>
-                                                </div>
-                                            ))}
+                                item.data ?
+                                    (<li key={index} className='navlink w-fit h-full items-center flex group border-b-2 border-transparent hover:border-black transition-all'>
+                                        <Link href={"/"} className='flex w-full text-sm pt-1.5 px-2 transition-all group-hover:font-medium'>{item.label}</Link>
+                                        <div className="flex group-hover:visible invisible transition-all w-full absolute top-full z-10 bg-white left-0 rounded-b-3xl border border-gray-200">
+                                            <div className="grid grid-cols-1 divide-x gap-4 md:grid-cols-2 lg:grid-cols-3 w-full h-72 max-w-7xl mx-auto px-4 py-4 md:py-6 lg:py-8 xl:py-10">
+                                                {item.data?.map((item, index) => (
+                                                    <div key={index} className="flex w-full flex-col pl-4 gap-4">
+                                                        <strong className='text-base'>{item.title}</strong>
+                                                        <ul className='flex w-full flex-col pl-3 gap-1 text-sm'>
+                                                            {item.links.map((item, index) => (
+                                                                <li key={index} className='flex w-full'>
+                                                                    <Link href={"/"} className='hover:font-normal py-1 hover:underline transition-all'>{item.name}</Link>
+                                                                </li>
+                                                            ))}
+                                                        </ul>
+                                                    </div>
+                                                ))}
+                                            </div>
                                         </div>
-                                    </div>
-                                </li>
-                            ):(
-                                <li key={index} className='navlink w-fit h-full items-center flex group border-b-2 border-transparent hover:border-black transition-all'>
-                                <Link href={"/"} className='flex w-full text-sm pt-1.5 px-2 transition-all group-hover:font-medium'>{item.label}</Link>
-                            </li>
-                            )))}
+                                    </li>
+                                    ) : (
+                                        <li key={index} className='navlink w-fit h-full items-center flex group border-b-2 border-transparent hover:border-black transition-all'>
+                                            <Link href={"/"} className='flex w-full text-sm pt-1.5 px-2 transition-all group-hover:font-medium'>{item.label}</Link>
+                                        </li>
+                                    )))}
                         </ul>
                     </div>
                 </div>
                 <div className="flex flex-grow items-center gap-4 justify-end">
                     <Button variant="ghost" className="font-thin">
-                        <UserCircle2Icon className="size-10"/>
+                        <UserCircle2Icon className="size-10" />
                         Log In
                     </Button>
                     <Sheet>
@@ -75,12 +75,12 @@ const Navbar = () => {
                             <div className="flex w-full flex-col h-[calc(100%-56px)] overflow-y-auto scrollbar-hide">
                                 <ul className="flex flex-col w-full">
                                     {NavData.map((item, i) =>
-                                        item.data?
+                                        item.data ?
                                             <Accordion
                                                 key={`items-${i}`}
-                                            type="single"
-                                            collapsible
-                                            className="w-full "
+                                                type="single"
+                                                collapsible
+                                                className="w-full "
                                             >
                                                 <AccordionItem
                                                     key={i}
@@ -133,14 +133,14 @@ const Navbar = () => {
                                                         </ul>
                                                     </AccordionContent>
                                                 </AccordionItem>
-                                        </Accordion>
+                                            </Accordion>
                                             :
-                                    <li key={`link-${i}`} className="flex w-full">
-                                            <Link href={item.url} className="px-4 py-4">
-                                                {item.label}
-                                            </Link>
+                                            <li key={`link-${i}`} className="flex w-full">
+                                                <Link href={item.url} className="px-4 py-4">
+                                                    {item.label}
+                                                </Link>
                                             </li>
-                                   )}
+                                    )}
                                 </ul>
                             </div>
                         </SheetContent>
