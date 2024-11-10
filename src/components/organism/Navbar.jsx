@@ -49,6 +49,9 @@ const Navbar = () => {
                             <div className="flex w-full flex-col h-[calc(100%-56px)] overflow-y-auto scrollbar-hide">
                                 <ul className="flex w-full">
                                     <li className="flex w-full">
+                                        <Link href={"/"}></Link>
+                                    </li>
+                                    {/* <li className="flex w-full">
                                         <Accordion
                                             type="single"
                                             collapsible
@@ -64,7 +67,7 @@ const Navbar = () => {
                                                     </AccordionTrigger>
                                                     <AccordionContent className="px-4">
                                                         <ul className="flex w-full flex-col gap-4 pl-3">
-                                                            {item.categories.map(
+                                                            {item?.categories.map(
                                                                 (
                                                                     item,
                                                                     index
@@ -112,7 +115,7 @@ const Navbar = () => {
                                                 </AccordionItem>
                                             ))}
                                         </Accordion>
-                                    </li>
+                                    </li> */}
                                 </ul>
                             </div>
                         </SheetContent>
@@ -128,6 +131,8 @@ export default Navbar;
 const NavData = [
     {
         title: "Buy",
+        url: "#",
+        active: "active",
         categories: [
             {
                 title: "Property Types",
@@ -158,124 +163,8 @@ const NavData = [
         ],
     },
     {
-        title: "Rent",
-        categories: [
-            {
-                title: "Property Types",
-                links: [
-                    { name: "Apartments", url: "/rent/apartments" },
-                    { name: "Houses", url: "/rent/houses" },
-                    { name: "Villas", url: "/rent/villas" },
-                    { name: "Condos", url: "/rent/condos" },
-                ],
-            },
-            {
-                title: "Popular Areas",
-                links: [
-                    { name: "Downtown", url: "/rent/downtown" },
-                    { name: "Suburbs", url: "/rent/suburbs" },
-                    { name: "Beachfront", url: "/rent/beachfront" },
-                    { name: "City Center", url: "/rent/city-center" },
-                ],
-            },
-            {
-                title: "Rent Range",
-                links: [
-                    { name: "Under $1,000", url: "/rent/under-1000" },
-                    { name: "$1,000 - $2,500", url: "/rent/1000-2500" },
-                    { name: "Over $2,500", url: "/rent/over-2500" },
-                ],
-            },
-        ],
-    },
-    {
-        title: "Commercial",
-        categories: [
-            {
-                title: "Property Types",
-                links: [
-                    { name: "Offices", url: "/commercial/offices" },
-                    { name: "Retail Spaces", url: "/commercial/retail-spaces" },
-                    { name: "Warehouses", url: "/commercial/warehouses" },
-                    { name: "Industrial", url: "/commercial/industrial" },
-                ],
-            },
-            {
-                title: "Locations",
-                links: [
-                    {
-                        name: "Business District",
-                        url: "/commercial/business-district",
-                    },
-                    {
-                        name: "Industrial Zone",
-                        url: "/commercial/industrial-zone",
-                    },
-                    { name: "City Center", url: "/commercial/city-center" },
-                    { name: "Suburban Area", url: "/commercial/suburban-area" },
-                ],
-            },
-        ],
-    },
-    {
-        title: "Agents",
-        categories: [
-            {
-                title: "Find an Agent",
-                links: [
-                    { name: "Top Agents", url: "/agents/top" },
-                    { name: "New Agents", url: "/agents/new" },
-                    { name: "By Location", url: "/agents/location" },
-                ],
-            },
-        ],
-    },
-    {
-        title: "Services",
-        categories: [
-            {
-                title: "Home Services",
-                links: [
-                    {
-                        name: "Home Inspection",
-                        url: "/services/home-inspection",
-                    },
-                    { name: "Mortgage Assistance", url: "/services/mortgage" },
-                    { name: "Legal Services", url: "/services/legal" },
-                    { name: "Moving Services", url: "/services/moving" },
-                ],
-            },
-            {
-                title: "Renovation Services",
-                links: [
-                    {
-                        name: "Interior Design",
-                        url: "/services/interior-design",
-                    },
-                    { name: "Landscaping", url: "/services/landscaping" },
-                    { name: "Contractors", url: "/services/contractors" },
-                ],
-            },
-        ],
-    },
-    {
-        title: "About Us",
-        categories: [
-            {
-                title: "Company",
-                links: [
-                    { name: "Our Story", url: "/about/our-story" },
-                    { name: "Careers", url: "/about/careers" },
-                    { name: "Press", url: "/about/press" },
-                ],
-            },
-            {
-                title: "Contact",
-                links: [
-                    { name: "Support", url: "/contact/support" },
-                    { name: "Offices", url: "/contact/offices" },
-                ],
-            },
-        ],
+        title: "Sell/Rent Property",
+        url: "#",
+        active: "active",
     },
 ];
