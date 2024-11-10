@@ -1,7 +1,10 @@
 "use client";
 
+import { cn } from "@/lib/utils";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { ChevronsUpDown } from "lucide-react";
+import { Check, ChevronsUpDown, Search } from "lucide-react";
+import { useForm } from "react-hook-form";
+import { z } from "zod";
 import { Button } from "../ui/button";
 import {
     Command,
@@ -14,26 +17,17 @@ import {
 import {
     Form,
     FormControl,
-    FormDescription,
     FormField,
     FormItem,
-    FormLabel,
-    FormMessage,
+    FormMessage
 } from "../ui/form";
 import { Popover, PopoverContent, PopoverTrigger } from "../ui/popover";
-import { Check } from "lucide-react";
-import { useForm } from "react-hook-form";
-import { z } from "zod";
-import { cn } from "@/lib/utils";
 
 const PropertyLocations = [
-    { label: "Navi Mumbai", value: "en" },
-    { label: "Chirle", value: "fr" },
-    { label: "Ranjanpada", value: "de" },
-    { label: "Dronagiri", value: "es" },
-    { label: "Vindhane", value: "pt" },
-    { label: "Panvel", value: "ru" },
-    { label: "New Thane", value: "ja" },
+    { label: "Navi Mumbai", value: "Navi Mumbai" },
+    { label: "Thane", value: "Thane" },
+    { label: "Panvel", value: "Panvel" },
+    { label: "Khalapur", value: "Khalapur" },
 ];
 
 const FormSchema = z.object({
@@ -136,7 +130,9 @@ const SearchBar = () => {
                             </FormItem>
                         )}
                     />
-                    <Button type="submit">Search</Button>
+                    <Button type="submit" className="rounded-full">
+                        <Search/>
+                        Search</Button>
                 </form>
             </Form>
         </>

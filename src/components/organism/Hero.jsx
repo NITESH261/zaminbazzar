@@ -1,6 +1,5 @@
-import React from "react";
-import SearchBar from "../molecules/SearchBar";
 import BannerCarousel from "../atoms/BannerCarousel";
+import SearchBar from "../molecules/SearchBar";
 
 const Hero = () => {
     return (
@@ -13,27 +12,24 @@ const Hero = () => {
                     </h1>
                     <div className="flex absolute top-[80%] shadow-md flex-col divide-y w-full max-w-4xl bg-white rounded-2xl md:border md:border-gray-200">
                         <div className="hidden md:flex w-full text-sm">
-                            <ul className="grid grid-cols-7 h-14 w-full">
+                            <ul className="grid grid-cols-6 h-14 w-full">
                                 <li className="flex w-full items-center justify-center">
                                     Buy
                                 </li>
                                 <li className="flex w-full items-center justify-center">
-                                    Rent
-                                </li>
-                                <li className="flex w-full items-center justify-center">
-                                    New Launch
-                                </li>
-                                <li className="flex w-full items-center justify-center">
-                                    Pg/Co-living
+                                    Resindential
                                 </li>
                                 <li className="flex w-full items-center justify-center">
                                     Commercial
                                 </li>
                                 <li className="flex w-full items-center justify-center">
-                                    Plot/Land
+                                    Villa
                                 </li>
                                 <li className="flex w-full items-center justify-center">
-                                    Project
+                                    Banglow
+                                </li>
+                                <li className="flex w-full items-center justify-center">
+                                    Plot
                                 </li>
                             </ul>
                         </div>
