@@ -1,3 +1,4 @@
+import Connectivity from "@/components/organism/Connectivity";
 import DreamPlots from "@/components/organism/DreamPlots";
 import Footer from "@/components/organism/Footer";
 import Hero from "@/components/organism/Hero";
@@ -12,6 +13,7 @@ const page = () => {
             <Property />
             <TopLocations />
             <DreamPlots />
+            <Connectivity />
             <TrendingNews />
             <Footer />
         </>
