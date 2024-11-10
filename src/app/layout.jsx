@@ -1,8 +1,7 @@
+import Navbar from "@/components/organism/Navbar";
 import { cn } from "@/lib/utils";
 import localFont from "next/font/local";
-import React from "react";
 import "./globals.css";
-import Navbar from "@/components/organism/Navbar";
 
 const galanoGrotesque = localFont({
     src: [
@@ -49,7 +48,7 @@ export default function RootLayout({ children }) {
                     galanoGrotesque.variable
                 )}
             >
-                <div className="flex w-full flex-col overflow-y-auto overflow-x-hidden scrollbar">
+                <div className="flex w-full flex-col overflow-y-auto overflow-x-hidden scrollbar-hide md:scrollbar">
                     <Navbar />
                     <main className="flex w-full flex-1 flex-col">
                         <div className="flex h-auto w-full flex-1 flex-col items-center justify-center overflow-y-auto">

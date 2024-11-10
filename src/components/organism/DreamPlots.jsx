@@ -1,6 +1,8 @@
+"use client"
+
+import Autoplay from "embla-carousel-autoplay";
 import Image from "next/image";
-import Link from "next/link";
-import React from "react";
+import { Card, CardContent, CardHeader } from "../ui/card";
 import {
     Carousel,
     CarouselContent,
@@ -8,8 +10,6 @@ import {
     CarouselNext,
     CarouselPrevious,
 } from "../ui/carousel";
-import { Card, CardContent, CardHeader } from "../ui/card";
-import { Button } from "../ui/button";
 
 const PlotsData = [
     {
@@ -82,6 +82,11 @@ const DreamPlots = () => {
                     </div>
                     <div className="flex w-full">
                         <Carousel
+                            plugins={[
+                                Autoplay({
+                                    delay: 3000,
+                                }),
+                            ]}
                             opts={{
                                 align: "start",
                                 loop: true,
@@ -119,8 +124,8 @@ const DreamPlots = () => {
                                     </CarouselItem>
                                 ))}
                             </CarouselContent>
-                            <CarouselPrevious className="left-0 lg:-left-12" />
-                            <CarouselNext className="right-0 lg:-right-12" />
+                            <CarouselPrevious className="left-0 lg:-left-8" />
+                            <CarouselNext className="right-0 lg:-right-8" />
                         </Carousel>
                     </div>
                 </div>
