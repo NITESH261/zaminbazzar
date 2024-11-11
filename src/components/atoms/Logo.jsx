@@ -3,9 +3,9 @@ import React from "react";
 
 const Logo = () => {
     return (
-        <div className="flex aspect-square w-fit relative">
+        <div className="flex size-10 aspect-square w-fit relative">
             <Image
-                src="/assets/logo/zamin-logo.gif"
+                src={"/assets/logo/zamin-logo.gif"}
                 alt="Zamin Wale Logo"
                 fill
                 className="object-contain"
