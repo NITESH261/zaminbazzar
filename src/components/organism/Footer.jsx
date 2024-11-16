@@ -34,7 +34,7 @@ const Footer = () => {
                 </div>
             </div>
             <div className="bg-gray-200 py-4">
-                <div className="container mx-auto text-center">
+                <div className="flex flex-wrap xl:w-fit mx-auto text-center">
                     <a href="#" className="text-gray-600 mx-2">Sitemap</a>
                     <a href="#" className="text-gray-600 mx-2">Terms & Conditions</a>
                     <a href="#" className="text-gray-600 mx-2">Privacy Policy</a>

@@ -44,7 +44,7 @@ const Property = () => {
                             Recommended Property
                         </h2>
                         <Link href={"/"} className="flex items-center gap-2 hover:text-black text-[#964B00] text-lg md:text-xl">
-                            See More
+                            <span className="hidden md:flex">See More</span>
                             <ArrowRight />
                         </Link>
                     </div>
