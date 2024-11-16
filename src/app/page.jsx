@@ -1,5 +1,4 @@
 import About from "@/components/organism/About";
-import Connectivity from "@/components/organism/Connectivity";
 import DreamPlots from "@/components/organism/DreamPlots";
 import Footer from "@/components/organism/Footer";
 import Hero from "@/components/organism/Hero";
@@ -16,7 +15,7 @@ const page = () => {
             <TopLocations />
             <RecommendedProperty />
             <DreamPlots />
-            <Connectivity />
+            {/* <Connectivity /> */}
             <About />
             <TrendingNews />
             <Footer />
