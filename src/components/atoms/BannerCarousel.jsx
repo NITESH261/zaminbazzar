@@ -1,9 +1,8 @@
 "use client";
 
-import React from "react";
-import { Carousel, CarouselContent, CarouselItem } from "../ui/carousel";
 import Autoplay from "embla-carousel-autoplay";
 import Image from "next/image";
+import { Carousel, CarouselContent, CarouselItem } from "../ui/carousel";
 
 const BannerImages = [
     { img: "banner-img-1.jpg" },
@@ -27,7 +26,7 @@ const BannerCarousel = () => {
                 }}
                 className="w-full"
             >
-                <CarouselContent className="w-full h-96 flex ml-0">
+                <CarouselContent className="w-full h-96 lg:h-[30rem] flex ml-0">
                     {BannerImages.map((card, index) => (
                         <CarouselItem
                             key={`${index}-img`}
