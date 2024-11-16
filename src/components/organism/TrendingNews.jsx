@@ -7,7 +7,7 @@ const TrendingNews = () => {
             <div className="flex w-full bg-gray-200">
                 <div className="flex flex-col gap-4 md:gap-6 w-full max-w-7xl mx-auto px-4 py-4 md:py-6 lg:py-8 xl:py-14">
                     <div className="flex w-full">
-                        <h2 className="text-lg font-bold md:text-xl lg:text-2xl">
+                        <h2 className="text-lg font-medium md:text-xl lg:text-2xl">
                             News & Blogs
                         </h2>
                     </div>
@@ -17,7 +17,7 @@ const TrendingNews = () => {
                                 <Link
                                     key={card}
                                     href={"/"}
-                                    className="w-80 flex flex-col bg-white rounded-lg xl:w-full group "
+                                    className="w-80 flex flex-col  rounded-lg xl:w-full group "
                                 >
                                     <div className="flex w-full relative aspect-[3/2] bg-cover rounded-lg bg-[url('/assets/house/house1.webp')]">
                                     </div>

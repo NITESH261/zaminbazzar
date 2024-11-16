@@ -76,7 +76,7 @@ const DreamPlots = () => {
             <div className="flex w-full">
                 <div className="flex flex-col gap-4 md:gap-6 w-full max-w-7xl mx-auto px-4 py-4 md:py-6 lg:py-8 xl:py-10">
                     <div className="flex w-full">
-                        <h2 className="text-lg font-bold md:text-xl lg:text-2xl">
+                        <h2 className="text-lg font-medium md:text-xl lg:text-2xl">
                             Find Your Dream Plots With Zaminwale.
                         </h2>
                     </div>
@@ -112,9 +112,9 @@ const DreamPlots = () => {
                                             </CardHeader>
                                             <CardContent className="w-full p-4">
                                                 <div className="w-full space-y-2">
-                                                    <strong className="text-base">
+                                                    <span className="text-base font-medium text-[#964B00]">
                                                         {plot.title}
-                                                    </strong>
+                                                    </span>
                                                     <p className="text-sm text-neutral-800">
                                                         {plot.description}
                                                     </p>

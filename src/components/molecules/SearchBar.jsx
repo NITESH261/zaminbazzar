@@ -57,7 +57,7 @@ const SearchBar = () => {
                         name="location"
                         className="w-full flex"
                         render={({ field }) => (
-                            <FormItem className="flex flex-col w-full relative">
+                            <FormItem className="flex flex-col w-full relative ">
                                 <Popover className="w-full flex">
                                     <PopoverTrigger asChild>
                                         <FormControl>
@@ -67,22 +67,22 @@ const SearchBar = () => {
                                                 className={cn(
                                                     "w-full justify-between",
                                                     !field.value &&
-                                                        "text-muted-foreground"
+                                                    "text-muted-foreground"
                                                 )}
                                             >
                                                 {field.value
                                                     ? PropertyLocations.find(
-                                                          (location) =>
-                                                              location.value ===
-                                                              field.value
-                                                      )?.label
+                                                        (location) =>
+                                                            location.value ===
+                                                            field.value
+                                                    )?.label
                                                     : "Select location"}
                                                 <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
                                             </Button>
                                         </FormControl>
                                     </PopoverTrigger>
                                     <PopoverContent className="w-full relative flex z-10 p-0">
-                                        <Command className="w-[757px] max-w-3xl flex">
+                                        <Command className="max-w-lg w-96 flex">
                                             <CommandInput
                                                 placeholder="Search location..."
                                                 className=" w-full"
@@ -130,8 +130,8 @@ const SearchBar = () => {
                             </FormItem>
                         )}
                     />
-                    <Button type="submit" className="rounded-full">
-                        <Search/>
+                    <Button type="submit" className="rounded-full bg-[#964B00]">
+                        <Search />
                         Search</Button>
                 </form>
             </Form>
