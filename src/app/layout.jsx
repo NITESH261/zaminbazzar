@@ -48,10 +48,10 @@ export default function RootLayout({ children }) {
                     galanoGrotesque.variable
                 )}
             >
-                <div className="flex w-full flex-col overflow-y-auto overflow-x-hidden scrollbar-hide md:scrollbar">
+                <div className="flex w-full h-full flex-col overflow-y-auto overflow-x-hidden scrollbar-hide md:scrollbar">
                     <Navbar />
                     <main className="flex w-full flex-1 flex-col">
-                        <div className="flex h-auto w-full flex-1 flex-col items-center justify-center overflow-y-auto">
+                        <div className="flex h-full w-full flex-col items-center justify-center overflow-y-auto">
                             {children}
                         </div>
                     </main>
