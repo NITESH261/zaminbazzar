@@ -81,8 +81,8 @@ const SearchBar = () => {
                                             </Button>
                                         </FormControl>
                                     </PopoverTrigger>
-                                    <PopoverContent className="w-full relative flex z-10 p-0">
-                                        <Command className="max-w-lg w-96 flex">
+                                    <PopoverContent align="center" className="w-full relative flex z-10 p-0">
+                                        <Command className="w-[615px] max-w-3xl flex">
                                             <CommandInput
                                                 placeholder="Search location..."
                                                 className=" w-full"
@@ -130,7 +130,7 @@ const SearchBar = () => {
                             </FormItem>
                         )}
                     />
-                    <Button type="submit" className="rounded-full bg-[#964B00]">
+                    <Button type="submit" className="rounded-full bg-[#0078DB]">
                         <Search />
                         Search</Button>
                 </form>
