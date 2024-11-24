@@ -59,7 +59,7 @@ const TopLocations = () => {
                         </h2>
                     </div>
                     <div className="flex w-full overflow-auto scrollbar-hide">
-                        <div className="flex w-fit md:grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:w-full gap-4">
+                        <div className="flex w-fit md:grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 md:w-full gap-4">
                             {Locations.map((location, index) => (
                                 <Link key={index} href={location.url} className="w-72 md:w-full">
                                     <Card className="rounded-lg group hover:shadow-lg p-0 h-full w-full transition-all">

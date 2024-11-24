@@ -11,7 +11,7 @@ const About = () => {
                             <span className="text-sm md:text-base lg:text-lg font-semibold">
                                 *Riverhill - With Nature In the Nature!
                             </span>
-                            <h2 className="text-xl text-[#0078DB] font-semibold md:text-2xl lg:text-3xl">
+                            <h2 className="text-xl font-semibold md:text-2xl lg:text-3xl">
                                 "Welcome to Zamin Wale, <br />
                                 where sustainability meets everyday life!"
                             </h2>

@@ -40,7 +40,7 @@ const Connectivity = () => {
     return (
         <>
             <div className="flex w-full bg-fixed bg-cover bg-no-repeat bg-[url('/assets/banner-img/connectivity-bg.webp')]">
-                <div className="flex flex-col gap-4 md:gap-6 w-full max-w-7xl mx-auto px-4 py-4 md:py-6 lg:py-8 xl:py-10">
+                <div className="flex flex-col gap-4 md:gap-6 w-full max-w-7xl mx-auto px-4 py-6 md:py-8 lg:py-10 xl:py-12">
                     <div className="flex w-full">
                         <h2 className="text-lg font-bold md:text-xl lg:text-2xl text-white">
                             Connectivity
