@@ -7,7 +7,7 @@ const page = async ({ params }) => {
         <div className="flex w-full flex-1">
             <div className="flex flex-col gap-4 w-full max-w-7xl mx-auto px-4 py-4 md:py-6 lg:py-8 xl:py-10">
                 <div className="grid relative grid-cols-1 lg:grid-cols-8 w-full gap-4">
-                    <div className="flex w-full col-span-6 lg:h-full border border-red-500">
+                    <div className="flex w-full col-span-6 lg:h-full">
                         <div className="flex w-full h-fit gap-8 flex-col">
                             <div className="flex flex-col lg:flex-row h-fit gap-2 w-full">
                                 <div className="flex w-full lg:w-3/4 border">
