@@ -43,7 +43,7 @@ const Property = () => {
                         <h2 className="text-lg font-medium md:text-xl lg:text-2xl">
                             Recommended Property
                         </h2>
-                        <Link href={"/"} className="flex items-center gap-2 hover:text-black text-[#964B00] text-lg md:text-xl">
+                        <Link href={"/"} className="flex items-center gap-2 hover:text-black text-[#0078DB] text-lg md:text-xl">
                             <span className="hidden md:flex">See More</span>
                             <ArrowRight />
                         </Link>
@@ -76,7 +76,7 @@ const Property = () => {
                                                 Vinay Nagar, Mumbai
                                             </p>
                                         </div>
-                                        <Button className="rounded-full bg-[#964B00]">
+                                        <Button className="rounded-full bg-[#0078DB]">
                                             View Details
                                         </Button>
                                     </div>

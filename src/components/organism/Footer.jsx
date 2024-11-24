@@ -50,7 +50,7 @@ const Footer = () => {
             </div>
             <div className="bg-gray-300 py-4">
                 <div className="container mx-auto text-center text-sm text-gray-600">
-                    <p>Disclaimer: Magicbricks Realty Services Limited is only an intermediary offering its platform to advertise properties of Seller for a Customer/Buyer/User coming on its Website and is not and cannot be a party to or privy to or control in any manner any transactions between the Seller and the Customer/Buyer/User. All the offers and discounts on this Website have been extended by <a href="#" className="text-blue-500">Read more</a></p>
+                    <p>Disclaimer: ZaminWale Realty Services Limited is only an intermediary offering its platform to advertise properties of Seller for a Customer/Buyer/User coming on its Website and is not and cannot be a party to or privy to or control in any manner any transactions between the Seller and the Customer/Buyer/User. All the offers and discounts on this Website have been extended by <a href="#" className="text-blue-500">Read more</a></p>
                 </div>
             </div>
             <div className="bg-gray-800 py-4">

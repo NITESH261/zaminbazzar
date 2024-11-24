@@ -5,10 +5,10 @@ const page = async ({ params }) => {
 
     return (
         <div className="flex w-full flex-1">
-            <div className="flex flex-col gap-4 w-full max-w-7xl mx-auto px-4 py-4 md:py-6 lg:py-8 xl:py-10">
-                <div className="grid relative grid-cols-1 lg:grid-cols-8 w-full gap-4">
-                    <div className="flex w-full col-span-6 lg:h-full border border-red-500">
-                        <div className="flex w-full h-fit gap-8 flex-col">
+            <div className="flex flex-col gap-4 w-full lg:overflow-hidden  max-w-7xl mx-auto px-4 py-4 md:py-6 lg:py-8 xl:py-10">
+                <div className="grid relative grid-cols-1 lg:h-[500px] lg:grid-cols-8 w-full gap-4">
+                    <div className="flex w-full col-span-6 overflow-auto scrollbar-hide lg:h-full border ">
+                        <div className="flex w-full  h-full gap-8 flex-col">
                             <div className="flex flex-col lg:flex-row h-fit gap-2 w-full">
                                 <div className="flex w-full lg:w-3/4 border">
                                     <div className="flex relative aspect-video rounded-lg w-full bg-black">
@@ -28,7 +28,7 @@ const page = async ({ params }) => {
                                 </div>
                             </div>
                             <div className="grid grid-cols-1 md:grid-cols-2 w-full">
-                                <div className="flex flex-col gap-8 w-full">
+                                <div className="flex flex-col gap-4 w-full">
                                     <div className="flex items-center gap-2 w-full">
                                         <span className="size-4 bg-green-500 rounded-full"></span>
                                         <span>Property For Sale</span>
@@ -59,7 +59,7 @@ const page = async ({ params }) => {
                                 </div>
                             </div>
                             <div className="grid grid-cols-1 md:grid-cols-2 w-full">
-                                <div className="flex flex-col gap-8 w-full">
+                                <div className="flex flex-col gap-4 w-full">
                                     <div className="flex items-center gap-2 w-full">
                                         <span className="size-4 bg-green-500 rounded-full"></span>
                                         <span>Property For Sale</span>
@@ -92,8 +92,13 @@ const page = async ({ params }) => {
                         </div>
                     </div>
                     <div className="hidden lg:flex w-full col-span-2">
-                        <div className="flex sticky top-20 h-96 pt-4 w-full bg-gray-300"></div>
+                        <div className=" bg-gray-100 w-full ">
+                            <div className="sticky top-20 h-96 pt-4 w-full bg-gray-300">
+                                sdfdsf {/* Sticky Content */}
+                            </div>
+                        </div>
                     </div>
+
                 </div>
             </div>
         </div>
