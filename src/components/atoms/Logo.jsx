@@ -1,14 +1,14 @@
-import Image from "next/image";
 
 const Logo = () => {
     return (
-        <div className="flex size-16 aspect-square w-fit relative">
-            <Image
+        <div className="flex h-16 items-center w-fit relative">
+            {/* <Image
                 src={"/assets/logo/zamin-logo.gif"}
                 alt="Zamin Wale Logo"
                 fill
                 className="object-contain"
-            />
+            /> */}
+            <span className="flex text-xl md:text-3xl font-extrabold text-white">Zamin Wale</span>
         </div>
     );
 };
