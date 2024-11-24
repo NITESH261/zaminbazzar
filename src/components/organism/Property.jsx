@@ -5,17 +5,17 @@ import { Button } from "../ui/button";
 
 const Cards = [
     {
-        img: "property-1.jpg"
+        img: "recomonded-property1.jpeg"
     },
     {
-        img: "property-2.jpg"
+        img: "recomonded-property2.jpeg"
     },
     {
-        img: "property-3.jpg"
+        img: "recomonded-property3.jpeg"
     },
     {
-        img: "property-4.jpg"
-    }
+        img: "recomonded-property4.jpeg"
+    },
 ]
 
 const Property = () => {
@@ -23,13 +23,13 @@ const Property = () => {
     return (
         <>
             <div className="flex w-full">
-                <div className="flex flex-col gap-4 md:gap-6 w-full max-w-7xl mx-auto px-4 py-4 md:py-6 lg:py-8 xl:py-10">
+                <div className="flex flex-col gap-4 md:gap-6 w-full max-w-7xl mx-auto px-4 py-6 md:py-8 lg:py-10 xl:py-12">
                     <div className="flex w-full items-center justify-between">
                         <h2 className="text-lg font-medium md:text-xl lg:text-2xl">
                             Popular Properties
                         </h2>
                         <Link href={"/"} className="flex items-center gap-2 hover:text-black text-[#0078DB] text-lg md:text-xl">
-                            <span className="hidden md:flex">See More</span>
+                            <span className="hidden md:flex">See More Properties</span>
                             <ArrowRight />
                         </Link>
                     </div>
@@ -43,7 +43,7 @@ const Property = () => {
                                 >
                                     <div className="relative aspect-video bg-cover rounded-t-lg flex w-full overflow-hidden">
                                         <Image
-                                            src={`/assets/popular-property/${card.img}`}
+                                            src={`/assets/recommonded-property/${card.img}`}
                                             alt="house"
                                             fill
                                             className="rounded-t-lg group-hover:scale-110 transition-all object-cover"
