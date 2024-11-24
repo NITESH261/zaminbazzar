@@ -1,4 +1,4 @@
-import { AlignRightIcon, User } from "lucide-react";
+import { AlignRightIcon, House, Tag, User } from "lucide-react";
 import Link from "next/link";
 import Logo from "../atoms/Logo";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "../ui/accordion";
@@ -13,7 +13,7 @@ import {
 
 const Navbar = () => {
     return (
-        <div className="flex sticky top-0 z-20 w-full bg-[#0078DB]">
+        <div className="flex sticky top-0 font-nunito z-20 w-full bg-[#0078DB]">
             <div className="flex w-full h-16 items-center max-w-7xl mx-auto gap-4 px-4">
                 <div className="flex w-fit">
                     <Logo />
@@ -23,8 +23,10 @@ const Navbar = () => {
                         <ul className='flex w-fit h-full gap-6'>
                             {NavData.map((item, index) => (
                                 item.data ?
-                                    (<li key={index} className='navlink w-fit h-full items-center flex group border-b-2 border-transparent hover:border-black transition-all'>
-                                        <Link href={"/"} className='flex w-full text-base pt-1.5 px-2 transition-all text-white font-medium' >{item.label}</Link>
+                                    (<li key={index} className='navlink w-fit h-full items-center flex group border-b-2 border-transparent hover:border-white transition-all'>
+                                        <Link href={"/"} className='flex w-full text-lg pt-1.5 px-2 transition-all items-center gap-2 font-semibold text-white'>
+                                            <NavLogo logo={item.icon} />  {item.label}
+                                        </Link>
                                         <div className="flex group-hover:visible invisible transition-all w-full absolute top-full z-10 bg-white left-0 rounded-b-3xl border border-gray-200">
                                             <div className="grid grid-cols-1 divide-x gap-4 md:grid-cols-2 lg:grid-cols-3 w-full h-72 max-w-7xl mx-auto px-4 py-4 md:py-6 lg:py-8 xl:py-10">
                                                 {item.data?.map((item, index) => (
@@ -43,8 +45,10 @@ const Navbar = () => {
                                         </div>
                                     </li>
                                     ) : (
-                                        <li key={index} className='navlink w-fit h-full items-center flex group border-b-2 border-transparent hover:border-black transition-all'>
-                                            <Link href={"/"} className='flex w-full text-base pt-1.5 px-2 transition-all font-medium text-white'>{item.label}</Link>
+                                        <li key={index} className='navlink w-fit h-full items-center flex group border-b-2 border-transparent hover:border-white transition-all'>
+                                            <Link href={"/"} className='flex w-full text-lg pt-1.5 px-2 transition-all items-center gap-2 font-semibold text-white'>
+                                                <NavLogo logo={item.icon} />  {item.label}
+                                            </Link>
                                         </li>
                                     )))}
                         </ul>
@@ -59,14 +63,14 @@ const Navbar = () => {
                                 <Button
                                     className="rounded-md px-3 py-0 bg-transparent hover:text-[#0078DB] hover:bg-white"
                                 >
-                                    <AlignRightIcon className="h-12 w-12 " />
+                                    <AlignRightIcon className="!size-5" />
                                 </Button>
                             </SheetTrigger>
                             <SheetContent className="divide-y">
-                                <SheetHeader className="py-2 px-4">
+                                <SheetHeader className=" px-4">
                                     <SheetTitle>
                                         <div className="flex w-fit">
-                                            <Logo />
+                                            <Logo className={"text-black"} />
                                         </div>
                                     </SheetTitle>
                                 </SheetHeader>
@@ -152,11 +156,20 @@ const Navbar = () => {
 
 export default Navbar;
 
+const NavLogo = ({ logo: Logo }) => {
+    return (
+        <Logo
+            className="!size-5 text-white"
+        />
+    )
+}
+
 const NavData = [
     {
         label: "Buyer",
         url: "#",
         active: "active",
+        icon: Tag,
         data: [
             {
                 label: "Property Types",
@@ -190,5 +203,6 @@ const NavData = [
         label: "Sell/Rent Property",
         url: "#",
         active: "active",
+        icon: House,
     },
 ];

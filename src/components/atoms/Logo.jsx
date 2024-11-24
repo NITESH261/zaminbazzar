@@ -1,5 +1,6 @@
+import { cn } from "@/lib/utils";
 
-const Logo = () => {
+const Logo = ({ className }) => {
     return (
         <div className="flex h-16 items-center w-fit relative">
             {/* <Image
@@ -8,7 +9,7 @@ const Logo = () => {
                 fill
                 className="object-contain"
             /> */}
-            <span className="flex text-xl md:text-3xl font-extrabold text-white">Zamin Wale</span>
+            <span className={cn("flex text-xl md:text-3xl font-bold text-white", className)}>Zamin Wale</span>
         </div>
     );
 };
