@@ -43,7 +43,7 @@ const page = async () => {
                                             {property.location}
                                         </p>
                                     </div>
-                                    <Button asChild className="rounded-full bg-[#964B00]">
+                                    <Button asChild className="rounded-full bg-[#0078DB]">
                                         <Link href={`/popular-properties/${property.uniqueId}`}>
                                             View Details
                                         </Link>

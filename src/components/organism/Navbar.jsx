@@ -13,7 +13,7 @@ import {
 
 const Navbar = () => {
     return (
-        <div className="flex sticky top-0 z-20 w-full bg-white border-b border-gray-200">
+        <div className="flex sticky top-0 z-20 w-full bg-[#0078DB]">
             <div className="flex w-full h-16 items-center max-w-7xl mx-auto gap-4 px-4">
                 <div className="flex w-fit flex-grow-0">
                     <Logo />
@@ -24,7 +24,7 @@ const Navbar = () => {
                             {NavData.map((item, index) => (
                                 item.data ?
                                     (<li key={index} className='navlink w-fit h-full items-center flex group border-b-2 border-transparent hover:border-black transition-all'>
-                                        <Link href={"/"} className='flex w-full text-base pt-1.5 px-2 transition-all group-hover:font-medium group-hover:text-[#964B00]' >{item.label}</Link>
+                                        <Link href={"/"} className='flex w-full text-base pt-1.5 px-2 transition-all text-white group-hover:font-medium' >{item.label}</Link>
                                         <div className="flex group-hover:visible invisible transition-all w-full absolute top-full z-10 bg-white left-0 rounded-b-3xl border border-gray-200">
                                             <div className="grid grid-cols-1 divide-x gap-4 md:grid-cols-2 lg:grid-cols-3 w-full h-72 max-w-7xl mx-auto px-4 py-4 md:py-6 lg:py-8 xl:py-10">
                                                 {item.data?.map((item, index) => (
@@ -44,24 +44,23 @@ const Navbar = () => {
                                     </li>
                                     ) : (
                                         <li key={index} className='navlink w-fit h-full items-center flex group border-b-2 border-transparent hover:border-black transition-all'>
-                                            <Link href={"/"} className='flex w-full text-base pt-1.5 px-2 transition-all group-hover:font-medium group-hover:text-[#964B00]'>{item.label}</Link>
+                                            <Link href={"/"} className='flex w-full text-base pt-1.5 px-2 transition-all group-hover:font-medium text-white'>{item.label}</Link>
                                         </li>
                                     )))}
                         </ul>
                     </div>
                 </div>
                 <div className="flex flex-grow items-center gap-4 justify-end">
-                    <Button variant="ghost" className="font-thin text-base hover:text-[#964B00]">
+                    <Button variant="ghost" className="font-thin text-base text-white">
                         <UserCircle2Icon className="h-14 w-14" />
                         Log In
                     </Button>
                     <Sheet>
                         <SheetTrigger asChild>
                             <Button
-                                variant="ghost"
-                                className="rounded-md px-3 py-0"
+                                className="rounded-md px-3 py-0 bg-transparent hover:text-[#0078DB] hover:bg-white"
                             >
-                                <AlignRightIcon className="h-12 w-12" />
+                                <AlignRightIcon className="h-12 w-12 " />
                             </Button>
                         </SheetTrigger>
                         <SheetContent className="divide-y">
