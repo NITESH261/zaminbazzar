@@ -1,3 +1,4 @@
+import Keyconnectivity from "@/components/atoms/Keyconnectivity"
 import { Button } from "@/components/ui/button"
 
 const page = async ({ params }) => {
@@ -63,6 +64,22 @@ const page = async ({ params }) => {
                 </div>
                 <div className="hidde lg:flex lg:col-span-2 sticky top-2 border h-full max-h-[calc(100vh-80px)] border-red-500 w-full">
 
+                </div>
+            </div>
+            <div className=" px-4 py-6 md:py-8 lg:py-10 xl:py-12 w-full max-w-7xl mx-auto h-auto relative">
+                <h3 className=" text-2xl font-semibold text-center">Why You Should Consider This Property</h3>
+                <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-1">
+
+                    <div className="bg-white p-6 rounded-lg items-center flex flex-col justify-center">
+
+                        <p className="text-gray-700">This is the content for the first section. It will take up half the width on medium and larger screens, and the full width on smaller screens.</p>
+                        <p>
+                            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Totam ipsum accusantium consequuntur.
+                        </p>
+                    </div>
+                    <div className="bg-white p-6 xl:col-span-2 rounded-lg  w-full h-full flex justify-center items-center">
+                        <Keyconnectivity />
+                    </div>
                 </div>
             </div>
         </div>
