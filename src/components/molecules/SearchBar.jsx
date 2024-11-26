@@ -81,8 +81,8 @@ const SearchBar = () => {
                                             </Button>
                                         </FormControl>
                                     </PopoverTrigger>
-                                    <PopoverContent className="w-full relative flex z-10 p-0">
-                                        <Command className="max-w-lg w-96 flex">
+                                    <PopoverContent align="center" className="w-full relative flex z-10 p-0">
+                                        <Command className="w-full md:w-[615px] max-w-3xl flex">
                                             <CommandInput
                                                 placeholder="Search location..."
                                                 className=" w-full"
