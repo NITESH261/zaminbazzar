@@ -1,3 +1,5 @@
+import BentoGridScroll from "@/components/molecules/BentoGridScroll"
+import EnquireForm from "@/components/molecules/EnquireForm"
 import { Button } from "@/components/ui/button"
 
 const page = async ({ params }) => {
@@ -9,16 +11,7 @@ const page = async ({ params }) => {
             <div className="grid grid-cols-1 lg:grid-cols-8 gap-4 px-4 py-6 md:py-8 lg:py-10 xl:py-12 w-full max-w-7xl mx-auto h-auto relative">
                 <div className="flex w-full lg:col-span-6 h-auto">
                     <div className="flex w-full h-full gap-8 flex-col">
-                        <div className="flex flex-col lg:flex-row h-fit gap-2 w-full">
-                            <div className="flex w-full lg:w-3/4">
-                                <div className="flex relative aspect-video rounded-2xl w-full bg-black">{/* iamge will be added here */}</div>
-                            </div>
-                            <div className="flex lg:flex-col w-full gap-2 lg:w-1/4">
-                                <div className="flex relative aspect-video rounded-2xl w-1/3 lg:w-full bg-black">{/* iamge will be added here */}</div>
-                                <div className="flex relative aspect-video rounded-2xl w-1/3 lg:w-full bg-black">{/* iamge will be added here */}</div>
-                                <div className="flex relative aspect-video rounded-2xl w-1/3 lg:w-full bg-black">{/* iamge will be added here */}</div>
-                            </div>
-                        </div>
+                        <BentoGridScroll />
                         <div className="grid grid-cols-1 gap-x-4 gap-y-6 md:grid-cols-2 xl:grid-cols-3 w-full">
                             <div className="flex flex-col gap-4 w-full xl:col-span-2">
                                 <div className="flex items-center gap-2 w-full">
@@ -50,19 +43,25 @@ const page = async ({ params }) => {
                                 </div>
                             </div>
                             <div className="flex gap-4 w-full">
-                                <Button>
+                                <Button className="rounded-3xl bg-[#0078DB]">
                                     Contact Owner
                                 </Button>
-                                <Button>
+                                <Button variant="outline" className="rounded-3xl border-[#0078DB] text-[#0078DB]">
                                     Callback
                                 </Button>
                             </div>
                         </div>
-
                     </div>
                 </div>
-                <div className="hidde lg:flex lg:col-span-2 sticky top-2 border h-full max-h-[calc(100vh-80px)] border-red-500 w-full">
-
+                <div className="hidde lg:flex lg:col-span-2 sticky top-2 h-full max-h-[calc(100vh-80px)] w-full">
+                    <div className="flex flex-col w-full gap-4 border border-gray-200 rounded-2xl h-fit px-4 py-6">
+                        <div className="flex w-full justify-center">
+                            <span className="font-semibold text-lg">
+                                Fill Form To Get More Details
+                            </span>
+                        </div>
+                        <EnquireForm />
+                    </div>
                 </div>
             </div>
         </div>

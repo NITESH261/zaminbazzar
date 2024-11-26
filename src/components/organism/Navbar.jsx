@@ -54,7 +54,7 @@ const Navbar = () => {
                         </ul>
                     </div>
                     <div className="flex flex-grow items-center gap-4 justify-end">
-                        <Button variant="" className="font-medium py-1 text-base bg-white text-[#0078DB] hover:bg-white">
+                        <Button variant="" className="font-medium rounded-3xl py-1 text-base bg-white text-[#0078DB] hover:bg-white">
                             <User className="!size-4" />
                             Log In
                         </Button>
