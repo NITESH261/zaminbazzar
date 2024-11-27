@@ -1,6 +1,11 @@
+
 import Keyconnectivity from "@/components/atoms/Keyconnectivity"
 import BentoGridScroll from "@/components/molecules/BentoGridScroll"
 import EnquireForm from "@/components/molecules/EnquireForm"
+import SimilarProperty from "@/components/molecules/SimilarProperty"
+import AboutProperty from "@/components/organism/AboutProperty"
+import Footer from "@/components/organism/Footer"
+import NearByLocations from "@/components/organism/NearByLocations"
 import SendEnquiry from "@/components/organism/SendEnquiry"
 import { Button } from "@/components/ui/button"
 
@@ -21,7 +26,7 @@ const page = async ({ params }) => {
                                     <span>Property For Sale</span>
                                 </div>
                                 <div className="flex gap-4 text-2xl md:text-3xl lg:text-4xl items-center w-full">
-                                    <strong className="">$806,950</strong>
+                                    <strong className="">₹8,06,950</strong>
                                     <span className="">|</span>
                                     <span className="text-xl md:text-2xl lg:text-3xl"> <span className="font-medium">2,894</span>{" "} sqft </span>
                                 </div>
@@ -83,7 +88,11 @@ const page = async ({ params }) => {
                 </div>
             </div>
             <div className="flex flex-col gap-4 md:gap-6 lg:gap-8 xl:gap-10 px-4 py-6 md:py-8 lg:py-10 xl:py-12 w-full max-w-7xl mx-auto h-auto relative">
-                <h2 className=" text-2xl font-semibold text-center">Why You Should Consider This Property</h2>
+                <div className="flex w-full items-center justify-center">
+                    <h2 className="text-lg font-medium md:text-xl lg:text-2xl">
+                        Why You Should Consider This Property
+                    </h2>
+                </div>
                 <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
                     <div className="gap-4 rounded-lg items-center flex flex-col justify-center">
                         <p>
@@ -99,11 +108,15 @@ const page = async ({ params }) => {
                 </div>
             </div>
 
-            <div className="flex flex-col gap-4 md:gap-6 lg:gap-8 xl:gap-10 px-4 py-6 md:py-8 lg:py-10 xl:py-12 w-full  h-auto relative">
-                <h2 className="text-2xl font-semibold text-center">Send Enquiry</h2>
-                <SendEnquiry />
-            </div>
+            <SendEnquiry />
 
+            <AboutProperty />
+
+            <SimilarProperty />
+
+            <NearByLocations />
+
+            <Footer />
         </div>
     )
 }

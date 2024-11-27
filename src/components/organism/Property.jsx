@@ -28,7 +28,7 @@ const Property = () => {
                         <h2 className="text-lg font-medium md:text-xl lg:text-2xl">
                             Popular Properties
                         </h2>
-                        <Link href={"/"} className="flex items-center gap-2 hover:text-black text-[#0078DB] text-lg md:text-xl">
+                        <Link href={"/popular-properties"} className="flex items-center gap-2 hover:text-black text-[#0078DB] text-lg md:text-xl">
                             <span className="hidden md:flex">See More Properties</span>
                             <ArrowRight />
                         </Link>

@@ -1,11 +1,11 @@
 "use client"
-
-import Autoplay from "embla-carousel-autoplay";
-import { ArrowRight } from "lucide-react";
-import Image from "next/image";
-import Link from "next/link";
+import React from 'react'
+import Link from "next/link"
 import { Button } from "../ui/button";
+import { ArrowRight } from "lucide-react"
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "../ui/carousel";
+import Autoplay from "embla-carousel-autoplay"
+import Image from "next/image"
 
 const Cards = [
     {
@@ -37,17 +37,16 @@ const Cards = [
     }
 ]
 
-const Property = () => {
-    // const cards = Array.from({ length: 4 }, (_, i) => i + 1);
+const SimilarProperty = () => {
     return (
         <>
             <div className="flex w-full">
                 <div className="flex flex-col gap-4 md:gap-6 w-full max-w-7xl mx-auto px-4 py-6 md:py-8 lg:py-10 xl:py-12">
                     <div className="flex w-full items-center justify-between">
                         <h2 className="text-lg font-medium md:text-xl lg:text-2xl">
-                            Recommended Property
+                            Similar Property
                         </h2>
-                        <Link href={"/popular-properties"} className="flex items-center gap-2 hover:text-black text-[#0078DB] text-lg md:text-xl">
+                        <Link href={"/"} className="flex items-center gap-2 hover:text-black text-[#0078DB] text-lg md:text-xl">
                             <span className="hidden md:flex">See More Properties</span>
                             <ArrowRight />
                         </Link>
@@ -107,7 +106,7 @@ const Property = () => {
                 </div>
             </div>
         </>
-    );
-};
+    )
+}
 
-export default Property;
+export default SimilarProperty
