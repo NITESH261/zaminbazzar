@@ -55,12 +55,12 @@ const BentoGridScroll = () => {
                             <CarouselContent>
                                 {Cards.map((card, index) => (
                                     <CarouselItem key={index}>
-                                        <div className="relative rounded-l-2xl aspect-video flex w-full">
+                                        <div className="relative rounded-2xl lg:rounded-r-none lg:rounded-l-2xl aspect-video flex w-full">
                                             <Image
                                                 src={`/assets/recommonded-property/${card.img}`}
                                                 alt="house"
                                                 fill
-                                                className="object-cover rounded-l-2xl"
+                                                className="object-cover rounded-2xl lg:rounded-r-none lg:rounded-l-2xl"
                                             />
                                         </div>
                                     </CarouselItem>
@@ -71,13 +71,13 @@ const BentoGridScroll = () => {
                         </Carousel>
                     </div>
                 </div>
-                <div className="flex lg:flex-col w-full lg:w-1/4">
-                    <div className="flex relative aspect-video border border-white rounded-tr-2xl w-1/3 lg:w-full">
+                <div className="hidden md:flex lg:flex-col w-full lg:w-1/4">
+                    <div className="flex relative aspect-video border border-white rounded-bl-2xl lg:rounded-bl-none lg:rounded-tr-2xl w-1/3 lg:w-full">
                         <Image
                             src={`/assets/recommonded-property/recomonded-property7.jpeg`}
                             alt="house"
                             fill
-                            className="object-cover rounded-tr-2xl"
+                            className="object-cover rounded-bl-2xl lg:rounded-bl-none lg:rounded-tr-2xl"
                         />
                     </div>
                     <div className="flex relative aspect-video border border-white w-1/3 lg:w-full">
