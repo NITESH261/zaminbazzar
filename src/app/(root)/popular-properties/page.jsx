@@ -16,12 +16,12 @@ const page = async () => {
                         Popular Properties
                     </h2>
                 </div>
-                <div className="flex w-full overflow-x-auto xl:overflow-x-hidden scrollbar-hide">
-                    <div className="flex xl:grid xl:grid-cols-4 gap-4 w-fit xl:w-full">
+                <div className="flex w-full">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 w-full">
                         {properties.map((property, i) => (
                             <div
                                 key={`property-${i}`}
-                                className="w-80 flex-col border border-neutral-200 rounded-lg xl:w-full group flex hover:shadow-lg"
+                                className="flex-col border border-neutral-200 rounded-lg w-full group flex hover:shadow-lg"
                             >
                                 <div className="relative aspect-video bg-cover rounded-t-lg flex w-full overflow-hidden">
                                     <Image
