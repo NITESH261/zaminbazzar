@@ -1,6 +1,6 @@
 import Navbar from "@/components/organism/Navbar"
 
-const layout = ({ children }) => {
+const RootLayout = ({ children }) => {
     return (
         <>
             <Navbar />
@@ -13,4 +13,4 @@ const layout = ({ children }) => {
     )
 }
 
-export default layout
+export default RootLayout
