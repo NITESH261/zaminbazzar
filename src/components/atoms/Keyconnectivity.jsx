@@ -22,7 +22,7 @@ const BannerImages = [
 
 const BannerCarousel = () => {
     return (
-        <div className="flex w-full xl:w-[85%]">
+        <div className="flex w-full xl:w-[90%]">
             <Carousel
                 plugins={[
                     Autoplay({

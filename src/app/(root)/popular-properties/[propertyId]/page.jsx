@@ -2,12 +2,18 @@
 import Keyconnectivity from "@/components/atoms/Keyconnectivity"
 import BentoGridScroll from "@/components/molecules/BentoGridScroll"
 import EnquireForm from "@/components/molecules/EnquireForm"
+import SimilarExterior from "@/components/molecules/SimilarExterior"
 import SimilarProperty from "@/components/molecules/SimilarProperty"
-import AboutProperty from "@/components/organism/AboutProperty"
 import Footer from "@/components/organism/Footer"
 import NearByLocations from "@/components/organism/NearByLocations"
 import SendEnquiry from "@/components/organism/SendEnquiry"
 import { Button } from "@/components/ui/button"
+import { AiTwotoneCompass } from "react-icons/ai"
+import { BiSolidDirections } from "react-icons/bi"
+import { GiArcheryTarget, GiGate, GiParkBench } from "react-icons/gi"
+import { HiMiniClipboardDocumentCheck } from "react-icons/hi2"
+import { ImPriceTags } from "react-icons/im"
+import { RxAllSides, RxDimensions } from "react-icons/rx"
 
 const page = async ({ params }) => {
 
@@ -32,29 +38,85 @@ const page = async ({ params }) => {
                                 </div>
                                 <div className="grid grid-cols-2 w-full gap-4">
                                     <div className="flex flex-col gap-1 w-full">
-                                        <span className="text-lg font-medium">Dimensions:</span>
+                                        <div className="flex gap-2 items-center w-fit">
+                                            <RxDimensions className="!size-4 text-green-400" />
+                                            <span className="text-lg font-medium">Dimensions:</span>
+                                        </div>
                                         <div className="flex w-fit gap-1">
                                             Plot Area
                                             <span className="font-medium">1084</span>sqft
                                         </div>
                                     </div>
                                     <div className="flex flex-col gap-1 w-full">
-                                        <span className="text-lg font-medium">Price:</span>
+                                        <div className="flex gap-2 items-center w-fit">
+                                            <ImPriceTags className="!size-4 text-yellow-400" />
+                                            <span className="text-lg font-medium">Price:</span>
+                                        </div>
                                         <div className="flex w-fit gap-1"><span className="font-medium">5 Lakh</span>(1084 sqft)</div>
                                     </div>
                                 </div>
-                                <div className="grid grid-cols-1 w-full gap-4">
+                                <div className="grid grid-cols-2 w-full gap-4">
                                     <div className="flex flex-col gap-1 w-full">
-                                        <span className="text-lg font-medium">Address:</span>
+                                        <div className="flex gap-2 items-center w-fit">
+                                            <BiSolidDirections className="!size-4 text-green-400" />
+                                            <span className="text-lg font-medium">Address:</span>
+                                        </div>
                                         <div className="flex w-fit gap-1">
-                                            <p className="text-sm md:text-base">Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae, vitae temporibus! Suscipit ipsam, consequuntur recusandae blanditiis odio qui quibusdam tempore assumenda laboriosam error facere quaerat deleniti praesentium nostrum atque mollitia.</p>
+                                            <p className="text-sm md:text-base">Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae, vitae temporibus! </p>
                                         </div>
                                     </div>
                                     <div className="flex flex-col gap-1 w-full">
-                                        <span className="text-lg font-medium">Possession:</span>
+                                        <div className="flex gap-2 items-center w-fit">
+                                            <AiTwotoneCompass className="!size-4 text-yellow-400" />
+                                            <span className="text-lg font-medium">Possession:</span>
+                                        </div>
                                         <div className="flex w-fit gap-1">
                                             <p className="text-sm md:text-base">
                                                 Lorem ipsum dolor sit amet consectetur
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className="grid grid-cols-2 w-full gap-4">
+                                    <div className="flex flex-col gap-1 w-full">
+                                        <div className="flex gap-2 items-center w-fit">
+                                            <HiMiniClipboardDocumentCheck className="!size-4 text-green-400" />
+                                            <span className="text-lg font-medium">Authority approved:</span>
+                                        </div>
+                                        <div className="flex w-fit gap-1">
+                                            <p className="text-sm md:text-base">Yes</p>
+                                        </div>
+                                    </div>
+                                    <div className="flex flex-col gap-1 w-full">
+                                        <div className="flex gap-2 items-center w-fit">
+                                            <GiGate className="!size-4 text-yellow-400" />
+                                            <span className="text-lg font-medium">Gated Society:</span>
+                                        </div>
+                                        <div className="flex w-fit gap-1">
+                                            <p className="text-sm md:text-base">
+                                                Yes
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className="grid grid-cols-2 w-full gap-4">
+                                    <div className="flex flex-col gap-1 w-full">
+                                        <div className="flex gap-2 items-center w-fit">
+                                            <GiParkBench className="!size-4 text-green-400" />
+                                            <span className="text-lg font-medium">No. of Open Sides:</span>
+                                        </div>
+                                        <div className="flex w-fit gap-1">
+                                            <p className="text-sm md:text-base">4</p>
+                                        </div>
+                                    </div>
+                                    <div className="flex flex-col gap-1 w-full">
+                                        <div className="flex gap-2 items-center w-fit">
+                                            <RxAllSides className="!size-4 text-blue-400" />
+                                            <span className="text-lg font-medium">Overlooking:</span>
+                                        </div>
+                                        <div className="flex w-fit gap-1">
+                                            <p className="text-sm md:text-base">
+                                                Pool,Park/Garden,Club,Others,Main Road
                                             </p>
                                         </div>
                                     </div>
@@ -69,7 +131,7 @@ const page = async ({ params }) => {
                                 </div>
                             </div>
                             <div className="flex w-full">
-                                <div className="flex aspect-video w-full">
+                                <div className="flex aspect-square h-1/2 relative w-full">
                                     <iframe src="https://www.google.com/maps/embed?pb=!1m23!1m12!1m3!1d60305.33779055373!2d72.9259711216797!3d19.14781700000001!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m8!3e2!4m0!4m5!1s0x3be7bf535f7a0159%3A0x75f95209b8033881!2sNatural%20Ice%20Cream%2C%20Mercury%20Tower%2C%20Plot%20No.%204%2C%20Mulund%20-%20Airoli%20Bridge%20Rd%2C%20Sec%20-8%2C%20Sector%206%2C%20Airoli%2C%20Navi%20Mumbai%2C%20Maharashtra%20400708!3m2!1d19.1478584!2d72.99807!5e0!3m2!1sen!2sin!4v1732642581562!5m2!1sen!2sin" width="100%" height="100%" allowFullScreen loading="lazy" referrerPolicy="no-referrer-when-downgrade"></iframe>
                                 </div>
                             </div>
@@ -93,16 +155,17 @@ const page = async ({ params }) => {
                         Why You Should Consider This Property
                     </h2>
                 </div>
-                <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
-                    <div className="gap-4 rounded-lg items-center flex flex-col justify-center">
-                        <p>
-
-                            This is the content for the first section. It will take up half the width on medium and larger screens, and the full width on smaller screens.</p>
-                        <p>
-                            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Totam ipsum accusantium consequuntur.
+                <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-5 gap-4">
+                    <div className="gap-2 rounded-lg flex items-start justify-center flex-col">
+                        <GiArcheryTarget className="!size-10 md:!size-14 lg:!size-16 text-orange-400" />
+                        <span className="font-semibold text-lg md:text-xl lg:text-2xl">
+                            Key Highlights
+                        </span>
+                        <p className="text-sm md:text-base">
+                            of the property
                         </p>
                     </div>
-                    <div className="xl:col-span-2 rounded-lg w-full h-full flex justify-center items-center">
+                    <div className="xl:col-span-4 rounded-lg w-full h-full flex justify-center items-center">
                         <Keyconnectivity />
                     </div>
                 </div>
@@ -110,9 +173,11 @@ const page = async ({ params }) => {
 
             <SendEnquiry />
 
-            <AboutProperty />
+            {/* <AboutProperty /> */}
 
             <SimilarProperty />
+
+            <SimilarExterior />
 
             <NearByLocations />
 

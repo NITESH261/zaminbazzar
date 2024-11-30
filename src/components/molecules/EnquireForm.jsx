@@ -1,12 +1,16 @@
 "use client"
 
+import { cn } from "@/lib/utils"
 import { zodResolver } from "@hookform/resolvers/zod"
+import { format } from "date-fns"
+import { CalendarIcon } from "lucide-react"
 import { useForm } from "react-hook-form"
 import { z } from "zod"
 import { Button } from "../ui/button"
+import { Calendar } from "../ui/calendar"
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "../ui/form"
 import { Input } from "../ui/input"
-import { Textarea } from "../ui/textarea"
+import { Popover, PopoverContent, PopoverTrigger } from "../ui/popover"
 
 const formSchema = z.object({
     username: z.string().min(2, {
@@ -78,16 +82,50 @@ const EnquireForm = () => {
                     />
                     <FormField
                         control={form.control}
-                        name="message"
+                        name="calender"
                         render={({ field }) => (
                             <FormItem>
-                                <FormLabel>Message</FormLabel>
-                                <FormControl>
-                                    <Textarea
-                                        placeholder="Enter your message"
-                                        {...field}
-                                    />
-                                </FormControl>
+                                <FormLabel>
+                                    Shedule Date
+                                </FormLabel>
+                                <Popover>
+                                    <PopoverTrigger asChild>
+                                        <FormControl>
+                                            <Button
+                                                variant={"outline"}
+                                                className={cn(
+                                                    "w-full pl-3 text-left font-normal",
+                                                    !field.value &&
+                                                    "text-muted-foreground"
+                                                )}
+                                            >
+                                                {field.value ? (
+                                                    format(
+                                                        field.value,
+                                                        "PP"
+                                                    )
+                                                ) : (
+                                                    <span>
+                                                        Pick a Start
+                                                        Date
+                                                    </span>
+                                                )}
+                                                <CalendarIcon className="ml-auto h-4 w-4 opacity-50" />
+                                            </Button>
+                                        </FormControl>
+                                    </PopoverTrigger>
+                                    <PopoverContent
+                                        className="w-auto p-0"
+                                        align="start"
+                                    >
+                                        <Calendar
+                                            mode="single"
+                                            selected={field.value}
+                                            onSelect={field.onChange}
+                                            initialFocus
+                                        />
+                                    </PopoverContent>
+                                </Popover>
                                 <FormMessage />
                             </FormItem>
                         )}
