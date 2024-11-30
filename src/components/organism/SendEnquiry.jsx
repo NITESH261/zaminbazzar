@@ -9,6 +9,7 @@ import { Button } from "../ui/button"
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "../ui/carousel"
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "../ui/form"
 import { Input } from "../ui/input"
+import { Textarea } from "../ui/textarea"
 
 const formSchema = z.object({
     username: z.string().min(2, {
@@ -62,11 +63,8 @@ const SendEnquiry = () => {
                     Send Enquiry
                 </h2>
             </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 md:gap-4 bg-white w-full max-w-5xl mx-auto border border-neutral-200 rounded-2xl">
+            <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 md:gap-4 bg-white w-full max-w-7xl mx-auto border border-neutral-200 rounded-2xl">
                 <div className="flex flex-col space-y-2 items-center justify-center w-full p-6">
-                    <div className="flex w-full">
-                        <span className="text-lg font-semibold">Know More About This Property</span>
-                    </div>
                     <Form {...form}>
                         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-3 w-full">
                             <FormField
@@ -110,6 +108,22 @@ const SendEnquiry = () => {
                                         <FormControl>
                                             <Input
                                                 placeholder="Enter your mobile no."
+                                                {...field}
+                                            />
+                                        </FormControl>
+                                        <FormMessage />
+                                    </FormItem>
+                                )}
+                            />
+                            <FormField
+                                control={form.control}
+                                name="message"
+                                render={({ field }) => (
+                                    <FormItem>
+                                        <FormLabel>Message</FormLabel>
+                                        <FormControl>
+                                            <Textarea
+                                                placeholder="Enter your message"
                                                 {...field}
                                             />
                                         </FormControl>
