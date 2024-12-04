@@ -3,6 +3,7 @@
 import { cn } from "@/lib/utils";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Check, ChevronsUpDown, Search } from "lucide-react";
+import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { Button } from "../ui/button";
@@ -24,10 +25,10 @@ import {
 import { Popover, PopoverContent, PopoverTrigger } from "../ui/popover";
 
 const PropertyLocations = [
-    { label: "Navi Mumbai", value: "Navi Mumbai" },
-    { label: "Thane", value: "Thane" },
-    { label: "Panvel", value: "Panvel" },
-    { label: "Khalapur", value: "Khalapur" },
+    { label: "Navi Mumbai", value: "navi-mumbai" },
+    { label: "Thane", value: "thane" },
+    { label: "Panvel", value: "panvel" },
+    { label: "Khalapur", value: "khalapur" },
 ];
 
 const FormSchema = z.object({
@@ -37,12 +38,15 @@ const FormSchema = z.object({
 });
 
 const SearchBar = () => {
+
+    const router = useRouter()
+
     const form = useForm({
         resolver: zodResolver(FormSchema),
     });
 
     const onSubmit = (values) => {
-        console.log(values);
+        router.push(`/search/top-location/${values.location}`)
     };
 
     return (
@@ -96,7 +100,7 @@ const SearchBar = () => {
                                                         (location) => (
                                                             <CommandItem
                                                                 value={
-                                                                    location.label
+                                                                    location.value
                                                                 }
                                                                 key={
                                                                     location.value
