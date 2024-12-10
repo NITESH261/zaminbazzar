@@ -1,12 +1,8 @@
-"use server"
-
 import StorySwiper from "@/components/molecules/StorySwiper"
 import { Button } from "@/components/ui/button"
 import { BuildingIcon, Heart, PhoneCallIcon } from "lucide-react"
 import Image from "next/image"
 import Link from "next/link"
-
-const SEARCH_RESULT = 44789
 
 const LocationData = [
     {
@@ -35,18 +31,11 @@ const LocationData = [
     }
 ]
 
-const page = async ({ params }) => {
-
-    const LocationId = (await params).locationId
+const page = () => {
 
     return (
         <>
-            <div className="flex w-full h-fit bg-white rounded-2xl p-4">
-                <div className="gap-2 text-lg font-semibold w-full">
-                    <span className="">{SEARCH_RESULT}</span> Result | <span className="capitalize">{LocationId}</span>
-                </div>
-            </div>
-            <div className="flex w-full h-[calc(100%-80px)] overflow-y-auto scrollbar">
+            <div className="flex w-full h-[calc(100%-80px)] overflow-y-auto overflow-x-hidden scrollbar">
                 <div className="flex flex-col w-full h-fit gap-6">
                     <div className="flex flex-col w-full h-fit bg-white rounded-2xl gap-4 p-4">
                         {LocationData.map((location, index) =>
