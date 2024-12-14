@@ -121,6 +121,15 @@ const FormDataSchema = z.object({
     ], {
         required_error: "You need to option",
     }),
+    locationAdvantage: z.enum([
+        "close to metro station",
+        "close to school",
+        "close to hospital",
+        "close to market",
+        "close to railway station",
+    ], {
+        required_error: "You need to option",
+    }),
 });
 
 const Steps = [
