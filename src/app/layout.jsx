@@ -1,3 +1,4 @@
+import { Toaster } from "@/components/ui/sonner";
 import { cn } from "@/lib/utils";
 import { Nunito } from "next/font/google";
 import localFont from "next/font/local";
@@ -57,6 +58,7 @@ export default function MainLayout({ children }) {
                 <div className="flex w-full h-full flex-col overflow-y-auto overflow-x-hidden scrollbar-hide md:scrollbar">
                     {children}
                 </div>
+                <Toaster />
             </body>
         </html>
     );

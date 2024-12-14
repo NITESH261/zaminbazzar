@@ -7,3 +7,7 @@ export const getAllProperty = async () => {
 
     return resp.json()
 }
+
+export const createProperty = async (params) => {
+
+}
