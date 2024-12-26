@@ -1,31 +1,91 @@
 import { Button } from "@/components/ui/button";
 import { Calendar } from "@/components/ui/calendar";
-import { FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
+import { Checkbox } from "@/components/ui/checkbox";
+import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
 import { cn } from "@/lib/utils";
+import { zodResolver } from "@hookform/resolvers/zod";
 import { format } from "date-fns";
-import { CalendarIcon } from "lucide-react";
+import { ArrowLeft, CalendarIcon } from "lucide-react";
+import { useForm } from "react-hook-form";
+import { z } from "zod";
 
+const PropertyDetailsSchema = z.object({
+    plotArea: z
+        .string({
+            required_error: "Please enter area.",
+        }),
+    length: z
+        .string({
+            required_error: "Please enter length.",
+        }).optional(),
+    breadth: z
+        .string({
+            required_error: "Please enter breadth.",
+        }).optional(),
+    allowedFloors: z
+        .string({
+            required_error: "Please enter allowed floors",
+        }),
+    hasBoundaryWall: z.boolean().default(false),
+    openSides: z.enum(["1", "2", "3", "4"], {
+        required_error: "You need to option",
+    }),
+    hasConstruction: z.boolean().default(false),
+    possessionBy: z.date({
+        required_error: "Select possession date",
+    }),
+    ownership: z.enum(["freehold", "leasehold", "co-operative society", "power of attorney"], {
+        required_error: "You need to option",
+    }),
+    priceInWord: z
+        .string({
+            required_error: "Please enter Price.",
+        }),
+    priceInDigit: z
+        .string({
+            required_error: "Please enter Price.",
+        }),
+    inclusivePrice: z.boolean().default(false),
+    isTaxExcluded: z.boolean().default(false),
+    isPriceNegotiable: z.boolean().default(false),
+    uniqueFeatures: z
+        .string({
+            required_error: "Please enter uniqueness of your property.",
+        }),
+})
 
 const Step3Data = [
     {
-        label: "Area",
+        label: "Add area details",
+        data: [
+            { label: "Sq ft", value: "Sq ft" },
+            { label: "Sq yard", value: "Sq yard" },
+            { label: "Sq m", value: "Sq m" },
+            { label: "acres", value: "acres" },
+            { label: "marla", value: "marla" },
+            { label: "cents", value: "cents" }
+        ]
     },
     {
         label: "Property Dimesions",
     },
     {
-        label: "Is there boundry walls around the property",
+        label: "Floors allowed for construction",
+    },
+    {
+        label: "Is there boundry walls around the property ?",
         data: [
-            { value: "yes", label: "Yes" },
-            { value: "no", label: "No" },
+            { value: true, label: "Yes" },
+            { value: false, label: "No" },
         ]
     },
     {
-        label: "No. of open sides",
+        label: "No. of open sides ?",
         data: [
             { value: "1", label: "1" },
             { value: "2", label: "2" },
@@ -36,8 +96,8 @@ const Step3Data = [
     {
         label: "Any construction done on this property",
         data: [
-            { value: "yes", label: "Yes" },
-            { value: "no", label: "No" },
+            { value: true, label: "Yes" },
+            { value: false, label: "No" },
         ]
     },
     {
@@ -53,13 +113,6 @@ const Step3Data = [
         ]
     },
     {
-        label: "Which authority the property is approved by",
-        data: [
-            { value: "MMRDA", label: "MMRDA" },
-            { value: "MCGM", label: "MCGM" },
-        ]
-    },
-    {
         label: "Price Details",
     },
     {
@@ -67,267 +120,386 @@ const Step3Data = [
     },
 ];
 
-const PropertyProfile = ({ form, data }) => {
+const PropertyProfile = ({ onSubmit, prev, currentStep, loading, formData }) => {
+
+    const form = useForm({
+        resolver: zodResolver(PropertyDetailsSchema),
+        defaultValues: formData
+    })
+
     return (
         <>
-            <FormField
-                control={form.control}
-                name={data.fields[0]}
-                render={({ field }) => (
-                    <FormItem className="flex flex-col gap-2">
-                        <FormLabel>{Step3Data[0].label}</FormLabel>
-                        <FormControl>
-                            <Input placeholder="Plot Area " {...field} value={field.value ?? ""} />
-                        </FormControl>
-                        <FormMessage />
-                    </FormItem>
-                )}
-            />
-            <div className="flex w-full gap-4 flex-col">
-                <FormLabel>{Step3Data[1].label}</FormLabel>
-                <div className="grid grid-cols-2 gap-4 w-full">
-                    <FormField
-                        control={form.control}
-                        name={data.fields[1]}
-                        render={({ field }) => (
-                            <FormItem className="flex flex-col gap-2">
-                                {/* <FormLabel>{Step3Data[s1].label}</FormLabel> */}
-                                <FormControl>
-                                    <Input placeholder="Plot Length " {...field} value={field.value ?? ""} />
-                                </FormControl>
-                                <FormMessage />
-                            </FormItem>
-                        )}
-                    />
-                    <FormField
-                        control={form.control}
-                        name={data.fields[2]}
-                        render={({ field }) => (
-                            <FormItem className="flex flex-col gap-2">
-                                {/* <FormLabel>{Step3Data[1].label}</FormLabel> */}
-                                <FormControl>
-                                    <Input placeholder="Plot Breadth " {...field} value={field.value ?? ""} />
-                                </FormControl>
-                                <FormMessage />
-                            </FormItem>
-                        )}
-                    />
-                </div>
-            </div>
-            <FormField
-                control={form.control}
-                name={data.fields[3]}
-                render={({ field }) => (
-                    <FormItem className="flex flex-col gap-2">
-                        <FormLabel>{Step3Data[2].label}</FormLabel>
-                        <FormControl>
-                            <RadioGroup
-                                onValueChange={field.onChange}
-                                defaultValue={field.value}
-                                className="flex w-full flex-wrap"
-                            >
-                                {Step3Data[2].data.map(({ value, label }) => (
-                                    <FormItem
-                                        key={value}
-                                        className={`flex items-center space-y-0 ${field.value === value ? "bg-blue-100 border-blue-400" : "bg-white border"
-                                            } rounded-full px-4 py-2`}
-                                    >
-                                        <FormControl className="sr-only">
-                                            <RadioGroupItem value={value} />
+            <Form {...form}>
+                <form onSubmit={form.handleSubmit(onSubmit)} className="h-fit w-full">
+                    <div className="flex h-fit gap-10 flex-col w-full">
+                        <div className="flex flex-col w-full">
+                            <span className="text-2xl font-semibold">
+                                Tell us about your property
+                            </span>
+                        </div>
+                        <FormField
+                            control={form.control}
+                            name="plotArea"
+                            render={({ field }) => {
+                                const handleInputChange = (e) => {
+                                    const inputValue = e.target.value;
+                                    const currentUnit = field.value?.split(" ")[1] || "";
+                                    field.onChange(`${inputValue} ${currentUnit}`.trim());
+                                };
+
+                                const handleSelectChange = (unitValue) => {
+                                    const currentInput = field.value?.split(" ")[0] || "";
+                                    field.onChange(`${currentInput} ${unitValue}`.trim());
+                                };
+
+                                return (
+                                    <FormItem className="flex flex-col gap-2">
+                                        <FormLabel>{Step3Data[0].label}</FormLabel>
+                                        <FormControl>
+                                            <div className="flex gap-4">
+                                                <Input
+                                                    placeholder="Plot Area"
+                                                    onChange={handleInputChange}
+                                                />
+                                                <Select
+                                                    onValueChange={handleSelectChange}
+                                                    defaultValue={field.value?.split(" ")[1] ?? ""}
+                                                >
+                                                    <SelectTrigger>
+                                                        <SelectValue placeholder="Select unit" />
+                                                    </SelectTrigger>
+                                                    <SelectContent>
+                                                        {Step3Data[0].data.map((data, i) => (
+                                                            <SelectItem key={i} value={data.value}>
+                                                                {data.label}
+                                                            </SelectItem>
+                                                        ))}
+                                                    </SelectContent>
+                                                </Select>
+                                            </div>
                                         </FormControl>
-                                        <FormLabel className="font-normal">{label}</FormLabel>
+                                        <FormMessage />
                                     </FormItem>
-                                ))}
-                            </RadioGroup>
-                        </FormControl>
-                        <FormMessage />
-                    </FormItem>
-                )}
-            />
-            <FormField
-                control={form.control}
-                name={data.fields[4]}
-                render={({ field }) => (
-                    <FormItem className="flex flex-col gap-2">
-                        <FormLabel>{Step3Data[3].label}</FormLabel>
-                        <FormControl>
-                            <RadioGroup
-                                onValueChange={field.onChange}
-                                defaultValue={field.value}
-                                className="flex w-full flex-wrap"
-                            >
-                                {Step3Data[3].data.map(({ value, label }) => (
-                                    <FormItem
-                                        key={value}
-                                        className={`flex items-center space-y-0 ${field.value === value ? "bg-blue-100 border-blue-400" : "bg-white border"
-                                            } rounded-full px-4 py-2`}
-                                    >
-                                        <FormControl className="sr-only">
-                                            <RadioGroupItem value={value} />
-                                        </FormControl>
-                                        <FormLabel className="font-normal">{label}</FormLabel>
-                                    </FormItem>
-                                ))}
-                            </RadioGroup>
-                        </FormControl>
-                        <FormMessage />
-                    </FormItem>
-                )}
-            />
-            <FormField
-                control={form.control}
-                name={data.fields[5]}
-                render={({ field }) => (
-                    <FormItem className="flex flex-col gap-2">
-                        <FormLabel>{Step3Data[4].label}</FormLabel>
-                        <FormControl>
-                            <RadioGroup
-                                onValueChange={field.onChange}
-                                defaultValue={field.value}
-                                className="flex w-full flex-wrap"
-                            >
-                                {Step3Data[4].data.map(({ value, label }) => (
-                                    <FormItem
-                                        key={value}
-                                        className={`flex items-center space-y-0 ${field.value === value ? "bg-blue-100 border-blue-400" : "bg-white border"
-                                            } rounded-full px-4 py-2`}
-                                    >
-                                        <FormControl className="sr-only">
-                                            <RadioGroupItem value={value} />
-                                        </FormControl>
-                                        <FormLabel className="font-normal">{label}</FormLabel>
-                                    </FormItem>
-                                ))}
-                            </RadioGroup>
-                        </FormControl>
-                        <FormMessage />
-                    </FormItem>
-                )}
-            />
-            <FormField
-                control={form.control}
-                name={data.fields[6]}
-                render={({ field }) => (
-                    <FormItem className="flex flex-col">
-                        <FormLabel>{Step3Data[5].label}</FormLabel>
-                        <Popover>
-                            <PopoverTrigger asChild>
-                                <FormControl>
-                                    <Button
-                                        variant={"outline"}
-                                        className={cn(
-                                            "w-[240px] pl-3 text-left font-normal",
-                                            !field.value && "text-muted-foreground"
-                                        )}
-                                    >
-                                        {field.value ? (
-                                            format(field.value, "PPP")
-                                        ) : (
-                                            <span>Pick a date</span>
-                                        )}
-                                        <CalendarIcon className="ml-auto h-4 w-4 opacity-50" />
-                                    </Button>
-                                </FormControl>
-                            </PopoverTrigger>
-                            <PopoverContent className="w-auto p-0" align="start">
-                                <Calendar
-                                    mode="single"
-                                    selected={field.value}
-                                    onSelect={field.onChange}
-                                    initialFocus
+                                );
+                            }}
+                        />
+                        <div className="flex w-full gap-4 flex-col">
+                            <FormLabel>{Step3Data[1].label}</FormLabel>
+                            <div className="grid grid-cols-2 gap-4 w-full">
+                                <FormField
+                                    control={form.control}
+                                    name="length"
+                                    render={({ field }) => (
+                                        <FormItem className="flex flex-col gap-2">
+                                            {/* <FormLabel>{Step3Data[s1].label}</FormLabel> */}
+                                            <FormControl>
+                                                <Input placeholder="Plot Length " {...field} value={field.value ?? ""} />
+                                            </FormControl>
+                                            <FormMessage />
+                                        </FormItem>
+                                    )}
                                 />
-                            </PopoverContent>
-                        </Popover>
-                        <FormMessage />
-                    </FormItem>
-                )}
-            />
-            <FormField
-                control={form.control}
-                name={data.fields[7]}
-                render={({ field }) => (
-                    <FormItem className="flex flex-col gap-2">
-                        <FormLabel>{Step3Data[6].label}</FormLabel>
-                        <FormControl>
-                            <RadioGroup
-                                onValueChange={field.onChange}
-                                defaultValue={field.value}
-                                className="flex w-full flex-wrap"
-                            >
-                                {Step3Data[6].data.map(({ value, label }) => (
-                                    <FormItem
-                                        key={value}
-                                        className={`flex items-center space-y-0 ${field.value === value ? "bg-blue-100 border-blue-400" : "bg-white border"
-                                            } rounded-full px-4 py-2`}
-                                    >
-                                        <FormControl className="sr-only">
-                                            <RadioGroupItem value={value} />
+                                <FormField
+                                    control={form.control}
+                                    name="breadth"
+                                    render={({ field }) => (
+                                        <FormItem className="flex flex-col gap-2">
+                                            {/* <FormLabel>{Step3Data[1].label}</FormLabel> */}
+                                            <FormControl>
+                                                <Input placeholder="Plot Breadth " {...field} value={field.value ?? ""} />
+                                            </FormControl>
+                                            <FormMessage />
+                                        </FormItem>
+                                    )}
+                                />
+                            </div>
+                        </div>
+                        <FormField
+                            control={form.control}
+                            name="allowedFloors"
+                            render={({ field }) => (
+                                <FormItem className="flex flex-col gap-2">
+                                    <FormLabel>{Step3Data[2].label}</FormLabel>
+                                    <FormControl>
+                                        <Input placeholder="No of floors allowed" {...field} value={field.value ?? ""} />
+                                    </FormControl>
+                                    <FormMessage />
+                                </FormItem>
+                            )}
+                        />
+                        <FormField
+                            control={form.control}
+                            name="hasBoundaryWall"
+                            render={({ field }) => (
+                                <FormItem className="flex flex-col gap-2">
+                                    <FormLabel>{Step3Data[3].label}</FormLabel>
+                                    <FormControl>
+                                        <RadioGroup
+                                            onValueChange={field.onChange}
+                                            defaultValue={field.value}
+                                            className="flex w-full flex-wrap"
+                                        >
+                                            {Step3Data[3].data.map(({ value, label }) => (
+                                                <FormItem
+                                                    key={value}
+                                                    className={`flex items-center space-y-0 ${field.value === value ? "bg-blue-100 border-blue-400" : "bg-white border"
+                                                        } rounded-full px-4 py-2`}
+                                                >
+                                                    <FormControl className="sr-only">
+                                                        <RadioGroupItem value={value} />
+                                                    </FormControl>
+                                                    <FormLabel className="font-normal">{label}</FormLabel>
+                                                </FormItem>
+                                            ))}
+                                        </RadioGroup>
+                                    </FormControl>
+                                    <FormMessage />
+                                </FormItem>
+                            )}
+                        />
+                        <FormField
+                            control={form.control}
+                            name="openSides"
+                            render={({ field }) => (
+                                <FormItem className="flex flex-col gap-2">
+                                    <FormLabel>{Step3Data[4].label}</FormLabel>
+                                    <FormControl>
+                                        <RadioGroup
+                                            onValueChange={field.onChange}
+                                            defaultValue={field.value}
+                                            className="flex w-full flex-wrap"
+                                        >
+                                            {Step3Data[4].data.map((data, i) => (
+                                                <FormItem
+                                                    key={i}
+                                                    className={`flex items-center space-y-0 ${field.value === data?.value ? "bg-blue-100 border-blue-400" : "bg-white border"
+                                                        } rounded-full px-4 py-2`}
+                                                >
+                                                    <FormControl className="sr-only">
+                                                        <RadioGroupItem value={data?.value} />
+                                                    </FormControl>
+                                                    <FormLabel className="font-normal">{data?.label}</FormLabel>
+                                                </FormItem>
+                                            ))}
+                                        </RadioGroup>
+                                    </FormControl>
+                                    <FormMessage />
+                                </FormItem>
+                            )}
+                        />
+                        <FormField
+                            control={form.control}
+                            name="hasConstruction"
+                            render={({ field }) => (
+                                <FormItem className="flex flex-col gap-2">
+                                    <FormLabel>{Step3Data[5].label}</FormLabel>
+                                    <FormControl>
+                                        <RadioGroup
+                                            onValueChange={field.onChange}
+                                            defaultValue={field.value}
+                                            className="flex w-full flex-wrap"
+                                        >
+                                            {Step3Data[5].data.map(({ value, label }) => (
+                                                <FormItem
+                                                    key={value}
+                                                    className={`flex items-center space-y-0 ${field.value === value ? "bg-blue-100 border-blue-400" : "bg-white border"
+                                                        } rounded-full px-4 py-2`}
+                                                >
+                                                    <FormControl className="sr-only">
+                                                        <RadioGroupItem value={value} />
+                                                    </FormControl>
+                                                    <FormLabel className="font-normal">{label}</FormLabel>
+                                                </FormItem>
+                                            ))}
+                                        </RadioGroup>
+                                    </FormControl>
+                                    <FormMessage />
+                                </FormItem>
+                            )}
+                        />
+                        <FormField
+                            control={form.control}
+                            name="possessionBy"
+                            render={({ field }) => (
+                                <FormItem className="flex flex-col">
+                                    <FormLabel>{Step3Data[6].label}</FormLabel>
+                                    <Popover>
+                                        <PopoverTrigger asChild>
+                                            <FormControl>
+                                                <Button
+                                                    variant={"outline"}
+                                                    className={cn(
+                                                        "w-[240px] pl-3 text-left font-normal",
+                                                        !field.value && "text-muted-foreground"
+                                                    )}
+                                                >
+                                                    {field.value ? (
+                                                        format(field.value, "PPP")
+                                                    ) : (
+                                                        <span>Pick a date</span>
+                                                    )}
+                                                    <CalendarIcon className="ml-auto h-4 w-4 opacity-50" />
+                                                </Button>
+                                            </FormControl>
+                                        </PopoverTrigger>
+                                        <PopoverContent className="w-auto p-0" align="start">
+                                            <Calendar
+                                                mode="single"
+                                                selected={field.value}
+                                                onSelect={field.onChange}
+                                                initialFocus
+                                            />
+                                        </PopoverContent>
+                                    </Popover>
+                                    <FormMessage />
+                                </FormItem>
+                            )}
+                        />
+                        <FormField
+                            control={form.control}
+                            name="ownership"
+                            render={({ field }) => (
+                                <FormItem className="flex flex-col gap-2">
+                                    <FormLabel>{Step3Data[7].label}</FormLabel>
+                                    <FormControl>
+                                        <RadioGroup
+                                            onValueChange={field.onChange}
+                                            defaultValue={field.value}
+                                            className="flex w-full flex-wrap"
+                                        >
+                                            {Step3Data[7].data.map(({ value, label }) => (
+                                                <FormItem
+                                                    key={value}
+                                                    className={`flex items-center space-y-0 ${field.value === value ? "bg-blue-100 border-blue-400" : "bg-white border"
+                                                        } rounded-full px-4 py-2`}
+                                                >
+                                                    <FormControl className="sr-only">
+                                                        <RadioGroupItem value={value} />
+                                                    </FormControl>
+                                                    <FormLabel className="font-normal">{label}</FormLabel>
+                                                </FormItem>
+                                            ))}
+                                        </RadioGroup>
+                                    </FormControl>
+                                    <FormMessage />
+                                </FormItem>
+                            )}
+                        />
+                        <div className="flex w-full gap-4 flex-col">
+                            <FormLabel>{Step3Data[8].label}</FormLabel>
+                            <div className="grid grid-cols-2 gap-4 w-full">
+                                <FormField
+                                    control={form.control}
+                                    name="priceInWord"
+                                    render={({ field }) => (
+                                        <FormItem className="flex flex-col gap-2">
+                                            <FormControl>
+                                                <Input placeholder="Expected price in words " {...field} value={field.value ?? ""} />
+                                            </FormControl>
+                                            <FormMessage />
+                                        </FormItem>
+                                    )}
+                                />
+                                <FormField
+                                    control={form.control}
+                                    name="priceInDigit"
+                                    render={({ field }) => (
+                                        <FormItem className="flex flex-col gap-2">
+                                            <FormControl>
+                                                <Input placeholder="Price per sqft" {...field} value={field.value ?? ""} />
+                                            </FormControl>
+                                            <FormMessage />
+                                        </FormItem>
+                                    )}
+                                />
+                            </div>
+                        </div>
+                        <div className="grid grid-cols-2 xl:grid-cols-3 gap-4 w-full">
+                            <FormField
+                                control={form.control}
+                                name="inclusivePrice"
+                                render={({ field }) => (
+                                    <FormItem className="items-center space-x-2">
+                                        <FormControl>
+                                            <Checkbox
+                                                checked={field.value}
+                                                onCheckedChange={field.onChange}
+                                            />
                                         </FormControl>
-                                        <FormLabel className="font-normal">{label}</FormLabel>
+                                        <FormLabel className="text-base">
+                                            All inlcusice price
+                                        </FormLabel>
+                                        <FormMessage />
                                     </FormItem>
-                                ))}
-                            </RadioGroup>
-                        </FormControl>
-                        <FormMessage />
-                    </FormItem>
-                )}
-            />
-            <FormField
-                control={form.control}
-                name={data.fields[8]}
-                render={({ field }) => (
-                    <FormItem className="flex flex-col gap-2">
-                        <FormLabel>{Step3Data[7].label}</FormLabel>
-                        <FormControl>
-                            <RadioGroup
-                                onValueChange={field.onChange}
-                                defaultValue={field.value}
-                                className="flex w-full flex-wrap"
-                            >
-                                {Step3Data[7].data.map(({ value, label }) => (
-                                    <FormItem
-                                        key={value}
-                                        className={`flex items-center space-y-0 ${field.value === value ? "bg-blue-100 border-blue-400" : "bg-white border"
-                                            } rounded-full px-4 py-2`}
-                                    >
-                                        <FormControl className="sr-only">
-                                            <RadioGroupItem value={value} />
+                                )}
+                            />
+                            <FormField
+                                control={form.control}
+                                name="isTaxExcluded"
+                                render={({ field }) => (
+                                    <FormItem className="items-center space-x-2">
+                                        <FormControl>
+                                            <Checkbox
+                                                checked={field.value}
+                                                onCheckedChange={field.onChange}
+                                            />
                                         </FormControl>
-                                        <FormLabel className="font-normal">{label}</FormLabel>
+                                        <FormLabel className="text-base">
+                                            Tax and Govt. charges exclude
+                                        </FormLabel>
                                     </FormItem>
-                                ))}
-                            </RadioGroup>
-                        </FormControl>
-                        <FormMessage />
-                    </FormItem>
-                )}
-            />
-            <FormField
-                control={form.control}
-                name={data.fields[9]}
-                render={({ field }) => (
-                    <FormItem className="flex flex-col gap-2">
-                        <FormLabel>{Step3Data[8].label}</FormLabel>
-                        <FormControl>
-                            <Input placeholder="Expected Price" {...field} value={field.value ?? ""} />
-                        </FormControl>
-                        <FormMessage />
-                    </FormItem>
-                )}
-            />
-            <FormField
-                control={form.control}
-                name={data.fields[10]}
-                render={({ field }) => (
-                    <FormItem className="flex flex-col gap-2">
-                        <FormLabel>{Step3Data[9].label}</FormLabel>
-                        <FormControl>
-                            <Textarea placeholder="Share some details about your property" {...field} value={field.value ?? ""} />
-                        </FormControl>
-                        <FormMessage />
-                    </FormItem>
-                )}
-            />
+                                )}
+                            />
+                            <FormField
+                                control={form.control}
+                                name="isPriceNegotiable"
+                                render={({ field }) => (
+                                    <FormItem className="items-center space-x-2">
+                                        <FormControl>
+                                            <Checkbox
+                                                checked={field.value}
+                                                onCheckedChange={field.onChange}
+                                            />
+                                        </FormControl>
+                                        <FormLabel className="text-base">
+                                            Price Negotiable
+                                        </FormLabel>
+                                    </FormItem>
+                                )}
+                            />
+                        </div>
+                        <FormField
+                            control={form.control}
+                            name="uniqueFeatures"
+                            render={({ field }) => (
+                                <FormItem className="flex flex-col gap-2">
+                                    <FormLabel>{Step3Data[9].label}</FormLabel>
+                                    <FormControl>
+                                        <Textarea placeholder="Share some details about your property" {...field} value={field.value ?? ""} />
+                                    </FormControl>
+                                    <FormMessage />
+                                </FormItem>
+                            )}
+                        />
+                        <div className="flex gap-4 w-full">
+                            <Button
+                                onClick={prev}
+                                className="px-4 py-2 bg-gray-300 text-black rounded-lg"
+                                disabled={currentStep === 0}
+                            >
+                                <ArrowLeft />
+                            </Button>
+                            <Button
+                                type="submit"
+                                className="px-4 py-2 bg-blue-500 text-white rounded-lg"
+                                disabled={loading}
+                            >
+                                {loading ? "Loading" : "Continue"}
+                            </Button>
+                        </div>
+                    </div>
+                </form>
+            </Form>
         </>
     )
 }
