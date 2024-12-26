@@ -1,9 +1,13 @@
+import Navbar from "@/components/organism/Navbar"
 
 const UserLayout = ({ children }) => {
     return (
-        <div className="flex w-full h-screen overflow-hidden">
-            {children}
-        </div>
+        <>
+            <Navbar />
+            <div className="flex w-screen h-screen relative">
+                {children}
+            </div>
+        </>
     )
 }
 
