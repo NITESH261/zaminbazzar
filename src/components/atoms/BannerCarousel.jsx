@@ -12,10 +12,10 @@ const BannerCarousel = () => {
     return (
         <div className="relative aspect-video h-full w-full flex">
             <Image
-                src="/assets/banner-img/banner-img-1.jpeg"
+                src="/assets/banner-img/banner-img-2.jpeg"
                 alt="banner-img"
                 fill
-                className="object-cover lg:object-contain object-center h-full w-full"
+                className="object-cover lg:object-cover object-center h-full w-full"
             />
         </div>
     )
