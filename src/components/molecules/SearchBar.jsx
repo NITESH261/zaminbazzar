@@ -10,8 +10,7 @@ import {
     Form,
     FormControl,
     FormField,
-    FormItem,
-    FormMessage
+    FormItem
 } from "../ui/form";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "../ui/select";
 
@@ -77,7 +76,6 @@ const SearchBar = () => {
                                         }
                                     </SelectContent>
                                 </Select>
-                                <FormMessage />
                             </FormItem>
                         )}
                     />
