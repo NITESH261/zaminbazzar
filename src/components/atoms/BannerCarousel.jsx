@@ -5,13 +5,23 @@ import Image from "next/image";
 import { Carousel, CarouselContent, CarouselItem } from "../ui/carousel";
 
 const BannerImages = [
-    { img: "banner-img-1.jpg" },
-    { img: "banner-img-2.jpg" },
-    { img: "banner-img-3.jpg" },
-    { img: "banner-img-4.jpg" },
+    { img: "banner-img-1.jpeg" },
 ];
 
 const BannerCarousel = () => {
+    return (
+        <div className="relative aspect-video h-full w-full flex">
+            <Image
+                src="/assets/banner-img/banner-img-1.jpeg"
+                alt="banner-img"
+                fill
+                className="object-cover lg:object-contain object-center h-full w-full"
+            />
+        </div>
+    )
+}
+
+const BannerCarousel1 = () => {
     return (
         <>
             <Carousel
@@ -37,7 +47,7 @@ const BannerCarousel = () => {
                                     src={`/assets/banner-img/${card.img}`}
                                     alt={`${index}-img`}
                                     fill
-                                    className="object-cover object-center h-full w-full"
+                                    className="object-contain object-center h-full w-full"
                                 />
                             </div>
                         </CarouselItem>
