@@ -1,83 +1,96 @@
-import { AlignRightIcon, House, Tag, User } from "lucide-react";
-import Link from "next/link";
-import Logo from "../atoms/Logo";
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "../ui/accordion";
-import { Button } from "../ui/button";
-import {
-    Sheet,
-    SheetContent,
-    SheetHeader,
-    SheetTitle,
-    SheetTrigger,
-} from "../ui/sheet";
+import { cn } from "@/lib/utils"
+import { AlignRightIcon, DockIcon, House, Tag, User } from "lucide-react"
+import Link from "next/link"
+import Logo from "../atoms/Logo"
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "../ui/accordion"
+import { Button } from "../ui/button"
+import { NavigationMenu, NavigationMenuContent, NavigationMenuItem, NavigationMenuLink, NavigationMenuList, NavigationMenuTrigger } from "../ui/navigation-menu"
+import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "../ui/sheet"
+
 
 const Navbar = () => {
     return (
-        <div className="flex sticky top-0 font-nunito z-20 w-full bg-[#0078DB]">
-            <div className="flex w-full h-16 items-center max-w-7xl mx-auto gap-4 px-4">
-                <div className="flex w-fit">
+        <div className="w-full bg-white sticky top-0 z-20 bg-transparent">
+            <div className="flex w-full max-w-7xl mx-auto px-4">
+                <div className="flex flex-grow-0">
                     <Logo />
                 </div>
-                <div className="flex flex-1 items-center justify-end h-full w-full gap-2">
-                    <div className="hidden lg:flex w-full h-full justify-end">
-                        <ul className='flex w-fit h-full gap-6'>
-                            {NavData.map((item, index) => (
-                                item.data ?
-                                    (<li key={index} className='navlink w-fit h-full items-center flex group border-b-2 border-transparent hover:border-white transition-all'>
-                                        <Link href={"/"} className='flex w-full text-lg pt-1.5 px-2 transition-all items-center gap-2 font-semibold text-white'>
-                                            <NavLogo logo={item.icon} />  {item.label}
-                                        </Link>
-                                        <div className="flex group-hover:visible invisible transition-all w-full absolute top-full z-10 bg-white left-0 rounded-b-3xl border border-gray-200">
-                                            <div className="grid grid-cols-1 divide-x gap-4 md:grid-cols-2 lg:grid-cols-3 w-full h-72 max-w-7xl mx-auto px-4 py-4 md:py-6 lg:py-8 xl:py-10">
-                                                {item.data?.map((item, index) => (
-                                                    <div key={index} className="flex w-full flex-col pl-4 gap-4">
-                                                        <strong className='text-base'>{item.title}</strong>
-                                                        <ul className='flex w-full flex-col pl-3 gap-1 text-sm'>
-                                                            {item.links.map((item, index) => (
-                                                                <li key={index} className='flex w-full'>
-                                                                    <Link href={"/"} className='hover:font-normal py-1 hover:underline transition-all'>{item.name}</Link>
-                                                                </li>
-                                                            ))}
-                                                        </ul>
-                                                    </div>
-                                                ))}
-                                            </div>
-                                        </div>
-                                    </li>
+                <div className="hidden lg:flex flex-grow items-center justify-center">
+                    <div className="flex gap-4">
+                        <NavigationMenu>
+                            <NavigationMenuList className="flex space-x-4">
+                                {NavItems.map((item, i) => (
+                                    item.data ? (
+                                        <NavigationMenuItem key={i}>
+                                            <NavigationMenuTrigger className="bg-transparent text-base gap-2 text-black hover:text-[#0078DB]">
+                                                <NavLogo logo={item.icon} /> {item.label}
+                                            </NavigationMenuTrigger>
+                                            <NavigationMenuContent className="p-4 space-y-2 rounded-md shadow-lg">
+                                                <ul className="flex gap-4">
+                                                    {item.data.map((subItem, subIndex) => (
+                                                        <li
+                                                            key={subIndex}
+                                                            className="w-full min-w-40 max-w-60"
+                                                        >
+                                                            <span className="font-medium text-base text-gray-700">
+                                                                {subItem.label}
+                                                            </span>
+                                                            <ul className="mt-2 space-y-1 w-48 min-w-40 max-w-60">
+                                                                {subItem.data.map((linkItem, linkIndex) => (
+                                                                    <ListItem
+                                                                        key={linkIndex}
+                                                                        href={linkItem.link}
+                                                                    >
+                                                                        {linkItem.label}
+                                                                    </ListItem>
+                                                                ))}
+                                                            </ul>
+                                                        </li>
+                                                    ))}
+                                                </ul>
+                                            </NavigationMenuContent>
+                                        </NavigationMenuItem>
                                     ) : (
-                                        <li key={index} className='navlink w-fit h-full items-center flex group border-b-2 border-transparent hover:border-white transition-all'>
-                                            <Link href={"/"} className='flex w-full text-lg pt-1.5 px-2 transition-all items-center gap-2 font-semibold text-white'>
-                                                <NavLogo logo={item.icon} />  {item.label}
-                                            </Link>
-                                        </li>
-                                    )))}
-                        </ul>
+                                        <NavigationMenuItem key={i}>
+                                            <NavigationMenuLink asChild>
+                                                <Link
+                                                    href={item.link}
+                                                    className="flex w-fit gap-2 items-center font-medium text-black hover:text-[#0078DB]"
+                                                >
+                                                    <NavLogo logo={item.icon} /> {item.label}
+                                                </Link>
+                                            </NavigationMenuLink>
+                                        </NavigationMenuItem>
+                                    )
+                                ))}
+                            </NavigationMenuList>
+                        </NavigationMenu>
                     </div>
-                    <div className="flex flex-grow items-center gap-4 justify-end">
-                        <Button variant="" className="font-medium rounded-3xl py-1 text-base bg-white text-[#0078DB] hover:bg-white">
-                            <User className="!size-4" />
-                            Log In
-                        </Button>
-                        <Sheet>
-                            <SheetTrigger asChild>
-                                <Button
-                                    className="rounded-md px-3 py-0 bg-transparent hover:text-[#0078DB] hover:bg-white"
-                                >
-                                    <AlignRightIcon className="!size-5" />
-                                </Button>
-                            </SheetTrigger>
-                            <SheetContent className="divide-y">
-                                <SheetHeader className=" px-4">
-                                    <SheetTitle>
-                                        <div className="flex w-fit">
-                                            <Logo className={"text-black"} />
-                                        </div>
-                                    </SheetTitle>
-                                </SheetHeader>
-                                <div className="flex w-full flex-col h-[calc(100%-56px)] overflow-y-auto scrollbar-hide">
-                                    <ul className="flex flex-col w-full">
-                                        {NavData.map((item, i) =>
-                                            item.data ?
+                </div>
+
+                <div className="flex flex-grow lg:flex-grow-0 items-center justify-end gap-2">
+                    <Button className="rounded-full px-4 bg-[#0078DB] text-white">
+                        <User className="mr-2" /> Log In
+                    </Button>
+                    <Sheet>
+                        <SheetTrigger asChild>
+                            <Button className="rounded-md px-3 py-2 bg-transparent text-black hover:text-[#0078DB] hover:bg-gray-100">
+                                <AlignRightIcon className="w-5 h-5" />
+                            </Button>
+                        </SheetTrigger>
+                        <SheetContent>
+                            <SheetHeader className=" px-4">
+                                <SheetTitle>
+                                    <div className="flex w-fit">
+                                        <Logo className={"text-black"} />
+                                    </div>
+                                </SheetTitle>
+                            </SheetHeader>
+                            <div className="flex w-full flex-col h-[calc(100%-56px)] overflow-y-auto scrollbar-hide">
+                                <ul className="flex flex-col w-full pb-6">
+                                    {NavItems.map((item, i) =>
+                                        item.data ?
+                                            (
                                                 <Accordion
                                                     key={`items-${i}`}
                                                     type="single"
@@ -93,61 +106,49 @@ const Navbar = () => {
                                                         </AccordionTrigger>
                                                         <AccordionContent className="px-4">
                                                             <ul className="flex w-full flex-col gap-4 pl-3">
-                                                                {item.data.map(
-                                                                    (
-                                                                        item,
-                                                                        i
-                                                                    ) => (
-                                                                        <li
-                                                                            key={`sublink-${i}`}
-                                                                            className="flex flex-col gap-1 w-full"
-                                                                        >
-                                                                            <span className="text-sm font-medium">
-                                                                                {
-                                                                                    item.label
-                                                                                }
-                                                                            </span>
-                                                                            <ul className="flex w-full flex-col pl-3">
-                                                                                {item.links.map(
-                                                                                    (
-                                                                                        item,
-                                                                                        i
-                                                                                    ) => (
-                                                                                        <li
-                                                                                            key={`sublinklist-${i}`}
-                                                                                            className="w-full py-2"
+                                                                {item.data.map((item, i) => (
+                                                                    <li
+                                                                        key={`sublink-${i}`}
+                                                                        className="flex flex-col gap-1 w-full"
+                                                                    >
+                                                                        <span className="text-sm font-medium">
+                                                                            {item.label}
+                                                                        </span>
+                                                                        <ul className="flex w-full flex-col pl-3">
+                                                                            {item?.data.map(
+                                                                                (item, i) => (
+                                                                                    <li
+                                                                                        key={`sublinklist-${i}`}
+                                                                                        className="w-full py-2"
+                                                                                    >
+                                                                                        <Link
+                                                                                            href="/"
+                                                                                            className="text-sm"
                                                                                         >
-                                                                                            <Link
-                                                                                                href="/"
-                                                                                                className="text-sm"
-                                                                                            >
-                                                                                                {
-                                                                                                    item.name
-                                                                                                }
-                                                                                            </Link>
-                                                                                        </li>
-                                                                                    )
-                                                                                )}
-                                                                            </ul>
-                                                                        </li>
-                                                                    )
-                                                                )}
+                                                                                            {item.label}
+                                                                                        </Link>
+                                                                                    </li>
+                                                                                )
+                                                                            )}
+                                                                        </ul>
+                                                                    </li>
+                                                                ))}
                                                             </ul>
                                                         </AccordionContent>
                                                     </AccordionItem>
                                                 </Accordion>
-                                                :
+                                            ) : (
                                                 <li key={`link-${i}`} className="flex w-full">
-                                                    <Link href={item.url} className="px-4 py-4">
+                                                    <Link href={item.link} className="px-4 py-4">
                                                         {item.label}
                                                     </Link>
                                                 </li>
-                                        )}
-                                    </ul>
-                                </div>
-                            </SheetContent>
-                        </Sheet>
-                    </div>
+                                            )
+                                    )}
+                                </ul>
+                            </div>
+                        </SheetContent>
+                    </Sheet>
                 </div>
             </div>
         </div>
@@ -159,50 +160,152 @@ export default Navbar;
 const NavLogo = ({ logo: Logo }) => {
     return (
         <Logo
-            className="!size-5 text-white"
+            className="!size-4"
         />
     )
 }
 
-const NavData = [
+const ListItem = ({ className, children, ...props }, key, ref) => {
+    return (
+        <li key={key}>
+            <NavigationMenuLink asChild>
+                <Link
+                    ref={ref}
+                    className={cn(
+                        "block select-none text-sm space-y-1 rounded-md px-3 py-2.5 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground",
+                        className
+                    )}
+                    {...props}
+                >
+                    {children}
+                </Link>
+            </NavigationMenuLink>
+        </li>
+    )
+}
+
+const NavItems = [
     {
-        label: "Buyer",
-        url: "#",
-        active: "active",
+        label: "For Buyer",
         icon: Tag,
         data: [
             {
-                label: "Property Types",
-                links: [
-                    { name: "Apartments", url: "/buy/apartments" },
-                    { name: "Houses", url: "/buy/houses" },
-                    { name: "Villas", url: "/buy/villas" },
-                    { name: "Townhouses", url: "/buy/townhouses" },
-                ],
+                label: "Location :",
+                data: [
+                    {
+                        label: "Thane",
+                        link: "/"
+                    },
+                    {
+                        label: "Panvel",
+                        link: "/"
+                    },
+                    {
+                        label: "Khalapur",
+                        link: "/"
+                    }
+                ]
             },
             {
-                label: "Locations",
-                links: [
-                    { name: "New York", url: "/buy/new-york" },
-                    { name: "Los Angeles", url: "/buy/los-angeles" },
-                    { name: "Chicago", url: "/buy/chicago" },
-                    { name: "Miami", url: "/buy/miami" },
-                ],
+                label: "Plot Types :",
+                data: [
+                    {
+                        label: "list1",
+                        link: "/"
+                    },
+                    {
+                        label: "list2",
+                        link: "/"
+                    },
+                    {
+                        label: "list3",
+                        link: "/"
+                    }
+                ]
             },
             {
-                label: "Price Range",
-                links: [
-                    { name: "Under $500K", url: "/buy/under-500k" },
-                    { name: "$500K - $1M", url: "/buy/500k-1m" },
-                    { name: "Over $1M", url: "/buy/over-1m" },
-                ],
+                label: "Budget :",
+                data: [
+                    {
+                        label: "₹2Lac - ₹5Lac",
+                        link: "/"
+                    },
+                    {
+                        label: "₹10Lac - ₹20Lac",
+                        link: "/"
+                    },
+                    {
+                        label: "₹20Lac - ₹1Cr",
+                        link: "/"
+                    },
+                    {
+                        label: "Above ₹1Cr",
+                        link: "/"
+                    }
+                ]
             },
-        ],
+            {
+                label: "Services :",
+                data: [
+                    {
+                        label: "Land buying & selling",
+                        link: "/"
+                    },
+                    {
+                        label: "Legal verification",
+                        link: "/"
+                    },
+                    {
+                        label: "Land consulting",
+                        link: "/"
+                    },
+                    {
+                        label: "Layout & Demaroation",
+                        link: "/"
+                    },
+                    {
+                        label: "EMI with 0% intrest",
+                        link: "/"
+                    }
+                ]
+            }
+        ]
     },
     {
-        label: "Sell/Rent Property",
-        url: "#",
-        active: "active",
+        label: "For Seller",
         icon: House,
+        data: [
+            {
+                label: "For owner :",
+                data: [
+                    {
+                        label: "Post property",
+                        link: "/"
+                    },
+                ]
+            },
+            {
+                label: "Services :",
+                data: [
+                    {
+                        label: "Property valuation",
+                        link: "/"
+                    },
+                    {
+                        label: "Legal assistance",
+                        link: "/"
+                    },
+                    {
+                        label: "Land marketing",
+                        link: "/"
+                    }
+                ]
+            }
+        ]
     },
-];
+    {
+        label: "Post Property",
+        icon: DockIcon,
+        link: "/"
+    }
+]
