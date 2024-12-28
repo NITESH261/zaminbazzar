@@ -1,9 +1,10 @@
-"use client"
+"use client";
 
 import Autoplay from "embla-carousel-autoplay";
 import { ArrowRight } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
+import { useState } from "react";
 import { Button } from "../ui/button";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "../ui/carousel";
 
@@ -35,10 +36,19 @@ const Cards = [
     {
         img: "recomonded-property9.jpeg"
     }
-]
+];
 
 const Property = () => {
-    // const cards = Array.from({ length: 4 }, (_, i) => i + 1);
+    const [hoveredIndex, setHoveredIndex] = useState(null);
+
+    const handleMouseEnter = (index) => {
+        setHoveredIndex(index);
+    };
+
+    const handleMouseLeave = () => {
+        setHoveredIndex(null);
+    };
+
     return (
         <>
             <div className="flex w-full">
@@ -54,11 +64,11 @@ const Property = () => {
                     </div>
                     <div className="flex w-full">
                         <Carousel
-                            plugins={[
-                                Autoplay({
-                                    delay: 3000,
-                                }),
-                            ]}
+                            // plugins={[
+                            //     Autoplay({
+                            //         delay: 3000,
+                            //     })
+                            // ]}
                             opts={{
                                 align: "start",
                                 loop: true,
@@ -71,16 +81,16 @@ const Property = () => {
                                         key={`${index}-plot-img`}
                                         className="sm:basis-1/2 lg:basis-1/3 xl:basis-1/4"
                                     >
-                                        <div className="flex flex-col w-full border border-neutral-200 rounded-lg group hover:shadow-lg">
-                                            <div className="relative aspect-video bg-cover rounded-t-lg flex w-full overflow-hidden">
-                                                <Image
-                                                    src={`/assets/recommonded-property/${card.img}`}
-                                                    alt="house"
-                                                    fill
-                                                    className="rounded-t-lg group-hover:scale-110 transition-all object-cover"
-                                                />
-                                            </div>
-                                            <div className=" p-4 space-y-2">
+                                        <div
+                                            className="flex flex-col w-full border border-neutral-200 rounded-lg group hover:shadow-lg"
+                                            onMouseEnter={() => handleMouseEnter(index)}
+                                            onMouseLeave={handleMouseLeave}
+                                        >
+                                            <ImageScroll
+                                                card={card}
+                                                isHovered={hoveredIndex === index}
+                                            />
+                                            <div className="p-4 space-y-2">
                                                 <div className="w-full">
                                                     <span className="text-sm">1 BHK Flat</span>
                                                     <h2 className="text-lg font-medium">
@@ -111,3 +121,51 @@ const Property = () => {
 };
 
 export default Property;
+
+const ImageScroll = ({ card, isHovered }) => {
+
+    return (
+        <div>
+            {!isHovered ? (
+                <div
+                    className="relative aspect-video bg-cover rounded-t-lg flex w-full overflow-hidden"
+                >
+                    <Image
+                        src={`/assets/recommonded-property/${card.img}`}
+                        alt={"house"}
+                        fill
+                        className="rounded-t-lg transition-all object-cover"
+                    />
+                </div>
+            ) : (
+                <Carousel
+                    plugins={[
+                        Autoplay({
+                            delay: 1000,
+                        }),
+                    ]}
+                    opts={{
+                        align: "start",
+                        loop: true,
+                    }}
+                    className="flex w-full h-full"
+                >
+                    <CarouselContent>
+                        {Cards.map((card, index) => (
+                            <CarouselItem key={`${index}-image`} className="basis-full">
+                                <div className="relative h-[168px] aspect-video bg-cover rounded-t-lg flex w-full overflow-hidden">
+                                    <Image
+                                        src={`/assets/recommonded-property/${card.img}`}
+                                        alt={`house-${index}`}
+                                        fill
+                                        className="rounded-t-lg object-cover"
+                                    />
+                                </div>
+                            </CarouselItem>
+                        ))}
+                    </CarouselContent>
+                </Carousel>
+            )}
+        </div>
+    );
+};
