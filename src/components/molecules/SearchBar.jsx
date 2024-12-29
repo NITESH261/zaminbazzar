@@ -58,7 +58,7 @@ const SearchBar = () => {
                                     <FormControl>
                                         <SelectTrigger
                                             icon={false}
-                                            className="border-none"
+                                            className="border-none ring-white focus:ring-white focus:border-none outline-none"
                                         >
                                             <SelectValue placeholder="Select your location" />
                                         </SelectTrigger>
