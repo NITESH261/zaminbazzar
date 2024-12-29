@@ -11,8 +11,8 @@ const Footer = () => {
             <div className="container max-w-7xl mx-auto py-8 px-4">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                     <div>
-                        <Logo />
-                        <h2 className="font-bold text-lg">About ZaminWale</h2>
+                        <Logo className={"text-black"} />
+                        <h2 className="font-bold text-lg">About zaminwale</h2>
                         <p>As the largest platform connecting property buyers and sellers</p>
                         <div className="mt-4">
                             <p className="text-base">
