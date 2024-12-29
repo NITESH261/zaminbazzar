@@ -76,8 +76,9 @@ const DreamPlots = () => {
             <div className="flex w-full">
                 <div className="flex flex-col gap-4 md:gap-6 w-full max-w-7xl mx-auto px-4 py-6 md:py-8 lg:py-10 xl:py-12">
                     <div className="flex w-full">
-                        <h2 className="text-lg font-medium md:text-xl lg:text-2xl">
-                            Find Your Dream Plots With Zaminwale.
+                        <h2 className="text-lg font-medium md:text-xl lg:text-2xl flex flex-col">
+                            <span>Find Your Dream Plots With Zaminwale.</span>
+                            <span className="h-1.5 w-20 bg-[#0078DB] rounded-full"></span>
                         </h2>
                     </div>
                     <div className="flex w-full">

@@ -7,8 +7,9 @@ const TrendingNews = () => {
             <div className="flex w-full">
                 <div className="flex flex-col gap-4 md:gap-6 w-full max-w-7xl mx-auto px-4 py-4 md:py-6 lg:py-8 xl:py-14">
                     <div className="flex w-full">
-                        <h2 className="text-lg font-medium md:text-xl lg:text-2xl">
-                            News & Blogs
+                        <h2 className="text-lg font-medium md:text-xl lg:text-2xl flex flex-col">
+                            <span>News & Blogs</span>
+                            <span className="h-1.5 w-20 bg-[#0078DB] rounded-full"></span>
                         </h2>
                     </div>
                     <div className="flex w-full overflow-x-auto xl:overflow-x-hidden scrollbar-hide">

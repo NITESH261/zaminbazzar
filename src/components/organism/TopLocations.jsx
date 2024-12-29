@@ -54,8 +54,9 @@ const TopLocations = () => {
             <div className="flex w-full">
                 <div className="flex flex-col gap-4 w-full max-w-7xl mx-auto px-4 py-4 md:py-6 lg:py-8 xl:py-10">
                     <div className="flex w-full">
-                        <h2 className="text-lg font-medium md:text-xl lg:text-2xl">
-                            Top Locations
+                        <h2 className="text-lg font-medium md:text-xl lg:text-2xl flex flex-col">
+                            <span>Top Locations</span>
+                            <span className="h-1.5 w-20 bg-[#0078DB] rounded-full"></span>
                         </h2>
                     </div>
                     <div className="flex w-full overflow-auto scrollbar-hide">
