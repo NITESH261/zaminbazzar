@@ -7,14 +7,13 @@ const About = () => {
             <div className="flex w-full">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 w-full max-w-7xl mx-auto px-4 py-4 md:py-6 lg:py-8 xl:py-20">
                     <div className="flex flex-col space-y-4 md:space-y-6 w-full justify-center">
-                        <div className="space-y-2 w-full">
+                        <div className="flex flex-col gap-4 w-full">
+                            <h2 className="text-xl font-semibold md:text-2xl lg:text-3xl">
+                                Future Projects
+                            </h2>
                             <span className="text-sm md:text-base lg:text-lg font-semibold">
                                 *Riverhill - With Nature In the Nature!
                             </span>
-                            <h2 className="text-xl font-semibold md:text-2xl lg:text-3xl">
-                                "Welcome to Zamin Wale, <br />
-                                where sustainability meets everyday life!"
-                            </h2>
                         </div>
                         <p className="text-sm md:text-base">
                             Enjoy exclusive bungalow + plot offerings with 20+ amenities for the ultimate living experience. Moreover, connect with nature through farming opportunities We value sustainable living and the joy of growing your own veggies. That's why we offer plenty of space for farming. Whether you're experienced or new to gardening, our plots are perfect for unleashing your green thumb.
