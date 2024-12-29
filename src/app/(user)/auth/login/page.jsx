@@ -7,6 +7,7 @@ import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/componen
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import cookieService from "@/services/cookie";
+import useZaminwaleStore from "@/store";
 import { zodResolver } from "@hookform/resolvers/zod";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
@@ -27,6 +28,7 @@ const formSchema = z.object({
 const Page = () => {
 
     const [loading, setLoading] = useState(false)
+    const dispatch = useZaminwaleStore(store => store.dispatch)
     const router = useRouter()
 
     const form = useForm({
@@ -45,6 +47,12 @@ const Page = () => {
                 form.reset()
                 toast.success(resp.message)
                 router.push("/post-property/create-property")
+
+                dispatch({
+                    type: "SET_STATE",
+                    payload: { isAuthenticated: true }
+                })
+
                 cookieService.setTokens({
                     accessToken: resp.token,
                 })

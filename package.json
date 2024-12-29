@@ -13,6 +13,7 @@
     "@radix-ui/react-accordion": "^1.2.1",
     "@radix-ui/react-checkbox": "^1.1.2",
     "@radix-ui/react-dialog": "^1.1.2",
+    "@radix-ui/react-dropdown-menu": "^2.1.4",
     "@radix-ui/react-label": "^2.1.0",
     "@radix-ui/react-navigation-menu": "^1.2.1",
     "@radix-ui/react-popover": "^1.1.2",
@@ -26,6 +27,7 @@
     "date-fns": "^4.1.0",
     "embla-carousel-autoplay": "^8.3.0",
     "embla-carousel-react": "^8.3.0",
+    "immer": "^10.1.1",
     "js-cookie": "^3.0.5",
     "jwt-decode": "^4.0.0",
     "lucide-react": "^0.453.0",
@@ -41,7 +43,8 @@
     "tailwind-merge": "^2.5.4",
     "tailwindcss-animate": "^1.0.7",
     "zamin-wale": "link:",
-    "zod": "^3.23.8"
+    "zod": "^3.23.8",
+    "zustand": "^5.0.2"
   },
   "devDependencies": {
     "eslint": "^8",
