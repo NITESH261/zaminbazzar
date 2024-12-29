@@ -1,81 +1,80 @@
+import { FaFacebookSquare, FaInstagram, FaLinkedin, FaYoutube } from "react-icons/fa";
+import { FaSquareXTwitter } from "react-icons/fa6";
 import Link from "next/link";
+import React from "react";
 import Logo from "../atoms/Logo";
+
 
 const Footer = () => {
     return (
-        <>
-            <div className="flex flex-col w-full bg-blue-50 border-t border-neutral-200">
-                <div className="flex w-full max-w-7xl mx-auto px-4 py-6 md:py-8 lg:py-10 xl:py-12">
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:grid-cols-3">
-                        <div className="flex flex-col gap-4 md:gap-6 w-full">
-                            <span className="text-lg font-medium">Contact Info:</span>
-                            <div className="flex w-full flex-col gap-2 lg:gap-4">
-                                <p className="text-base">
-                                    G-Square Buisness Park,
-                                    3<sup>rd</sup> Floor Office no 303 & 304,
-                                    opposite of Sanpada Railway Station,
-                                    Navi Mumbai, Maharashatra 400703
+        <div className="bg-gray-100 text-gray-800 w-full">
+            <div className="container mx-auto py-8 px-4">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div>
+                        <Logo />
+                        <h2 className="font-bold text-lg">About ZaminWale</h2>
+                        <p>As the largest platform connecting property buyers and sellers</p>
+                        <div className="mt-4">
+                            <p className="text-base">
+                                G-Square Buisness Park,
+                                3<sup>rd</sup> Floor Office no 303 & 304,
+                                opposite of Sanpada Railway Station,
+                                Navi Mumbai, Maharashatra 400703
 
-                                </p>
-                                <span>9555599299 / 9555599099</span>
-                                <span>info@zaminwale.com</span>
-                                <Logo />
-                            </div>
-                        </div>
-                        <div className="flex flex-col gap-4 w-full">
-                            <span className="text-lg font-medium">Company :</span>
-                            <ul className="flex w-full flex-col gap-2">
-                                {
-                                    NavItems[0].data.map((item, i) =>
-                                        <li key={`company-${i}`} className="w-fit">
-                                            <Link
-                                                href={item.link}
-                                                className="text-base"
-                                            >
-                                                {item.label}
-                                            </Link>
-                                        </li>
-                                    )
-                                }
-                            </ul>
-                        </div>
-                        <div className="flex flex-col gap-6 w-full">
-                            <div className="flex flex-col gap-4 w-full">
-                                <span className="text-lg font-medium">About Zaminwale :</span>
-                                <div className="flex w-full flex-col gap-2 lg:gap-4">
-                                    <p className="text-base">
-                                        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quas dolore ullam id labore doloremque. Vero et quae tempora facilis illo aliquid, commodi nesciunt illum debitis asperiores qui odio, eius deleniti.
-                                    </p>
-                                </div>
-                            </div>
-                            <div className="flex flex-col gap-4 w-full">
-                                <span className="text-lg font-medium">Projects in Mumbai :</span>
-                                <ul className="flex w-full gap-1 flex-wrap">
-                                    {
-                                        NavItems[1].data.map((item, i) =>
-                                            <li key={`project-${i}`} className="w-fit">
-                                                <Link
-                                                    href={item.link}
-                                                    className="text-base"
-                                                >
-                                                    {item.label}
-                                                </Link>
-                                                <span className="px-2">|</span>
-                                            </li>
-                                        )
-                                    }
-                                </ul>
+                            </p>
+                            <span>9555599299 / 9555599099</span> <br />
+                            <span>info@zaminwale.com</span>
+
+                            <div className="flex space-x-2 mt-4">
+                                <a href="#"><FaFacebookSquare className="fab fa-facebook-f text-blue-600 text-2xl" /></a>
+                                <a href="#"><FaSquareXTwitter className="fab fa-twitter text-blue-400 text-2xl" /></a>
+                                <a href="#"><FaLinkedin className="fab fa-linkedin-in text-blue-700 text-2xl" /></a>
+                                <a href="#"><FaInstagram className="fab fa-instagram text-pink-600 text-2xl" /></a>
+                                <a href="#"><FaYoutube className="fab fa-youtube text-red-600 text-2xl" /></a>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div className="flex w-full items-center bg-neutral-800 text-white justify-center py-6 lg:py-8 px-4">
-                    <p className="text-base md:text-lg text-center font-medium items-center justify-center">
-                        Copyright {new Date().getFullYear()} &copy; Zaminwale All Rights Reserved
-                    </p>
+                    <div>
+                        <h2 className="font-bold text-lg mb-4">Company</h2>
+                        <div className="flex flex-col gap-4 w-full">
+                            <p className="text-base">
+                                {
+                                    NavItems[0].data.map((item, i) => (
+                                        <React.Fragment key={`company-${i}`}>
+                                            <Link href={item.link} className="text-blue-600 hover:underline">
+                                                {item.label}
+                                            </Link>
+                                            {i < NavItems[0].data.length - 1 && " | "}
+                                        </React.Fragment>
+                                    ))
+                                }
+                            </p>
+                        </div>
+
+                        <h2 className="font-bold text-lg mt-4 mb-4">Projects in Mumbai</h2>
+                        <div className="flex flex-col gap-4 w-full">
+                            <p className="text-base flex flex-wrap gap-1">
+                                {NavItems[1].data.map((item, i) => (
+                                    <React.Fragment key={`project-${i}`}>
+                                        <Link href={item.link} className="text-blue-600 hover:underline">
+                                            {item.label}
+                                        </Link>
+                                        {i < NavItems[1].data.length - 1 && <span className="px-2">|</span>}
+                                    </React.Fragment>
+                                ))}
+                            </p>
+                        </div>
+
+                    </div>
                 </div>
             </div>
-        </>
+
+            <div className="bg-gray-800 py-4">
+                <div className="container mx-auto text-center text-sm text-gray-400">
+                    <p>All trademarks, logos and names are properties of their respective owners. All Rights Reserved. © Copyright 2024 ZaminWale Pvt Limited.</p>
+                </div>
+            </div>
+        </div>
     );
 };
 
