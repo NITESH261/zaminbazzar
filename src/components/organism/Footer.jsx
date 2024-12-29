@@ -1,14 +1,14 @@
-import { FaFacebookSquare, FaInstagram, FaLinkedin, FaYoutube } from "react-icons/fa";
-import { FaSquareXTwitter } from "react-icons/fa6";
 import Link from "next/link";
 import React from "react";
+import { FaFacebookSquare, FaInstagram, FaLinkedin, FaYoutube } from "react-icons/fa";
+import { FaSquareXTwitter } from "react-icons/fa6";
 import Logo from "../atoms/Logo";
 
 
 const Footer = () => {
     return (
         <div className="bg-gray-100 text-gray-800 w-full">
-            <div className="container mx-auto py-8 px-4">
+            <div className="container max-w-7xl mx-auto py-8 px-4">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                     <div>
                         <Logo />
@@ -71,7 +71,7 @@ const Footer = () => {
 
             <div className="bg-gray-800 py-4">
                 <div className="container mx-auto text-center text-sm text-gray-400">
-                    <p>All trademarks, logos and names are properties of their respective owners. All Rights Reserved. © Copyright 2024 ZaminWale Pvt Limited.</p>
+                    <p>All trademarks, logos and names are properties of their respective owners. All Rights Reserved. © Copyright 2024 zaminwale Pvt Limited.</p>
                 </div>
             </div>
         </div>
