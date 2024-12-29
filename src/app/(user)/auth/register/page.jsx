@@ -54,7 +54,7 @@ const Page = () => {
                 setLoading(false)
                 form.reset()
                 toast.success(resp.message)
-                router.push("/post-property/create-property")
+                router.push("/auth/login")
 
                 dispatch({
                     type: "SET_STATE",

@@ -31,7 +31,6 @@ const Page = () => {
                 ...prev,
                 ...values,
             }));
-            console.log("Form Values:", values);
             toast.message("You submitted the following values:", {
                 description: JSON.stringify(values, null, 2),
             });
@@ -40,7 +39,6 @@ const Page = () => {
         const handleAPICall = async () => {
             setLoading(true);
             const body = { ...formData, ...values };
-            console.log("Submitting:", body);
             await createProperty(body)
                 .then(resp => {
                     setLoading(false)
