@@ -1,6 +1,10 @@
+"use client"
+
+import useZaminwaleStore from "@/store";
 import { AlignRightIcon, House, Tag, User } from "lucide-react";
 import Link from "next/link";
 import Logo from "../atoms/Logo";
+import LogoutBtn from "../atoms/LogoutBtn";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "../ui/accordion";
 import { Button } from "../ui/button";
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "../ui/dropdown-menu";
@@ -13,6 +17,9 @@ import {
 } from "../ui/sheet";
 
 const Navbar = () => {
+
+    const isAuthenticated = useZaminwaleStore(store => store.isAuthenticated)
+
     return (
         <div className="flex sticky top-0 font-nunito z-20 w-full bg-[#0078DB]">
             <div className="flex w-full h-16 items-center max-w-[1480px] mx-auto gap-4 px-4">
@@ -59,12 +66,6 @@ const Navbar = () => {
                         </ul>
                     </div>
                     <div className="flex flex-grow items-center  md:gap-4 justify-end">
-                        <Button asChild className="bg-white text-black hover:text-white rounded-full">
-                            <Link href={"/"} className="py-1 h-[unset] gap-2">
-                                <span>Post Property</span>
-                                <span className="text-[10px] bg-green-500 text-white font-semibold px-2 py-0 rounded-sm">FREE</span>
-                            </Link>
-                        </Button>
                         <DropdownMenu>
                             <DropdownMenuTrigger asChild>
                                 <Button
@@ -72,7 +73,7 @@ const Navbar = () => {
                                     size="icon"
                                     className="hidden md:flex text-[#0078DB] rounded-full"
                                 >
-                                    <User className="!size-5" />
+                                    <User className="!size-4" />
                                 </Button>
                             </DropdownMenuTrigger>
                             <DropdownMenuContent align="end">
@@ -86,8 +87,18 @@ const Navbar = () => {
                                         Register
                                     </Link>
                                 </DropdownMenuItem>
+                                {
+                                    isAuthenticated ?
+                                        <LogoutBtn /> : null
+                                }
                             </DropdownMenuContent>
                         </DropdownMenu>
+                        <Button asChild className="bg-white text-black hover:text-white rounded-full">
+                            <Link href={"/post-property/create-property"} className="py-1 h-[unset] gap-2">
+                                <span>Post Property</span>
+                                <span className="text-[10px] bg-green-500 text-white font-semibold px-2 py-0 rounded-sm">FREE</span>
+                            </Link>
+                        </Button>
                         <Sheet>
                             <SheetTrigger asChild>
                                 <Button
@@ -201,7 +212,7 @@ const NavItems = [
         icon: Tag,
         data: [
             {
-                label: "Location ",
+                label: "Location",
                 data: [
                     {
                         label: "Thane",
@@ -218,7 +229,7 @@ const NavItems = [
                 ]
             },
             {
-                label: "Plot Types ",
+                label: "Plot Types",
                 data: [
                     {
                         label: "Residential Plots",
@@ -255,7 +266,7 @@ const NavItems = [
                 ]
             },
             {
-                label: "Budget ",
+                label: "Budget",
                 data: [
                     {
                         label: "₹2Lac - ₹5Lac",
@@ -276,7 +287,7 @@ const NavItems = [
                 ]
             },
             {
-                label: "Services ",
+                label: "Services",
                 data: [
                     {
                         label: "Land buying & selling",
@@ -311,12 +322,12 @@ const NavItems = [
                 data: [
                     {
                         label: "Post property",
-                        link: "/"
+                        link: "/post-property/create-property"
                     },
                 ]
             },
             {
-                label: "Services ",
+                label: "Services",
                 data: [
                     {
                         label: "Property valuation",
