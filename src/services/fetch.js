@@ -76,9 +76,9 @@ const customFetch = async (
 			addAuthorizationHeader(headers, token, fallbackToken);
 		}
 
-		if (tokenType === "access" && token) {
+		if (tokenType === "access" && token && fallbackToken) {
 			try {
-				const decodedToken = jwtDecode(token);
+				const decodedToken = jwtDecode(token || fallbackToken);
 				console.log(decodedToken);
 
 				if (!decodedToken || !decodedToken.id) {
