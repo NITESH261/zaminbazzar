@@ -31,9 +31,9 @@ const Page = () => {
                 ...prev,
                 ...values,
             }));
-            toast.message("You submitted the following values:", {
-                description: JSON.stringify(values, null, 2),
-            });
+            // toast.message("You submitted the following values:", {
+            //     description: JSON.stringify(values, null, 2),
+            // });
         };
 
         const handleAPICall = async () => {
@@ -71,9 +71,9 @@ const Page = () => {
     ][step];
 
     return (
-        <div className="flex w-screen h-full overflow-hidden bg-neutral-200">
-            <div className="grid grid-cols-8 h-full flex-col w-full max-w-7xl mx-auto gap-6 px-4 py-6 relative">
-                <div className="flex flex-col flex-1 gap-4 w-full bg-white p-4 rounded-lg col-span-2">
+        <div className="flex w-screen h-full overflow-y-auto md:overflow-hidden bg-neutral-200">
+            <div className="flex md:grid md:grid-cols-6 lg:grid-cols-8 h-full flex-col w-full max-w-7xl mx-auto gap-6 px-4 py-6 relative">
+                <div className="flex md:flex-col h-fit md:h-full md:flex-1 gap-4 w-full bg-white p-4 rounded-lg col-span-2">
                     {Steps.map((stepData, index) => {
                         const status =
                             step > index
@@ -93,8 +93,8 @@ const Page = () => {
                     })}
                 </div>
 
-                <div className="relative flex w-full rounded-lg bg-white h-full overflow-y-auto col-span-6">
-                    <div className="flex absolute p-6 w-full">
+                <div className="relative flex w-full rounded-lg bg-white h-auto md:h-full md:overflow-y-auto md:col-span-4 lg:col-span-6">
+                    <div className="flex relative md:absolute p-6 h-full w-full">
                         <Form
                             onSubmit={onSubmit}
                             prev={prevStep}
