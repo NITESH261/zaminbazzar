@@ -30,9 +30,6 @@ const Step2Data = [
     {
         label: "Locality",
     },
-    {
-        label: "Plot no",
-    }
 ];
 
 const LocationDetails = ({ onSubmit, prev, currentStep, loading, formData }) => {
@@ -46,11 +43,11 @@ const LocationDetails = ({ onSubmit, prev, currentStep, loading, formData }) => 
             <Form {...form}>
                 <form onSubmit={form.handleSubmit(onSubmit)}>
                     <div className="flex flex-1 gap-10 flex-col w-full">
-                        <div className="flex flex-col w-full">
-                            <span className="text-2xl font-semibold">
+                        <div className="flex gap-1 flex-col w-full">
+                            <span className="text-xl md:text-2xl font-semibold">
                                 Where is your property located
                             </span>
-                            <span>An accurate location helps you to connect with buyers</span>
+                            <span className="text-sm md:text-base">An accurate location helps you to connect with buyers</span>
                         </div>
                         <FormField
                             control={form.control}

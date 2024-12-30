@@ -92,8 +92,8 @@ const BasicDetails = ({ onSubmit, prev, currentStep, loading, formData }) => {
                 <form onSubmit={form.handleSubmit(onSubmit)}>
                     <div className="flex flex-1 gap-10 flex-col w-full">
                         <div className="flex w-full">
-                            <span className="text-2xl font-semibold">
-                                Welcome back, Akash! <br /> Fill out your basic details
+                            <span className="text-xl md:text-2xl font-semibold">
+                                Welcome back, Akash! <br className="hidden md:flex" /> Fill out your basic details
                             </span>
                         </div>
                         <FormField

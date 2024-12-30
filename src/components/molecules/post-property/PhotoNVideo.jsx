@@ -90,7 +90,7 @@ const PhotoNVideo = ({ onSubmit, prev, currentStep, loading, formData }) => {
                     className="w-full flex flex-col gap-10"
                 >
                     <div className="flex flex-col w-full">
-                        <span className="text-2xl font-semibold">
+                        <span className="text-xl md:text-2xl font-semibold">
                             Add photos of your property (Optional)
                         </span>
                     </div>

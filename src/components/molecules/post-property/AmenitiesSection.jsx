@@ -108,7 +108,7 @@ const AmenitiesSection = ({ onSubmit, prev, currentStep, loading, formData }) =>
                 <form onSubmit={form.handleSubmit(onSubmit)}>
                     <div className="flex flex-1 gap-10 flex-col w-full">
                         <div className="flex flex-col w-full">
-                            <span className="text-2xl font-semibold">
+                            <span className="text-xl md:text-2xl font-semibold">
                                 Add amenities / unique features
                             </span>
                         </div>
@@ -307,7 +307,7 @@ const AmenitiesSection = ({ onSubmit, prev, currentStep, loading, formData }) =>
                                 </FormItem>
                             )}
                         />
-                        <div className="flex w-full mt-4">
+                        <div className="flex w-full mt-4 pb-6">
                             <Button
                                 onClick={prev}
                                 className="px-4 py-2 bg-gray-300 text-black rounded-lg mr-4"

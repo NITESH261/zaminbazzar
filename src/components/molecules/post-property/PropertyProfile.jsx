@@ -1,16 +1,12 @@
 import { Button } from "@/components/ui/button";
-import { Calendar } from "@/components/ui/calendar";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
-import { cn } from "@/lib/utils";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { format } from "date-fns";
-import { ArrowLeft, CalendarIcon } from "lucide-react";
+import { ArrowLeft } from "lucide-react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 
@@ -36,8 +32,8 @@ const PropertyDetailsSchema = z.object({
         required_error: "You need to option",
     }),
     hasConstruction: z.boolean().default(false),
-    possessionBy: z.date({
-        required_error: "Select possession date",
+    possessionBy: z.string({
+        required_error: "Please add possession by",
     }),
     ownership: z.enum(["freehold", "leasehold", "co-operative society", "power of attorney"], {
         required_error: "You need to option",
@@ -102,6 +98,14 @@ const Step3Data = [
     },
     {
         label: "Possession by",
+        data: [
+            { value: "Immediate", label: "Immediate" },
+            { value: "Within 3 months", label: "Within 3 months" },
+            { value: "within 6 months", label: "within 6 months" },
+            { value: "By 2025", label: "By 2025" },
+            { value: "By 2026", label: "By 2026" },
+            { value: "By 2027", label: "By 2027" },
+        ]
     },
     {
         label: "Ownership",
@@ -124,7 +128,7 @@ const PropertyProfile = ({ onSubmit, prev, currentStep, loading, formData }) => 
 
     const form = useForm({
         resolver: zodResolver(PropertyDetailsSchema),
-        defaultValues: formData
+        defaultValues: formData ?? {}
     })
 
     return (
@@ -133,7 +137,7 @@ const PropertyProfile = ({ onSubmit, prev, currentStep, loading, formData }) => 
                 <form onSubmit={form.handleSubmit(onSubmit)} className="h-fit w-full">
                     <div className="flex h-fit gap-10 flex-col w-full">
                         <div className="flex flex-col w-full">
-                            <span className="text-2xl font-semibold">
+                            <span className="text-xl md:text-2xl font-semibold">
                                 Tell us about your property
                             </span>
                         </div>
@@ -158,6 +162,7 @@ const PropertyProfile = ({ onSubmit, prev, currentStep, loading, formData }) => 
                                         <FormControl>
                                             <div className="flex gap-4">
                                                 <Input
+                                                    type="number"
                                                     placeholder="Plot Area"
                                                     onChange={handleInputChange}
                                                 />
@@ -193,7 +198,11 @@ const PropertyProfile = ({ onSubmit, prev, currentStep, loading, formData }) => 
                                         <FormItem className="flex flex-col gap-2">
                                             {/* <FormLabel>{Step3Data[s1].label}</FormLabel> */}
                                             <FormControl>
-                                                <Input placeholder="Plot Length " {...field} value={field.value ?? ""} />
+                                                <Input
+                                                    type="number"
+                                                    placeholder="Plot Length "
+                                                    {...field} value={field.value ?? ""}
+                                                />
                                             </FormControl>
                                             <FormMessage />
                                         </FormItem>
@@ -206,7 +215,11 @@ const PropertyProfile = ({ onSubmit, prev, currentStep, loading, formData }) => 
                                         <FormItem className="flex flex-col gap-2">
                                             {/* <FormLabel>{Step3Data[1].label}</FormLabel> */}
                                             <FormControl>
-                                                <Input placeholder="Plot Breadth " {...field} value={field.value ?? ""} />
+                                                <Input
+                                                    type="number"
+                                                    placeholder="Plot Breadth"
+                                                    {...field} value={field.value ?? ""}
+                                                />
                                             </FormControl>
                                             <FormMessage />
                                         </FormItem>
@@ -221,7 +234,11 @@ const PropertyProfile = ({ onSubmit, prev, currentStep, loading, formData }) => 
                                 <FormItem className="flex flex-col gap-2">
                                     <FormLabel>{Step3Data[2].label}</FormLabel>
                                     <FormControl>
-                                        <Input placeholder="No of floors allowed" {...field} value={field.value ?? ""} />
+                                        <Input
+                                            type="number"
+                                            placeholder="No of floors allowed"
+                                            {...field} value={field.value ?? ""}
+                                        />
                                     </FormControl>
                                     <FormMessage />
                                 </FormItem>
@@ -321,36 +338,27 @@ const PropertyProfile = ({ onSubmit, prev, currentStep, loading, formData }) => 
                             control={form.control}
                             name="possessionBy"
                             render={({ field }) => (
-                                <FormItem className="flex flex-col">
+                                <FormItem className="flex flex-col gap-2">
                                     <FormLabel>{Step3Data[6].label}</FormLabel>
-                                    <Popover>
-                                        <PopoverTrigger asChild>
+                                    <FormControl>
+                                        <Select
+                                            onValueChange={field.onChange}
+                                            defaultValue={field.value ?? ""}
+                                        >
                                             <FormControl>
-                                                <Button
-                                                    variant={"outline"}
-                                                    className={cn(
-                                                        "w-[240px] pl-3 text-left font-normal",
-                                                        !field.value && "text-muted-foreground"
-                                                    )}
-                                                >
-                                                    {field.value ? (
-                                                        format(field.value, "PPP")
-                                                    ) : (
-                                                        <span>Pick a date</span>
-                                                    )}
-                                                    <CalendarIcon className="ml-auto h-4 w-4 opacity-50" />
-                                                </Button>
+                                                <SelectTrigger>
+                                                    <SelectValue placeholder="Expected by" />
+                                                </SelectTrigger>
                                             </FormControl>
-                                        </PopoverTrigger>
-                                        <PopoverContent className="w-auto p-0" align="start">
-                                            <Calendar
-                                                mode="single"
-                                                selected={field.value}
-                                                onSelect={field.onChange}
-                                                initialFocus
-                                            />
-                                        </PopoverContent>
-                                    </Popover>
+                                            <SelectContent>
+                                                {Step3Data[6].data.map(({ value, label }) => (
+                                                    <SelectItem key={label} value={value}>
+                                                        {label}
+                                                    </SelectItem>
+                                                ))}
+                                            </SelectContent>
+                                        </Select>
+                                    </FormControl>
                                     <FormMessage />
                                 </FormItem>
                             )}
@@ -387,14 +395,18 @@ const PropertyProfile = ({ onSubmit, prev, currentStep, loading, formData }) => 
                         />
                         <div className="flex w-full gap-4 flex-col">
                             <FormLabel>{Step3Data[8].label}</FormLabel>
-                            <div className="grid grid-cols-2 gap-4 w-full">
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 w-full">
                                 <FormField
                                     control={form.control}
                                     name="priceInWord"
                                     render={({ field }) => (
                                         <FormItem className="flex flex-col gap-2">
                                             <FormControl>
-                                                <Input placeholder="Expected price in words " {...field} value={field.value ?? ""} />
+                                                <Input
+                                                    type="number"
+                                                    placeholder="Expected price"
+                                                    {...field} value={field.value ?? ""}
+                                                />
                                             </FormControl>
                                             <FormMessage />
                                         </FormItem>
@@ -406,7 +418,11 @@ const PropertyProfile = ({ onSubmit, prev, currentStep, loading, formData }) => 
                                     render={({ field }) => (
                                         <FormItem className="flex flex-col gap-2">
                                             <FormControl>
-                                                <Input placeholder="Price per sqft" {...field} value={field.value ?? ""} />
+                                                <Input
+                                                    type="number"
+                                                    placeholder="Price per sqft"
+                                                    {...field} value={field.value ?? ""}
+                                                />
                                             </FormControl>
                                             <FormMessage />
                                         </FormItem>
@@ -414,7 +430,7 @@ const PropertyProfile = ({ onSubmit, prev, currentStep, loading, formData }) => 
                                 />
                             </div>
                         </div>
-                        <div className="grid grid-cols-2 xl:grid-cols-3 gap-4 w-full">
+                        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 w-full">
                             <FormField
                                 control={form.control}
                                 name="inclusivePrice"
@@ -481,7 +497,7 @@ const PropertyProfile = ({ onSubmit, prev, currentStep, loading, formData }) => 
                                 </FormItem>
                             )}
                         />
-                        <div className="flex gap-4 w-full">
+                        <div className="flex gap-4 pb-6 w-full">
                             <Button
                                 onClick={prev}
                                 className="px-4 py-2 bg-gray-300 text-black rounded-lg"
