@@ -30,9 +30,6 @@ const Step2Data = [
     {
         label: "Locality",
     },
-    {
-        label: "Plot no",
-    }
 ];
 
 const LocationDetails = ({ onSubmit, prev, currentStep, loading, formData }) => {

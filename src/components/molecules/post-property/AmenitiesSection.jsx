@@ -307,7 +307,7 @@ const AmenitiesSection = ({ onSubmit, prev, currentStep, loading, formData }) =>
                                 </FormItem>
                             )}
                         />
-                        <div className="flex w-full mt-4">
+                        <div className="flex w-full mt-4 pb-6">
                             <Button
                                 onClick={prev}
                                 className="px-4 py-2 bg-gray-300 text-black rounded-lg mr-4"

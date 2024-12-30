@@ -1,13 +1,12 @@
 "use client"
 
-import useZaminwaleStore from "@/store";
 import { AlignRightIcon, House, Tag, User } from "lucide-react";
 import Link from "next/link";
 import Logo from "../atoms/Logo";
 import LogoutBtn from "../atoms/LogoutBtn";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "../ui/accordion";
 import { Button } from "../ui/button";
-import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "../ui/dropdown-menu";
+import { DropdownMenu, DropdownMenuContent, DropdownMenuTrigger } from "../ui/dropdown-menu";
 import {
     Sheet,
     SheetContent,
@@ -17,8 +16,6 @@ import {
 } from "../ui/sheet";
 
 const Navbar = () => {
-
-    const isAuthenticated = useZaminwaleStore(store => store.isAuthenticated)
 
     return (
         <div className="flex sticky top-0 font-nunito z-20 w-full bg-[#0078DB]">
@@ -77,20 +74,7 @@ const Navbar = () => {
                                 </Button>
                             </DropdownMenuTrigger>
                             <DropdownMenuContent align="end">
-                                <DropdownMenuItem asChild>
-                                    <Link href={"/auth/login"} className="cursor-pointer">
-                                        Login
-                                    </Link>
-                                </DropdownMenuItem>
-                                <DropdownMenuItem asChild>
-                                    <Link href={"/auth/register"} className="cursor-pointer">
-                                        Register
-                                    </Link>
-                                </DropdownMenuItem>
-                                {
-                                    isAuthenticated ?
-                                        <LogoutBtn /> : null
-                                }
+                                <LogoutBtn />
                             </DropdownMenuContent>
                         </DropdownMenu>
                         <Button asChild className="bg-white text-black hover:text-white rounded-full">

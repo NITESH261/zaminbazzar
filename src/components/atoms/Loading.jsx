@@ -3,7 +3,7 @@ import { cn } from "@/lib/utils"
 const Loading = ({ className = "" }) => (
     <>
         <svg
-            className={cn("h-6 w-6 animate-spin text-pink-700", className)}
+            className={cn("h-6 w-6 animate-spin text-blue-700", className)}
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
             viewBox="0 0 24 24"

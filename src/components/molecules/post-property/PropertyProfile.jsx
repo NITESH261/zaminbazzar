@@ -201,8 +201,7 @@ const PropertyProfile = ({ onSubmit, prev, currentStep, loading, formData }) => 
                                                 <Input
                                                     type="number"
                                                     placeholder="Plot Length "
-                                                    value={field.value ?? ""}
-                                                    {...field}
+                                                    {...field} value={field.value ?? ""}
                                                 />
                                             </FormControl>
                                             <FormMessage />
@@ -219,8 +218,7 @@ const PropertyProfile = ({ onSubmit, prev, currentStep, loading, formData }) => 
                                                 <Input
                                                     type="number"
                                                     placeholder="Plot Breadth"
-                                                    value={field.value ?? ""}
-                                                    {...field}
+                                                    {...field} value={field.value ?? ""}
                                                 />
                                             </FormControl>
                                             <FormMessage />
@@ -239,8 +237,7 @@ const PropertyProfile = ({ onSubmit, prev, currentStep, loading, formData }) => 
                                         <Input
                                             type="number"
                                             placeholder="No of floors allowed"
-                                            value={field.value ?? ""}
-                                            {...field}
+                                            {...field} value={field.value ?? ""}
                                         />
                                     </FormControl>
                                     <FormMessage />
@@ -408,8 +405,7 @@ const PropertyProfile = ({ onSubmit, prev, currentStep, loading, formData }) => 
                                                 <Input
                                                     type="number"
                                                     placeholder="Expected price"
-                                                    value={field.value ?? ""}
-                                                    {...field}
+                                                    {...field} value={field.value ?? ""}
                                                 />
                                             </FormControl>
                                             <FormMessage />
@@ -425,8 +421,7 @@ const PropertyProfile = ({ onSubmit, prev, currentStep, loading, formData }) => 
                                                 <Input
                                                     type="number"
                                                     placeholder="Price per sqft"
-                                                    value={field.value ?? ""}
-                                                    {...field}
+                                                    {...field} value={field.value ?? ""}
                                                 />
                                             </FormControl>
                                             <FormMessage />
@@ -502,7 +497,7 @@ const PropertyProfile = ({ onSubmit, prev, currentStep, loading, formData }) => 
                                 </FormItem>
                             )}
                         />
-                        <div className="flex gap-4 w-full">
+                        <div className="flex gap-4 pb-6 w-full">
                             <Button
                                 onClick={prev}
                                 className="px-4 py-2 bg-gray-300 text-black rounded-lg"

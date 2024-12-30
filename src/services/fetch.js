@@ -69,7 +69,7 @@ const customFetch = async (
 			headers["Content-Type"] = "application/json";
 		}
 
-		const token = tokenType ? getToken(tokenType) : null;
+		const token = tokenType ? await getToken(tokenType) : null;
 		const fallbackToken = options?.fallbackToken;
 
 		if (tokenType !== null) {
