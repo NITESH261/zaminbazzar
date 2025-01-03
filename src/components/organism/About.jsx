@@ -34,10 +34,7 @@ const About = () => {
                                     variant="outline"
                                     className="border-[#0078DB]"
                                 >
-                                    Know More
-                                </Button>
-                                <Button className="bg-[#0078DB]">
-                                    See Property Details
+                                    See More Details
                                 </Button>
                             </div>
                         </div>
