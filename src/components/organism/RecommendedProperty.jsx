@@ -1,41 +1,46 @@
 "use client";
 
-import Autoplay from "embla-carousel-autoplay";
 import { ArrowRight } from "lucide-react";
-import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 import { Button } from "../ui/button";
-import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "../ui/carousel";
+import {
+    Carousel,
+    CarouselContent,
+    CarouselItem,
+    CarouselNext,
+    CarouselPrevious,
+} from "../ui/carousel";
+import ImageScroll from "../molecules/ImageScroll";
 
 const Cards = [
     {
-        img: "recomonded-property1.jpeg"
+        img: "recomonded-property1.jpeg",
     },
     {
-        img: "recomonded-property2.jpeg"
+        img: "recomonded-property2.jpeg",
     },
     {
-        img: "recomonded-property3.jpeg"
+        img: "recomonded-property3.jpeg",
     },
     {
-        img: "recomonded-property4.jpeg"
+        img: "recomonded-property4.jpeg",
     },
     {
-        img: "recomonded-property5.jpeg"
+        img: "recomonded-property5.jpeg",
     },
     {
-        img: "recomonded-property6.jpeg"
+        img: "recomonded-property6.jpeg",
     },
     {
-        img: "recomonded-property7.jpeg"
+        img: "recomonded-property7.jpeg",
     },
     {
-        img: "recomonded-property8.jpeg"
+        img: "recomonded-property8.jpeg",
     },
     {
-        img: "recomonded-property9.jpeg"
-    }
+        img: "recomonded-property9.jpeg",
+    },
 ];
 
 const Property = () => {
@@ -58,8 +63,13 @@ const Property = () => {
                             <span>Recommended Property</span>
                             <span className="h-1.5 w-20 bg-[#0078DB] rounded-full"></span>
                         </h2>
-                        <Link href={"/popular-properties"} className="flex items-center gap-2 hover:text-black text-[#0078DB] text-lg md:text-xl">
-                            <span className="hidden md:flex">See More Properties</span>
+                        <Link
+                            href={"/popular-properties"}
+                            className="flex items-center gap-2 hover:text-black text-[#0078DB] text-lg md:text-xl"
+                        >
+                            <span className="hidden md:flex">
+                                See More Properties
+                            </span>
                             <ArrowRight />
                         </Link>
                     </div>
@@ -84,18 +94,25 @@ const Property = () => {
                                     >
                                         <div
                                             className="flex flex-col w-full border border-neutral-200 rounded-lg group hover:shadow-lg"
-                                            onMouseEnter={() => handleMouseEnter(index)}
+                                            onMouseEnter={() =>
+                                                handleMouseEnter(index)
+                                            }
                                             onMouseLeave={handleMouseLeave}
                                         >
                                             <ImageScroll
                                                 card={card}
-                                                isHovered={hoveredIndex === index}
+                                                isHovered={
+                                                    hoveredIndex === index
+                                                }
                                             />
                                             <div className="p-4 space-y-2">
                                                 <div className="w-full">
-                                                    <span className="text-sm">1 BHK Flat</span>
+                                                    <span className="text-sm">
+                                                        1 BHK Flat
+                                                    </span>
                                                     <h2 className="text-lg font-medium">
-                                                        &#8377; 30 Lac | 1000 sqft
+                                                        &#8377; 30 Lac | 1000
+                                                        sqft
                                                     </h2>
                                                 </div>
                                                 <div className="flex flex-col space-y-1 w-full">
@@ -122,51 +139,3 @@ const Property = () => {
 };
 
 export default Property;
-
-const ImageScroll = ({ card, isHovered }) => {
-
-    return (
-        <div>
-            {!isHovered ? (
-                <div
-                    className="relative aspect-video bg-cover rounded-t-lg flex w-full overflow-hidden"
-                >
-                    <Image
-                        src={`/assets/recommonded-property/${card.img}`}
-                        alt={"house"}
-                        fill
-                        className="rounded-t-lg transition-all object-cover"
-                    />
-                </div>
-            ) : (
-                <Carousel
-                    plugins={[
-                        Autoplay({
-                            delay: 1000,
-                        }),
-                    ]}
-                    opts={{
-                        align: "start",
-                        loop: true,
-                    }}
-                    className="flex w-full h-full"
-                >
-                    <CarouselContent>
-                        {Cards.map((card, index) => (
-                            <CarouselItem key={`${index}-image`} className="basis-full">
-                                <div className="relative h-[168px] aspect-video bg-cover rounded-t-lg flex w-full overflow-hidden">
-                                    <Image
-                                        src={`/assets/recommonded-property/${card.img}`}
-                                        alt={`house-${index}`}
-                                        fill
-                                        className="rounded-t-lg object-cover"
-                                    />
-                                </div>
-                            </CarouselItem>
-                        ))}
-                    </CarouselContent>
-                </Carousel>
-            )}
-        </div>
-    );
-};
