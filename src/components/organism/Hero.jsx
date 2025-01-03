@@ -4,7 +4,7 @@ import SearchBar from "../molecules/SearchBar";
 const Hero = () => {
     return (
         <>
-            <div className="w-full h-[350px] md:mb-16 flex items-center justify-center relative">
+            <div className="w-full h-[350px] md:mb-16 flex items-center justify-center relative ">
                 <BannerCarousel />
                 <div className="absolute flex flex-col gap-6 items-center px-4 justify-center h-full w-full bg-black/0">
                     {/* <h1 className="font-galanoGrotesque text-white w-full max-w-3xl text-3xl md:text-4xl lg:text-5xl  break-normal text-center font-bold">
