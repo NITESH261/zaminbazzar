@@ -4,22 +4,20 @@ import Autoplay from "embla-carousel-autoplay";
 import Image from "next/image";
 import { Carousel, CarouselContent, CarouselItem } from "../ui/carousel";
 
-const BannerImages = [
-    { img: "banner-img-1.jpeg" },
-];
+const BannerImages = [{ img: "banner-img-1.jpeg" }];
 
 const BannerCarousel = () => {
     return (
         <div className="relative aspect-video h-full w-full flex">
             <Image
-                src="/assets/banner-img/banner-img-3.jpeg"
+                src="/assets/banner-img/home-banner.jpeg"
                 alt="banner-img"
                 fill
                 className="object-cover lg:object-cover object-center h-full w-full"
             />
         </div>
-    )
-}
+    );
+};
 
 const BannerCarousel1 = () => {
     return (
