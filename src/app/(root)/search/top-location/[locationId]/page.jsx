@@ -1,45 +1,48 @@
-import StorySwiper from "@/components/molecules/StorySwiper"
-import { Button } from "@/components/ui/button"
-import { BuildingIcon, Heart, PhoneCallIcon } from "lucide-react"
-import Image from "next/image"
-import Link from "next/link"
+import StorySwiper from "@/components/molecules/StorySwiper";
+import { Button } from "@/components/ui/button";
+import { BuildingIcon, Heart, PhoneCallIcon } from "lucide-react";
+import Image from "next/image";
+import Link from "next/link";
 
 const LocationData = [
     {
         image: "property-1.jpg",
         propertyName: "Evara Wadhwa Wise City",
         propertyLocation: "in Panvel, Navi Mumbai",
-        PropertyPrice: "₹1.49 - 4.61 Cr"
+        PropertyPrice: "₹1.49 - 4.61 Cr",
     },
     {
         image: "property-2.jpg",
         propertyName: "Evara Wadhwa Wise City",
         propertyLocation: "in Panvel, Navi Mumbai",
-        PropertyPrice: "₹1.49 - 4.61 Cr"
+        PropertyPrice: "₹1.49 - 4.61 Cr",
     },
     {
         image: "property-3.jpg",
         propertyName: "Evara Wadhwa Wise City",
         propertyLocation: "in Panvel, Navi Mumbai",
-        PropertyPrice: "₹1.49 - 4.61 Cr"
+        PropertyPrice: "₹1.49 - 4.61 Cr",
     },
     {
         image: "property-4.jpg",
         propertyName: "Evara Wadhwa Wise City",
         propertyLocation: "in Panvel, Navi Mumbai",
-        PropertyPrice: "₹1.49 - 4.61 Cr"
-    }
-]
+        PropertyPrice: "₹1.49 - 4.61 Cr",
+    },
+];
 
 const page = () => {
-
     return (
         <>
             <div className="flex w-full h-[calc(100%-80px)] overflow-y-auto overflow-x-hidden scrollbar">
                 <div className="flex flex-col w-full h-fit gap-6">
                     <div className="flex flex-col w-full h-fit bg-white rounded-2xl gap-4 p-4">
-                        {LocationData.map((location, index) =>
-                            <Link href={"#"} key={index} className="flex flex-col sm:flex-row border w-full gap-2 rounded-2xl border-neutral-200">
+                        {LocationData.map((location, index) => (
+                            <Link
+                                href={"#"}
+                                key={index}
+                                className="flex flex-col sm:flex-row border w-full gap-2 rounded-2xl border-neutral-200"
+                            >
                                 <div className="flex w-full sm:w-2/5 relative aspect-video sm:aspect-[3/2]">
                                     <Image
                                         src={`/assets/popular-property/${location.image}`}
@@ -47,7 +50,11 @@ const page = () => {
                                         fill
                                         className="object-cover rounded-2xl sm:rounded-r-none"
                                     />
-                                    <Button variant="ghost" size="icon" className="absolute right-2 top-2">
+                                    <Button
+                                        variant="ghost"
+                                        size="icon"
+                                        className="absolute right-2 top-2"
+                                    >
                                         <Heart className="!size-6 fill-neutral-200" />
                                     </Button>
                                 </div>
@@ -65,19 +72,27 @@ const page = () => {
                                             Price : {location.PropertyPrice}
                                         </span>
                                         <p className="text-sm">
-                                            Near By : Vijay Army School, Chhatrapati Shivaji Maharaj University
+                                            Near By : Vijay Army School,
+                                            Chhatrapati Shivaji Maharaj
+                                            University
                                         </p>
                                     </div>
                                     <div className="flex flex-col sm:flex-row w-full gap-2 sm:gap-4 justify-end sm:flex-grow-0 h-1/5">
                                         <Button className="rounded-full bg-[#0078db]">
-                                            <PhoneCallIcon /> Contact Us</Button>
-                                        <Button variant="outline" className="rounded-full border-[#0078db] text-[#0078db]">View Number</Button>
+                                            <PhoneCallIcon /> Contact Us
+                                        </Button>
+                                        <Button
+                                            variant="outline"
+                                            className="rounded-full border-[#0078db] text-[#0078db]"
+                                        >
+                                            View Number
+                                        </Button>
                                     </div>
                                 </div>
                             </Link>
-                        )}
+                        ))}
                     </div>
-                    <div className="flex flex-col w-full bg-white rounded-2xl p-4 gap-4 md:gap-6 lg:gap-8">
+                    {/* <div className="flex flex-col w-full bg-white rounded-2xl p-4 gap-4 md:gap-6 lg:gap-8">
                         <div className="flex w-full items-center gap-4">
                             <BuildingIcon className="!size-10 text-[#0078db]" />
                             <div className="flex flex-col w-fit">
@@ -86,10 +101,14 @@ const page = () => {
                             </div>
                         </div>
                         <StorySwiper />
-                    </div>
+                    </div> */}
                     <div className="flex flex-col w-full h-fit bg-white rounded-2xl gap-4 p-4">
-                        {LocationData.map((location, index) =>
-                            <Link href={"#"} key={index} className="flex flex-col sm:flex-row border w-full gap-2 rounded-2xl border-neutral-200">
+                        {LocationData.map((location, index) => (
+                            <Link
+                                href={"#"}
+                                key={index}
+                                className="flex flex-col sm:flex-row border w-full gap-2 rounded-2xl border-neutral-200"
+                            >
                                 <div className="flex w-full sm:w-2/5 relative aspect-video sm:aspect-[3/2]">
                                     <Image
                                         src={`/assets/popular-property/${location.image}`}
@@ -97,7 +116,11 @@ const page = () => {
                                         fill
                                         className="object-cover rounded-2xl sm:rounded-r-none"
                                     />
-                                    <Button variant="ghost" size="icon" className="absolute right-2 top-2">
+                                    <Button
+                                        variant="ghost"
+                                        size="icon"
+                                        className="absolute right-2 top-2"
+                                    >
                                         <Heart className="!size-6 fill-neutral-200" />
                                     </Button>
                                 </div>
@@ -115,22 +138,30 @@ const page = () => {
                                             Price : {location.PropertyPrice}
                                         </span>
                                         <p className="text-sm">
-                                            Near By : Vijay Army School, Chhatrapati Shivaji Maharaj University
+                                            Near By : Vijay Army School,
+                                            Chhatrapati Shivaji Maharaj
+                                            University
                                         </p>
                                     </div>
                                     <div className="flex flex-col sm:flex-row w-full gap-2 sm:gap-4 justify-end sm:flex-grow-0 h-1/5">
                                         <Button className="rounded-full bg-[#0078db]">
-                                            <PhoneCallIcon /> Contact Us</Button>
-                                        <Button variant="outline" className="rounded-full border-[#0078db] text-[#0078db]">View Number</Button>
+                                            <PhoneCallIcon /> Contact Us
+                                        </Button>
+                                        <Button
+                                            variant="outline"
+                                            className="rounded-full border-[#0078db] text-[#0078db]"
+                                        >
+                                            View Number
+                                        </Button>
                                     </div>
                                 </div>
                             </Link>
-                        )}
+                        ))}
                     </div>
                 </div>
             </div>
         </>
-    )
-}
+    );
+};
 
-export default page
+export default page;
