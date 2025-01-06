@@ -1,233 +1,1148 @@
 "use client"
 
-import { CheckIcon, PlusIcon, X } from "lucide-react"
+import { filterProperty } from "@/actions/property"
+import useZaminwaleStore from "@/store"
+import { zodResolver } from "@hookform/resolvers/zod"
+import { CheckIcon, PlusIcon } from "lucide-react"
 import { useParams } from "next/navigation"
-import { Badge } from "../ui/badge"
+import { useEffect } from "react"
+import { useForm } from "react-hook-form"
+import { z } from "zod"
 import { Button } from "../ui/button"
 import { Checkbox } from "../ui/checkbox"
-import { Input } from "../ui/input"
+import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "../ui/form"
+import { RadioGroup, RadioGroupItem } from "../ui/radio-group"
+
+const Location = [
+    { "thane": "Thane" },
+    { "navi-mumbai": "Navi Mumbai" },
+    { "panvel": "Panvel" },
+    { "khalapur": "Khalapur" },
+]
+
+const SearchTrigger = (locationId) => {
+    const matchingLocation = Location.find((loc) =>
+        Object.keys(loc).includes(locationId)
+    );
+
+    if (matchingLocation) {
+        return matchingLocation[locationId];
+    } else {
+        console.warn(`No matching location found for: ${locationId}`);
+        return null;
+    }
+};
+
+const FilterSchema = z.object({
+    propertyType: z.string().optional(),
+    propertyCategories: z.string().optional(),
+    city: z.string().optional(),
+    locality: z.string().optional(),
+    // plotAreaMinValue: z.string().optional(),
+    // plotAreaMaxValue: z.string().optional(),
+    allowedFloors: z.string().optional(),
+    // hasBoundaryWall: z.boolean().optional(),
+    openSides: z.string().optional(),
+    // hasConstruction: z.boolean().optional(),
+    // possessionBy: z.string().optional(),
+    ownership: z.string().optional(),
+    // priceTotalMinValue: z.string().optional(),
+    // priceTotalMaxValue: z.string().optional(),
+    // inclusivePrice: z.boolean().optional(),
+    // isTaxExcluded: z.boolean().optional(),
+    // isPriceNegotiable: z.boolean().optional(),
+    amenities: z.array(z.string()).optional(),
+    overlooking: z.array(z.string()).optional(),
+    otherFeatures: z.string().optional(),
+    propertyFacing: z.string().optional(),
+    locationAdvantages: z.array(z.string()).optional(),
+})
 
 const SearchFilter = () => {
 
     const params = useParams()
+    const dispatch = useZaminwaleStore(store => store.dispatch)
+
+    const form = useForm({
+        resolver: zodResolver(FilterSchema),
+        defaultValues: {
+            propertyType: "",
+            propertyCategories: "",
+            city: "",
+            locality: "",
+            plotAreaMinValue: "",
+            plotAreaMaxValue: "",
+            allowedFloors: "",
+            // hasBoundaryWall: false,
+            openSides: "",
+            // hasConstruction: false,
+            possessionBy: "",
+            ownership: "",
+            priceTotalMinValue: "",
+            priceTotalMaxValue: "",
+            // inclusivePrice: false,
+            isTaxExcluded: false,
+            // isPriceNegotiable: false,
+            amenities: [],
+            overlooking: [],
+            otherFeatures: "",
+            propertyFacing: "",
+            locationAdvantages: [],
+        }
+    })
+
+    const onSubmit = async (values) => {
+        try {
+            const resp = await filterProperty(values);
+            dispatch({
+                type: "SET_STATE",
+                payload: { searchList: resp.result },
+            });
+        } catch (error) {
+            console.error(error);
+        }
+    };
+
+    useEffect(() => {
+        if (params.locationId) {
+            const matchedLocality = SearchTrigger(params.locationId);
+            if (matchedLocality) {
+                const initialFilter = { locality: matchedLocality };
+                onSubmit(initialFilter);
+            }
+        }
+    }, [params.locationId]);
 
     return (
         <>
-            <div className="flex flex-col h-fit space-y-4 divide-y w-full p-4">
-                <div className="flex flex-col gap-4 w-full">
-                    <div className="flex w-full items-center justify-between">
-                        <span className="text-sm lg:text-base font-medium">Applied Filters</span>
-                        <Button variant="ghost" className="h-[unset] text-sm rounded-full px-2.5 py-1.5 text-[#0078db]">
-                            Clear All
-                        </Button>
-                    </div>
-                    <ul className="flex w-full gap-2 flex-wrap">
-                        <li className="w-fit flex">
-                            <Badge variant={"outline"} className="gap-1 text-sm border-[#0078db] bg-blue-100 font-medium">
-                                {params.locationId}
-                                <Button variant="ghost" className="h-[unset] px-1 py-1">
-                                    <X className="!size-4" />
+            <div className="flex relative flex-col h-fit divide-y w-full p-4">
+                <Form {...form}>
+                    <form onSubmit={form.handleSubmit(onSubmit)} className="divide-y-2">
+                        <div className="flex flex-col gap-4 w-full">
+                            {/* <div className="flex w-full items-center justify-between">
+                                <span className="text-sm lg:text-base font-medium">Applied Filters</span>
+                                <Button variant="ghost" className="h-[unset] text-sm rounded-full px-2.5 py-1.5 text-[#0078db]">
+                                    Clear All
                                 </Button>
-                            </Badge>
-                        </li>
-                    </ul>
-                </div>
-                <div className="flex flex-col gap-4 w-full pt-4">
-                    <div className="flex w-full items-center justify-between">
-                        <span className="text-sm lg:text-base font-medium">Budget</span>
-                        <Button variant="ghost" className="h-[unset] text-sm rounded-full px-2.5 py-1.5 text-[#0078db]">
-                            Clear
-                        </Button>
-                    </div>
-                    <div className="flex w-full">
-                        <Input type="range" min="0" max="10000000" />
-                    </div>
-                </div>
-                <div className="flex flex-col gap-4 w-full pt-4">
-                    <div className="flex w-full items-center justify-between">
-                        <span className="text-sm lg:text-base font-medium">Type of property</span>
-                        <Button variant="ghost" className="h-[unset] text-sm rounded-full px-2.5 py-1.5 text-[#0078db]">
-                            Clear
-                        </Button>
-                    </div>
-                    <ul className="flex w-full gap-2 flex-col">
-                        <li className="w-fit flex">
-                            <Button variant="outline" className="h-[unset] text-sm px-2.5 py-1.5 rounded-full">
-                                <PlusIcon className="!size-4" />
-                                Residential Apartment
+                            </div>
+                            <ul className="flex w-full gap-2 flex-wrap">
+                                <li className="w-fit flex">
+                                    <Badge variant={"outline"} className="gap-1 text-sm border-[#0078db] bg-blue-100 font-medium">
+                                        {params.locationId}
+                                        <Button variant="ghost" className="h-[unset] px-1 py-1">
+                                            <X className="!size-4" />
+                                        </Button>
+                                    </Badge>
+                                </li>
+                            </ul> */}
+                            <Button
+                                type="submit"
+                                className="px-4 w-full py-2 bg-blue-500 text-white rounded-lg"
+                            >
+                                Apply Filter
                             </Button>
-                        </li>
-                        <li className="w-fit flex">
-                            <Button variant="outline" className="h-[unset] text-sm px-2.5 py-1.5 rounded-full border-blue-200 bg-blue-50">
-                                <CheckIcon className="!size-4" />
-                                Residential Land
-                            </Button>
-                        </li>
-                        <li className="w-fit flex">
-                            <Button variant="outline" className="h-[unset] text-sm px-2.5 py-1.5 rounded-full">
-                                <PlusIcon className="!size-4" />
-                                1 RK/ Studio Apartment
-                            </Button>
-                        </li>
-                        <li className="w-fit flex">
-                            <Button variant="outline" className="h-[unset] text-sm px-2.5 py-1.5 rounded-full">
-                                <PlusIcon className="!size-4" />
-                                Independent House/Villa
-                            </Button>
-                        </li>
-                        <li className="w-fit flex">
-                            <Button variant="outline" className="h-[unset] text-sm px-2.5 py-1.5 rounded-full">
-                                <PlusIcon className="!size-4" />
-                                Independent/Builder Floor
-                            </Button>
-                        </li>
-                        <li className="w-fit flex">
-                            <Button variant="outline" className="h-[unset] text-sm px-2.5 py-1.5 rounded-full">
-                                <PlusIcon className="!size-4" />
-                                Farm House
-                            </Button>
-                        </li>
-                    </ul>
-                </div>
-                <div className="flex flex-col gap-4 w-full pt-4">
-                    <div className="flex w-full items-center justify-between">
-                        <span className="text-sm lg:text-base font-medium">Area
-                        </span>
-                        <Button variant="ghost" className="h-[unset] text-sm rounded-full px-2.5 py-1.5 text-[#0078db]">
-                            Clear
-                        </Button>
-                    </div>
-                    <div className="flex w-full">
-                        <Input type="range" min="0" max="10000000" />
-                    </div>
-                </div>
-                <div className="flex flex-col gap-4 w-full pt-4">
-                    <div className="flex w-full items-center justify-between">
-                        <span className="text-sm lg:text-base font-medium">Preferred Plot / Land type
-                        </span>
-                        <Button variant="ghost" className="h-[unset] text-sm rounded-full px-2.5 py-1.5 text-[#0078db]">
-                            Clear
-                        </Button>
-                    </div>
-                    <ul className="flex w-full gap-2 flex-col">
-                        <li className="w-fit flex">
-                            <Button variant="outline" className="h-[unset] text-sm px-2.5 py-1.5 rounded-full border-blue-200 bg-blue-50">
-                                <CheckIcon className="!size-4" />
-                                Corner Property
-                            </Button>
-                        </li>
-                        <li className="w-fit flex">
-                            <Button variant="outline" className="h-[unset] text-sm px-2.5 py-1.5 rounded-full">
-                                <PlusIcon className="!size-4" />
-                                In Gated Society
-                            </Button>
-                        </li>
-                    </ul>
-                </div>
-                <div className="flex flex-col gap-4 w-full pt-4">
-                    <div className="flex w-full items-center justify-between">
-                        <span className="text-sm lg:text-base font-medium">Localities
-                        </span>
-                        <Button variant="ghost" className="h-[unset] text-sm rounded-full px-2.5 py-1.5 text-[#0078db]">
-                            Clear
-                        </Button>
-                    </div>
-                    <ul className="flex w-full gap-2 flex-col">
-                        <li className="w-fit gap-2 flex items-center">
-                            <Checkbox />
-                            <span>Navi Mumbai</span>
-                        </li>
-                        <li className="w-fit gap-2 flex items-center">
-                            <Checkbox />
-                            <span>Thane</span>
-                        </li>
-                        <li className="w-fit gap-2 flex items-center">
-                            <Checkbox />
-                            <span>Panvel</span>
-                        </li>
-                        <li className="w-fit gap-2 flex items-center">
-                            <Checkbox />
-                            <span>Khalapur</span>
-                        </li>
-                    </ul>
-                </div>
-                <div className="flex flex-col gap-4 w-full pt-4">
-                    <div className="flex w-full items-center justify-between">
-                        <span className="text-sm lg:text-base font-medium">Approved by Authority
-                        </span>
-                        <Button variant="ghost" className="h-[unset] text-sm rounded-full px-2.5 py-1.5 text-[#0078db]">
-                            Clear
-                        </Button>
-                    </div>
-                    <ul className="flex w-full gap-2 flex-wrap">
-                        <li className="w-fit flex">
-                            <Button variant="outline" className="h-[unset] text-sm px-2.5 py-1.5 rounded-full border-blue-200 bg-blue-50">
-                                <CheckIcon className="!size-4" />
-                                CIDC
-                            </Button>
-                        </li>
-                        <li className="w-fit flex">
-                            <Button variant="outline" className="h-[unset] text-sm px-2.5 py-1.5 rounded-full">
-                                <PlusIcon className="!size-4" />
-                                NMMC
-                            </Button>
-                        </li>
-                    </ul>
-                </div>
-                <div className="flex flex-col gap-4 w-full pt-4">
-                    <div className="flex w-full items-center justify-between">
-                        <span className="text-sm lg:text-base font-medium">Ownership Type
-                        </span>
-                        <Button variant="ghost" className="h-[unset] text-sm rounded-full px-2.5 py-1.5 text-[#0078db]">
-                            Clear
-                        </Button>
-                    </div>
-                    <ul className="flex w-full gap-2 flex-wrap">
-                        <li className="w-fit flex">
-                            <Button variant="outline" className="h-[unset] text-sm px-2.5 py-1.5 rounded-full border-blue-200 bg-blue-50">
-                                <CheckIcon className="!size-4" />
-                                CIDC
-                            </Button>
-                        </li>
-                    </ul>
-                </div>
-                <div className="flex flex-col gap-4 w-full pt-4">
-                    <div className="flex w-full items-center justify-between">
-                        <span className="text-sm lg:text-base font-medium">Facing Direction
-                        </span>
-                        <Button variant="ghost" className="h-[unset] text-sm rounded-full px-2.5 py-1.5 text-[#0078db]">
-                            Clear
-                        </Button>
-                    </div>
-                    <ul className="flex w-full gap-2 flex-wrap">
-                        <li className="w-fit flex">
-                            <Button variant="outline" className="h-[unset] text-sm px-2.5 py-1.5 rounded-full">
-                                <PlusIcon className="!size-4" />
-                                East
-                            </Button>
-                        </li>
-                    </ul>
-                </div>
-                <div className="flex flex-col gap-4 w-full pt-4">
-                    <div className="flex w-full items-center justify-between">
-                        <span className="text-sm lg:text-base font-medium">Width of Facing Road
-                        </span>
-                        <Button variant="ghost" className="h-[unset] text-sm rounded-full px-2.5 py-1.5 text-[#0078db]">
-                            Clear
-                        </Button>
-                    </div>
-                    <ul className="flex w-full gap-2 flex-wrap">
-                        <li className="w-fit flex">
-                            <Button variant="outline" className="h-[unset] text-sm px-2.5 py-1.5 rounded-full">
-                                <PlusIcon className="!size-4" />
-                                50+ ft
-                            </Button>
-                        </li>
-                    </ul>
-                </div>
+                        </div>
+                        <FormField
+                            control={form.control}
+                            name="propertyType"
+                            render={({ field }) => (
+                                <FormItem className="flex flex-col gap-2 py-4">
+                                    <FormLabel>{FilterData[0].label}</FormLabel>
+                                    <FormControl>
+                                        <RadioGroup
+                                            onValueChange={field.onChange}
+                                            defaultValue={field.value}
+                                            className="flex w-full flex-wrap"
+                                        >
+                                            {FilterData[0].data.map((item, index) => (
+                                                <FormItem
+                                                    key={index}
+                                                    className={`flex items-center space-y-0 ${field.value === item.value
+                                                        ? "bg-blue-100 border border-blue-400"
+                                                        : "bg-white border"
+                                                        } rounded-full px-4 py-2`}
+                                                >
+                                                    <FormControl className="sr-only">
+                                                        <RadioGroupItem value={item.value} />
+                                                    </FormControl>
+                                                    <FormLabel className="font-normal flex gap-2">
+                                                        {field.value === item.value ? (
+                                                            <CheckIcon className="!size-3" />
+                                                        ) : (
+                                                            <PlusIcon className="!size-3" />
+                                                        )}
+                                                        {item.label}
+                                                    </FormLabel>
+                                                </FormItem>
+                                            ))}
+                                        </RadioGroup>
+                                    </FormControl>
+                                    <FormMessage />
+                                </FormItem>
+                            )}
+                        />
+                        <FormField
+                            control={form.control}
+                            name="propertyCategories"
+                            render={({ field }) => (
+                                <FormItem className="flex flex-col gap-2 py-4">
+                                    <FormLabel>{FilterData[1].label}</FormLabel>
+                                    <FormControl>
+                                        <RadioGroup
+                                            onValueChange={field.onChange}
+                                            defaultValue={field.value}
+                                            className="flex w-full flex-wrap"
+                                        >
+                                            {FilterData[1].data.map((item, index) => (
+                                                <FormItem
+                                                    key={index}
+                                                    className={`flex items-center space-y-0 ${field.value === item.value
+                                                        ? "bg-blue-100 border border-blue-400"
+                                                        : "bg-white border"
+                                                        } rounded-full px-4 py-2`}
+                                                >
+                                                    <FormControl className="sr-only">
+                                                        <RadioGroupItem value={item.value} />
+                                                    </FormControl>
+                                                    <FormLabel className="font-normal flex gap-2">
+                                                        {field.value === item.value ? (
+                                                            <CheckIcon className="!size-3" />
+                                                        ) : (
+                                                            <PlusIcon className="!size-3" />
+                                                        )}
+                                                        {item.label}
+                                                    </FormLabel>
+                                                </FormItem>
+                                            ))}
+                                        </RadioGroup>
+                                    </FormControl>
+                                    <FormMessage />
+                                </FormItem>
+                            )}
+                        />
+                        <FormField
+                            control={form.control}
+                            name="city"
+                            render={({ field }) => (
+                                <FormItem className="flex flex-col gap-2 py-4">
+                                    <FormLabel>{FilterData[2].label}</FormLabel>
+                                    <FormControl>
+                                        <RadioGroup
+                                            onValueChange={field.onChange}
+                                            defaultValue={field.value}
+                                            className="flex w-full flex-wrap"
+                                        >
+                                            {FilterData[2].data.map((item, index) => (
+                                                <FormItem
+                                                    key={index}
+                                                    className={`flex items-center space-y-0 ${field.value === item.value
+                                                        ? "bg-blue-100 border border-blue-400"
+                                                        : "bg-white border"
+                                                        } rounded-full px-4 py-2`}
+                                                >
+                                                    <FormControl className="sr-only">
+                                                        <RadioGroupItem value={item.value} />
+                                                    </FormControl>
+                                                    <FormLabel className="font-normal flex gap-2">
+                                                        {field.value === item.value ? (
+                                                            <CheckIcon className="!size-3" />
+                                                        ) : (
+                                                            <PlusIcon className="!size-3" />
+                                                        )}
+                                                        {item.label}
+                                                    </FormLabel>
+                                                </FormItem>
+                                            ))}
+                                        </RadioGroup>
+                                    </FormControl>
+                                    <FormMessage />
+                                </FormItem>
+                            )}
+                        />
+                        <FormField
+                            control={form.control}
+                            name="locality"
+                            render={({ field }) => (
+                                <FormItem className="flex flex-col gap-2 py-4">
+                                    <FormLabel>{FilterData[3].label}</FormLabel>
+                                    <FormControl>
+                                        <RadioGroup
+                                            onValueChange={field.onChange}
+                                            defaultValue={field.value}
+                                            className="flex w-full flex-wrap"
+                                        >
+                                            {FilterData[3].data.map((item, index) => (
+                                                <FormItem
+                                                    key={index}
+                                                    className={`flex items-center space-y-0 ${field.value === item.value
+                                                        ? "bg-blue-100 border border-blue-400"
+                                                        : "bg-white border"
+                                                        } rounded-full px-4 py-2`}
+                                                >
+                                                    <FormControl className="sr-only">
+                                                        <RadioGroupItem value={item.value} />
+                                                    </FormControl>
+                                                    <FormLabel className="font-normal flex gap-2">
+                                                        {field.value === item.value ? (
+                                                            <CheckIcon className="!size-3" />
+                                                        ) : (
+                                                            <PlusIcon className="!size-3" />
+                                                        )}
+                                                        {item.label}
+                                                    </FormLabel>
+                                                </FormItem>
+                                            ))}
+                                        </RadioGroup>
+                                    </FormControl>
+                                    <FormMessage />
+                                </FormItem>
+                            )}
+                        />
+                        <FormField
+                            control={form.control}
+                            name="allowedFloors"
+                            render={({ field }) => (
+                                <FormItem className="flex flex-col gap-2 py-4">
+                                    <FormLabel>{FilterData[5].label}</FormLabel>
+                                    <FormControl>
+                                        <RadioGroup
+                                            onValueChange={field.onChange}
+                                            defaultValue={field.value}
+                                            className="flex w-full flex-wrap"
+                                        >
+                                            {FilterData[5].data.map((item, index) => (
+                                                <FormItem
+                                                    key={index}
+                                                    className={`flex items-center space-y-0 ${field.value === item.value
+                                                        ? "bg-blue-100 border border-blue-400"
+                                                        : "bg-white border"
+                                                        } rounded-full px-4 py-2`}
+                                                >
+                                                    <FormControl className="sr-only">
+                                                        <RadioGroupItem value={item.value} />
+                                                    </FormControl>
+                                                    <FormLabel className="font-normal flex gap-2">
+                                                        {field.value === item.value ? (
+                                                            <CheckIcon className="!size-3" />
+                                                        ) : (
+                                                            <PlusIcon className="!size-3" />
+                                                        )}
+                                                        {item.label}
+                                                    </FormLabel>
+                                                </FormItem>
+                                            ))}
+                                        </RadioGroup>
+                                    </FormControl>
+                                    <FormMessage />
+                                </FormItem>
+                            )}
+                        />
+                        {/* <FormField
+                            control={form.control}
+                            name="hasBoundaryWall"
+                            render={({ field }) => (
+                                <FormItem className="flex flex-col gap-2 py-4">
+                                    <FormLabel>{FilterData[6].label}</FormLabel>
+                                    <FormControl>
+                                        <RadioGroup
+                                            onValueChange={field.onChange}
+                                            defaultValue={field.value}
+                                            className="flex w-full flex-wrap"
+                                        >
+                                            {FilterData[6].data.map((item, index) => (
+                                                <FormItem
+                                                    key={index}
+                                                    className={`flex items-center space-y-0 ${field.value === item.value
+                                                        ? "bg-blue-100 border border-blue-400"
+                                                        : "bg-white border"
+                                                        } rounded-full px-4 py-2`}
+                                                >
+                                                    <FormControl className="sr-only">
+                                                        <RadioGroupItem value={item.value} />
+                                                    </FormControl>
+                                                    <FormLabel className="font-normal flex gap-2">
+                                                        {field.value === item.value ? (
+                                                            <CheckIcon className="!size-3" />
+                                                        ) : (
+                                                            <PlusIcon className="!size-3" />
+                                                        )}
+                                                        {item.label}
+                                                    </FormLabel>
+                                                </FormItem>
+                                            ))}
+                                        </RadioGroup>
+                                    </FormControl>
+                                    <FormMessage />
+                                </FormItem>
+                            )}
+                        /> */}
+                        <FormField
+                            control={form.control}
+                            name="openSides"
+                            render={({ field }) => (
+                                <FormItem className="flex flex-col gap-2 py-4">
+                                    <FormLabel>{FilterData[7].label}</FormLabel>
+                                    <FormControl>
+                                        <RadioGroup
+                                            onValueChange={field.onChange}
+                                            defaultValue={field.value}
+                                            className="flex w-full flex-wrap"
+                                        >
+                                            {FilterData[7].data.map((item, index) => (
+                                                <FormItem
+                                                    key={index}
+                                                    className={`flex items-center space-y-0 ${field.value === item.value
+                                                        ? "bg-blue-100 border border-blue-400"
+                                                        : "bg-white border"
+                                                        } rounded-full px-4 py-2`}
+                                                >
+                                                    <FormControl className="sr-only">
+                                                        <RadioGroupItem value={item.value} />
+                                                    </FormControl>
+                                                    <FormLabel className="font-normal flex gap-2">
+                                                        {field.value === item.value ? (
+                                                            <CheckIcon className="!size-3" />
+                                                        ) : (
+                                                            <PlusIcon className="!size-3" />
+                                                        )}
+                                                        {item.label}
+                                                    </FormLabel>
+                                                </FormItem>
+                                            ))}
+                                        </RadioGroup>
+                                    </FormControl>
+                                    <FormMessage />
+                                </FormItem>
+                            )}
+                        />
+                        {/* <FormField
+                            control={form.control}
+                            name="hasConstruction"
+                            render={({ field }) => (
+                                <FormItem className="flex flex-col gap-2 py-4">
+                                    <FormLabel>{FilterData[8].label}</FormLabel>
+                                    <FormControl>
+                                        <RadioGroup
+                                            onValueChange={field.onChange}
+                                            defaultValue={field.value}
+                                            className="flex w-full flex-wrap"
+                                        >
+                                            {FilterData[8].data.map((item, index) => (
+                                                <FormItem
+                                                    key={index}
+                                                    className={`flex items-center space-y-0 ${field.value === item.value
+                                                        ? "bg-blue-100 border border-blue-400"
+                                                        : "bg-white border"
+                                                        } rounded-full px-4 py-2`}
+                                                >
+                                                    <FormControl className="sr-only">
+                                                        <RadioGroupItem value={item.value} />
+                                                    </FormControl>
+                                                    <FormLabel className="font-normal flex gap-2">
+                                                        {field.value === item.value ? (
+                                                            <CheckIcon className="!size-3" />
+                                                        ) : (
+                                                            <PlusIcon className="!size-3" />
+                                                        )}
+                                                        {item.label}
+                                                    </FormLabel>
+                                                </FormItem>
+                                            ))}
+                                        </RadioGroup>
+                                    </FormControl>
+                                    <FormMessage />
+                                </FormItem>
+                            )}
+                        /> */}
+                        <FormField
+                            control={form.control}
+                            name="possessionBy"
+                            render={({ field }) => (
+                                <FormItem className="flex flex-col gap-2 py-4">
+                                    <FormLabel>{FilterData[9].label}</FormLabel>
+                                    <FormControl>
+                                        <RadioGroup
+                                            onValueChange={field.onChange}
+                                            defaultValue={field.value}
+                                            className="flex w-full flex-wrap"
+                                        >
+                                            {FilterData[9].data.map((item, index) => (
+                                                <FormItem
+                                                    key={index}
+                                                    className={`flex items-center space-y-0 ${field.value === item.value
+                                                        ? "bg-blue-100 border border-blue-400"
+                                                        : "bg-white border"
+                                                        } rounded-full px-4 py-2`}
+                                                >
+                                                    <FormControl className="sr-only">
+                                                        <RadioGroupItem value={item.value} />
+                                                    </FormControl>
+                                                    <FormLabel className="font-normal flex gap-2">
+                                                        {field.value === item.value ? (
+                                                            <CheckIcon className="!size-3" />
+                                                        ) : (
+                                                            <PlusIcon className="!size-3" />
+                                                        )}
+                                                        {item.label}
+                                                    </FormLabel>
+                                                </FormItem>
+                                            ))}
+                                        </RadioGroup>
+                                    </FormControl>
+                                    <FormMessage />
+                                </FormItem>
+                            )}
+                        />
+                        <FormField
+                            control={form.control}
+                            name="ownership"
+                            render={({ field }) => (
+                                <FormItem className="flex flex-col gap-2 py-4">
+                                    <FormLabel>{FilterData[10].label}</FormLabel>
+                                    <FormControl>
+                                        <RadioGroup
+                                            onValueChange={field.onChange}
+                                            defaultValue={field.value}
+                                            className="flex w-full flex-wrap"
+                                        >
+                                            {FilterData[10].data.map((item, index) => (
+                                                <FormItem
+                                                    key={index}
+                                                    className={`flex items-center space-y-0 ${field.value === item.value
+                                                        ? "bg-blue-100 border border-blue-400"
+                                                        : "bg-white border"
+                                                        } rounded-full px-4 py-2`}
+                                                >
+                                                    <FormControl className="sr-only">
+                                                        <RadioGroupItem value={item.value} />
+                                                    </FormControl>
+                                                    <FormLabel className="font-normal flex gap-2">
+                                                        {field.value === item.value ? (
+                                                            <CheckIcon className="!size-3" />
+                                                        ) : (
+                                                            <PlusIcon className="!size-3" />
+                                                        )}
+                                                        {item.label}
+                                                    </FormLabel>
+                                                </FormItem>
+                                            ))}
+                                        </RadioGroup>
+                                    </FormControl>
+                                    <FormMessage />
+                                </FormItem>
+                            )}
+                        />
+                        {/* <FormField
+                            control={form.control}
+                            name="inclusivePrice"
+                            render={({ field }) => (
+                                <FormItem className="flex flex-col gap-2 py-4">
+                                    <FormLabel>{FilterData[11].label}</FormLabel>
+                                    <FormControl>
+                                        <RadioGroup
+                                            onValueChange={field.onChange}
+                                            defaultValue={field.value}
+                                            className="flex w-full flex-wrap"
+                                        >
+                                            {FilterData[11].data.map((item, index) => (
+                                                <FormItem
+                                                    key={index}
+                                                    className={`flex items-center space-y-0 ${field.value === item.value
+                                                        ? "bg-blue-100 border border-blue-400"
+                                                        : "bg-white border"
+                                                        } rounded-full px-4 py-2`}
+                                                >
+                                                    <FormControl className="sr-only">
+                                                        <RadioGroupItem value={item.value} />
+                                                    </FormControl>
+                                                    <FormLabel className="font-normal flex gap-2">
+                                                        {field.value === item.value ? (
+                                                            <CheckIcon className="!size-3" />
+                                                        ) : (
+                                                            <PlusIcon className="!size-3" />
+                                                        )}
+                                                        {item.label}
+                                                    </FormLabel>
+                                                </FormItem>
+                                            ))}
+                                        </RadioGroup>
+                                    </FormControl>
+                                    <FormMessage />
+                                </FormItem>
+                            )}
+                        />
+                        <FormField
+                            control={form.control}
+                            name="isTaxExcluded"
+                            render={({ field }) => (
+                                <FormItem className="flex flex-col gap-2 py-4">
+                                    <FormLabel>{FilterData[12].label}</FormLabel>
+                                    <FormControl>
+                                        <RadioGroup
+                                            onValueChange={field.onChange}
+                                            defaultValue={field.value}
+                                            className="flex w-full flex-wrap"
+                                        >
+                                            {FilterData[12].data.map((item, index) => (
+                                                <FormItem
+                                                    key={index}
+                                                    className={`flex items-center space-y-0 ${field.value === item.value
+                                                        ? "bg-blue-100 border border-blue-400"
+                                                        : "bg-white border"
+                                                        } rounded-full px-4 py-2`}
+                                                >
+                                                    <FormControl className="sr-only">
+                                                        <RadioGroupItem value={item.value} />
+                                                    </FormControl>
+                                                    <FormLabel className="font-normal flex gap-2">
+                                                        {field.value === item.value ? (
+                                                            <CheckIcon className="!size-3" />
+                                                        ) : (
+                                                            <PlusIcon className="!size-3" />
+                                                        )}
+                                                        {item.label}
+                                                    </FormLabel>
+                                                </FormItem>
+                                            ))}
+                                        </RadioGroup>
+                                    </FormControl>
+                                    <FormMessage />
+                                </FormItem>
+                            )}
+                        />
+                        <FormField
+                            control={form.control}
+                            name="isPriceNegotiable"
+                            render={({ field }) => (
+                                <FormItem className="flex flex-col gap-2 py-4">
+                                    <FormLabel>{FilterData[13].label}</FormLabel>
+                                    <FormControl>
+                                        <RadioGroup
+                                            onValueChange={field.onChange}
+                                            defaultValue={field.value}
+                                            className="flex w-full flex-wrap"
+                                        >
+                                            {FilterData[13].data.map((item, index) => (
+                                                <FormItem
+                                                    key={index}
+                                                    className={`flex items-center space-y-0 ${field.value === item.value
+                                                        ? "bg-blue-100 border border-blue-400"
+                                                        : "bg-white border"
+                                                        } rounded-full px-4 py-2`}
+                                                >
+                                                    <FormControl className="sr-only">
+                                                        <RadioGroupItem value={item.value} />
+                                                    </FormControl>
+                                                    <FormLabel className="font-normal flex gap-2">
+                                                        {field.value === item.value ? (
+                                                            <CheckIcon className="!size-3" />
+                                                        ) : (
+                                                            <PlusIcon className="!size-3" />
+                                                        )}
+                                                        {item.label}
+                                                    </FormLabel>
+                                                </FormItem>
+                                            ))}
+                                        </RadioGroup>
+                                    </FormControl>
+                                    <FormMessage />
+                                </FormItem>
+                            )}
+                        /> */}
+                        <FormField
+                            control={form.control}
+                            name="amenities"
+                            render={() => (
+                                <FormItem className="py-4">
+                                    <FormLabel>{FilterData[14].label}</FormLabel>
+                                    <div className="flex flex-wrap">
+                                        {FilterData[14].data.map((item) => (
+                                            <FormField
+                                                key={item.value}
+                                                control={form.control}
+                                                name="amenities"
+                                                render={({ field }) => {
+                                                    return (
+                                                        <FormItem className="w-fit">
+                                                            <FormControl className="sr-only">
+                                                                <Checkbox
+                                                                    checked={field.value?.includes(item.value)}
+                                                                    onCheckedChange={(checked) => {
+                                                                        return checked
+                                                                            ? field.onChange([...field.value, item.value])
+                                                                            : field.onChange(
+                                                                                field.value?.filter((value) => value !== item.value)
+                                                                            )
+                                                                    }}
+                                                                />
+                                                            </FormControl>
+                                                            <FormLabel
+                                                                className={`flex font-normal items-center space-y-0 ${field.value?.includes(item.value)
+                                                                    ? 'bg-blue-100 border-blue-400'
+                                                                    : 'bg-white border'
+                                                                    } rounded-full px-4 py-2`}
+                                                            >
+                                                                {item.label}
+                                                            </FormLabel>
+                                                        </FormItem>
+                                                    )
+                                                }}
+                                            />
+                                        ))}
+                                    </div>
+                                    <FormMessage />
+                                </FormItem>
+                            )}
+                        />
+                        <FormField
+                            control={form.control}
+                            name="overlooking"
+                            render={() => (
+                                <FormItem className="py-4">
+                                    <FormLabel>{FilterData[15].label}</FormLabel>
+                                    <div className="flex gap-2 flex-wrap">
+                                        {FilterData[15].data.map((item) => (
+                                            <FormField
+                                                key={item.value}
+                                                control={form.control}
+                                                name="overlooking"
+                                                render={({ field }) => {
+                                                    return (
+                                                        <FormItem className="w-fit">
+                                                            <FormControl className="sr-only">
+                                                                <Checkbox
+                                                                    checked={field.value?.includes(item.value)}
+                                                                    onCheckedChange={(checked) => {
+                                                                        return checked
+                                                                            ? field.onChange([...field.value, item.value])
+                                                                            : field.onChange(
+                                                                                field.value?.filter((value) => value !== item.value)
+                                                                            )
+                                                                    }}
+                                                                />
+                                                            </FormControl>
+                                                            <FormLabel
+                                                                className={`flex font-normal items-center space-y-0 ${field.value?.includes(item.value)
+                                                                    ? 'bg-blue-100 border-blue-400'
+                                                                    : 'bg-white border'
+                                                                    } rounded-full px-4 py-2`}
+                                                            >
+                                                                {item.label}
+                                                            </FormLabel>
+                                                        </FormItem>
+                                                    )
+                                                }}
+                                            />
+                                        ))}
+                                    </div>
+                                    <FormMessage />
+                                </FormItem>
+                            )}
+                        />
+                        <FormField
+                            control={form.control}
+                            name="otherFeatures"
+                            render={({ field }) => (
+                                <FormItem className="flex flex-col gap-2 py-4">
+                                    <FormLabel>{FilterData[16].label}</FormLabel>
+                                    <FormControl>
+                                        <RadioGroup
+                                            onValueChange={field.onChange}
+                                            defaultValue={field.value}
+                                            className=""
+                                        >
+                                            {FilterData[16].data.map(({ value, label }) => (
+                                                <FormItem
+                                                    key={value}
+                                                    className="space-x-2"
+                                                >
+                                                    <FormControl>
+                                                        <RadioGroupItem value={value} />
+                                                    </FormControl>
+                                                    <FormLabel className="font-normal">{label}</FormLabel>
+                                                </FormItem>
+                                            ))}
+                                        </RadioGroup>
+                                    </FormControl>
+                                    <FormMessage />
+                                </FormItem>
+                            )}
+                        />
+                        <FormField
+                            control={form.control}
+                            name="propertyFacing"
+                            render={({ field }) => (
+                                <FormItem className="flex flex-col gap-2 py-4">
+                                    <FormLabel>{FilterData[17].label}</FormLabel>
+                                    <FormControl>
+                                        <RadioGroup
+                                            onValueChange={field.onChange}
+                                            defaultValue={field.value}
+                                            className="flex w-full flex-wrap"
+                                        >
+                                            {FilterData[17].data.map(({ value, label }) => (
+                                                <FormItem
+                                                    key={value}
+                                                    className={`flex items-center space-y-0 ${field.value === value ? "bg-blue-100 border-blue-400" : "bg-white border"
+                                                        } rounded-full px-4 py-2`}
+                                                >
+                                                    <FormControl className="sr-only">
+                                                        <RadioGroupItem value={value} />
+                                                    </FormControl>
+                                                    <FormLabel className="font-normal">{label}</FormLabel>
+                                                </FormItem>
+                                            ))}
+                                        </RadioGroup>
+                                    </FormControl>
+                                    <FormMessage />
+                                </FormItem>
+                            )}
+                        />
+                        <FormField
+                            control={form.control}
+                            name="locationAdvantages"
+                            render={() => (
+                                <FormItem className="py-4">
+                                    <FormLabel>{FilterData[18].label}</FormLabel>
+                                    <div className="flex flex-wrap">
+                                        {FilterData[18].data.map((item) => (
+                                            <FormField
+                                                key={item.value}
+                                                control={form.control}
+                                                name="locationAdvantages"
+                                                render={({ field }) => {
+                                                    return (
+                                                        <FormItem className="w-fit">
+                                                            <FormControl className="sr-only">
+                                                                <Checkbox
+                                                                    checked={field.value?.includes(item.value)}
+                                                                    onCheckedChange={(checked) => {
+                                                                        return checked
+                                                                            ? field.onChange([...field.value, item.value])
+                                                                            : field.onChange(
+                                                                                field.value?.filter((value) => value !== item.value)
+                                                                            )
+                                                                    }}
+                                                                />
+                                                            </FormControl>
+                                                            <FormLabel
+                                                                className={`flex font-normal items-center space-y-0 ${field.value?.includes(item.value)
+                                                                    ? 'bg-blue-100 border-blue-400'
+                                                                    : 'bg-white border'
+                                                                    } rounded-full px-4 py-2`}
+                                                            >
+                                                                {item.label}
+                                                            </FormLabel>
+                                                        </FormItem>
+                                                    )
+                                                }}
+                                            />
+                                        ))}
+                                    </div>
+                                    <FormMessage />
+                                </FormItem>
+                            )}
+                        />
+                    </form>
+                </Form>
             </div>
         </>
     )
 }
 
 export default SearchFilter
+
+
+const FilterData = [
+    {
+        label: "Select Property Type",
+        data: [
+            {
+                label: "Residential",
+                value: "Residential",
+            },
+            {
+                label: "Commercial",
+                value: "Commercial",
+            },
+        ]
+    },
+    {
+        label: "Select Property Categories",
+        data: [
+            {
+                label: "Flat/Apartment",
+                value: "FlatorApartment",
+            },
+            {
+                label: "Plot/Land",
+                value: "PlotorLand",
+            },
+            {
+                label: "Independent House/villa",
+                value: "Independent Houseorvilla",
+            },
+            {
+                label: "Farmhouse",
+                value: "Farmhouse",
+            },
+            {
+                label: "Other",
+                value: "Other",
+            },
+        ]
+    },
+    {
+        label: "Select City",
+        data: [
+            {
+                label: "Mumbai",
+                value: "Mumbai",
+            },
+            {
+                label: "Navi Mumbai",
+                value: "Navi Mumbai",
+            },
+            {
+                label: "Third Mumbai",
+                value: "Third Mumbai",
+            },
+        ]
+    },
+    {
+        label: "Select Locality",
+        data: [
+            {
+                label: "Thane",
+                value: "Thane",
+            },
+            {
+                label: "Panvel",
+                value: "Panvel",
+            },
+            {
+                label: "Khalapur",
+                value: "Khalapur",
+            },
+        ]
+    },
+    {},
+    {
+        label: "Select Allowed Floors",
+        data: [
+            {
+                label: "1",
+                value: "1",
+            },
+            {
+                label: "2",
+                value: "2",
+            },
+            {
+                label: "3",
+                value: "3",
+            },
+            {
+                label: "4",
+                value: "4",
+            },
+        ]
+    },
+    {
+        label: "Select Boundry Walls",
+        data: [
+            {
+                label: "True",
+                value: true,
+            },
+            {
+                label: "false",
+                value: false,
+            },
+        ]
+    },
+    {
+        label: "Select Open Sides",
+        data: [
+            {
+                label: "1",
+                value: "1",
+            },
+            {
+                label: "2",
+                value: "2",
+            },
+            {
+                label: "3",
+                value: "3",
+            },
+            {
+                label: "4",
+                value: "4",
+            },
+        ]
+    },
+    {
+        label: "Select Any construction done",
+        data: [
+            {
+                label: "True",
+                value: true,
+            },
+            {
+                label: "false",
+                value: false,
+            },
+        ]
+    },
+    {
+        label: "Select Possession by",
+        data: [
+            {
+                label: "Immediate",
+                value: "Immediate",
+            },
+            {
+                label: "Within 3 months",
+                value: "Within 3 months",
+            },
+            {
+                label: "within 6 months",
+                value: "within 6 months",
+            },
+            {
+                label: "By 2025",
+                value: "By 2025",
+            },
+            {
+                label: "By 2026",
+                value: "By 2026",
+            },
+            {
+                label: "By 2027",
+                value: "By 2027",
+            },
+        ]
+    },
+    {
+        label: "Select Ownership",
+        data: [
+            {
+                label: "Freehold",
+                value: "freehold",
+            },
+            {
+                label: "Leasehold",
+                value: "leasehold",
+            },
+            {
+                label: "Co-operative society",
+                value: "co-operative society",
+            },
+            {
+                label: "Power of Attorney",
+                value: "power of attorney",
+            },
+        ]
+    },
+    {
+        label: "Select Inclusive Price",
+        data: [
+            {
+                label: "True",
+                value: true,
+            },
+            {
+                label: "false",
+                value: false,
+            },
+        ]
+    },
+    {
+        label: "Select Tax Excluded",
+        data: [
+            {
+                label: "True",
+                value: true,
+            },
+            {
+                label: "false",
+                value: false,
+            },
+        ]
+    },
+    {
+        label: "Select Price Negotiable",
+        data: [
+            {
+                label: "True",
+                value: true,
+            },
+            {
+                label: "false",
+                value: false,
+            },
+        ]
+    },
+    {
+        label: "Select Amenities",
+        data: [
+            {
+                label: "Maintenance Staff",
+                value: "Maintenance Staff",
+            },
+            {
+                label: "Water Storage",
+                value: "Water Storage",
+            },
+            {
+                label: "Rain Water Harvesting",
+                value: "Rain Water Harvesting",
+            },
+            {
+                label: "Vaastu Complaint",
+                value: "Vaastu Complaint",
+            },
+        ]
+    },
+    {
+        label: "Select Overlooking",
+        data: [
+            { value: "Pool", label: "Pool" },
+            { value: "ParkorGarden", label: "Park/Garden" },
+            { value: "Club", label: "Club" },
+            { value: "Main Road", label: "Main Road" },
+            { value: "Others", label: "Others" }
+        ]
+    },
+    {
+        label: "Select Other Features",
+        data: [
+            { value: "In a gated society", label: "In a gated society" },
+            { value: "Corner Property", label: "Corner Property" }
+        ]
+    },
+    {
+        label: "Select Property Facing",
+        data: [
+            { value: "North", label: "North" },
+            { value: "South", label: "South" },
+            { value: "East", label: "East" },
+            { value: "West", label: "West" },
+            { value: "North East", label: "North-East" },
+            { value: "North West", label: "North-West" },
+            { value: "South East", label: "South-East" },
+            { value: "South West", label: "South-West" }
+        ]
+    },
+    {
+        label: "Select Location Advantages",
+        data: [
+            { value: "Close to metro station", label: "Close to metro station" },
+            { value: "Close to school", label: "Close to school" },
+            { value: "Close to hospital", label: "Close to hospital" },
+            { value: "Close to market", label: "Close to market" },
+            { value: "Close to railway station", label: "Close to railway station" }
+        ]
+    }
+]

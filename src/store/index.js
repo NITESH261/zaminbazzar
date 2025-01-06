@@ -4,7 +4,8 @@ import { reducer } from "./reducer"
 
 export const initialState = {
     user: null,
-    isAuthenticated: false
+    isAuthenticated: false,
+    searchList: null,
 }
 
 const useZaminwaleStore = create(
