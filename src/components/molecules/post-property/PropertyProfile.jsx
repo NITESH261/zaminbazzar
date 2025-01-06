@@ -38,11 +38,11 @@ const PropertyDetailsSchema = z.object({
     ownership: z.enum(["freehold", "leasehold", "co-operative society", "power of attorney"], {
         required_error: "You need to option",
     }),
-    priceInWord: z
+    priceTotal: z
         .string({
             required_error: "Please enter Price.",
         }),
-    priceInDigit: z
+    pricePerSQFT: z
         .string({
             required_error: "Please enter Price.",
         }),
@@ -398,7 +398,7 @@ const PropertyProfile = ({ onSubmit, prev, currentStep, loading, formData }) => 
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 w-full">
                                 <FormField
                                     control={form.control}
-                                    name="priceInWord"
+                                    name="priceTotal"
                                     render={({ field }) => (
                                         <FormItem className="flex flex-col gap-2">
                                             <FormControl>
@@ -414,7 +414,7 @@ const PropertyProfile = ({ onSubmit, prev, currentStep, loading, formData }) => 
                                 />
                                 <FormField
                                     control={form.control}
-                                    name="priceInDigit"
+                                    name="pricePerSQFT"
                                     render={({ field }) => (
                                         <FormItem className="flex flex-col gap-2">
                                             <FormControl>
