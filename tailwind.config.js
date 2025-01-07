@@ -8,12 +8,19 @@ module.exports = {
 	],
 	theme: {
 		fontFamily: {
-			galanoGrotesque: ["var(--font-galano-Grotesque-alt)"],
-			nunito: ["var(--font-nunito)"]
+			galanoGrotesque: [
+				'var(--font-galano-Grotesque-alt)'
+			],
+			nunito: [
+				'var(--font-nunito)'
+			]
 		},
 		extend: {
 			backgroundImage: {
 				'hero-pattern': "url('/path/to/image.jpg')"
+			},
+			boxShadow: {
+				'3xl': '0 35px 60px -15px rgba(0, 0, 0, 0.3)'
 			},
 			colors: {
 				background: 'var(--background)',

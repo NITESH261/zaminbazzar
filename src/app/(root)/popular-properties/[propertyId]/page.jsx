@@ -14,6 +14,14 @@ import { GiArcheryTarget, GiGate, GiParkBench } from "react-icons/gi"
 import { HiMiniClipboardDocumentCheck } from "react-icons/hi2"
 import { ImPriceTags } from "react-icons/im"
 import { RxAllSides, RxDimensions } from "react-icons/rx"
+import {
+    Accordion,
+    AccordionContent,
+    AccordionItem,
+    AccordionTrigger,
+} from "@/components/ui/accordion"
+import About_accordion from "@/components/molecules/post-property/About_accordion"
+
 
 const page = async ({ params }) => {
 
@@ -136,6 +144,9 @@ const page = async ({ params }) => {
                                 </div>
                             </div>
                         </div>
+                        <div>
+                            <About_accordion />
+                        </div>
                     </div>
                 </div>
                 <div className="hidden xl:flex xl:col-span-2 sticky top-2 h-full max-h-[calc(100vh-80px)] w-full">
@@ -149,7 +160,7 @@ const page = async ({ params }) => {
                     </div>
                 </div>
             </div>
-            <div className="flex flex-col gap-4 md:gap-6 lg:gap-8 xl:gap-10 px-4 py-6 md:py-8 lg:py-10 xl:py-12 w-full max-w-7xl mx-auto h-auto relative bg-blue-100 rounded-2xl">
+            {/* <div className="flex flex-col gap-4 md:gap-6 lg:gap-8 xl:gap-10 px-4 py-6 md:py-8 lg:py-10 xl:py-12 w-full max-w-7xl mx-auto h-auto relative bg-blue-100 rounded-2xl">
                 <div className="flex w-full items-center justify-center">
                     <h2 className="text-lg font-medium md:text-xl text-center lg:text-2xl">
                         Why You Should Consider This Property
@@ -194,7 +205,9 @@ const page = async ({ params }) => {
                         </ul>
                     </div>
                 </div>
-            </div>
+            </div> */}
+
+
 
             <SendEnquiry />
 

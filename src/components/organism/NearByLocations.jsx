@@ -7,56 +7,56 @@ import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious
 const PlotsData = [
     {
         image: "sea view.webp",
-        title: "Sea View Bunglow",
+        title: "Thane",
         description:
             "A sea view bungalow situated near the coastline or beach, offering a scenic view of the sea or ocean.",
         link: "#enquire-now",
     },
     {
         image: "large-government-warehouse.webp",
-        title: "Plots for Warehouse",
+        title: "Panvel",
         description:
             "As of the current trend, the inclination of the people has shifted towards investing in commercial land.",
         link: "#enquire-now",
     },
     {
         image: "istockphoto-623754774-612x612.webp",
-        title: "Plots for Factories",
+        title: "Kharghar",
         description:
             "Factories plots are massive plots of land providing space to varied type of Factories and offices under one area.",
         link: "#enquire-now",
     },
     {
         image: "istockphoto-1199749863-612x612.webp",
-        title: "Plots for Petrolpump",
+        title: "Karjat",
         description:
             "The biggest is for the land to be convenient for either travelers or the local population. After that the land needs to be zoned (ie given permission) for that use.",
         link: "#enquire-now",
     },
     {
         image: "investment.webp",
-        title: "Investment Plots",
+        title: "Pune",
         description:
             "Your future prospects look great when you buy investment plots with regards to profitable returns.",
         link: "#enquire-now",
     },
     {
         image: "commercial.webp",
-        title: "Commercial Plots",
+        title: "Nashik",
         description:
             "Contact us for best returns on plots invested near junctions, stations highways, and busy market places.",
         link: "#enquire-now",
     },
     {
         image: "residential.webp",
-        title: "Residential Plots",
+        title: "Mumbai",
         description:
             "In case you are a developer yourself and planning to expand your business venture, do contact us for the list of residential plots.",
         link: "#enquire-now",
     },
     {
         image: "353640073_20231016184851.webp",
-        title: "Hill View Bunglow",
+        title: "Vashi",
         description:
             "If you fancy living in a bungalow or a row-house with your own independent terrace, parking and garden.",
         link: "#enquire-now",
@@ -95,6 +95,11 @@ const NearByLocations = () => {
                                             fill
                                             className="object-cover rounded-2xl"
                                         />
+                                    </div>
+                                    <div className="w-full space-y-2">
+                                        <h2 className="text-base font-medium text-center py-2">
+                                            {card.title}
+                                        </h2>
                                     </div>
                                 </CarouselItem>
                             ))}

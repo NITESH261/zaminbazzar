@@ -9,7 +9,7 @@ const Footer = () => {
     return (
         <div className="bg-gray-100 text-gray-800 w-full">
             <div className="container max-w-7xl mx-auto py-8 px-4">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                     <div>
                         <Logo className={"text-black"} />
                         <h2 className="font-bold text-lg">About zaminwale</h2>
@@ -34,8 +34,26 @@ const Footer = () => {
                             </div>
                         </div>
                     </div>
-                    <div>
+                    <div className="flex flex-col justify-center items-center">
                         <h2 className="font-bold text-lg mb-4">Company</h2>
+                        <div className="flex flex-col gap-4 items-center w-full">
+                            <p className="text-base flex items-center flex-col gap-2">
+                                {
+                                    NavItems[0].data.map((item, i) => (
+                                        <Link
+                                            key={`company-${i}`}
+                                            href={item.link}
+                                            className="text-black hover:underline"
+                                        >
+                                            {item.label}
+                                        </Link>
+                                    ))
+                                }
+                            </p>
+                        </div>
+                    </div>
+                    <div>
+                        {/* <h2 className="font-bold text-lg mb-4">Company</h2>
                         <div className="flex flex-col gap-4 w-full">
                             <p className="text-base">
                                 {
@@ -49,14 +67,17 @@ const Footer = () => {
                                     ))
                                 }
                             </p>
-                        </div>
+                        </div> */}
+                        <h2 className="font-bold text-lg">About zaminwale</h2>
+                        <p>As the largest platform connecting property buyers and sellers</p>
+
 
                         <h2 className="font-bold text-lg mt-4 mb-4">Projects in Mumbai</h2>
                         <div className="flex flex-col gap-4 w-full">
                             <p className="text-base flex flex-wrap gap-1">
                                 {NavItems[1].data.map((item, i) => (
                                     <React.Fragment key={`project-${i}`}>
-                                        <Link href={item.link} className="text-blue-600 hover:underline">
+                                        <Link href={item.link} className="text-black hover:underline">
                                             {item.label}
                                         </Link>
                                         {i < NavItems[1].data.length - 1 && <span className="px-2">|</span>}
@@ -85,10 +106,7 @@ const NavItems = [
     {
         label: "Company",
         data: [
-            {
-                label: "About Us",
-                link: "/about-us"
-            },
+
             {
                 label: "Testimonials",
                 link: "/testimonials"

@@ -59,6 +59,22 @@ const Review = () => {
                 " reasonable and customer service is excellent with a group of true professionals, who are sensitive to your needs and keen to resolve any issues that you need addressed. I plan to continue utilizing their services and would recommend MagicBricks for any real estate needs you might have. I am so happy with the response, that despite solicitation calls from other property sights, I frankly donbt feel the need of their services.",
             image: "https://storage.googleapis.com/a1aa/image/UBqM1YCkNNK0BpaJwU4fedIBhrcMfiazHDnhim9cUGQMVUDoA.jpg",
         },
+        {
+            name: "prem Batra",
+            location: "Delhi",
+            text: "Magicbricks.com and I started in the Real Estate business at almost the same time. This web portal just provided the best platform I needed to make a launch. After 5 year, I have a...",
+            additionalText:
+                "long list of satisfied clients provided by Magicbricks.com, as it really provides the best way to advertise with numerous listing packages, least online errors and maximum online visibility. I thank the whole team of MagicBricks for providing the best tool to young and aspiring consultants like me, and hope many more success stories can be made with your help. I wish MagicBricks all the best for coming future.",
+            image: "https://storage.googleapis.com/a1aa/image/yXGOZNRAfr2MBKQ1KiskBEnIZVk32TYVnhoIXuol83IUF1AKA.jpg",
+        },
+        {
+            name: "Dalip Yadav",
+            location: "Kolkata",
+            text: "It is with great pleasure that I am writing this letter to endorse MagicBricks.com. If you want a wide reach and top notch service, make MagicBricks your first choice. Their rates are...",
+            additionalText:
+                " reasonable and customer service is excellent with a group of true professionals, who are sensitive to your needs and keen to resolve any issues that you need addressed. I plan to continue utilizing their services and would recommend MagicBricks for any real estate needs you might have. I am so happy with the response, that despite solicitation calls from other property sights, I frankly donbt feel the need of their services.",
+            image: "https://storage.googleapis.com/a1aa/image/UBqM1YCkNNK0BpaJwU4fedIBhrcMfiazHDnhim9cUGQMVUDoA.jpg",
+        },
     ];
 
     return (

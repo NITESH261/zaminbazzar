@@ -1,3 +1,4 @@
+import Award_video from "@/components/organism/awards/Award_video";
 import AwardList from "@/components/organism/awards/AwardList";
 import Hero from "@/components/organism/awards/Hero";
 import Footer from "@/components/organism/Footer";
@@ -8,6 +9,7 @@ const page = () => {
         <>
             <Hero />
             <AwardList />
+            <Award_video />
             <Footer />
         </>
     );
