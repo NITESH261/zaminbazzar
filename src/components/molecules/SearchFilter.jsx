@@ -69,7 +69,7 @@ const SearchFilter = () => {
             propertyType: "",
             propertyCategories: "",
             city: "",
-            locality: "",
+            locality: SearchTrigger(params.locationId),
             plotAreaMinValue: "",
             plotAreaMaxValue: "",
             allowedFloors: "",
@@ -93,6 +93,8 @@ const SearchFilter = () => {
 
     const onSubmit = async (values) => {
         try {
+            console.log(values);
+
             const resp = await filterProperty(values);
             dispatch({
                 type: "SET_STATE",
@@ -118,30 +120,12 @@ const SearchFilter = () => {
             <div className="flex relative flex-col h-fit divide-y w-full p-4">
                 <Form {...form}>
                     <form onSubmit={form.handleSubmit(onSubmit)} className="divide-y-2">
-                        <div className="flex flex-col gap-4 w-full">
-                            {/* <div className="flex w-full items-center justify-between">
-                                <span className="text-sm lg:text-base font-medium">Applied Filters</span>
-                                <Button variant="ghost" className="h-[unset] text-sm rounded-full px-2.5 py-1.5 text-[#0078db]">
-                                    Clear All
-                                </Button>
-                            </div>
-                            <ul className="flex w-full gap-2 flex-wrap">
-                                <li className="w-fit flex">
-                                    <Badge variant={"outline"} className="gap-1 text-sm border-[#0078db] bg-blue-100 font-medium">
-                                        {params.locationId}
-                                        <Button variant="ghost" className="h-[unset] px-1 py-1">
-                                            <X className="!size-4" />
-                                        </Button>
-                                    </Badge>
-                                </li>
-                            </ul> */}
-                            <Button
-                                type="submit"
-                                className="px-4 w-full py-2 bg-blue-500 text-white rounded-lg"
-                            >
-                                Apply Filter
-                            </Button>
-                        </div>
+                        <Button
+                            type="submit"
+                            className="px-4 w-full py-2 bg-blue-500 text-white rounded-lg"
+                        >
+                            Apply Filter
+                        </Button>
                         <FormField
                             control={form.control}
                             name="propertyType"
@@ -843,6 +827,12 @@ const SearchFilter = () => {
                                 </FormItem>
                             )}
                         />
+                        <Button
+                            type="submit"
+                            className="px-4 w-full py-2 bg-blue-500 text-white rounded-lg"
+                        >
+                            Apply Filter
+                        </Button>
                     </form>
                 </Form>
             </div>
