@@ -1,6 +1,5 @@
 import { Button } from "@/components/ui/button";
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
-import { Input } from "@/components/ui/input";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { ArrowLeft } from "lucide-react";
@@ -29,6 +28,11 @@ const Step2Data = [
     },
     {
         label: "Locality",
+        data: [
+            { value: "Thane", label: "Thane" },
+            { label: "Panvel", value: "Panvel" },
+            { label: "Khalapur", value: "Khalapur" },
+        ]
     },
 ];
 
@@ -85,7 +89,23 @@ const LocationDetails = ({ onSubmit, prev, currentStep, loading, formData }) => 
                                 <FormItem className="flex flex-col gap-2">
                                     <FormLabel>{Step2Data[1].label}</FormLabel>
                                     <FormControl>
-                                        <Input placeholder="Enter Locality" {...field} value={field.value ?? ""} />
+                                        <Select
+                                            onValueChange={field.onChange}
+                                            defaultValue={field.value ?? ""}
+                                        >
+                                            <FormControl>
+                                                <SelectTrigger>
+                                                    <SelectValue placeholder="Select Locality" />
+                                                </SelectTrigger>
+                                            </FormControl>
+                                            <SelectContent>
+                                                {Step2Data[1].data.map(({ value, label }) => (
+                                                    <SelectItem key={label} value={value}>
+                                                        {label}
+                                                    </SelectItem>
+                                                ))}
+                                            </SelectContent>
+                                        </Select>
                                     </FormControl>
                                     <FormMessage />
                                 </FormItem>

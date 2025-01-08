@@ -46,11 +46,11 @@ const Step1Data = [
                 data: [
                     {
                         label: "Flat/Apartment",
-                        value: "Flat/Apartment"
+                        value: "FlatorApartment"
                     },
                     {
                         label: "Plot/Land",
-                        value: "Plot/Land"
+                        value: "PlotorLand"
                     },
                     {
                         label: "Other",
@@ -65,7 +65,7 @@ const Step1Data = [
                 data: [
                     {
                         label: "Independent House/villa",
-                        value: "Independent House/villa"
+                        value: "Independent Houseorvilla"
                     },
                     {
                         label: "Farmhouse",

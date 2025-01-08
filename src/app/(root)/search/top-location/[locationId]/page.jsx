@@ -1,164 +1,152 @@
-import StorySwiper from "@/components/molecules/StorySwiper";
+"use client"
+
+import SearchFilter from "@/components/molecules/SearchFilter";
 import { Button } from "@/components/ui/button";
-import { BuildingIcon, Heart, PhoneCallIcon } from "lucide-react";
+import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
+import { formatCurrency, sliceParagraph } from "@/lib/utils";
+import useZaminwaleStore from "@/store";
+import { Filter, Heart, IndianRupee, PhoneCallIcon } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-
-const LocationData = [
-    {
-        image: "property-1.jpg",
-        propertyName: "Evara Wadhwa Wise City",
-        propertyLocation: "in Panvel, Navi Mumbai",
-        PropertyPrice: "₹1.49 - 4.61 Cr",
-    },
-    {
-        image: "property-2.jpg",
-        propertyName: "Evara Wadhwa Wise City",
-        propertyLocation: "in Panvel, Navi Mumbai",
-        PropertyPrice: "₹1.49 - 4.61 Cr",
-    },
-    {
-        image: "property-3.jpg",
-        propertyName: "Evara Wadhwa Wise City",
-        propertyLocation: "in Panvel, Navi Mumbai",
-        PropertyPrice: "₹1.49 - 4.61 Cr",
-    },
-    {
-        image: "property-4.jpg",
-        propertyName: "Evara Wadhwa Wise City",
-        propertyLocation: "in Panvel, Navi Mumbai",
-        PropertyPrice: "₹1.49 - 4.61 Cr",
-    },
-];
+import { useParams } from "next/navigation";
 
 const page = () => {
+
+    const params = useParams()
+    const searchList = useZaminwaleStore(store => store.searchList)
+
     return (
         <>
-            <div className="flex w-full h-[calc(100%-80px)] overflow-y-auto overflow-x-hidden scrollbar">
-                <div className="flex flex-col w-full h-fit gap-6">
-                    <div className="flex flex-col w-full h-fit bg-white rounded-2xl gap-4 p-4">
-                        {LocationData.map((location, index) => (
-                            <Link
-                                href={"#"}
-                                key={index}
-                                className="flex flex-col sm:flex-row border w-full gap-2 rounded-2xl border-neutral-200"
-                            >
-                                <div className="flex w-full sm:w-2/5 relative aspect-video sm:aspect-[3/2]">
-                                    <Image
-                                        src={`/assets/popular-property/${location.image}`}
-                                        alt="property img"
-                                        fill
-                                        className="object-cover rounded-2xl sm:rounded-r-none"
-                                    />
-                                    <Button
-                                        variant="ghost"
-                                        size="icon"
-                                        className="absolute right-2 top-2"
-                                    >
-                                        <Heart className="!size-6 fill-neutral-200" />
-                                    </Button>
+            <div className="hidden md:flex md:w-1/3 xl:w-1/4 h-fit md:h-full overflow-y-auto scrollbar-hide bg-white md:rounded-2xl">
+                <div className="hidden md:flex w-full">
+                    <SearchFilter />
+                </div>
+            </div>
+            <div className="flex flex-1 w-full md:w-2/3 gap-4 xl:w-3/4 flex-col">
+                <div className="flex w-full h-fit gap-4 items-center bg-white rounded-md md:rounded-2xl md:p-4">
+                    <div className="flex md:hidden w-fit">
+                        <Sheet>
+                            <SheetTrigger asChild>
+                                <Button variant="outline" size="icon" className="px-3">
+                                    <Filter className="!size-4" />
+                                </Button>
+                            </SheetTrigger>
+                            <SheetContent className="p-4 space-y-4">
+                                <SheetHeader>
+                                    <SheetTitle>
+                                        Search filter
+                                    </SheetTitle>
+                                </SheetHeader>
+                                <div className="flex flex-1 w-full h-[calc(100vh-60px)] overflow-y-auto scrollbar-hide">
+                                    <SearchFilter />
                                 </div>
-                                <div className="flex flex-col gap-2 sm:gap-4 w-full sm:w-3/5 p-4">
-                                    <div className="flex flex-col gap-2 sm:gap-4 w-full sm:flex-grow">
-                                        <div className="flex flex-col w-full space-y-1">
-                                            <span className="text-lg md:text-xl font-medium">
-                                                {location.propertyName}
-                                            </span>
-                                            <span className="text-sm hover:underline transition-all">
-                                                Land {location.propertyLocation}
-                                            </span>
-                                        </div>
-                                        <span className="text-base md:text-lg font-medium">
-                                            Price : {location.PropertyPrice}
-                                        </span>
-                                        <p className="text-sm">
-                                            Near By : Vijay Army School,
-                                            Chhatrapati Shivaji Maharaj
-                                            University
-                                        </p>
-                                    </div>
-                                    <div className="flex flex-col sm:flex-row w-full gap-2 sm:gap-4 justify-end sm:flex-grow-0 h-1/5">
-                                        <Button className="rounded-full bg-[#0078db]">
-                                            <PhoneCallIcon /> Contact Us
-                                        </Button>
-                                        <Button
-                                            variant="outline"
-                                            className="rounded-full border-[#0078db] text-[#0078db]"
-                                        >
-                                            View Number
-                                        </Button>
-                                    </div>
-                                </div>
-                            </Link>
-                        ))}
+                            </SheetContent>
+                        </Sheet>
                     </div>
-                    {/* <div className="flex flex-col w-full bg-white rounded-2xl p-4 gap-4 md:gap-6 lg:gap-8">
-                        <div className="flex w-full items-center gap-4">
-                            <BuildingIcon className="!size-10 text-[#0078db]" />
-                            <div className="flex flex-col w-fit">
-                                <span className="text-base sm:text-lg md:text-xl lg:text-2xl font-semibold">Projects in Near By This Location</span>
-                                <p className="text-xs sm:text-sm md:text-base">Inspired by your search preferences</p>
-                            </div>
-                        </div>
-                        <StorySwiper />
-                    </div> */}
-                    <div className="flex flex-col w-full h-fit bg-white rounded-2xl gap-4 p-4">
-                        {LocationData.map((location, index) => (
-                            <Link
-                                href={"#"}
-                                key={index}
-                                className="flex flex-col sm:flex-row border w-full gap-2 rounded-2xl border-neutral-200"
-                            >
-                                <div className="flex w-full sm:w-2/5 relative aspect-video sm:aspect-[3/2]">
-                                    <Image
-                                        src={`/assets/popular-property/${location.image}`}
-                                        alt="property img"
-                                        fill
-                                        className="object-cover rounded-2xl sm:rounded-r-none"
-                                    />
-                                    <Button
-                                        variant="ghost"
-                                        size="icon"
-                                        className="absolute right-2 top-2"
-                                    >
-                                        <Heart className="!size-6 fill-neutral-200" />
-                                    </Button>
-                                </div>
-                                <div className="flex flex-col gap-2 sm:gap-4 w-full sm:w-3/5 p-4">
-                                    <div className="flex flex-col gap-2 sm:gap-4 w-full sm:flex-grow">
-                                        <div className="flex flex-col w-full space-y-1">
-                                            <span className="text-lg md:text-xl font-medium">
-                                                {location.propertyName}
-                                            </span>
-                                            <span className="text-sm hover:underline transition-all">
-                                                Land {location.propertyLocation}
-                                            </span>
-                                        </div>
-                                        <span className="text-base md:text-lg font-medium">
-                                            Price : {location.PropertyPrice}
-                                        </span>
-                                        <p className="text-sm">
-                                            Near By : Vijay Army School,
-                                            Chhatrapati Shivaji Maharaj
-                                            University
-                                        </p>
-                                    </div>
-                                    <div className="flex flex-col sm:flex-row w-full gap-2 sm:gap-4 justify-end sm:flex-grow-0 h-1/5">
-                                        <Button className="rounded-full bg-[#0078db]">
-                                            <PhoneCallIcon /> Contact Us
-                                        </Button>
-                                        <Button
-                                            variant="outline"
-                                            className="rounded-full border-[#0078db] text-[#0078db]"
-                                        >
-                                            View Number
-                                        </Button>
-                                    </div>
-                                </div>
-                            </Link>
-                        ))}
+                    <div className="gap-2 text-sm md:text-lg font-semibold w-full">
+                        <span className="">{searchList?.length}</span> Result | <span className="capitalize">{params.locationId}</span>
                     </div>
                 </div>
+                {
+                    searchList?.length ?
+                        <div className="flex w-full h-[calc(100%-80px)] overflow-y-auto overflow-x-hidden scrollbar">
+                            <div className="flex flex-col w-full h-fit gap-6">
+                                <div className="flex flex-col w-full h-fit bg-white rounded-2xl gap-4 p-4">
+                                    {searchList?.map((card, i) => (
+                                        <Link
+                                            href={"#"}
+                                            key={i}
+                                            className="flex flex-col sm:flex-row border w-full rounded-2xl border-neutral-200 hover:border-blue-400 hover:shadow-md transition-all"
+                                        >
+                                            <div className="flex w-full sm:w-2/5 relative aspect-video sm:aspect-[3/2]">
+                                                <Image
+                                                    src="/assets/popular-property/property-1.jpg"
+                                                    alt="property img"
+                                                    fill
+                                                    className="object-cover rounded-2xl sm:rounded-r-none"
+                                                />
+                                                <Button
+                                                    variant="ghost"
+                                                    size="icon"
+                                                    className="absolute right-2 top-2"
+                                                >
+                                                    <Heart className="!size-6 fill-neutral-200" />
+                                                </Button>
+                                            </div>
+                                            <div className="flex flex-col gap-2 w-full sm:w-3/5 p-4">
+                                                <div className="flex flex-col gap-2 w-full sm:flex-grow">
+                                                    <div className="flex flex-col w-full space-y-0.5">
+                                                        <span className="text-lg md:text-xl font-medium">
+                                                            {card.locality}
+                                                        </span>
+                                                        <span className="text-sm hover:underline transition-all">
+                                                            {card.propertyType} Land / {card.city}
+                                                        </span>
+                                                    </div>
+                                                    <div className="grid divide-x-2 grid-cols-2 lg:grid-cols-3">
+                                                        <div className="flex flex-col w-full">
+                                                            <span className="flex items-center text-base md:text-lg lg:text-xl xl:text-3xl font-bold">
+                                                                <IndianRupee className="!size-5 md:!size-7 lg:!size-8" />
+                                                                {formatCurrency(card.priceTotal)}
+                                                            </span>
+                                                            <span className="flex items-center text-base">
+                                                                <IndianRupee className="!size-2 md:!size-3 lg:!size-4" />{card.pricePerSQFT} / sqft
+                                                            </span>
+                                                        </div>
+                                                        <div className="flex w-full pl-4 lg:col-span-2">
+                                                            <span className="flex items-center text-base md:text-lg lg:text-xl xl:text-3xl font-bold">
+                                                                {card.plotArea}
+                                                            </span>
+                                                        </div>
+                                                    </div>
+                                                    <p className="text-sm">
+                                                        {sliceParagraph(card.uniqueFeatures)}
+                                                    </p>
+                                                    <div className="flex flex-wrap w-full overflow-x-auto scrollbar-hide">
+                                                        <div className="flex w-fit gap-2 items-center">
+                                                            <span className="flex w-fit whitespace-nowrap font-medium text-blue-500">Near By:</span>
+                                                            <ul className="w-fit flex gap-2">
+                                                                {
+                                                                    card.locationAdvantages.map((item, i) =>
+                                                                        <li
+                                                                            key={i}
+                                                                            className="w-fit px-3 py-1.5 rounded-full text-xs bg-blue-100 whitespace-nowrap"
+                                                                        >
+                                                                            {item}
+                                                                        </li>
+                                                                    )
+                                                                }
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div className="flex flex-col sm:flex-row w-full gap-2 sm:gap-4 justify-end sm:flex-grow-0 h-1/5">
+                                                    <Button className="rounded-full bg-[#0078db]">
+                                                        <PhoneCallIcon /> Contact Us
+                                                    </Button>
+                                                    <Button
+                                                        variant="outline"
+                                                        className="rounded-full border-[#0078db] text-[#0078db]"
+                                                    >
+                                                        View Number
+                                                    </Button>
+                                                </div>
+                                            </div>
+                                        </Link>
+                                    ))}
+                                </div>
+                            </div>
+                        </div> : <div className="flex items-center justify-center w-full flex-1">
+                            <div className="flex w-full aspect-square max-w-md relative">
+                                <Image
+                                    src={"/assets/helper/404.png"}
+                                    alt="404"
+                                    fill
+                                    className="object-contain"
+                                />
+                            </div>
+                        </div>
+                }
             </div>
         </>
     );

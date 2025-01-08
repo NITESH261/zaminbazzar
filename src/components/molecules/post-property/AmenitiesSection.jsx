@@ -49,7 +49,7 @@ const Step5Data = [
         label: "Overlooking",
         data: [
             { value: "Pool", label: "Pool" },
-            { value: "Park/Garden", label: "Park/Garden" },
+            { value: "ParkorGarden", label: "Park/Garden" },
             { value: "Club", label: "Club" },
             { value: "Main Road", label: "Main Road" },
             { value: "Others", label: "Others" }
@@ -69,10 +69,10 @@ const Step5Data = [
             { value: "South", label: "South" },
             { value: "East", label: "East" },
             { value: "West", label: "West" },
-            { value: "North-East", label: "North-East" },
-            { value: "North-West", label: "North-West" },
-            { value: "South-East", label: "South-East" },
-            { value: "South-West", label: "South-West" }
+            { value: "North East", label: "North-East" },
+            { value: "North West", label: "North-West" },
+            { value: "South East", label: "South-East" },
+            { value: "South West", label: "South-West" }
         ]
     },
     {
