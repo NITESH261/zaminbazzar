@@ -49,7 +49,7 @@ const Step5Data = [
         label: "Overlooking",
         data: [
             { value: "Pool", label: "Pool" },
-            { value: "ParkorGarden", label: "Park/Garden" },
+            { value: "Park/Garden", label: "Park/Garden" },
             { value: "Club", label: "Club" },
             { value: "Main Road", label: "Main Road" },
             { value: "Others", label: "Others" }

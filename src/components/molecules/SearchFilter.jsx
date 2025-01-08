@@ -872,15 +872,15 @@ const FilterData = [
         data: [
             {
                 label: "Flat/Apartment",
-                value: "FlatorApartment",
+                value: "Flat/Apartment",
             },
             {
                 label: "Plot/Land",
-                value: "PlotorLand",
+                value: "Plot/Land",
             },
             {
                 label: "Independent House/villa",
-                value: "Independent Houseorvilla",
+                value: "Independent House/villa",
             },
             {
                 label: "Farmhouse",
@@ -1109,7 +1109,7 @@ const FilterData = [
         label: "Select Overlooking",
         data: [
             { value: "Pool", label: "Pool" },
-            { value: "ParkorGarden", label: "Park/Garden" },
+            { value: "Park/Garden", label: "Park/Garden" },
             { value: "Club", label: "Club" },
             { value: "Main Road", label: "Main Road" },
             { value: "Others", label: "Others" }
