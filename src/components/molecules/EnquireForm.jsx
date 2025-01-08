@@ -86,7 +86,7 @@ const EnquireForm = () => {
                         render={({ field }) => (
                             <FormItem>
                                 <FormLabel>
-                                    Shedule Date
+                                    Schedule Site Visit
                                 </FormLabel>
                                 <Popover>
                                     <PopoverTrigger asChild>
@@ -106,8 +106,7 @@ const EnquireForm = () => {
                                                     )
                                                 ) : (
                                                     <span>
-                                                        Pick a Start
-                                                        Date
+                                                        Select Schedule Visit Date
                                                     </span>
                                                 )}
                                                 <CalendarIcon className="ml-auto h-4 w-4 opacity-50" />
@@ -130,7 +129,7 @@ const EnquireForm = () => {
                             </FormItem>
                         )}
                     />
-                    <Button className="rounded-3xl w-full bg-[#0078DB]">Send Message</Button>
+                    <Button className="rounded-3xl w-full bg-[#0078DB]">Book Site Visit</Button>
                 </form>
             </Form>
         </div>

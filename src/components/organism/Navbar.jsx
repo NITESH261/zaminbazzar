@@ -112,19 +112,7 @@ const Navbar = () => {
                         </ul>
                     </div>
                     <div className="flex flex-grow items-center  md:gap-4 justify-end">
-                        <DropdownMenu>
-                            <DropdownMenuTrigger asChild>
-                                <Button
-                                    variant="outline"
-                                    className="hidden md:flex h-[unset] rounded-full"
-                                >
-                                    <User className="!size-4" /> Login
-                                </Button>
-                            </DropdownMenuTrigger>
-                            <DropdownMenuContent align="end">
-                                <LogoutBtn />
-                            </DropdownMenuContent>
-                        </DropdownMenu>
+
                         <Button
                             asChild
                             className="bg-white text-black hover:text-white rounded-full"
@@ -139,6 +127,19 @@ const Navbar = () => {
                                 </span>
                             </Link>
                         </Button>
+                        <DropdownMenu>
+                            <DropdownMenuTrigger asChild>
+                                <Button
+                                    variant="outline"
+                                    className="hidden md:flex h-[unset] rounded-full"
+                                >
+                                    <User className="!size-4" /> Login
+                                </Button>
+                            </DropdownMenuTrigger>
+                            <DropdownMenuContent align="end">
+                                <LogoutBtn />
+                            </DropdownMenuContent>
+                        </DropdownMenu>
                         <Sheet>
                             <SheetTrigger asChild>
                                 <Button className="rounded-md px-3 py-0 bg-transparent hover:text-[#0078DB] hover:bg-white">
@@ -365,6 +366,10 @@ const NavItems = [
                     {
                         label: "Post property",
                         link: "/post-property/create-property",
+                    },
+                    {
+                        label: "My Dashboard",
+                        link: "/post-property/",
                     },
                 ],
             },
