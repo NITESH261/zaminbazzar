@@ -1,8 +1,5 @@
 "use client";
 
-import { ArrowRight } from "lucide-react";
-import Link from "next/link";
-import { useState } from "react";
 import ImageScroll from "@/components/molecules/ImageScroll";
 import { Button } from "@/components/ui/button";
 import {
@@ -12,6 +9,9 @@ import {
     CarouselNext,
     CarouselPrevious,
 } from "@/components/ui/carousel";
+import { ArrowRight } from "lucide-react";
+import Link from "next/link";
+import { useState } from "react";
 
 const Cards = [
     {
@@ -65,7 +65,7 @@ const Property = () => {
                             <span className="h-1.5 w-20 bg-[#0078DB] rounded-full"></span>
                         </h2>
                         <Link
-                            href={"/popular-properties"}
+                            href={"/properties"}
                             className="flex items-center gap-2 hover:text-black text-[#0078DB] text-lg md:text-xl"
                         >
                             <span className="hidden md:flex">

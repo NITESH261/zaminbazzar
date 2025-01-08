@@ -3,6 +3,7 @@
 import { ArrowRight } from "lucide-react";
 import Link from "next/link";
 import { useState } from "react";
+import ImageScroll from "../molecules/ImageScroll";
 import { Button } from "../ui/button";
 import {
     Carousel,
@@ -11,7 +12,6 @@ import {
     CarouselNext,
     CarouselPrevious,
 } from "../ui/carousel";
-import ImageScroll from "../molecules/ImageScroll";
 
 const Cards = [
     {
@@ -64,7 +64,7 @@ const Property = () => {
                             <span className="h-1.5 w-20 bg-[#0078DB] rounded-full"></span>
                         </h2>
                         <Link
-                            href={"/popular-properties"}
+                            href={"/properties"}
                             className="flex items-center gap-2 hover:text-black text-[#0078DB] text-lg md:text-xl"
                         >
                             <span className="hidden md:flex">
@@ -105,24 +105,29 @@ const Property = () => {
                                                     hoveredIndex === index
                                                 }
                                             />
-                                            <div className="p-4 space-y-2">
+                                            <div className="p-4 relative space-y-2">
                                                 <div className="w-full">
                                                     <span className="text-sm">
                                                         1 BHK Flat
                                                     </span>
-                                                    <h2 className="text-lg font-medium">
+                                                    <h2 className="text-base font-medium">
                                                         &#8377; 30 Lac | 1000
                                                         sqft
                                                     </h2>
-                                                </div>
-                                                <div className="flex flex-col space-y-1 w-full">
                                                     <p className="text-gray-600 text-sm">
                                                         Vinay Nagar, Mumbai
                                                     </p>
                                                 </div>
-                                                <Button className="rounded-full bg-[#0078DB]">
-                                                    View Details
-                                                </Button>
+                                                <span className="hidden md:flex">
+                                                    Ready Move
+                                                </span>
+                                                <div className="flex w-full md:absolute md:px-4 pb-3 md:left-0 md:-bottom-40 md:group-hover:bottom-0 md:transition-all">
+                                                    <Button asChild className="w-full h-[unset] rounded-full bg-[#0078DB]">
+                                                        <Link href={"/"}>
+                                                            View Details
+                                                        </Link>
+                                                    </Button>
+                                                </div>
                                             </div>
                                         </div>
                                     </CarouselItem>
