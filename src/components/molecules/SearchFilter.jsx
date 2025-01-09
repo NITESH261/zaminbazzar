@@ -976,6 +976,10 @@ const FilterData = [
                 label: "Commercial",
                 value: "Commercial",
             },
+            {
+                label: "Villa/bungalow",
+                value: "Villa/bungalow",
+            },
         ]
     },
     {
@@ -1032,8 +1036,12 @@ const FilterData = [
                 value: "Panvel",
             },
             {
-                label: "Khalapur",
-                value: "Khalapur",
+                label: "Uran",
+                value: "Uran",
+            },
+            {
+                label: "Third Mumbai",
+                value: "Third Mumbai",
             },
         ]
     },

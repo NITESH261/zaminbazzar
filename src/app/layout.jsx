@@ -1,45 +1,51 @@
 import { Toaster } from "@/components/ui/sonner";
 import { cn } from "@/lib/utils";
-import { Nunito } from "next/font/google";
-import localFont from "next/font/local";
+import { Open_Sans } from "next/font/google";
 import "./globals.css";
 
-const galanoGrotesque = localFont({
-    src: [
-        {
-            path: "./fonts/GalanoGrotesqueAltMedium.otf",
-            weight: "500",
-            style: "normal",
-        },
-        {
-            path: "./fonts/GalanoGrotesqueAltMediumItalic.otf",
-            weight: "500",
-            style: "italic",
-        },
-        {
-            path: "./fonts/GalanoGrotesqueRegular.otf",
-            weight: "400",
-            style: "normal",
-        },
-        {
-            path: "./fonts/GalanoGrotesqueAltBold.otf",
-            weight: "700",
-            style: "normal",
-        },
-        {
-            path: "./fonts/GalanoGrotesqueAltBoldItalic.otf",
-            weight: "700",
-            style: "italic",
-        },
-    ],
-    variable: "--font-galano-Grotesque-alt",
-});
+// const galanoGrotesque = localFont({
+//     src: [
+//         {
+//             path: "./fonts/GalanoGrotesqueAltMedium.otf",
+//             weight: "500",
+//             style: "normal",
+//         },
+//         {
+//             path: "./fonts/GalanoGrotesqueAltMediumItalic.otf",
+//             weight: "500",
+//             style: "italic",
+//         },
+//         {
+//             path: "./fonts/GalanoGrotesqueRegular.otf",
+//             weight: "400",
+//             style: "normal",
+//         },
+//         {
+//             path: "./fonts/GalanoGrotesqueAltBold.otf",
+//             weight: "700",
+//             style: "normal",
+//         },
+//         {
+//             path: "./fonts/GalanoGrotesqueAltBoldItalic.otf",
+//             weight: "700",
+//             style: "italic",
+//         },
+//     ],
+//     variable: "--font-galano-Grotesque-alt",
+// });
 
-const nunito = Nunito({
+const open_sans = Open_Sans({
     subsets: ['latin'],
     display: 'swap',
-    variable: '--font-nunito',
+    weight: ["300", "400", "500", "600", "700", "800"],
+    variable: "--font-open-sans"
 })
+
+// const nunito = Nunito({
+//     subsets: ['latin'],
+//     display: 'swap',
+//     variable: '--font-nunito',
+// })
 
 export const metadata = {
     title: "Create Next App",
@@ -61,8 +67,8 @@ export default function MainLayout({ children }) {
         <html lang="en" suppressHydrationWarning>
             <body
                 className={cn(
-                    "h-screen flex flex-col font-galanoGrotesque w-screen overflow-hidden ",
-                    galanoGrotesque.variable, nunito.variable
+                    "h-screen flex flex-col font-openSans w-screen overflow-hidden ",
+                    open_sans.variable
                 )}
             >
                 <div className="flex relative w-full h-full flex-col overflow-y-auto items-start overflow-x-hidden scrollbar-hide md:scrollbar">

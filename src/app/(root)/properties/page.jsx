@@ -3,7 +3,6 @@ import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import Link from "next/link";
 
-
 const page = async () => {
 
     const { result = [] } = await getAllProperty()
@@ -35,7 +34,7 @@ const page = async () => {
                                     <div className="w-full">
                                         <span className="text-sm">{property.propertyType}</span>
                                         <h2 className="text-base font-medium">
-                                            &#8377; {property.priceTotal} Lac | {property.plotArea}
+                                            &#8377; {property.priceTotal} Lac | {property.plotArea?.value}{" "}{property.plotArea?.unit}
                                         </h2>
                                         <div className="flex flex-col space-y-1 w-full">
                                             <p className="text-gray-600 text-sm">
