@@ -32,7 +32,7 @@ const About = () => {
                             <div className="w-full space-x-4">
                                 <Button
                                     variant="outline"
-                                    className="border-[#0078DB]"
+                                    className="border-[#0000FF]"
                                 >
                                     See More Details
                                 </Button>

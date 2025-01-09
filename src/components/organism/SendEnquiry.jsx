@@ -131,7 +131,7 @@ const SendEnquiry = () => {
                                     </FormItem>
                                 )}
                             />
-                            <Button className="rounded-3xl w-full bg-[#0078DB]">Send Enquiry</Button>
+                            <Button className="rounded-3xl w-full bg-[#0000FF]">Send Enquiry</Button>
                         </form>
                     </Form>
                 </div>

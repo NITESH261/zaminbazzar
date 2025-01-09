@@ -26,7 +26,7 @@ import {
 
 const Navbar = () => {
     return (
-        <div className="flex sticky top-0 font-nunito z-20 w-full bg-[#0078DB]">
+        <div className="flex sticky top-0 font-nunito z-20 w-full bg-[#0000FF]">
             <div className="flex w-full h-16 items-center max-w-[1480px] mx-auto gap-4 px-4">
                 <div className="flex w-fit">
                     <Link href={"/"}>
@@ -142,7 +142,7 @@ const Navbar = () => {
                         </DropdownMenu>
                         <Sheet>
                             <SheetTrigger asChild>
-                                <Button className="rounded-md px-3 py-0 bg-transparent hover:text-[#0078DB] hover:bg-white">
+                                <Button className="rounded-md px-3 py-0 bg-transparent hover:text-[#0000FF] hover:bg-white">
                                     <AlignRightIcon className="!size-5" />
                                 </Button>
                             </SheetTrigger>
