@@ -12,6 +12,7 @@ import { Button } from "../ui/button"
 import { Checkbox } from "../ui/checkbox"
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "../ui/form"
 import { RadioGroup, RadioGroupItem } from "../ui/radio-group"
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "../ui/select"
 
 const Location = [
     { "thane": "Thane" },
@@ -46,8 +47,8 @@ const FilterSchema = z.object({
     // hasConstruction: z.boolean().optional(),
     // possessionBy: z.string().optional(),
     ownership: z.string().optional(),
-    // priceTotalMinValue: z.string().optional(),
-    // priceTotalMaxValue: z.string().optional(),
+    priceTotalMinValue: z.string().optional(),
+    priceTotalMaxValue: z.string().optional(),
     // inclusivePrice: z.boolean().optional(),
     // isTaxExcluded: z.boolean().optional(),
     // isPriceNegotiable: z.boolean().optional(),
@@ -69,9 +70,9 @@ const SearchFilter = () => {
             propertyType: "",
             propertyCategories: "",
             city: "",
-            locality: "",
-            plotAreaMinValue: "",
-            plotAreaMaxValue: "",
+            locality: SearchTrigger(params.locationId),
+            // plotAreaMinValue: "100 sqft",
+            // plotAreaMaxValue: "1300 sqft",
             allowedFloors: "",
             // hasBoundaryWall: false,
             openSides: "",
@@ -118,30 +119,12 @@ const SearchFilter = () => {
             <div className="flex relative flex-col h-fit divide-y w-full p-4">
                 <Form {...form}>
                     <form onSubmit={form.handleSubmit(onSubmit)} className="divide-y-2">
-                        <div className="flex flex-col gap-4 w-full">
-                            {/* <div className="flex w-full items-center justify-between">
-                                <span className="text-sm lg:text-base font-medium">Applied Filters</span>
-                                <Button variant="ghost" className="h-[unset] text-sm rounded-full px-2.5 py-1.5 text-[#0078db]">
-                                    Clear All
-                                </Button>
-                            </div>
-                            <ul className="flex w-full gap-2 flex-wrap">
-                                <li className="w-fit flex">
-                                    <Badge variant={"outline"} className="gap-1 text-sm border-[#0078db] bg-blue-100 font-medium">
-                                        {params.locationId}
-                                        <Button variant="ghost" className="h-[unset] px-1 py-1">
-                                            <X className="!size-4" />
-                                        </Button>
-                                    </Badge>
-                                </li>
-                            </ul> */}
-                            <Button
-                                type="submit"
-                                className="px-4 w-full py-2 bg-blue-500 text-white rounded-lg"
-                            >
-                                Apply Filter
-                            </Button>
-                        </div>
+                        <Button
+                            type="submit"
+                            className="px-4 w-full py-2 bg-blue-500 text-white rounded-lg"
+                        >
+                            Apply Filter
+                        </Button>
                         <FormField
                             control={form.control}
                             name="propertyType"
@@ -298,6 +281,128 @@ const SearchFilter = () => {
                                 </FormItem>
                             )}
                         />
+                        <div className="flex flex-col py-4 gap-4 w-full">
+                            <FormLabel>{FilterData[4].label}</FormLabel>
+                            <div className="grid grid-cols-2 w-full gap-2">
+                                <FormField
+                                    control={form.control}
+                                    name="priceTotalMinValue"
+                                    render={({ field }) => (
+                                        <FormItem className="flex flex-col gap-2">
+                                            <FormControl>
+                                                <Select
+                                                    onValueChange={field.onChange}
+                                                    defaultValue={field.value ?? ""}
+                                                >
+                                                    <FormControl>
+                                                        <SelectTrigger>
+                                                            <SelectValue placeholder="Select Min Value" />
+                                                        </SelectTrigger>
+                                                    </FormControl>
+                                                    <SelectContent>
+                                                        {FilterData[4].data[0].data.map(({ value, label }) => (
+                                                            <SelectItem key={label} value={value}>
+                                                                {label}
+                                                            </SelectItem>
+                                                        ))}
+                                                    </SelectContent>
+                                                </Select>
+                                            </FormControl>
+                                            <FormMessage />
+                                        </FormItem>
+                                    )}
+                                />
+                                <FormField
+                                    control={form.control}
+                                    name="priceTotalMaxValue"
+                                    render={({ field }) => (
+                                        <FormItem className="flex flex-col gap-2">
+                                            <FormControl>
+                                                <Select
+                                                    onValueChange={field.onChange}
+                                                    defaultValue={field.value ?? ""}
+                                                >
+                                                    <FormControl>
+                                                        <SelectTrigger>
+                                                            <SelectValue placeholder="Select Max Value" />
+                                                        </SelectTrigger>
+                                                    </FormControl>
+                                                    <SelectContent>
+                                                        {FilterData[4].data[1].data.map(({ value, label }) => (
+                                                            <SelectItem key={label} value={value}>
+                                                                {label}
+                                                            </SelectItem>
+                                                        ))}
+                                                    </SelectContent>
+                                                </Select>
+                                            </FormControl>
+                                            <FormMessage />
+                                        </FormItem>
+                                    )}
+                                />
+                            </div>
+                        </div>
+                        {/* <div className="flex flex-col py-4 gap-4 w-full">
+                            <FormLabel>{FilterData[19].label}</FormLabel>
+                            <div className="grid grid-cols-2 w-full gap-2">
+                                <FormField
+                                    control={form.control}
+                                    name="plotAreaMinValue"
+                                    render={({ field }) => (
+                                        <FormItem className="flex flex-col gap-2">
+                                            <FormControl>
+                                                <Select
+                                                    onValueChange={field.onChange}
+                                                    defaultValue={field.value ?? ""}
+                                                >
+                                                    <FormControl>
+                                                        <SelectTrigger>
+                                                            <SelectValue placeholder="Select Min Value" />
+                                                        </SelectTrigger>
+                                                    </FormControl>
+                                                    <SelectContent>
+                                                        {FilterData[19].data[0].data.map(({ value, label }) => (
+                                                            <SelectItem key={label} value={value}>
+                                                                {label}
+                                                            </SelectItem>
+                                                        ))}
+                                                    </SelectContent>
+                                                </Select>
+                                            </FormControl>
+                                            <FormMessage />
+                                        </FormItem>
+                                    )}
+                                />
+                                <FormField
+                                    control={form.control}
+                                    name="plotAreaMaxValue"
+                                    render={({ field }) => (
+                                        <FormItem className="flex flex-col gap-2">
+                                            <FormControl>
+                                                <Select
+                                                    onValueChange={field.onChange}
+                                                    defaultValue={field.value ?? ""}
+                                                >
+                                                    <FormControl>
+                                                        <SelectTrigger>
+                                                            <SelectValue placeholder="Select Max Value" />
+                                                        </SelectTrigger>
+                                                    </FormControl>
+                                                    <SelectContent>
+                                                        {FilterData[19].data[1].data.map(({ value, label }) => (
+                                                            <SelectItem key={label} value={value}>
+                                                                {label}
+                                                            </SelectItem>
+                                                        ))}
+                                                    </SelectContent>
+                                                </Select>
+                                            </FormControl>
+                                            <FormMessage />
+                                        </FormItem>
+                                    )}
+                                />
+                            </div>
+                        </div> */}
                         <FormField
                             control={form.control}
                             name="allowedFloors"
@@ -843,6 +948,12 @@ const SearchFilter = () => {
                                 </FormItem>
                             )}
                         />
+                        <Button
+                            type="submit"
+                            className="px-4 w-full py-2 bg-blue-500 text-white rounded-lg"
+                        >
+                            Apply Filter
+                        </Button>
                     </form>
                 </Form>
             </div>
@@ -872,15 +983,15 @@ const FilterData = [
         data: [
             {
                 label: "Flat/Apartment",
-                value: "FlatorApartment",
+                value: "Flat/Apartment",
             },
             {
                 label: "Plot/Land",
-                value: "PlotorLand",
+                value: "Plot/Land",
             },
             {
                 label: "Independent House/villa",
-                value: "Independent Houseorvilla",
+                value: "Independent House/villa",
             },
             {
                 label: "Farmhouse",
@@ -926,7 +1037,37 @@ const FilterData = [
             },
         ]
     },
-    {},
+    {
+        label: "Select Property Price",
+        data: [
+            {
+                label: "Select Min Value",
+                data: [
+                    { label: "1 Lakh", value: "100000" },
+                    { label: "2 Lakhs", value: "200000" },
+                    { label: "3 Lakhs", value: "300000" },
+                    { label: "4 Lakhs", value: "400000" },
+                    { label: "5 Lakhs", value: "500000" },
+                    { label: "6 Lakhs", value: "6000000" },
+                    { label: "7 Lakhs", value: "7000000" },
+                    { label: "8 Lakhs", value: "8000000" },
+                ]
+            },
+            {
+                label: "Select Max Value",
+                data: [
+                    { label: "1 Lakh", value: "100000" },
+                    { label: "2 Lakhs", value: "200000" },
+                    { label: "3 Lakhs", value: "300000" },
+                    { label: "4 Lakhs", value: "400000" },
+                    { label: "5 Lakhs", value: "500000" },
+                    { label: "6 Lakhs", value: "6000000" },
+                    { label: "7 Lakhs", value: "7000000" },
+                    { label: "8 Lakhs", value: "8000000" },
+                ]
+            }
+        ]
+    },
     {
         label: "Select Allowed Floors",
         data: [
@@ -1109,7 +1250,7 @@ const FilterData = [
         label: "Select Overlooking",
         data: [
             { value: "Pool", label: "Pool" },
-            { value: "ParkorGarden", label: "Park/Garden" },
+            { value: "Park/Garden", label: "Park/Garden" },
             { value: "Club", label: "Club" },
             { value: "Main Road", label: "Main Road" },
             { value: "Others", label: "Others" }
@@ -1144,5 +1285,34 @@ const FilterData = [
             { value: "Close to market", label: "Close to market" },
             { value: "Close to railway station", label: "Close to railway station" }
         ]
-    }
+    },
+    {
+        label: "Select Plot Area",
+        data: [
+            {
+                label: "Select Min Value",
+                data: [
+                    { label: "100 sqft", value: "100 sqft" },
+                    { label: "400 sqft", value: "400 sqft" },
+                    { label: "600 sqft", value: "600 sqft" },
+                    { label: "800 sqft", value: "800 sqft" },
+                    { label: "1000 sqft", value: "1000 sqft" },
+                    { label: "1400 sqft", value: "1400 sqft" },
+                    { label: "2000 sqft", value: "2000 sqft" },
+                ]
+            },
+            {
+                label: "Select Max Value",
+                data: [
+                    { label: "100 sqft", value: "100 sqft" },
+                    { label: "400 sqft", value: "400 sqft" },
+                    { label: "600 sqft", value: "600 sqft" },
+                    { label: "800 sqft", value: "800 sqft" },
+                    { label: "1000 sqft", value: "1000 sqft" },
+                    { label: "1400 sqft", value: "1400 sqft" },
+                    { label: "2000 sqft", value: "2000 sqft" },
+                ]
+            }
+        ]
+    },
 ]

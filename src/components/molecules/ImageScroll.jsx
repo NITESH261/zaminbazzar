@@ -1,7 +1,6 @@
-import Image from "next/image";
-import React from "react";
-import { Carousel, CarouselContent, CarouselItem } from "../ui/carousel";
 import Autoplay from "embla-carousel-autoplay";
+import Image from "next/image";
+import { Carousel, CarouselContent, CarouselItem } from "../ui/carousel";
 
 const Cards = [
     {
@@ -37,7 +36,7 @@ const ImageScroll = ({ card, isHovered }) => {
     return (
         <div>
             {!isHovered ? (
-                <div className="relative aspect-video bg-cover rounded-t-lg flex w-full overflow-hidden">
+                <div className="relative aspect-video h-44 bg-cover rounded-t-lg flex w-full overflow-hidden">
                     <Image
                         src={`/assets/recommonded-property/${card.img}`}
                         alt={"house"}
@@ -64,7 +63,7 @@ const ImageScroll = ({ card, isHovered }) => {
                                 key={`${index}-image`}
                                 className="basis-full"
                             >
-                                <div className="relative h-[168px] aspect-video bg-cover rounded-t-lg flex w-full overflow-hidden">
+                                <div className="relative h-44 aspect-video bg-cover rounded-t-lg flex w-full overflow-hidden">
                                     <Image
                                         src={`/assets/recommonded-property/${card.img}`}
                                         alt={`house-${index}`}

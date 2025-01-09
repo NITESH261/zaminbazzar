@@ -13,16 +13,16 @@ const Hero = () => {
                     <div className="flex absolute top-1/2 md:top-[90%] shadow-md flex-col divide-y w-[90%] sm:w-full max-w-3xl md:bg-white rounded-2xl md:border md:border-gray-200">
                         <div className="flex w-full text-sm md:text-base">
                             <ul className="flex gap-4 md:gap-0 items-center justify-center md:grid grid-cols-4 h-14 w-full">
-                                <li className="flex w-fit md:w-full items-center justify-center text-white md:text-black cursor-pointer hover:text-[#0078DB] transition-all">
+                                <li className="flex w-fit md:w-full items-center justify-center text-white md:text-black cursor-pointer hover:text-[#0000FF] transition-all">
                                     Buy
                                 </li>
-                                <li className="flex w-fit md:w-full items-center justify-center text-white md:text-black cursor-pointer hover:text-[#0078DB] transition-all">
+                                <li className="flex w-fit md:w-full items-center justify-center text-white md:text-black cursor-pointer hover:text-[#0000FF] transition-all">
                                     Resindential
                                 </li>
-                                <li className="flex w-fit md:w-full items-center justify-center text-white md:text-black cursor-pointer hover:text-[#0078DB] transition-all">
+                                <li className="flex w-fit md:w-full items-center justify-center text-white md:text-black cursor-pointer hover:text-[#0000FF] transition-all">
                                     Commercial
                                 </li>
-                                <li className="flex w-fit md:w-full items-center justify-center text-white md:text-black cursor-pointer hover:text-[#0078DB] transition-all">
+                                <li className="flex w-fit md:w-full items-center justify-center text-white md:text-black cursor-pointer hover:text-[#0000FF] transition-all">
                                     Villa/Banglow
                                 </li>
                             </ul>

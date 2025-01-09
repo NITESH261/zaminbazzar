@@ -9,11 +9,10 @@ const Footer = () => {
     return (
         <div className="bg-gray-100 text-gray-800 w-full">
             <div className="container max-w-7xl mx-auto py-8 px-4">
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-8">
                     <div>
                         <Logo className={"text-black"} />
-                        <h2 className="font-bold text-lg">About zaminwale</h2>
-                        <p>As the largest platform connecting property buyers and sellers</p>
+
                         <div className="mt-4">
                             <p className="text-base">
                                 G-Square Buisness Park,
@@ -34,10 +33,10 @@ const Footer = () => {
                             </div>
                         </div>
                     </div>
-                    <div className="flex flex-col justify-center items-center">
+                    <div className="flex flex-col ">
                         <h2 className="font-bold text-lg mb-4">Company</h2>
-                        <div className="flex flex-col gap-4 items-center w-full">
-                            <p className="text-base flex items-center flex-col gap-2">
+                        <div className="flex flex-col gap-4  w-full">
+                            <p className="text-base flex flex-col gap-2">
                                 {
                                     NavItems[0].data.map((item, i) => (
                                         <Link
@@ -52,7 +51,7 @@ const Footer = () => {
                             </p>
                         </div>
                     </div>
-                    <div>
+                    <div className="lg:col-span-2 md:col-span-1 col-span-1 py-5">
                         {/* <h2 className="font-bold text-lg mb-4">Company</h2>
                         <div className="flex flex-col gap-4 w-full">
                             <p className="text-base">

@@ -58,8 +58,8 @@ const StorySwiper = () => {
                         </CarouselItem>
                     ))}
                 </CarouselContent>
-                <CarouselPrevious className="-left-8 sm:left-0 !size-8 !px-1 bg-[#0078db] text-white" />
-                <CarouselNext className="-right-8 sm:right-0 !size-8 !px-1 bg-[#0078db] text-white" />
+                <CarouselPrevious className="-left-8 sm:left-0 !size-8 !px-1 bg-[#0000FF] text-white" />
+                <CarouselNext className="-right-8 sm:right-0 !size-8 !px-1 bg-[#0000FF] text-white" />
             </Carousel>
             <Dialog open={open}
                 onOpenChange={setOpen}>
@@ -114,7 +114,7 @@ const StorySwiper = () => {
                                                 </div>
                                                 <div className="flex items-end rounded-lg bg-gradient-to-t from-black to-transparent justify-center w-full h-1/5 gap-4 p-4">
                                                     <div className="flex w-full">
-                                                        <Button className="w-full bg-[#0078db]">View Details</Button>
+                                                        <Button className="w-full bg-[#0000FF]">View Details</Button>
                                                     </div>
                                                 </div>
                                             </div>
@@ -122,8 +122,8 @@ const StorySwiper = () => {
                                     </CarouselItem>
                                 ))}
                             </CarouselContent>
-                            <CarouselPrevious className="left-0 md:-left-12 !size-8 !px-1 bg-[#0078db] text-white" />
-                            <CarouselNext className="right-0 md:-right-12 !size-8 !px-1 bg-[#0078db] text-white" />
+                            <CarouselPrevious className="left-0 md:-left-12 !size-8 !px-1 bg-[#0000FF] text-white" />
+                            <CarouselNext className="right-0 md:-right-12 !size-8 !px-1 bg-[#0000FF] text-white" />
                         </Carousel>
                     </div>
                 </DialogContent>

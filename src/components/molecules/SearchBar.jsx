@@ -79,7 +79,7 @@ const SearchBar = () => {
                             </FormItem>
                         )}
                     />
-                    <Button type="submit" className="rounded-full bg-[#0078DB]">
+                    <Button type="submit" className="rounded-full bg-[#0000FF]">
                         <Search />
                         Search</Button>
                 </form>

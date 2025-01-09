@@ -45,7 +45,7 @@ const SimilarExterior = () => {
                         <h2 className="text-lg font-medium md:text-xl lg:text-2xl">
                             Home With Similar Exterior
                         </h2>
-                        <Link href={"/"} className="flex items-center gap-2 hover:text-black text-[#0078DB] text-lg md:text-xl">
+                        <Link href={"/"} className="flex items-center gap-2 hover:text-black text-[#0000FF] text-lg md:text-xl">
                             <span className="hidden md:flex">See More Properties</span>
                             <ArrowRight />
                         </Link>

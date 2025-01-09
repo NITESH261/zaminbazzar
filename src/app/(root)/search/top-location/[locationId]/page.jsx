@@ -17,7 +17,7 @@ const page = () => {
 
     return (
         <>
-            <div className="hidden md:flex md:w-1/3 xl:w-1/4 h-fit md:h-full overflow-y-auto scrollbar-hide bg-white md:rounded-2xl">
+            <div className="hidden md:flex md:w-1/3 xl:w-1/4 border border-neutral-200 h-fit md:h-full overflow-y-auto scrollbar-hide bg-white md:rounded-2xl">
                 <div className="hidden md:flex w-full">
                     <SearchFilter />
                 </div>
@@ -51,19 +51,19 @@ const page = () => {
                     searchList?.length ?
                         <div className="flex w-full h-[calc(100%-80px)] overflow-y-auto overflow-x-hidden scrollbar">
                             <div className="flex flex-col w-full h-fit gap-6">
-                                <div className="flex flex-col w-full h-fit bg-white rounded-2xl gap-4 p-4">
+                                <div className="flex flex-col w-full h-fit rounded-2xl gap-4">
                                     {searchList?.map((card, i) => (
                                         <Link
-                                            href={"#"}
+                                            href={`/properties/${card.propertyId}`}
                                             key={i}
-                                            className="flex flex-col sm:flex-row border w-full rounded-2xl border-neutral-200 hover:border-blue-400 hover:shadow-md transition-all"
+                                            className="flex flex-col p-4 sm:flex-row border w-full gap-2 rounded-3xl bg-white border-neutral-200 hover:border-blue-400 hover:shadow-md transition-all"
                                         >
                                             <div className="flex w-full sm:w-2/5 relative aspect-video sm:aspect-[3/2]">
                                                 <Image
                                                     src="/assets/popular-property/property-1.jpg"
                                                     alt="property img"
                                                     fill
-                                                    className="object-cover rounded-2xl sm:rounded-r-none"
+                                                    className="object-cover rounded-2xl"
                                                 />
                                                 <Button
                                                     variant="ghost"
@@ -73,38 +73,49 @@ const page = () => {
                                                     <Heart className="!size-6 fill-neutral-200" />
                                                 </Button>
                                             </div>
-                                            <div className="flex flex-col gap-2 w-full sm:w-3/5 p-4">
+                                            <div className="flex flex-col gap-2 w-full sm:w-3/5 md:px-4">
                                                 <div className="flex flex-col gap-2 w-full sm:flex-grow">
                                                     <div className="flex flex-col w-full space-y-0.5">
-                                                        <span className="text-lg md:text-xl font-medium">
+                                                        <span className="text-base font-bold">
                                                             {card.locality}
                                                         </span>
                                                         <span className="text-sm hover:underline transition-all">
                                                             {card.propertyType} Land / {card.city}
                                                         </span>
                                                     </div>
-                                                    <div className="grid divide-x-2 grid-cols-2 lg:grid-cols-3">
+                                                    <div className="grid divide-x md:divide-x-2 grid-cols-3 lg:grid-cols-3">
                                                         <div className="flex flex-col w-full">
-                                                            <span className="flex items-center text-base md:text-lg lg:text-xl xl:text-3xl font-bold">
-                                                                <IndianRupee className="!size-5 md:!size-7 lg:!size-8" />
+                                                            <span className="flex items-center text-sm sm:text-base md:text-lg lg:text-xl font-bold">
+                                                                <IndianRupee className="!size-4" />
                                                                 {formatCurrency(card.priceTotal)}
                                                             </span>
-                                                            <span className="flex items-center text-base">
-                                                                <IndianRupee className="!size-2 md:!size-3 lg:!size-4" />{card.pricePerSQFT} / sqft
+                                                            <span className="flex items-center text-xs">
+                                                                <IndianRupee className="!size-2" />{card.pricePerSQFT} / sqft
                                                             </span>
                                                         </div>
-                                                        <div className="flex w-full pl-4 lg:col-span-2">
-                                                            <span className="flex items-center text-base md:text-lg lg:text-xl xl:text-3xl font-bold">
+                                                        <div className="flex flex-col w-full pl-4">
+                                                            <span className="flex items-center text-sm sm:text-base md:text-lg lg:text-xl font-bold">
                                                                 {card.plotArea}
+                                                            </span>
+                                                            <span className="flex items-center text-xs">
+                                                                Plot Area
+                                                            </span>
+                                                        </div>
+                                                        <div className="flex flex-col w-full pl-4">
+                                                            <span className="flex items-center text-sm sm:text-base md:text-lg lg:text-xl font-bold">
+                                                                {card.propertyType}
+                                                            </span>
+                                                            <span className="flex items-center text-xs">
+                                                                Plot Area
                                                             </span>
                                                         </div>
                                                     </div>
-                                                    <p className="text-sm">
+                                                    <p className="text-xs md:text-sm">
                                                         {sliceParagraph(card.uniqueFeatures)}
                                                     </p>
                                                     <div className="flex flex-wrap w-full overflow-x-auto scrollbar-hide">
                                                         <div className="flex w-fit gap-2 items-center">
-                                                            <span className="flex w-fit whitespace-nowrap font-medium text-blue-500">Near By:</span>
+                                                            <span className="flex w-fit whitespace-nowrap text-sm font-medium text-blue-500">Near By:</span>
                                                             <ul className="w-fit flex gap-2">
                                                                 {
                                                                     card.locationAdvantages.map((item, i) =>
@@ -120,13 +131,13 @@ const page = () => {
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div className="flex flex-col sm:flex-row w-full gap-2 sm:gap-4 justify-end sm:flex-grow-0 h-1/5">
-                                                    <Button className="rounded-full bg-[#0078db]">
+                                                <div className="flex w-full gap-2 sm:gap-4 md:justify-end sm:flex-grow-0 h-1/5">
+                                                    <Button className="rounded-full w-full md:w-fit text-xs bg-[#0078db]">
                                                         <PhoneCallIcon /> Contact Us
                                                     </Button>
                                                     <Button
                                                         variant="outline"
-                                                        className="rounded-full border-[#0078db] text-[#0078db]"
+                                                        className="rounded-full w-full md:w-fit text-xs border-[#0078db] text-[#0078db]"
                                                     >
                                                         View Number
                                                     </Button>

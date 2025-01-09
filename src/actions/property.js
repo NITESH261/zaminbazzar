@@ -1,14 +1,6 @@
 "user server"
 
-import { fetchWithoutToken, fetchWithToken } from "@/services/fetch"
-
-const baseUrl = 'https://6741e603e4647499008f2ca9.mockapi.io/api/v1/'
-
-export const getAllProperty = async () => {
-    let resp = await fetch(baseUrl + "allproperties", { method: "GET" })
-
-    return resp.json()
-}
+import { fetchWithoutToken, fetchWithToken } from "@/services/fetch";
 
 const formatFilterForQuery = (filter) => {
     const queryString = new URLSearchParams();
@@ -26,6 +18,13 @@ const formatFilterForQuery = (filter) => {
     return queryString.toString();
 };
 
+export const getAllProperty = async () => {
+    let resp = await fetchWithoutToken("/property/getAll", {
+        method: "GET"
+    })
+    resp = resp.results.data
+    return resp
+}
 
 export const createProperty = async (body) => {
     let resp = await fetchWithToken("/property/add", {
@@ -53,7 +52,6 @@ export const uploadPropertyImage = async body => {
         noContentType: true,
         body,
     })
-
     resp = resp.results.data
     return resp
 }

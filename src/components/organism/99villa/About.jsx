@@ -28,7 +28,7 @@ const About = () => {
                         redefines weekend living.
                     </p>
                     <div className="w-full space-x-4">
-                        <Button variant="outline" className="border-[#0078DB]">
+                        <Button variant="outline" className="border-[#0000FF]">
                             Know More
                         </Button>
                     </div>

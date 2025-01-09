@@ -1,8 +1,5 @@
 "use client";
 
-import { ArrowRight } from "lucide-react";
-import Link from "next/link";
-import { useState } from "react";
 import ImageScroll from "@/components/molecules/ImageScroll";
 import { Button } from "@/components/ui/button";
 import {
@@ -12,6 +9,9 @@ import {
     CarouselNext,
     CarouselPrevious,
 } from "@/components/ui/carousel";
+import { ArrowRight } from "lucide-react";
+import Link from "next/link";
+import { useState } from "react";
 
 const Cards = [
     {
@@ -62,11 +62,11 @@ const Property = () => {
                     <div className="flex w-full items-center justify-between">
                         <h2 className="text-lg font-medium md:text-xl lg:text-2xl flex  flex-col w-fit">
                             <span>Villa Plots</span>
-                            <span className="h-1.5 w-20 bg-[#0078DB] rounded-full"></span>
+                            <span className="h-1.5 w-20 bg-[#0000FF] rounded-full"></span>
                         </h2>
                         <Link
-                            href={"/popular-properties"}
-                            className="flex items-center gap-2 hover:text-black text-[#0078DB] text-lg md:text-xl"
+                            href={"/properties"}
+                            className="flex items-center gap-2 hover:text-black text-[#0000FF] text-lg md:text-xl"
                         >
                             <span className="hidden md:flex">
                                 See More Properties
@@ -121,7 +121,7 @@ const Property = () => {
                                                         Vinay Nagar, Mumbai
                                                     </p>
                                                 </div>
-                                                <Button className="rounded-full bg-[#0078DB]">
+                                                <Button className="rounded-full bg-[#0000FF]">
                                                     View Details
                                                 </Button>
                                             </div>
