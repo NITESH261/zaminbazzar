@@ -56,7 +56,7 @@ const TopLocations = () => {
                     <div className="flex w-full">
                         <h2 className="text-lg font-medium md:text-xl lg:text-2xl flex flex-col gap-1">
                             <span>Top Locations</span>
-                            <span className="h-1.5 w-20 bg-[#0078DB] rounded-full"></span>
+                            <span className="h-1.5 w-20 bg-[#0000FF] rounded-full"></span>
                         </h2>
                     </div>
                     <div className="flex w-full overflow-auto scrollbar-hide">

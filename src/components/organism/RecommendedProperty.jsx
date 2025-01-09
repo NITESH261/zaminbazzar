@@ -61,11 +61,11 @@ const Property = () => {
                     <div className="flex w-full items-center justify-between">
                         <h2 className="text-lg font-medium md:text-xl lg:text-2xl flex flex-col gap-1">
                             <span>Recommended Property</span>
-                            <span className="h-1.5 w-20 bg-[#0078DB] rounded-full"></span>
+                            <span className="h-1.5 w-20 bg-[#0000FF] rounded-full"></span>
                         </h2>
                         <Link
                             href={"/properties"}
-                            className="flex items-center gap-2 hover:text-black text-[#0078DB] text-lg md:text-xl"
+                            className="flex items-center gap-2 hover:text-black text-[#0000FF] text-lg md:text-xl"
                         >
                             <span className="hidden md:flex">
                                 See More Properties
@@ -122,7 +122,7 @@ const Property = () => {
                                                     Ready Move
                                                 </span>
                                                 <div className="flex w-full md:absolute md:px-4 pb-3 md:left-0 md:-bottom-40 md:group-hover:bottom-0 md:transition-all">
-                                                    <Button asChild className="w-full h-[unset] rounded-full bg-[#0078DB]">
+                                                    <Button asChild className="w-full h-[unset] rounded-full bg-[#0000FF]">
                                                         <Link href={"/"}>
                                                             View Details
                                                         </Link>
