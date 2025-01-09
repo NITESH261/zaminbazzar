@@ -4,7 +4,7 @@ const AuthLayout = ({ children }) => {
         <div className="flex w-full h-full">
             <div className="flex w-full max-w-7xl mx-auto px-4 py-6 md:py-8 lg:py-10 xl:py-12">
                 <div className="grid grid-cols-1 md:grid-cols-2 w-full gap-4">
-                    <div className="flex flex-col items-center justify-center w-full">
+                    <div className="flex flex-col items-center justify-center w-full order-2 md:order-1">
                         <h1 className="text-balance text-5xl font-semibold tracking-tight text-gray-900 sm:text-7xl">
                             Data to enrich your online business
                         </h1>
@@ -12,7 +12,7 @@ const AuthLayout = ({ children }) => {
                             Anim aute id magna aliqua ad ad non deserunt sunt. Qui irure qui lorem cupidatat commodo. Elit sunt amet fugiat veniam occaecat.
                         </p>
                     </div>
-                    <div className="flex w-full items-center justify-center md:justify-end">
+                    <div className="flex w-full items-center justify-center md:justify-end order-1 md:order-2">
                         {children}
                     </div>
                 </div>

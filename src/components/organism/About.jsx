@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import { Button } from "../ui/button";
 
 const About = () => {
@@ -31,10 +32,13 @@ const About = () => {
                             </p>
                             <div className="w-full space-x-4">
                                 <Button
+                                    asChild
                                     variant="outline"
-                                    className="border-[#0000FF]"
+                                    className="bg-[#0000FF] text-white"
                                 >
-                                    See More Details
+                                    <Link href={"/about-99villa"}>
+                                        See More Details
+                                    </Link>
                                 </Button>
                             </div>
                         </div>

@@ -24,14 +24,26 @@ const LogoutBtn = () => {
 
     return (
         <>
-
             {
                 isAuthenticated ?
-                    <DropdownMenuItem asChild>
-                        <span onClick={() => handleLogout()} className="w-full justify-between cursor-pointer">
-                            Logout <LogOut className="!size-3" />
-                        </span>
-                    </DropdownMenuItem> :
+                    <>
+                        <DropdownMenuItem asChild>
+                            <Link href={"/"} className="cursor-pointer">
+                                User Activity
+                            </Link>
+                        </DropdownMenuItem>
+                        <DropdownMenuItem asChild>
+                            <Link href={"/"} className="cursor-pointer">
+                                Dashboard
+                            </Link>
+                        </DropdownMenuItem>
+                        <DropdownMenuItem asChild>
+                            <span onClick={() => handleLogout()} className="w-full justify-between cursor-pointer">
+                                Logout <LogOut className="!size-3" />
+                            </span>
+                        </DropdownMenuItem>
+                    </>
+                    :
                     <>
                         <DropdownMenuItem asChild>
                             <Link href={"/auth/login"} className="cursor-pointer">
@@ -45,7 +57,6 @@ const LogoutBtn = () => {
                         </DropdownMenuItem>
                     </>
             }
-
         </>
 
     )

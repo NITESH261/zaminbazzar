@@ -26,7 +26,7 @@ import {
 
 const Navbar = () => {
     return (
-        <div className="flex sticky top-0 font-nunito z-20 w-full bg-[#0000FF]">
+        <header className="flex sticky top-0 z-20 w-full bg-[#0000FF]">
             <div className="flex w-full h-16 items-center max-w-[1480px] mx-auto gap-4 px-4">
                 <div className="flex w-fit">
                     <Link href={"/"}>
@@ -239,7 +239,7 @@ const Navbar = () => {
                     </div>
                 </div>
             </div>
-        </div>
+        </header>
     );
 };
 

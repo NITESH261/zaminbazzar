@@ -14,6 +14,7 @@ const BasicDetailsSchema = z.object({
         [
             "Residential",
             "Commercial",
+            "Villa/bungalow"
         ],
         { required_error: "You need to select Property Type." }
     ),
@@ -62,6 +63,20 @@ const Step1Data = [
             {
                 label: "Commercial",
                 value: "Commercial",
+                data: [
+                    {
+                        label: "Independent House/villa",
+                        value: "Independent House/villa"
+                    },
+                    {
+                        label: "Farmhouse",
+                        value: "Farmhouse"
+                    },
+                ]
+            },
+            {
+                label: "Villa/bungalow",
+                value: "Villa/bungalow",
                 data: [
                     {
                         label: "Independent House/villa",

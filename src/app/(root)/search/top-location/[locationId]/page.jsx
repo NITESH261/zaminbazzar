@@ -95,7 +95,7 @@ const page = () => {
                                                         </div>
                                                         <div className="flex flex-col w-full pl-4">
                                                             <span className="flex items-center text-sm sm:text-base md:text-lg lg:text-xl font-bold">
-                                                                {card.plotArea}
+                                                                {card.plotArea?.value}{" "}{card.plotArea?.unit}
                                                             </span>
                                                             <span className="flex items-center text-xs">
                                                                 Plot Area
@@ -118,7 +118,7 @@ const page = () => {
                                                             <span className="flex w-fit whitespace-nowrap text-sm font-medium text-blue-500">Near By:</span>
                                                             <ul className="w-fit flex gap-2">
                                                                 {
-                                                                    card.locationAdvantages.map((item, i) =>
+                                                                    card.locationAdvantages?.map((item, i) =>
                                                                         <li
                                                                             key={i}
                                                                             className="w-fit px-3 py-1.5 rounded-full text-xs bg-blue-100 whitespace-nowrap"
