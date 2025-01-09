@@ -16,7 +16,7 @@ const Discover = () => {
             <div className="flex w-full">
                 <div className="flex flex-col gap-4 w-full max-w-7xl mx-auto px-4 py-4 md:py-6 lg:py-8 xl:py-10">
                     <div className="flex w-full">
-                        <h2 className="text-lg font-galanoGrotesque font-bold md:text-xl lg:text-2xl">
+                        <h2 className="text-lg font-bold md:text-xl lg:text-2xl">
                             Discover how we can help
                         </h2>
                     </div>

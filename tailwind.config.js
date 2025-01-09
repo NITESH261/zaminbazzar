@@ -8,12 +8,15 @@ module.exports = {
 	],
 	theme: {
 		fontFamily: {
-			galanoGrotesque: [
-				'var(--font-galano-Grotesque-alt)'
-			],
-			nunito: [
-				'var(--font-nunito)'
+			openSans: [
+				'var(--font-open-sans)'
 			]
+			// galanoGrotesque: [
+			// 	'var(--font-galano-Grotesque-alt)'
+			// ],
+			// nunito: [
+			// 	'var(--font-nunito)'
+			// ]
 		},
 		extend: {
 			backgroundImage: {
