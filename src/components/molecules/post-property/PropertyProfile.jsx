@@ -59,9 +59,9 @@ const Step3Data = [
     {
         label: "Add area details",
         data: [
-            { label: "Sq ft", value: "Sq ft" },
-            { label: "Sq yard", value: "Sq yard" },
-            { label: "Sq m", value: "Sq m" },
+            { label: "Sqft", value: "sqft" },
+            { label: "Sqyard", value: "sqyard" },
+            { label: "Sqm", value: "sqm" },
             { label: "acres", value: "acres" },
             { label: "marla", value: "marla" },
             { label: "cents", value: "cents" }
