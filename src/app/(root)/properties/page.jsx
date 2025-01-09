@@ -33,7 +33,7 @@ const page = async () => {
                                 </div>
                                 <div className="flex flex-col p-4 relative w-full overflow-hidden space-y-2">
                                     <div className="w-full">
-                                        <span className="text-sm">1 BHK Flat</span>
+                                        <span className="text-sm">{property.propertyType}</span>
                                         <h2 className="text-base font-medium">
                                             &#8377; {property.priceTotal} Lac | {property.plotArea}
                                         </h2>
