@@ -1,7 +1,7 @@
 
 import BentoGridScroll from "@/components/molecules/BentoGridScroll"
 import EnquireForm from "@/components/molecules/EnquireForm"
-import SimilarExterior from "@/components/molecules/SimilarExterior"
+// import SimilarExterior from "@/components/molecules/SimilarExterior"
 import SimilarProperty from "@/components/molecules/SimilarProperty"
 import Footer from "@/components/organism/Footer"
 import NearByLocations from "@/components/organism/NearByLocations"
@@ -215,7 +215,7 @@ const page = async ({ params }) => {
 
             <SimilarProperty />
 
-            <SimilarExterior />
+            {/* <SimilarExterior /> */}
 
             <NearByLocations />
 

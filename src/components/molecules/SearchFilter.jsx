@@ -1,25 +1,38 @@
-"use client"
+"use client";
 
-import { filterProperty } from "@/actions/property"
-import useZaminwaleStore from "@/store"
-import { zodResolver } from "@hookform/resolvers/zod"
-import { CheckIcon, PlusIcon } from "lucide-react"
-import { useParams } from "next/navigation"
-import { useEffect } from "react"
-import { useForm } from "react-hook-form"
-import { z } from "zod"
-import { Button } from "../ui/button"
-import { Checkbox } from "../ui/checkbox"
-import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "../ui/form"
-import { RadioGroup, RadioGroupItem } from "../ui/radio-group"
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "../ui/select"
+import { filterProperty } from "@/actions/property";
+import useZaminwaleStore from "@/store";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { CheckIcon, PlusIcon } from "lucide-react";
+import { useParams } from "next/navigation";
+import { useEffect } from "react";
+import { useForm } from "react-hook-form";
+import { z } from "zod";
+import { Button } from "../ui/button";
+import { Checkbox } from "../ui/checkbox";
+import {
+    Form,
+    FormControl,
+    FormField,
+    FormItem,
+    FormLabel,
+    FormMessage,
+} from "../ui/form";
+import { RadioGroup, RadioGroupItem } from "../ui/radio-group";
+import {
+    Select,
+    SelectContent,
+    SelectItem,
+    SelectTrigger,
+    SelectValue,
+} from "../ui/select";
 
 const Location = [
-    { "thane": "Thane" },
+    { thane: "Thane" },
     { "navi-mumbai": "Navi Mumbai" },
-    { "panvel": "Panvel" },
-    { "khalapur": "Khalapur" },
-]
+    { panvel: "Panvel" },
+    { khalapur: "Khalapur" },
+];
 
 const SearchTrigger = (locationId) => {
     const matchingLocation = Location.find((loc) =>
@@ -57,12 +70,11 @@ const FilterSchema = z.object({
     otherFeatures: z.string().optional(),
     propertyFacing: z.string().optional(),
     locationAdvantages: z.array(z.string()).optional(),
-})
+});
 
 const SearchFilter = () => {
-
-    const params = useParams()
-    const dispatch = useZaminwaleStore(store => store.dispatch)
+    const params = useParams();
+    const dispatch = useZaminwaleStore((store) => store.dispatch);
 
     const form = useForm({
         resolver: zodResolver(FilterSchema),
@@ -89,8 +101,8 @@ const SearchFilter = () => {
             otherFeatures: "",
             propertyFacing: "",
             locationAdvantages: [],
-        }
-    })
+        },
+    });
 
     const onSubmit = async (values) => {
         try {
@@ -118,7 +130,10 @@ const SearchFilter = () => {
         <>
             <div className="flex relative flex-col h-fit divide-y w-full p-4">
                 <Form {...form}>
-                    <form onSubmit={form.handleSubmit(onSubmit)} className="divide-y-2">
+                    <form
+                        onSubmit={form.handleSubmit(onSubmit)}
+                        className="divide-y-2"
+                    >
                         <Button
                             type="submit"
                             className="px-4 w-full py-2 bg-blue-500 text-white rounded-lg"
@@ -137,27 +152,36 @@ const SearchFilter = () => {
                                             defaultValue={field.value}
                                             className="flex w-full flex-wrap"
                                         >
-                                            {FilterData[0].data.map((item, index) => (
-                                                <FormItem
-                                                    key={index}
-                                                    className={`flex items-center space-y-0 ${field.value === item.value
-                                                        ? "bg-blue-100 border border-blue-400"
-                                                        : "bg-white border"
+                                            {FilterData[0].data.map(
+                                                (item, index) => (
+                                                    <FormItem
+                                                        key={index}
+                                                        className={`flex items-center space-y-0 ${
+                                                            field.value ===
+                                                            item.value
+                                                                ? "bg-blue-100 border border-blue-400"
+                                                                : "bg-white border"
                                                         } rounded-full px-4 py-2`}
-                                                >
-                                                    <FormControl className="sr-only">
-                                                        <RadioGroupItem value={item.value} />
-                                                    </FormControl>
-                                                    <FormLabel className="font-normal flex gap-2">
-                                                        {field.value === item.value ? (
-                                                            <CheckIcon className="!size-3" />
-                                                        ) : (
-                                                            <PlusIcon className="!size-3" />
-                                                        )}
-                                                        {item.label}
-                                                    </FormLabel>
-                                                </FormItem>
-                                            ))}
+                                                    >
+                                                        <FormControl className="sr-only">
+                                                            <RadioGroupItem
+                                                                value={
+                                                                    item.value
+                                                                }
+                                                            />
+                                                        </FormControl>
+                                                        <FormLabel className="font-normal flex gap-2">
+                                                            {field.value ===
+                                                            item.value ? (
+                                                                <CheckIcon className="!size-3" />
+                                                            ) : (
+                                                                <PlusIcon className="!size-3" />
+                                                            )}
+                                                            {item.label}
+                                                        </FormLabel>
+                                                    </FormItem>
+                                                )
+                                            )}
                                         </RadioGroup>
                                     </FormControl>
                                     <FormMessage />
@@ -176,27 +200,36 @@ const SearchFilter = () => {
                                             defaultValue={field.value}
                                             className="flex w-full flex-wrap"
                                         >
-                                            {FilterData[1].data.map((item, index) => (
-                                                <FormItem
-                                                    key={index}
-                                                    className={`flex items-center space-y-0 ${field.value === item.value
-                                                        ? "bg-blue-100 border border-blue-400"
-                                                        : "bg-white border"
+                                            {FilterData[1].data.map(
+                                                (item, index) => (
+                                                    <FormItem
+                                                        key={index}
+                                                        className={`flex items-center space-y-0 ${
+                                                            field.value ===
+                                                            item.value
+                                                                ? "bg-blue-100 border border-blue-400"
+                                                                : "bg-white border"
                                                         } rounded-full px-4 py-2`}
-                                                >
-                                                    <FormControl className="sr-only">
-                                                        <RadioGroupItem value={item.value} />
-                                                    </FormControl>
-                                                    <FormLabel className="font-normal flex gap-2">
-                                                        {field.value === item.value ? (
-                                                            <CheckIcon className="!size-3" />
-                                                        ) : (
-                                                            <PlusIcon className="!size-3" />
-                                                        )}
-                                                        {item.label}
-                                                    </FormLabel>
-                                                </FormItem>
-                                            ))}
+                                                    >
+                                                        <FormControl className="sr-only">
+                                                            <RadioGroupItem
+                                                                value={
+                                                                    item.value
+                                                                }
+                                                            />
+                                                        </FormControl>
+                                                        <FormLabel className="font-normal flex gap-2">
+                                                            {field.value ===
+                                                            item.value ? (
+                                                                <CheckIcon className="!size-3" />
+                                                            ) : (
+                                                                <PlusIcon className="!size-3" />
+                                                            )}
+                                                            {item.label}
+                                                        </FormLabel>
+                                                    </FormItem>
+                                                )
+                                            )}
                                         </RadioGroup>
                                     </FormControl>
                                     <FormMessage />
@@ -215,27 +248,36 @@ const SearchFilter = () => {
                                             defaultValue={field.value}
                                             className="flex w-full flex-wrap"
                                         >
-                                            {FilterData[2].data.map((item, index) => (
-                                                <FormItem
-                                                    key={index}
-                                                    className={`flex items-center space-y-0 ${field.value === item.value
-                                                        ? "bg-blue-100 border border-blue-400"
-                                                        : "bg-white border"
+                                            {FilterData[2].data.map(
+                                                (item, index) => (
+                                                    <FormItem
+                                                        key={index}
+                                                        className={`flex items-center space-y-0 ${
+                                                            field.value ===
+                                                            item.value
+                                                                ? "bg-blue-100 border border-blue-400"
+                                                                : "bg-white border"
                                                         } rounded-full px-4 py-2`}
-                                                >
-                                                    <FormControl className="sr-only">
-                                                        <RadioGroupItem value={item.value} />
-                                                    </FormControl>
-                                                    <FormLabel className="font-normal flex gap-2">
-                                                        {field.value === item.value ? (
-                                                            <CheckIcon className="!size-3" />
-                                                        ) : (
-                                                            <PlusIcon className="!size-3" />
-                                                        )}
-                                                        {item.label}
-                                                    </FormLabel>
-                                                </FormItem>
-                                            ))}
+                                                    >
+                                                        <FormControl className="sr-only">
+                                                            <RadioGroupItem
+                                                                value={
+                                                                    item.value
+                                                                }
+                                                            />
+                                                        </FormControl>
+                                                        <FormLabel className="font-normal flex gap-2">
+                                                            {field.value ===
+                                                            item.value ? (
+                                                                <CheckIcon className="!size-3" />
+                                                            ) : (
+                                                                <PlusIcon className="!size-3" />
+                                                            )}
+                                                            {item.label}
+                                                        </FormLabel>
+                                                    </FormItem>
+                                                )
+                                            )}
                                         </RadioGroup>
                                     </FormControl>
                                     <FormMessage />
@@ -254,27 +296,36 @@ const SearchFilter = () => {
                                             defaultValue={field.value}
                                             className="flex w-full flex-wrap"
                                         >
-                                            {FilterData[3].data.map((item, index) => (
-                                                <FormItem
-                                                    key={index}
-                                                    className={`flex items-center space-y-0 ${field.value === item.value
-                                                        ? "bg-blue-100 border border-blue-400"
-                                                        : "bg-white border"
+                                            {FilterData[3].data.map(
+                                                (item, index) => (
+                                                    <FormItem
+                                                        key={index}
+                                                        className={`flex items-center space-y-0 ${
+                                                            field.value ===
+                                                            item.value
+                                                                ? "bg-blue-100 border border-blue-400"
+                                                                : "bg-white border"
                                                         } rounded-full px-4 py-2`}
-                                                >
-                                                    <FormControl className="sr-only">
-                                                        <RadioGroupItem value={item.value} />
-                                                    </FormControl>
-                                                    <FormLabel className="font-normal flex gap-2">
-                                                        {field.value === item.value ? (
-                                                            <CheckIcon className="!size-3" />
-                                                        ) : (
-                                                            <PlusIcon className="!size-3" />
-                                                        )}
-                                                        {item.label}
-                                                    </FormLabel>
-                                                </FormItem>
-                                            ))}
+                                                    >
+                                                        <FormControl className="sr-only">
+                                                            <RadioGroupItem
+                                                                value={
+                                                                    item.value
+                                                                }
+                                                            />
+                                                        </FormControl>
+                                                        <FormLabel className="font-normal flex gap-2">
+                                                            {field.value ===
+                                                            item.value ? (
+                                                                <CheckIcon className="!size-3" />
+                                                            ) : (
+                                                                <PlusIcon className="!size-3" />
+                                                            )}
+                                                            {item.label}
+                                                        </FormLabel>
+                                                    </FormItem>
+                                                )
+                                            )}
                                         </RadioGroup>
                                     </FormControl>
                                     <FormMessage />
@@ -291,8 +342,12 @@ const SearchFilter = () => {
                                         <FormItem className="flex flex-col gap-2">
                                             <FormControl>
                                                 <Select
-                                                    onValueChange={field.onChange}
-                                                    defaultValue={field.value ?? ""}
+                                                    onValueChange={
+                                                        field.onChange
+                                                    }
+                                                    defaultValue={
+                                                        field.value ?? ""
+                                                    }
                                                 >
                                                     <FormControl>
                                                         <SelectTrigger>
@@ -300,11 +355,21 @@ const SearchFilter = () => {
                                                         </SelectTrigger>
                                                     </FormControl>
                                                     <SelectContent>
-                                                        {FilterData[4].data[0].data.map(({ value, label }) => (
-                                                            <SelectItem key={label} value={value}>
-                                                                {label}
-                                                            </SelectItem>
-                                                        ))}
+                                                        {FilterData[4].data[0].data.map(
+                                                            ({
+                                                                value,
+                                                                label,
+                                                            }) => (
+                                                                <SelectItem
+                                                                    key={label}
+                                                                    value={
+                                                                        value
+                                                                    }
+                                                                >
+                                                                    {label}
+                                                                </SelectItem>
+                                                            )
+                                                        )}
                                                     </SelectContent>
                                                 </Select>
                                             </FormControl>
@@ -319,8 +384,12 @@ const SearchFilter = () => {
                                         <FormItem className="flex flex-col gap-2">
                                             <FormControl>
                                                 <Select
-                                                    onValueChange={field.onChange}
-                                                    defaultValue={field.value ?? ""}
+                                                    onValueChange={
+                                                        field.onChange
+                                                    }
+                                                    defaultValue={
+                                                        field.value ?? ""
+                                                    }
                                                 >
                                                     <FormControl>
                                                         <SelectTrigger>
@@ -328,11 +397,21 @@ const SearchFilter = () => {
                                                         </SelectTrigger>
                                                     </FormControl>
                                                     <SelectContent>
-                                                        {FilterData[4].data[1].data.map(({ value, label }) => (
-                                                            <SelectItem key={label} value={value}>
-                                                                {label}
-                                                            </SelectItem>
-                                                        ))}
+                                                        {FilterData[4].data[1].data.map(
+                                                            ({
+                                                                value,
+                                                                label,
+                                                            }) => (
+                                                                <SelectItem
+                                                                    key={label}
+                                                                    value={
+                                                                        value
+                                                                    }
+                                                                >
+                                                                    {label}
+                                                                </SelectItem>
+                                                            )
+                                                        )}
                                                     </SelectContent>
                                                 </Select>
                                             </FormControl>
@@ -415,27 +494,36 @@ const SearchFilter = () => {
                                             defaultValue={field.value}
                                             className="flex w-full flex-wrap"
                                         >
-                                            {FilterData[5].data.map((item, index) => (
-                                                <FormItem
-                                                    key={index}
-                                                    className={`flex items-center space-y-0 ${field.value === item.value
-                                                        ? "bg-blue-100 border border-blue-400"
-                                                        : "bg-white border"
+                                            {FilterData[5].data.map(
+                                                (item, index) => (
+                                                    <FormItem
+                                                        key={index}
+                                                        className={`flex items-center space-y-0 ${
+                                                            field.value ===
+                                                            item.value
+                                                                ? "bg-blue-100 border border-blue-400"
+                                                                : "bg-white border"
                                                         } rounded-full px-4 py-2`}
-                                                >
-                                                    <FormControl className="sr-only">
-                                                        <RadioGroupItem value={item.value} />
-                                                    </FormControl>
-                                                    <FormLabel className="font-normal flex gap-2">
-                                                        {field.value === item.value ? (
-                                                            <CheckIcon className="!size-3" />
-                                                        ) : (
-                                                            <PlusIcon className="!size-3" />
-                                                        )}
-                                                        {item.label}
-                                                    </FormLabel>
-                                                </FormItem>
-                                            ))}
+                                                    >
+                                                        <FormControl className="sr-only">
+                                                            <RadioGroupItem
+                                                                value={
+                                                                    item.value
+                                                                }
+                                                            />
+                                                        </FormControl>
+                                                        <FormLabel className="font-normal flex gap-2">
+                                                            {field.value ===
+                                                            item.value ? (
+                                                                <CheckIcon className="!size-3" />
+                                                            ) : (
+                                                                <PlusIcon className="!size-3" />
+                                                            )}
+                                                            {item.label}
+                                                        </FormLabel>
+                                                    </FormItem>
+                                                )
+                                            )}
                                         </RadioGroup>
                                     </FormControl>
                                     <FormMessage />
@@ -493,27 +581,36 @@ const SearchFilter = () => {
                                             defaultValue={field.value}
                                             className="flex w-full flex-wrap"
                                         >
-                                            {FilterData[7].data.map((item, index) => (
-                                                <FormItem
-                                                    key={index}
-                                                    className={`flex items-center space-y-0 ${field.value === item.value
-                                                        ? "bg-blue-100 border border-blue-400"
-                                                        : "bg-white border"
+                                            {FilterData[7].data.map(
+                                                (item, index) => (
+                                                    <FormItem
+                                                        key={index}
+                                                        className={`flex items-center space-y-0 ${
+                                                            field.value ===
+                                                            item.value
+                                                                ? "bg-blue-100 border border-blue-400"
+                                                                : "bg-white border"
                                                         } rounded-full px-4 py-2`}
-                                                >
-                                                    <FormControl className="sr-only">
-                                                        <RadioGroupItem value={item.value} />
-                                                    </FormControl>
-                                                    <FormLabel className="font-normal flex gap-2">
-                                                        {field.value === item.value ? (
-                                                            <CheckIcon className="!size-3" />
-                                                        ) : (
-                                                            <PlusIcon className="!size-3" />
-                                                        )}
-                                                        {item.label}
-                                                    </FormLabel>
-                                                </FormItem>
-                                            ))}
+                                                    >
+                                                        <FormControl className="sr-only">
+                                                            <RadioGroupItem
+                                                                value={
+                                                                    item.value
+                                                                }
+                                                            />
+                                                        </FormControl>
+                                                        <FormLabel className="font-normal flex gap-2">
+                                                            {field.value ===
+                                                            item.value ? (
+                                                                <CheckIcon className="!size-3" />
+                                                            ) : (
+                                                                <PlusIcon className="!size-3" />
+                                                            )}
+                                                            {item.label}
+                                                        </FormLabel>
+                                                    </FormItem>
+                                                )
+                                            )}
                                         </RadioGroup>
                                     </FormControl>
                                     <FormMessage />
@@ -571,27 +668,36 @@ const SearchFilter = () => {
                                             defaultValue={field.value}
                                             className="flex w-full flex-wrap"
                                         >
-                                            {FilterData[9].data.map((item, index) => (
-                                                <FormItem
-                                                    key={index}
-                                                    className={`flex items-center space-y-0 ${field.value === item.value
-                                                        ? "bg-blue-100 border border-blue-400"
-                                                        : "bg-white border"
+                                            {FilterData[9].data.map(
+                                                (item, index) => (
+                                                    <FormItem
+                                                        key={index}
+                                                        className={`flex items-center space-y-0 ${
+                                                            field.value ===
+                                                            item.value
+                                                                ? "bg-blue-100 border border-blue-400"
+                                                                : "bg-white border"
                                                         } rounded-full px-4 py-2`}
-                                                >
-                                                    <FormControl className="sr-only">
-                                                        <RadioGroupItem value={item.value} />
-                                                    </FormControl>
-                                                    <FormLabel className="font-normal flex gap-2">
-                                                        {field.value === item.value ? (
-                                                            <CheckIcon className="!size-3" />
-                                                        ) : (
-                                                            <PlusIcon className="!size-3" />
-                                                        )}
-                                                        {item.label}
-                                                    </FormLabel>
-                                                </FormItem>
-                                            ))}
+                                                    >
+                                                        <FormControl className="sr-only">
+                                                            <RadioGroupItem
+                                                                value={
+                                                                    item.value
+                                                                }
+                                                            />
+                                                        </FormControl>
+                                                        <FormLabel className="font-normal flex gap-2">
+                                                            {field.value ===
+                                                            item.value ? (
+                                                                <CheckIcon className="!size-3" />
+                                                            ) : (
+                                                                <PlusIcon className="!size-3" />
+                                                            )}
+                                                            {item.label}
+                                                        </FormLabel>
+                                                    </FormItem>
+                                                )
+                                            )}
                                         </RadioGroup>
                                     </FormControl>
                                     <FormMessage />
@@ -603,34 +709,45 @@ const SearchFilter = () => {
                             name="ownership"
                             render={({ field }) => (
                                 <FormItem className="flex flex-col gap-2 py-4">
-                                    <FormLabel>{FilterData[10].label}</FormLabel>
+                                    <FormLabel>
+                                        {FilterData[10].label}
+                                    </FormLabel>
                                     <FormControl>
                                         <RadioGroup
                                             onValueChange={field.onChange}
                                             defaultValue={field.value}
                                             className="flex w-full flex-wrap"
                                         >
-                                            {FilterData[10].data.map((item, index) => (
-                                                <FormItem
-                                                    key={index}
-                                                    className={`flex items-center space-y-0 ${field.value === item.value
-                                                        ? "bg-blue-100 border border-blue-400"
-                                                        : "bg-white border"
+                                            {FilterData[10].data.map(
+                                                (item, index) => (
+                                                    <FormItem
+                                                        key={index}
+                                                        className={`flex items-center space-y-0 ${
+                                                            field.value ===
+                                                            item.value
+                                                                ? "bg-blue-100 border border-blue-400"
+                                                                : "bg-white border"
                                                         } rounded-full px-4 py-2`}
-                                                >
-                                                    <FormControl className="sr-only">
-                                                        <RadioGroupItem value={item.value} />
-                                                    </FormControl>
-                                                    <FormLabel className="font-normal flex gap-2">
-                                                        {field.value === item.value ? (
-                                                            <CheckIcon className="!size-3" />
-                                                        ) : (
-                                                            <PlusIcon className="!size-3" />
-                                                        )}
-                                                        {item.label}
-                                                    </FormLabel>
-                                                </FormItem>
-                                            ))}
+                                                    >
+                                                        <FormControl className="sr-only">
+                                                            <RadioGroupItem
+                                                                value={
+                                                                    item.value
+                                                                }
+                                                            />
+                                                        </FormControl>
+                                                        <FormLabel className="font-normal flex gap-2">
+                                                            {field.value ===
+                                                            item.value ? (
+                                                                <CheckIcon className="!size-3" />
+                                                            ) : (
+                                                                <PlusIcon className="!size-3" />
+                                                            )}
+                                                            {item.label}
+                                                        </FormLabel>
+                                                    </FormItem>
+                                                )
+                                            )}
                                         </RadioGroup>
                                     </FormControl>
                                     <FormMessage />
@@ -759,7 +876,9 @@ const SearchFilter = () => {
                             name="amenities"
                             render={() => (
                                 <FormItem className="py-4">
-                                    <FormLabel>{FilterData[14].label}</FormLabel>
+                                    <FormLabel>
+                                        {FilterData[14].label}
+                                    </FormLabel>
                                     <div className="flex flex-wrap">
                                         {FilterData[14].data.map((item) => (
                                             <FormField
@@ -771,26 +890,44 @@ const SearchFilter = () => {
                                                         <FormItem className="w-fit">
                                                             <FormControl className="sr-only">
                                                                 <Checkbox
-                                                                    checked={field.value?.includes(item.value)}
-                                                                    onCheckedChange={(checked) => {
+                                                                    checked={field.value?.includes(
+                                                                        item.value
+                                                                    )}
+                                                                    onCheckedChange={(
+                                                                        checked
+                                                                    ) => {
                                                                         return checked
-                                                                            ? field.onChange([...field.value, item.value])
+                                                                            ? field.onChange(
+                                                                                  [
+                                                                                      ...field.value,
+                                                                                      item.value,
+                                                                                  ]
+                                                                              )
                                                                             : field.onChange(
-                                                                                field.value?.filter((value) => value !== item.value)
-                                                                            )
+                                                                                  field.value?.filter(
+                                                                                      (
+                                                                                          value
+                                                                                      ) =>
+                                                                                          value !==
+                                                                                          item.value
+                                                                                  )
+                                                                              );
                                                                     }}
                                                                 />
                                                             </FormControl>
                                                             <FormLabel
-                                                                className={`flex font-normal items-center space-y-0 ${field.value?.includes(item.value)
-                                                                    ? 'bg-blue-100 border-blue-400'
-                                                                    : 'bg-white border'
-                                                                    } rounded-full px-4 py-2`}
+                                                                className={`flex font-normal items-center space-y-0 ${
+                                                                    field.value?.includes(
+                                                                        item.value
+                                                                    )
+                                                                        ? "bg-blue-100 border-blue-400"
+                                                                        : "bg-white border"
+                                                                } rounded-full px-4 py-2`}
                                                             >
                                                                 {item.label}
                                                             </FormLabel>
                                                         </FormItem>
-                                                    )
+                                                    );
                                                 }}
                                             />
                                         ))}
@@ -804,7 +941,9 @@ const SearchFilter = () => {
                             name="overlooking"
                             render={() => (
                                 <FormItem className="py-4">
-                                    <FormLabel>{FilterData[15].label}</FormLabel>
+                                    <FormLabel>
+                                        {FilterData[15].label}
+                                    </FormLabel>
                                     <div className="flex gap-2 flex-wrap">
                                         {FilterData[15].data.map((item) => (
                                             <FormField
@@ -816,26 +955,44 @@ const SearchFilter = () => {
                                                         <FormItem className="w-fit">
                                                             <FormControl className="sr-only">
                                                                 <Checkbox
-                                                                    checked={field.value?.includes(item.value)}
-                                                                    onCheckedChange={(checked) => {
+                                                                    checked={field.value?.includes(
+                                                                        item.value
+                                                                    )}
+                                                                    onCheckedChange={(
+                                                                        checked
+                                                                    ) => {
                                                                         return checked
-                                                                            ? field.onChange([...field.value, item.value])
+                                                                            ? field.onChange(
+                                                                                  [
+                                                                                      ...field.value,
+                                                                                      item.value,
+                                                                                  ]
+                                                                              )
                                                                             : field.onChange(
-                                                                                field.value?.filter((value) => value !== item.value)
-                                                                            )
+                                                                                  field.value?.filter(
+                                                                                      (
+                                                                                          value
+                                                                                      ) =>
+                                                                                          value !==
+                                                                                          item.value
+                                                                                  )
+                                                                              );
                                                                     }}
                                                                 />
                                                             </FormControl>
                                                             <FormLabel
-                                                                className={`flex font-normal items-center space-y-0 ${field.value?.includes(item.value)
-                                                                    ? 'bg-blue-100 border-blue-400'
-                                                                    : 'bg-white border'
-                                                                    } rounded-full px-4 py-2`}
+                                                                className={`flex font-normal items-center space-y-0 ${
+                                                                    field.value?.includes(
+                                                                        item.value
+                                                                    )
+                                                                        ? "bg-blue-100 border-blue-400"
+                                                                        : "bg-white border"
+                                                                } rounded-full px-4 py-2`}
                                                             >
                                                                 {item.label}
                                                             </FormLabel>
                                                         </FormItem>
-                                                    )
+                                                    );
                                                 }}
                                             />
                                         ))}
@@ -849,24 +1006,32 @@ const SearchFilter = () => {
                             name="otherFeatures"
                             render={({ field }) => (
                                 <FormItem className="flex flex-col gap-2 py-4">
-                                    <FormLabel>{FilterData[16].label}</FormLabel>
+                                    <FormLabel>
+                                        {FilterData[16].label}
+                                    </FormLabel>
                                     <FormControl>
                                         <RadioGroup
                                             onValueChange={field.onChange}
                                             defaultValue={field.value}
                                             className=""
                                         >
-                                            {FilterData[16].data.map(({ value, label }) => (
-                                                <FormItem
-                                                    key={value}
-                                                    className="space-x-2"
-                                                >
-                                                    <FormControl>
-                                                        <RadioGroupItem value={value} />
-                                                    </FormControl>
-                                                    <FormLabel className="font-normal">{label}</FormLabel>
-                                                </FormItem>
-                                            ))}
+                                            {FilterData[16].data.map(
+                                                ({ value, label }) => (
+                                                    <FormItem
+                                                        key={value}
+                                                        className="space-x-2"
+                                                    >
+                                                        <FormControl>
+                                                            <RadioGroupItem
+                                                                value={value}
+                                                            />
+                                                        </FormControl>
+                                                        <FormLabel className="font-normal">
+                                                            {label}
+                                                        </FormLabel>
+                                                    </FormItem>
+                                                )
+                                            )}
                                         </RadioGroup>
                                     </FormControl>
                                     <FormMessage />
@@ -878,25 +1043,37 @@ const SearchFilter = () => {
                             name="propertyFacing"
                             render={({ field }) => (
                                 <FormItem className="flex flex-col gap-2 py-4">
-                                    <FormLabel>{FilterData[17].label}</FormLabel>
+                                    <FormLabel>
+                                        {FilterData[17].label}
+                                    </FormLabel>
                                     <FormControl>
                                         <RadioGroup
                                             onValueChange={field.onChange}
                                             defaultValue={field.value}
                                             className="flex w-full flex-wrap"
                                         >
-                                            {FilterData[17].data.map(({ value, label }) => (
-                                                <FormItem
-                                                    key={value}
-                                                    className={`flex items-center space-y-0 ${field.value === value ? "bg-blue-100 border-blue-400" : "bg-white border"
+                                            {FilterData[17].data.map(
+                                                ({ value, label }) => (
+                                                    <FormItem
+                                                        key={value}
+                                                        className={`flex items-center space-y-0 ${
+                                                            field.value ===
+                                                            value
+                                                                ? "bg-blue-100 border-blue-400"
+                                                                : "bg-white border"
                                                         } rounded-full px-4 py-2`}
-                                                >
-                                                    <FormControl className="sr-only">
-                                                        <RadioGroupItem value={value} />
-                                                    </FormControl>
-                                                    <FormLabel className="font-normal">{label}</FormLabel>
-                                                </FormItem>
-                                            ))}
+                                                    >
+                                                        <FormControl className="sr-only">
+                                                            <RadioGroupItem
+                                                                value={value}
+                                                            />
+                                                        </FormControl>
+                                                        <FormLabel className="font-normal">
+                                                            {label}
+                                                        </FormLabel>
+                                                    </FormItem>
+                                                )
+                                            )}
                                         </RadioGroup>
                                     </FormControl>
                                     <FormMessage />
@@ -908,7 +1085,9 @@ const SearchFilter = () => {
                             name="locationAdvantages"
                             render={() => (
                                 <FormItem className="py-4">
-                                    <FormLabel>{FilterData[18].label}</FormLabel>
+                                    <FormLabel>
+                                        {FilterData[18].label}
+                                    </FormLabel>
                                     <div className="flex flex-wrap">
                                         {FilterData[18].data.map((item) => (
                                             <FormField
@@ -920,26 +1099,44 @@ const SearchFilter = () => {
                                                         <FormItem className="w-fit">
                                                             <FormControl className="sr-only">
                                                                 <Checkbox
-                                                                    checked={field.value?.includes(item.value)}
-                                                                    onCheckedChange={(checked) => {
+                                                                    checked={field.value?.includes(
+                                                                        item.value
+                                                                    )}
+                                                                    onCheckedChange={(
+                                                                        checked
+                                                                    ) => {
                                                                         return checked
-                                                                            ? field.onChange([...field.value, item.value])
+                                                                            ? field.onChange(
+                                                                                  [
+                                                                                      ...field.value,
+                                                                                      item.value,
+                                                                                  ]
+                                                                              )
                                                                             : field.onChange(
-                                                                                field.value?.filter((value) => value !== item.value)
-                                                                            )
+                                                                                  field.value?.filter(
+                                                                                      (
+                                                                                          value
+                                                                                      ) =>
+                                                                                          value !==
+                                                                                          item.value
+                                                                                  )
+                                                                              );
                                                                     }}
                                                                 />
                                                             </FormControl>
                                                             <FormLabel
-                                                                className={`flex font-normal items-center space-y-0 ${field.value?.includes(item.value)
-                                                                    ? 'bg-blue-100 border-blue-400'
-                                                                    : 'bg-white border'
-                                                                    } rounded-full px-4 py-2`}
+                                                                className={`flex font-normal items-center space-y-0 ${
+                                                                    field.value?.includes(
+                                                                        item.value
+                                                                    )
+                                                                        ? "bg-blue-100 border-blue-400"
+                                                                        : "bg-white border"
+                                                                } rounded-full px-4 py-2`}
                                                             >
                                                                 {item.label}
                                                             </FormLabel>
                                                         </FormItem>
-                                                    )
+                                                    );
                                                 }}
                                             />
                                         ))}
@@ -958,11 +1155,10 @@ const SearchFilter = () => {
                 </Form>
             </div>
         </>
-    )
-}
+    );
+};
 
-export default SearchFilter
-
+export default SearchFilter;
 
 const FilterData = [
     {
@@ -980,7 +1176,7 @@ const FilterData = [
                 label: "Villa/bungalow",
                 value: "Villa/bungalow",
             },
-        ]
+        ],
     },
     {
         label: "Select Property Categories",
@@ -1005,7 +1201,7 @@ const FilterData = [
                 label: "Other",
                 value: "Other",
             },
-        ]
+        ],
     },
     {
         label: "Select City",
@@ -1022,7 +1218,7 @@ const FilterData = [
                 label: "Third Mumbai",
                 value: "Third Mumbai",
             },
-        ]
+        ],
     },
     {
         label: "Select Locality",
@@ -1043,7 +1239,7 @@ const FilterData = [
                 label: "Third Mumbai",
                 value: "Third Mumbai",
             },
-        ]
+        ],
     },
     {
         label: "Select Property Price",
@@ -1059,7 +1255,7 @@ const FilterData = [
                     { label: "6 Lakhs", value: "6000000" },
                     { label: "7 Lakhs", value: "7000000" },
                     { label: "8 Lakhs", value: "8000000" },
-                ]
+                ],
             },
             {
                 label: "Select Max Value",
@@ -1072,9 +1268,9 @@ const FilterData = [
                     { label: "6 Lakhs", value: "6000000" },
                     { label: "7 Lakhs", value: "7000000" },
                     { label: "8 Lakhs", value: "8000000" },
-                ]
-            }
-        ]
+                ],
+            },
+        ],
     },
     {
         label: "Select Allowed Floors",
@@ -1095,7 +1291,7 @@ const FilterData = [
                 label: "4",
                 value: "4",
             },
-        ]
+        ],
     },
     {
         label: "Select Boundry Walls",
@@ -1108,7 +1304,7 @@ const FilterData = [
                 label: "false",
                 value: false,
             },
-        ]
+        ],
     },
     {
         label: "Select Open Sides",
@@ -1129,7 +1325,7 @@ const FilterData = [
                 label: "4",
                 value: "4",
             },
-        ]
+        ],
     },
     {
         label: "Select Any construction done",
@@ -1142,7 +1338,7 @@ const FilterData = [
                 label: "false",
                 value: false,
             },
-        ]
+        ],
     },
     {
         label: "Select Possession by",
@@ -1171,7 +1367,7 @@ const FilterData = [
                 label: "By 2027",
                 value: "By 2027",
             },
-        ]
+        ],
     },
     {
         label: "Select Ownership",
@@ -1192,7 +1388,7 @@ const FilterData = [
                 label: "Power of Attorney",
                 value: "power of attorney",
             },
-        ]
+        ],
     },
     {
         label: "Select Inclusive Price",
@@ -1205,7 +1401,7 @@ const FilterData = [
                 label: "false",
                 value: false,
             },
-        ]
+        ],
     },
     {
         label: "Select Tax Excluded",
@@ -1218,7 +1414,7 @@ const FilterData = [
                 label: "false",
                 value: false,
             },
-        ]
+        ],
     },
     {
         label: "Select Price Negotiable",
@@ -1231,7 +1427,7 @@ const FilterData = [
                 label: "false",
                 value: false,
             },
-        ]
+        ],
     },
     {
         label: "Select Amenities",
@@ -1252,7 +1448,7 @@ const FilterData = [
                 label: "Vaastu Complaint",
                 value: "Vaastu Complaint",
             },
-        ]
+        ],
     },
     {
         label: "Select Overlooking",
@@ -1261,15 +1457,15 @@ const FilterData = [
             { value: "Park/Garden", label: "Park/Garden" },
             { value: "Club", label: "Club" },
             { value: "Main Road", label: "Main Road" },
-            { value: "Others", label: "Others" }
-        ]
+            { value: "Others", label: "Others" },
+        ],
     },
     {
         label: "Select Other Features",
         data: [
             { value: "In a gated society", label: "In a gated society" },
-            { value: "Corner Property", label: "Corner Property" }
-        ]
+            { value: "Corner Property", label: "Corner Property" },
+        ],
     },
     {
         label: "Select Property Facing",
@@ -1281,18 +1477,24 @@ const FilterData = [
             { value: "North East", label: "North-East" },
             { value: "North West", label: "North-West" },
             { value: "South East", label: "South-East" },
-            { value: "South West", label: "South-West" }
-        ]
+            { value: "South West", label: "South-West" },
+        ],
     },
     {
         label: "Select Location Advantages",
         data: [
-            { value: "Close to metro station", label: "Close to metro station" },
+            {
+                value: "Close to metro station",
+                label: "Close to metro station",
+            },
             { value: "Close to school", label: "Close to school" },
             { value: "Close to hospital", label: "Close to hospital" },
             { value: "Close to market", label: "Close to market" },
-            { value: "Close to railway station", label: "Close to railway station" }
-        ]
+            {
+                value: "Close to railway station",
+                label: "Close to railway station",
+            },
+        ],
     },
     {
         label: "Select Plot Area",
@@ -1307,7 +1509,7 @@ const FilterData = [
                     { label: "1000 sqft", value: "1000 sqft" },
                     { label: "1400 sqft", value: "1400 sqft" },
                     { label: "2000 sqft", value: "2000 sqft" },
-                ]
+                ],
             },
             {
                 label: "Select Max Value",
@@ -1319,8 +1521,8 @@ const FilterData = [
                     { label: "1000 sqft", value: "1000 sqft" },
                     { label: "1400 sqft", value: "1400 sqft" },
                     { label: "2000 sqft", value: "2000 sqft" },
-                ]
-            }
-        ]
+                ],
+            },
+        ],
     },
-]
+];

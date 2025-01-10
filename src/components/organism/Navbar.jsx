@@ -112,7 +112,6 @@ const Navbar = () => {
                         </ul>
                     </div>
                     <div className="flex flex-grow items-center  md:gap-4 justify-end">
-
                         <Button
                             asChild
                             className="bg-white text-black hover:text-white rounded-full"
@@ -211,6 +210,65 @@ const Navbar = () => {
                                                                                     )
                                                                                 )}
                                                                             </ul>
+                                                                        </li>
+                                                                    )
+                                                                )}
+                                                            </ul>
+                                                        </AccordionContent>
+                                                    </AccordionItem>
+                                                </Accordion>
+                                            ) : (
+                                                <li
+                                                    key={`link-${i}`}
+                                                    className="flex w-full"
+                                                >
+                                                    <Link
+                                                        href={item.link}
+                                                        className="px-4 py-4"
+                                                    >
+                                                        {item.label}
+                                                    </Link>
+                                                </li>
+                                            )
+                                        )}
+                                    </ul>
+                                    <ul className="flex flex-col w-full">
+                                        {SideNav.map((item, i) =>
+                                            item.data ? (
+                                                <Accordion
+                                                    key={`items-${i}`}
+                                                    type="single"
+                                                    collapsible
+                                                    className="w-full "
+                                                >
+                                                    <AccordionItem
+                                                        key={i}
+                                                        value={`item-${i}`}
+                                                    >
+                                                        <AccordionTrigger className="text-base px-4">
+                                                            {item.label}
+                                                        </AccordionTrigger>
+                                                        <AccordionContent className="px-4">
+                                                            <ul className="flex w-full flex-col gap-4 pl-3">
+                                                                {item?.data.map(
+                                                                    (
+                                                                        item,
+                                                                        i
+                                                                    ) => (
+                                                                        <li
+                                                                            key={`sublinklist-${i}`}
+                                                                            className="w-full"
+                                                                        >
+                                                                            <Link
+                                                                                href={
+                                                                                    item.link
+                                                                                }
+                                                                                className="text-sm"
+                                                                            >
+                                                                                {
+                                                                                    item.label
+                                                                                }
+                                                                            </Link>
                                                                         </li>
                                                                     )
                                                                 )}
@@ -371,6 +429,14 @@ const NavItems = [
                         label: "My Dashboard",
                         link: "/post-property/",
                     },
+                    {
+                        label: "Sell / Rent Ad Packages",
+                        link: "/post-property/",
+                    },
+                    {
+                        label: "+91 9870 260 930 / Email Us",
+                        link: "/",
+                    },
                 ],
             },
             {
@@ -389,6 +455,42 @@ const NavItems = [
                         link: "/",
                     },
                 ],
+            },
+        ],
+    },
+];
+
+const SideNav = [
+    {
+        label: "Company",
+        data: [
+            {
+                label: "Testimonials",
+                link: "/testimonials",
+            },
+            {
+                label: "Terms & Conditions",
+                link: "/terms-and-conditions",
+            },
+            {
+                label: "Privacy Policy",
+                link: "/privacy-policy",
+            },
+            {
+                label: "Carrers",
+                link: "/carrers",
+            },
+            {
+                label: "Blog",
+                link: "/blog",
+            },
+            {
+                label: "Awards & Media",
+                link: "/awards-and-media",
+            },
+            {
+                label: "Booking & saledeed",
+                link: "/booking-and-saledeed",
             },
         ],
     },
