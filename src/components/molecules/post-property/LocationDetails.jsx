@@ -31,7 +31,8 @@ const Step2Data = [
         data: [
             { value: "Thane", label: "Thane" },
             { label: "Panvel", value: "Panvel" },
-            { label: "Khalapur", value: "Khalapur" },
+            { label: "Uran", value: "Uran" },
+            { label: "Third Mumbai", value: "Third Mumbai" },
         ]
     },
 ];

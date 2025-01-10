@@ -12,6 +12,7 @@ import { Button } from "../ui/button"
 import { Checkbox } from "../ui/checkbox"
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "../ui/form"
 import { RadioGroup, RadioGroupItem } from "../ui/radio-group"
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "../ui/select"
 
 const Location = [
     { "thane": "Thane" },
@@ -46,8 +47,8 @@ const FilterSchema = z.object({
     // hasConstruction: z.boolean().optional(),
     // possessionBy: z.string().optional(),
     ownership: z.string().optional(),
-    // priceTotalMinValue: z.string().optional(),
-    // priceTotalMaxValue: z.string().optional(),
+    priceTotalMinValue: z.string().optional(),
+    priceTotalMaxValue: z.string().optional(),
     // inclusivePrice: z.boolean().optional(),
     // isTaxExcluded: z.boolean().optional(),
     // isPriceNegotiable: z.boolean().optional(),
@@ -70,8 +71,8 @@ const SearchFilter = () => {
             propertyCategories: "",
             city: "",
             locality: SearchTrigger(params.locationId),
-            plotAreaMinValue: "",
-            plotAreaMaxValue: "",
+            // plotAreaMinValue: "100 sqft",
+            // plotAreaMaxValue: "1300 sqft",
             allowedFloors: "",
             // hasBoundaryWall: false,
             openSides: "",
@@ -93,8 +94,6 @@ const SearchFilter = () => {
 
     const onSubmit = async (values) => {
         try {
-            console.log(values);
-
             const resp = await filterProperty(values);
             dispatch({
                 type: "SET_STATE",
@@ -282,6 +281,128 @@ const SearchFilter = () => {
                                 </FormItem>
                             )}
                         />
+                        <div className="flex flex-col py-4 gap-4 w-full">
+                            <FormLabel>{FilterData[4].label}</FormLabel>
+                            <div className="grid grid-cols-2 w-full gap-2">
+                                <FormField
+                                    control={form.control}
+                                    name="priceTotalMinValue"
+                                    render={({ field }) => (
+                                        <FormItem className="flex flex-col gap-2">
+                                            <FormControl>
+                                                <Select
+                                                    onValueChange={field.onChange}
+                                                    defaultValue={field.value ?? ""}
+                                                >
+                                                    <FormControl>
+                                                        <SelectTrigger>
+                                                            <SelectValue placeholder="Select Min Value" />
+                                                        </SelectTrigger>
+                                                    </FormControl>
+                                                    <SelectContent>
+                                                        {FilterData[4].data[0].data.map(({ value, label }) => (
+                                                            <SelectItem key={label} value={value}>
+                                                                {label}
+                                                            </SelectItem>
+                                                        ))}
+                                                    </SelectContent>
+                                                </Select>
+                                            </FormControl>
+                                            <FormMessage />
+                                        </FormItem>
+                                    )}
+                                />
+                                <FormField
+                                    control={form.control}
+                                    name="priceTotalMaxValue"
+                                    render={({ field }) => (
+                                        <FormItem className="flex flex-col gap-2">
+                                            <FormControl>
+                                                <Select
+                                                    onValueChange={field.onChange}
+                                                    defaultValue={field.value ?? ""}
+                                                >
+                                                    <FormControl>
+                                                        <SelectTrigger>
+                                                            <SelectValue placeholder="Select Max Value" />
+                                                        </SelectTrigger>
+                                                    </FormControl>
+                                                    <SelectContent>
+                                                        {FilterData[4].data[1].data.map(({ value, label }) => (
+                                                            <SelectItem key={label} value={value}>
+                                                                {label}
+                                                            </SelectItem>
+                                                        ))}
+                                                    </SelectContent>
+                                                </Select>
+                                            </FormControl>
+                                            <FormMessage />
+                                        </FormItem>
+                                    )}
+                                />
+                            </div>
+                        </div>
+                        {/* <div className="flex flex-col py-4 gap-4 w-full">
+                            <FormLabel>{FilterData[19].label}</FormLabel>
+                            <div className="grid grid-cols-2 w-full gap-2">
+                                <FormField
+                                    control={form.control}
+                                    name="plotAreaMinValue"
+                                    render={({ field }) => (
+                                        <FormItem className="flex flex-col gap-2">
+                                            <FormControl>
+                                                <Select
+                                                    onValueChange={field.onChange}
+                                                    defaultValue={field.value ?? ""}
+                                                >
+                                                    <FormControl>
+                                                        <SelectTrigger>
+                                                            <SelectValue placeholder="Select Min Value" />
+                                                        </SelectTrigger>
+                                                    </FormControl>
+                                                    <SelectContent>
+                                                        {FilterData[19].data[0].data.map(({ value, label }) => (
+                                                            <SelectItem key={label} value={value}>
+                                                                {label}
+                                                            </SelectItem>
+                                                        ))}
+                                                    </SelectContent>
+                                                </Select>
+                                            </FormControl>
+                                            <FormMessage />
+                                        </FormItem>
+                                    )}
+                                />
+                                <FormField
+                                    control={form.control}
+                                    name="plotAreaMaxValue"
+                                    render={({ field }) => (
+                                        <FormItem className="flex flex-col gap-2">
+                                            <FormControl>
+                                                <Select
+                                                    onValueChange={field.onChange}
+                                                    defaultValue={field.value ?? ""}
+                                                >
+                                                    <FormControl>
+                                                        <SelectTrigger>
+                                                            <SelectValue placeholder="Select Max Value" />
+                                                        </SelectTrigger>
+                                                    </FormControl>
+                                                    <SelectContent>
+                                                        {FilterData[19].data[1].data.map(({ value, label }) => (
+                                                            <SelectItem key={label} value={value}>
+                                                                {label}
+                                                            </SelectItem>
+                                                        ))}
+                                                    </SelectContent>
+                                                </Select>
+                                            </FormControl>
+                                            <FormMessage />
+                                        </FormItem>
+                                    )}
+                                />
+                            </div>
+                        </div> */}
                         <FormField
                             control={form.control}
                             name="allowedFloors"
@@ -855,6 +976,10 @@ const FilterData = [
                 label: "Commercial",
                 value: "Commercial",
             },
+            {
+                label: "Villa/bungalow",
+                value: "Villa/bungalow",
+            },
         ]
     },
     {
@@ -911,12 +1036,46 @@ const FilterData = [
                 value: "Panvel",
             },
             {
-                label: "Khalapur",
-                value: "Khalapur",
+                label: "Uran",
+                value: "Uran",
+            },
+            {
+                label: "Third Mumbai",
+                value: "Third Mumbai",
             },
         ]
     },
-    {},
+    {
+        label: "Select Property Price",
+        data: [
+            {
+                label: "Select Min Value",
+                data: [
+                    { label: "1 Lakh", value: "100000" },
+                    { label: "2 Lakhs", value: "200000" },
+                    { label: "3 Lakhs", value: "300000" },
+                    { label: "4 Lakhs", value: "400000" },
+                    { label: "5 Lakhs", value: "500000" },
+                    { label: "6 Lakhs", value: "6000000" },
+                    { label: "7 Lakhs", value: "7000000" },
+                    { label: "8 Lakhs", value: "8000000" },
+                ]
+            },
+            {
+                label: "Select Max Value",
+                data: [
+                    { label: "1 Lakh", value: "100000" },
+                    { label: "2 Lakhs", value: "200000" },
+                    { label: "3 Lakhs", value: "300000" },
+                    { label: "4 Lakhs", value: "400000" },
+                    { label: "5 Lakhs", value: "500000" },
+                    { label: "6 Lakhs", value: "6000000" },
+                    { label: "7 Lakhs", value: "7000000" },
+                    { label: "8 Lakhs", value: "8000000" },
+                ]
+            }
+        ]
+    },
     {
         label: "Select Allowed Floors",
         data: [
@@ -1134,5 +1293,34 @@ const FilterData = [
             { value: "Close to market", label: "Close to market" },
             { value: "Close to railway station", label: "Close to railway station" }
         ]
-    }
+    },
+    {
+        label: "Select Plot Area",
+        data: [
+            {
+                label: "Select Min Value",
+                data: [
+                    { label: "100 sqft", value: "100 sqft" },
+                    { label: "400 sqft", value: "400 sqft" },
+                    { label: "600 sqft", value: "600 sqft" },
+                    { label: "800 sqft", value: "800 sqft" },
+                    { label: "1000 sqft", value: "1000 sqft" },
+                    { label: "1400 sqft", value: "1400 sqft" },
+                    { label: "2000 sqft", value: "2000 sqft" },
+                ]
+            },
+            {
+                label: "Select Max Value",
+                data: [
+                    { label: "100 sqft", value: "100 sqft" },
+                    { label: "400 sqft", value: "400 sqft" },
+                    { label: "600 sqft", value: "600 sqft" },
+                    { label: "800 sqft", value: "800 sqft" },
+                    { label: "1000 sqft", value: "1000 sqft" },
+                    { label: "1400 sqft", value: "1400 sqft" },
+                    { label: "2000 sqft", value: "2000 sqft" },
+                ]
+            }
+        ]
+    },
 ]

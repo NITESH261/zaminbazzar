@@ -38,17 +38,30 @@ const Page = () => {
 
         const handleAPICall = async () => {
             setLoading(true);
-            const body = { ...formData, ...values };
-            await createProperty(body)
-                .then(resp => {
-                    setLoading(false)
-                    toast.success(resp.message)
-                    router.push("/")
-                })
-                .catch(error => {
-                    toast.error(error.message)
-                })
+
+            const body = {
+                ...formData,
+                plotArea: formData.plotArea
+                    ? {
+                        value: parseInt(formData.plotArea.split(" ")[0], 10),
+                        unit: formData.plotArea.split(" ")[1],
+                    }
+                    : null,
+                ...values,
+            };
+
+            try {
+                const resp = await createProperty(body);
+                setLoading(false);
+                toast.success(resp.message);
+                router.push("/");
+            } catch (error) {
+                setLoading(false);
+                toast.error(error.message);
+            }
         };
+
+
 
         if (step < 4) {
             handleFormData();
