@@ -98,7 +98,7 @@ const DreamPlots = () => {
                                 {PlotsData.map((plot, index) => (
                                     <CarouselItem
                                         key={`${index}-plot-img`}
-                                        className="sm:basis-1/2 lg:basis-1/3 xl:basis-1/4"
+                                        className="sm:basis-1/4 lg:basis-1/3 xl:basis-1/4"
                                     >
                                         <Card className="rounded-lg group hover:shadow-lg p-0 h-full w-full transition-all">
                                             <CardHeader className="p-0 flex flex-grow-0 rounded-tl-lg">

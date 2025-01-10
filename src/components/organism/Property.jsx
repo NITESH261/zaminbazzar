@@ -91,7 +91,7 @@ const Property = () => {
                                 {Cards.map((card, index) => (
                                     <CarouselItem
                                         key={`${index}-plot-img`}
-                                        className="sm:basis-1/2 lg:basis-1/3 xl:basis-1/4"
+                                        className="sm:basis-1/3 lg:basis-1/3 xl:basis-1/4"
                                     >
                                         <div
                                             className="flex flex-col w-full border border-neutral-200 rounded-lg group hover:shadow-lg"

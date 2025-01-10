@@ -371,6 +371,14 @@ const NavItems = [
                         label: "My Dashboard",
                         link: "/post-property/",
                     },
+                    {
+                        label: "Sell / Rent Ad Packages",
+                        link: "/post-property/",
+                    },
+                    {
+                        label: "+91 9870 260 930 / Email Us",
+                        link: "/",
+                    },
                 ],
             },
             {
