@@ -35,11 +35,11 @@ import "./globals.css";
 // });
 
 const open_sans = Open_Sans({
-    subsets: ['latin'],
-    display: 'swap',
+    subsets: ["latin"],
+    display: "swap",
     weight: ["300", "400", "500", "600", "700", "800"],
-    variable: "--font-open-sans"
-})
+    variable: "--font-open-sans",
+});
 
 // const nunito = Nunito({
 //     subsets: ['latin'],
@@ -60,7 +60,7 @@ export const viewport = {
     minimalUI: true,
     // Also supported by less commonly used
     // interactiveWidget: 'resizes-visual',
-}
+};
 
 export default function MainLayout({ children }) {
     return (
