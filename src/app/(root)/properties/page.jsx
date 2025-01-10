@@ -1,3 +1,5 @@
+"use server"
+
 import { getAllProperty } from "@/actions/property";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
@@ -5,7 +7,7 @@ import Link from "next/link";
 
 const page = async () => {
 
-    const { result = [] } = await getAllProperty()
+    const { result = {} } = await getAllProperty()
 
     return (
         <div className="flex w-full flex-1">

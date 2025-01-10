@@ -1,9 +1,13 @@
 import Link from "next/link";
 import React from "react";
-import { FaFacebookSquare, FaInstagram, FaLinkedin, FaYoutube } from "react-icons/fa";
+import {
+    FaFacebookSquare,
+    FaInstagram,
+    FaLinkedin,
+    FaYoutube,
+} from "react-icons/fa";
 import { FaSquareXTwitter } from "react-icons/fa6";
 import Logo from "../atoms/Logo";
-
 
 const Footer = () => {
     return (
@@ -15,21 +19,28 @@ const Footer = () => {
 
                         <div className="mt-4">
                             <p className="text-base">
-                                G-Square Buisness Park,
-                                3<sup>rd</sup> Floor Office no 303 & 304,
-                                opposite of Sanpada Railway Station,
-                                Navi Mumbai, Maharashatra 400703
-
+                                G-Square Buisness Park, 3<sup>rd</sup> Floor
+                                Office no 303 & 304, opposite of Sanpada Railway
+                                Station, Navi Mumbai, Maharashatra 400703
                             </p>
                             <span>9555599299 / 9555599099</span> <br />
                             <span>info@zaminwale.com</span>
-
                             <div className="flex space-x-2 mt-4">
-                                <a href="https://www.facebook.com/zaminwale2021/"><FaFacebookSquare className="fab fa-facebook-f text-blue-600 text-2xl" /></a>
-                                <a href="https://x.com/ZaminwalePvtLtd"><FaSquareXTwitter className="fab fa-twitter text-blue-400 text-2xl" /></a>
-                                <a href="https://in.linkedin.com/company/zaminwale"><FaLinkedin className="fab fa-linkedin-in text-blue-700 text-2xl" /></a>
-                                <a href="https://www.instagram.com/zaminwale_/?hl=en"><FaInstagram className="fab fa-instagram text-pink-600 text-2xl" /></a>
-                                <a href="https://www.youtube.com/@zaminwale"><FaYoutube className="fab fa-youtube text-red-600 text-2xl" /></a>
+                                <a href="https://www.facebook.com/zaminwale2021/">
+                                    <FaFacebookSquare className="fab fa-facebook-f text-blue-600 text-2xl" />
+                                </a>
+                                <a href="https://x.com/ZaminwalePvtLtd">
+                                    <FaSquareXTwitter className="fab fa-twitter text-blue-400 text-2xl" />
+                                </a>
+                                <a href="https://in.linkedin.com/company/zaminwale">
+                                    <FaLinkedin className="fab fa-linkedin-in text-blue-700 text-2xl" />
+                                </a>
+                                <a href="https://www.instagram.com/zaminwale_/?hl=en">
+                                    <FaInstagram className="fab fa-instagram text-pink-600 text-2xl" />
+                                </a>
+                                <a href="https://www.youtube.com/@zaminwale">
+                                    <FaYoutube className="fab fa-youtube text-red-600 text-2xl" />
+                                </a>
                             </div>
                         </div>
                     </div>
@@ -37,17 +48,15 @@ const Footer = () => {
                         <h2 className="font-bold text-lg mb-4">Company</h2>
                         <div className="flex flex-col gap-4  w-full">
                             <p className="text-base flex flex-col gap-2">
-                                {
-                                    NavItems[0].data.map((item, i) => (
-                                        <Link
-                                            key={`company-${i}`}
-                                            href={item.link}
-                                            className="text-black hover:underline"
-                                        >
-                                            {item.label}
-                                        </Link>
-                                    ))
-                                }
+                                {NavItems[0].data.map((item, i) => (
+                                    <Link
+                                        key={`company-${i}`}
+                                        href={item.link}
+                                        className="text-black hover:underline"
+                                    >
+                                        {item.label}
+                                    </Link>
+                                ))}
                             </p>
                         </div>
                     </div>
@@ -68,30 +77,42 @@ const Footer = () => {
                             </p>
                         </div> */}
                         <h2 className="font-bold text-lg">About zaminwale</h2>
-                        <p>As the largest platform connecting property buyers and sellers</p>
+                        <p>
+                            As the largest platform connecting property buyers
+                            and sellers
+                        </p>
 
-
-                        <h2 className="font-bold text-lg mt-4 mb-4">Projects in Mumbai</h2>
+                        <h2 className="font-bold text-lg mt-4 mb-4">
+                            Projects in Mumbai
+                        </h2>
                         <div className="flex flex-col gap-4 w-full">
                             <p className="text-base flex flex-wrap gap-1">
                                 {NavItems[1].data.map((item, i) => (
                                     <React.Fragment key={`project-${i}`}>
-                                        <Link href={item.link} className="text-black hover:underline">
+                                        <Link
+                                            href={item.link}
+                                            className="text-black hover:underline"
+                                        >
                                             {item.label}
                                         </Link>
-                                        {i < NavItems[1].data.length - 1 && <span className="px-2">|</span>}
+                                        {i < NavItems[1].data.length - 1 && (
+                                            <span className="px-2">|</span>
+                                        )}
                                     </React.Fragment>
                                 ))}
                             </p>
                         </div>
-
                     </div>
                 </div>
             </div>
 
             <div className="bg-gray-800 py-4">
                 <div className="container mx-auto text-center text-sm text-gray-400">
-                    <p>All trademarks, logos and names are properties of their respective owners. All Rights Reserved. © Copyright 2024 zaminwale Pvt Limited.</p>
+                    <p>
+                        All trademarks, logos and names are properties of their
+                        respective owners. All Rights Reserved. © Copyright 2024
+                        zaminwale Pvt Limited.
+                    </p>
                 </div>
             </div>
         </div>
@@ -100,73 +121,67 @@ const Footer = () => {
 
 export default Footer;
 
-
 const NavItems = [
     {
         label: "Company",
         data: [
-
             {
                 label: "Testimonials",
-                link: "/testimonials"
+                link: "/testimonials",
             },
             {
                 label: "Terms & Conditions",
-                link: "/terms-and-conditions"
+                link: "/terms-and-conditions",
             },
             {
                 label: "Privacy Policy",
-                link: "/privacy-policy"
+                link: "/privacy-policy",
             },
             {
                 label: "Carrers",
-                link: "/carrers"
-            },
-            {
-                label: "Carrers",
-                link: "/carrers"
+                link: "/carrers",
             },
             {
                 label: "Blog",
-                link: "/blog"
+                link: "/blog",
             },
             {
                 label: "Awards & Media",
-                link: "/awards-and-media"
+                link: "/awards-and-media",
             },
             {
                 label: "Booking & saledeed",
-                link: "/booking-and-saledeed"
+                link: "/booking-and-saledeed",
             },
-        ]
+        ],
     },
     {
         label: "Projects in Mumbai",
         data: [
             {
                 label: "Plot in Thane",
-                link: "/thane"
+                link: "/thane",
             },
             {
                 label: "Plot in Panvel",
-                link: "/panvel"
+                link: "/panvel",
             },
             {
                 label: "Plot in Khalapur",
-                link: "/khalapur"
+                link: "/khalapur",
             },
             {
                 label: "Plot in Ranjanpada",
-                link: "/ranjanpada"
+                link: "/ranjanpada",
             },
             {
                 label: "Plot in Vindhane",
-                link: "/vindhane"
+                link: "/vindhane",
             },
             {
                 label: "Plot in Chirle",
-                link: "/chirle"
+                link: "/chirle",
             },
-        ]
-    }
-]
+        ],
+    },
+];
