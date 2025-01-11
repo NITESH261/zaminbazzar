@@ -1,9 +1,22 @@
 import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
-import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
+import {
+    Form,
+    FormControl,
+    FormField,
+    FormItem,
+    FormLabel,
+    FormMessage,
+} from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import {
+    Select,
+    SelectContent,
+    SelectItem,
+    SelectTrigger,
+    SelectValue,
+} from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { ArrowLeft } from "lucide-react";
@@ -11,22 +24,22 @@ import { useForm } from "react-hook-form";
 import { z } from "zod";
 
 const PropertyDetailsSchema = z.object({
-    plotArea: z
-        .string({
-            required_error: "Please enter area.",
-        }),
+    plotArea: z.string({
+        required_error: "Please enter area.",
+    }),
     length: z
         .string({
             required_error: "Please enter length.",
-        }).optional(),
+        })
+        .optional(),
     breadth: z
         .string({
             required_error: "Please enter breadth.",
-        }).optional(),
-    allowedFloors: z
-        .string({
-            required_error: "Please enter allowed floors",
-        }),
+        })
+        .optional(),
+    allowedFloors: z.string({
+        required_error: "Please enter allowed floors",
+    }),
     hasBoundaryWall: z.boolean().default(false),
     openSides: z.enum(["1", "2", "3", "4"], {
         required_error: "You need to option",
@@ -35,25 +48,25 @@ const PropertyDetailsSchema = z.object({
     possessionBy: z.string({
         required_error: "Please add possession by",
     }),
-    ownership: z.enum(["freehold", "leasehold", "co-operative society", "power of attorney"], {
-        required_error: "You need to option",
+    ownership: z.enum(
+        ["freehold", "leasehold", "co-operative society", "power of attorney"],
+        {
+            required_error: "You need to option",
+        }
+    ),
+    priceTotal: z.string({
+        required_error: "Please enter Price.",
     }),
-    priceTotal: z
-        .string({
-            required_error: "Please enter Price.",
-        }),
-    pricePerSQFT: z
-        .string({
-            required_error: "Please enter Price.",
-        }),
+    pricePerSQFT: z.string({
+        required_error: "Please enter Price.",
+    }),
     inclusivePrice: z.boolean().default(false),
     isTaxExcluded: z.boolean().default(false),
     isPriceNegotiable: z.boolean().default(false),
-    uniqueFeatures: z
-        .string({
-            required_error: "Please enter uniqueness of your property.",
-        }),
-})
+    uniqueFeatures: z.string({
+        required_error: "Please enter uniqueness of your property.",
+    }),
+});
 
 const Step3Data = [
     {
@@ -64,8 +77,8 @@ const Step3Data = [
             { label: "sqm", value: "sqm" },
             { label: "acres", value: "acres" },
             { label: "marla", value: "marla" },
-            { label: "cents", value: "cents" }
-        ]
+            { label: "cents", value: "cents" },
+        ],
     },
     {
         label: "Property Dimesions",
@@ -78,7 +91,7 @@ const Step3Data = [
         data: [
             { value: true, label: "Yes" },
             { value: false, label: "No" },
-        ]
+        ],
     },
     {
         label: "No. of open sides ?",
@@ -87,14 +100,14 @@ const Step3Data = [
             { value: "2", label: "2" },
             { value: "3", label: "3" },
             { value: "4", label: "4" },
-        ]
+        ],
     },
     {
         label: "Any construction done on this property",
         data: [
             { value: true, label: "Yes" },
             { value: false, label: "No" },
-        ]
+        ],
     },
     {
         label: "Possession by",
@@ -105,7 +118,7 @@ const Step3Data = [
             { value: "By 2025", label: "By 2025" },
             { value: "By 2026", label: "By 2026" },
             { value: "By 2027", label: "By 2027" },
-        ]
+        ],
     },
     {
         label: "Ownership",
@@ -114,7 +127,7 @@ const Step3Data = [
             { value: "leasehold", label: "Leasehold" },
             { value: "co-operative society", label: "Co-operative Society" },
             { value: "power of attorney", label: "Power of Attorney" },
-        ]
+        ],
     },
     {
         label: "Price Details",
@@ -124,17 +137,25 @@ const Step3Data = [
     },
 ];
 
-const PropertyProfile = ({ onSubmit, prev, currentStep, loading, formData }) => {
-
+const PropertyProfile = ({
+    onSubmit,
+    prev,
+    currentStep,
+    loading,
+    formData,
+}) => {
     const form = useForm({
         resolver: zodResolver(PropertyDetailsSchema),
-        defaultValues: formData ?? {}
-    })
+        defaultValues: formData ?? {},
+    });
 
     return (
         <>
             <Form {...form}>
-                <form onSubmit={form.handleSubmit(onSubmit)} className="h-fit w-full">
+                <form
+                    onSubmit={form.handleSubmit(onSubmit)}
+                    className="h-fit w-full"
+                >
                     <div className="flex h-fit gap-10 flex-col w-full">
                         <div className="flex flex-col w-full">
                             <span className="text-xl md:text-2xl font-semibold">
@@ -147,18 +168,26 @@ const PropertyProfile = ({ onSubmit, prev, currentStep, loading, formData }) => 
                             render={({ field }) => {
                                 const handleInputChange = (e) => {
                                     const inputValue = e.target.value;
-                                    const currentUnit = field.value?.split(" ")[1] || "";
-                                    field.onChange(`${inputValue} ${currentUnit}`.trim());
+                                    const currentUnit =
+                                        field.value?.split(" ")[1] || "";
+                                    field.onChange(
+                                        `${inputValue} ${currentUnit}`.trim()
+                                    );
                                 };
 
                                 const handleSelectChange = (unitValue) => {
-                                    const currentInput = field.value?.split(" ")[0] || "";
-                                    field.onChange(`${currentInput} ${unitValue}`.trim());
+                                    const currentInput =
+                                        field.value?.split(" ")[0] || "";
+                                    field.onChange(
+                                        `${currentInput} ${unitValue}`.trim()
+                                    );
                                 };
 
                                 return (
                                     <FormItem className="flex flex-col gap-2">
-                                        <FormLabel>{Step3Data[0].label}</FormLabel>
+                                        <FormLabel>
+                                            {Step3Data[0].label}
+                                        </FormLabel>
                                         <FormControl>
                                             <div className="flex gap-4">
                                                 <Input
@@ -167,18 +196,31 @@ const PropertyProfile = ({ onSubmit, prev, currentStep, loading, formData }) => 
                                                     onChange={handleInputChange}
                                                 />
                                                 <Select
-                                                    onValueChange={handleSelectChange}
-                                                    defaultValue={field.value?.split(" ")[1] ?? ""}
+                                                    onValueChange={
+                                                        handleSelectChange
+                                                    }
+                                                    defaultValue={
+                                                        field.value?.split(
+                                                            " "
+                                                        )[1] ?? ""
+                                                    }
                                                 >
                                                     <SelectTrigger>
                                                         <SelectValue placeholder="Select unit" />
                                                     </SelectTrigger>
                                                     <SelectContent>
-                                                        {Step3Data[0].data.map((data, i) => (
-                                                            <SelectItem key={i} value={data.value}>
-                                                                {data.label}
-                                                            </SelectItem>
-                                                        ))}
+                                                        {Step3Data[0].data.map(
+                                                            (data, i) => (
+                                                                <SelectItem
+                                                                    key={i}
+                                                                    value={
+                                                                        data.value
+                                                                    }
+                                                                >
+                                                                    {data.label}
+                                                                </SelectItem>
+                                                            )
+                                                        )}
                                                     </SelectContent>
                                                 </Select>
                                             </div>
@@ -201,7 +243,8 @@ const PropertyProfile = ({ onSubmit, prev, currentStep, loading, formData }) => 
                                                 <Input
                                                     type="number"
                                                     placeholder="Plot Length "
-                                                    {...field} value={field.value ?? ""}
+                                                    {...field}
+                                                    value={field.value ?? ""}
                                                 />
                                             </FormControl>
                                             <FormMessage />
@@ -218,7 +261,8 @@ const PropertyProfile = ({ onSubmit, prev, currentStep, loading, formData }) => 
                                                 <Input
                                                     type="number"
                                                     placeholder="Plot Breadth"
-                                                    {...field} value={field.value ?? ""}
+                                                    {...field}
+                                                    value={field.value ?? ""}
                                                 />
                                             </FormControl>
                                             <FormMessage />
@@ -237,7 +281,8 @@ const PropertyProfile = ({ onSubmit, prev, currentStep, loading, formData }) => 
                                         <Input
                                             type="number"
                                             placeholder="No of floors allowed"
-                                            {...field} value={field.value ?? ""}
+                                            {...field}
+                                            value={field.value ?? ""}
                                         />
                                     </FormControl>
                                     <FormMessage />
@@ -256,18 +301,28 @@ const PropertyProfile = ({ onSubmit, prev, currentStep, loading, formData }) => 
                                             defaultValue={field.value}
                                             className="flex w-full flex-wrap"
                                         >
-                                            {Step3Data[3].data.map(({ value, label }) => (
-                                                <FormItem
-                                                    key={value}
-                                                    className={`flex items-center space-y-0 ${field.value === value ? "bg-blue-100 border-blue-400" : "bg-white border"
+                                            {Step3Data[3].data.map(
+                                                ({ value, label }) => (
+                                                    <FormItem
+                                                        key={value}
+                                                        className={`flex items-center space-y-0 ${
+                                                            field.value ===
+                                                            value
+                                                                ? "bg-blue-100 border-[#0000FF]"
+                                                                : "bg-white border"
                                                         } rounded-full px-4 py-2`}
-                                                >
-                                                    <FormControl className="sr-only">
-                                                        <RadioGroupItem value={value} />
-                                                    </FormControl>
-                                                    <FormLabel className="font-normal">{label}</FormLabel>
-                                                </FormItem>
-                                            ))}
+                                                    >
+                                                        <FormControl className="sr-only">
+                                                            <RadioGroupItem
+                                                                value={value}
+                                                            />
+                                                        </FormControl>
+                                                        <FormLabel className="font-normal">
+                                                            {label}
+                                                        </FormLabel>
+                                                    </FormItem>
+                                                )
+                                            )}
                                         </RadioGroup>
                                     </FormControl>
                                     <FormMessage />
@@ -286,18 +341,30 @@ const PropertyProfile = ({ onSubmit, prev, currentStep, loading, formData }) => 
                                             defaultValue={field.value}
                                             className="flex w-full flex-wrap"
                                         >
-                                            {Step3Data[4].data.map((data, i) => (
-                                                <FormItem
-                                                    key={i}
-                                                    className={`flex items-center space-y-0 ${field.value === data?.value ? "bg-blue-100 border-blue-400" : "bg-white border"
+                                            {Step3Data[4].data.map(
+                                                (data, i) => (
+                                                    <FormItem
+                                                        key={i}
+                                                        className={`flex items-center space-y-0 ${
+                                                            field.value ===
+                                                            data?.value
+                                                                ? "bg-blue-100 border-[#0000FF]"
+                                                                : "bg-white border"
                                                         } rounded-full px-4 py-2`}
-                                                >
-                                                    <FormControl className="sr-only">
-                                                        <RadioGroupItem value={data?.value} />
-                                                    </FormControl>
-                                                    <FormLabel className="font-normal">{data?.label}</FormLabel>
-                                                </FormItem>
-                                            ))}
+                                                    >
+                                                        <FormControl className="sr-only">
+                                                            <RadioGroupItem
+                                                                value={
+                                                                    data?.value
+                                                                }
+                                                            />
+                                                        </FormControl>
+                                                        <FormLabel className="font-normal">
+                                                            {data?.label}
+                                                        </FormLabel>
+                                                    </FormItem>
+                                                )
+                                            )}
                                         </RadioGroup>
                                     </FormControl>
                                     <FormMessage />
@@ -316,18 +383,28 @@ const PropertyProfile = ({ onSubmit, prev, currentStep, loading, formData }) => 
                                             defaultValue={field.value}
                                             className="flex w-full flex-wrap"
                                         >
-                                            {Step3Data[5].data.map(({ value, label }) => (
-                                                <FormItem
-                                                    key={value}
-                                                    className={`flex items-center space-y-0 ${field.value === value ? "bg-blue-100 border-blue-400" : "bg-white border"
+                                            {Step3Data[5].data.map(
+                                                ({ value, label }) => (
+                                                    <FormItem
+                                                        key={value}
+                                                        className={`flex items-center space-y-0 ${
+                                                            field.value ===
+                                                            value
+                                                                ? "bg-blue-100 border-[#0000FF]"
+                                                                : "bg-white border"
                                                         } rounded-full px-4 py-2`}
-                                                >
-                                                    <FormControl className="sr-only">
-                                                        <RadioGroupItem value={value} />
-                                                    </FormControl>
-                                                    <FormLabel className="font-normal">{label}</FormLabel>
-                                                </FormItem>
-                                            ))}
+                                                    >
+                                                        <FormControl className="sr-only">
+                                                            <RadioGroupItem
+                                                                value={value}
+                                                            />
+                                                        </FormControl>
+                                                        <FormLabel className="font-normal">
+                                                            {label}
+                                                        </FormLabel>
+                                                    </FormItem>
+                                                )
+                                            )}
                                         </RadioGroup>
                                     </FormControl>
                                     <FormMessage />
@@ -351,11 +428,16 @@ const PropertyProfile = ({ onSubmit, prev, currentStep, loading, formData }) => 
                                                 </SelectTrigger>
                                             </FormControl>
                                             <SelectContent>
-                                                {Step3Data[6].data.map(({ value, label }) => (
-                                                    <SelectItem key={label} value={value}>
-                                                        {label}
-                                                    </SelectItem>
-                                                ))}
+                                                {Step3Data[6].data.map(
+                                                    ({ value, label }) => (
+                                                        <SelectItem
+                                                            key={label}
+                                                            value={value}
+                                                        >
+                                                            {label}
+                                                        </SelectItem>
+                                                    )
+                                                )}
                                             </SelectContent>
                                         </Select>
                                     </FormControl>
@@ -375,18 +457,28 @@ const PropertyProfile = ({ onSubmit, prev, currentStep, loading, formData }) => 
                                             defaultValue={field.value}
                                             className="flex w-full flex-wrap"
                                         >
-                                            {Step3Data[7].data.map(({ value, label }) => (
-                                                <FormItem
-                                                    key={value}
-                                                    className={`flex items-center space-y-0 ${field.value === value ? "bg-blue-100 border-blue-400" : "bg-white border"
+                                            {Step3Data[7].data.map(
+                                                ({ value, label }) => (
+                                                    <FormItem
+                                                        key={value}
+                                                        className={`flex items-center space-y-0 ${
+                                                            field.value ===
+                                                            value
+                                                                ? "bg-blue-100 border-[#0000FF]"
+                                                                : "bg-white border"
                                                         } rounded-full px-4 py-2`}
-                                                >
-                                                    <FormControl className="sr-only">
-                                                        <RadioGroupItem value={value} />
-                                                    </FormControl>
-                                                    <FormLabel className="font-normal">{label}</FormLabel>
-                                                </FormItem>
-                                            ))}
+                                                    >
+                                                        <FormControl className="sr-only">
+                                                            <RadioGroupItem
+                                                                value={value}
+                                                            />
+                                                        </FormControl>
+                                                        <FormLabel className="font-normal">
+                                                            {label}
+                                                        </FormLabel>
+                                                    </FormItem>
+                                                )
+                                            )}
                                         </RadioGroup>
                                     </FormControl>
                                     <FormMessage />
@@ -405,7 +497,8 @@ const PropertyProfile = ({ onSubmit, prev, currentStep, loading, formData }) => 
                                                 <Input
                                                     type="number"
                                                     placeholder="Expected price"
-                                                    {...field} value={field.value ?? ""}
+                                                    {...field}
+                                                    value={field.value ?? ""}
                                                 />
                                             </FormControl>
                                             <FormMessage />
@@ -421,7 +514,8 @@ const PropertyProfile = ({ onSubmit, prev, currentStep, loading, formData }) => 
                                                 <Input
                                                     type="number"
                                                     placeholder="Price per sqft"
-                                                    {...field} value={field.value ?? ""}
+                                                    {...field}
+                                                    value={field.value ?? ""}
                                                 />
                                             </FormControl>
                                             <FormMessage />
@@ -491,7 +585,11 @@ const PropertyProfile = ({ onSubmit, prev, currentStep, loading, formData }) => 
                                 <FormItem className="flex flex-col gap-2">
                                     <FormLabel>{Step3Data[9].label}</FormLabel>
                                     <FormControl>
-                                        <Textarea placeholder="Share some details about your property" {...field} value={field.value ?? ""} />
+                                        <Textarea
+                                            placeholder="Share some details about your property"
+                                            {...field}
+                                            value={field.value ?? ""}
+                                        />
                                     </FormControl>
                                     <FormMessage />
                                 </FormItem>
@@ -507,7 +605,7 @@ const PropertyProfile = ({ onSubmit, prev, currentStep, loading, formData }) => 
                             </Button>
                             <Button
                                 type="submit"
-                                className="px-4 py-2 bg-blue-500 text-white rounded-lg"
+                                className="px-4 py-2 bg-[#0000FF] text-white rounded-lg"
                                 disabled={loading}
                             >
                                 {loading ? "Loading" : "Continue"}
@@ -517,7 +615,7 @@ const PropertyProfile = ({ onSubmit, prev, currentStep, loading, formData }) => 
                 </form>
             </Form>
         </>
-    )
-}
+    );
+};
 
-export default PropertyProfile
+export default PropertyProfile;

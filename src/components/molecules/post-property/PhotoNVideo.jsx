@@ -78,7 +78,9 @@ const PhotoNVideo = ({ onSubmit, prev, currentStep, loading, formData }) => {
 
     const removeField = (index) => {
         setFields((prevFields) => prevFields.filter((_, i) => i !== index));
-        const updatedPhotos = form.getValues("propertyPhotos").filter((_, i) => i !== index);
+        const updatedPhotos = form
+            .getValues("propertyPhotos")
+            .filter((_, i) => i !== index);
         form.setValue("propertyPhotos", updatedPhotos);
     };
 
@@ -103,14 +105,20 @@ const PhotoNVideo = ({ onSubmit, prev, currentStep, loading, formData }) => {
                                     render={({ field }) => (
                                         <FormItem>
                                             <FormLabel>
-                                                {Step4Data[0].label} ({index + 1})
+                                                {Step4Data[0].label} (
+                                                {index + 1})
                                             </FormLabel>
                                             <FormControl>
                                                 <DragNDrop
                                                     src={field.value || ""}
                                                     maxSize="5"
                                                     required={false}
-                                                    onFileChange={(file) => handleFileChange(file, index)}
+                                                    onFileChange={(file) =>
+                                                        handleFileChange(
+                                                            file,
+                                                            index
+                                                        )
+                                                    }
                                                 />
                                             </FormControl>
                                             <FormMessage />
@@ -135,7 +143,9 @@ const PhotoNVideo = ({ onSubmit, prev, currentStep, loading, formData }) => {
                                 className="px-4 py-2 h-full my-auto w-full aspect-video rounded-lg"
                                 onClick={addField}
                             >
-                                {fields.length === 0 ? "Add Photo" : "Add Another Photo"}
+                                {fields.length === 0
+                                    ? "Add Photo"
+                                    : "Add Another Photo"}
                             </Button>
                         )}
                     </div>
@@ -149,7 +159,7 @@ const PhotoNVideo = ({ onSubmit, prev, currentStep, loading, formData }) => {
                         </Button>
                         <Button
                             type="submit"
-                            className="px-4 py-2 bg-blue-500 text-white rounded-lg"
+                            className="px-4 py-2 bg-[#0000FF] text-white rounded-lg"
                             disabled={loading}
                         >
                             {loading ? "Loading..." : "Continue"}

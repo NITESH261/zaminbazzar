@@ -26,6 +26,14 @@ export const getAllProperty = async () => {
     return resp
 }
 
+export const getOneProperty = async (propertyId) => {
+    let resp = await fetchWithoutToken(`/property/${propertyId}`, {
+        method: "GET"
+    })
+    resp = resp.results.data
+    return resp
+}
+
 export const createProperty = async (body) => {
     let resp = await fetchWithToken("/property/add", {
         method: "POST",

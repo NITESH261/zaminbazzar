@@ -3,8 +3,21 @@
 import { logIn } from "@/actions/user";
 import Loading from "@/components/atoms/Loading";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
-import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
+import {
+    Card,
+    CardContent,
+    CardFooter,
+    CardHeader,
+    CardTitle,
+} from "@/components/ui/card";
+import {
+    Form,
+    FormControl,
+    FormField,
+    FormItem,
+    FormLabel,
+    FormMessage,
+} from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import cookieService from "@/services/cookie";
 import useZaminwaleStore from "@/store";
@@ -26,10 +39,9 @@ const formSchema = z.object({
 });
 
 const Page = () => {
-
-    const [loading, setLoading] = useState(false)
-    const dispatch = useZaminwaleStore(store => store.dispatch)
-    const router = useRouter()
+    const [loading, setLoading] = useState(false);
+    const dispatch = useZaminwaleStore((store) => store.dispatch);
+    const router = useRouter();
 
     const form = useForm({
         resolver: zodResolver(formSchema),
@@ -40,27 +52,27 @@ const Page = () => {
     });
 
     const onSubmit = async (values) => {
-        setLoading(true)
+        setLoading(true);
         await logIn(values)
-            .then(resp => {
-                setLoading(false)
-                form.reset()
-                toast.success(resp.message)
-                router.push("/")
+            .then((resp) => {
+                setLoading(false);
+                form.reset();
+                toast.success(resp.message);
+                router.push("/");
 
                 dispatch({
                     type: "SET_STATE",
-                    payload: { isAuthenticated: true }
-                })
+                    payload: { isAuthenticated: true },
+                });
 
                 cookieService.setTokens({
                     accessToken: resp.token,
-                })
+                });
             })
-            .catch(error => {
-                setLoading(false)
-                toast.error(error.message)
-            })
+            .catch((error) => {
+                setLoading(false);
+                toast.error(error.message);
+            });
     };
 
     return (
@@ -120,13 +132,15 @@ const Page = () => {
                     </Form>
                 </CardContent>
                 <CardFooter className="justify-between">
-                    <span className="text-neutral-800 text-sm">Register your account</span>
-                    <Button asChild variant="link" className="hover:text-blue-400">
-                        <Link
-                            href={"/auth/register"}
-                        >
-                            Sign Up
-                        </Link>
+                    <span className="text-neutral-800 text-sm">
+                        Register your account
+                    </span>
+                    <Button
+                        asChild
+                        variant="link"
+                        className="hover:text-[#0000FF]"
+                    >
+                        <Link href={"/auth/register"}>Sign Up</Link>
                     </Button>
                 </CardFooter>
             </Card>
