@@ -13,32 +13,32 @@ import {
 
 const PlotsData = [
     {
-        image: "sea view.webp",
+        image: "7.jpg",
         title: "Swimming Pool",
         link: "#enquire-now",
     },
     {
-        image: "large-government-warehouse.webp",
+        image: "1.jpg",
         title: "24/7 Water & Electric Supply",
         link: "#enquire-now",
     },
     {
-        image: "istockphoto-623754774-612x612.webp",
+        image: "6.jpg",
         title: "Parking Space",
         link: "#enquire-now",
     },
     {
-        image: "istockphoto-1199749863-612x612.webp",
-        title: "24/7 CCTV Surveillance",
+        image: "3.jpg",
+        title: "Gym Area",
         link: "#enquire-now",
     },
     {
-        image: "investment.webp",
-        title: "Solar Panels",
+        image: "9.jpg",
+        title: "Meditations Area",
         link: "#enquire-now",
     },
     {
-        image: "commercial.webp",
+        image: "1.jpg",
         title: "Children’s Playing Area",
         link: "#enquire-now",
     },
@@ -77,7 +77,7 @@ const Amenities = () => {
                                         <CardHeader className="p-0 flex flex-grow-0 rounded-tl-lg">
                                             <div className="flex relative aspect-video rounded-t-lg overflow-hidden">
                                                 <Image
-                                                    src={`/assets/property/${plot.image}`}
+                                                    src={`/assets/amenities/${plot.image}`}
                                                     alt="plots"
                                                     fill
                                                     className="rounded-lg object-cover group-hover:scale-110 transition-all object-center"
