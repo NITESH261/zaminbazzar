@@ -7,45 +7,45 @@ import { Card, CardContent, CardHeader } from "../ui/card"
 
 const Locations = [
     {
-        label: "Navi Mumbai Plots",
-        img: "nm.webp",
-        url: "#",
-    },
-    {
-        label: "Dronagiri Plots",
-        img: "drona.webp",
-        url: "#",
-    },
-    {
-        label: "Ranjanpada Plots",
-        img: "ranjan.webp",
-        url: "#",
-    },
-    {
-        label: "Chirle Plots",
-        img: "chir.webp",
-        url: "#",
-    },
-    {
         label: "Thane Plots",
-        img: "tha.webp",
+        img: "img4.jpg",
         url: "#",
     },
     {
-        label: "Khalapur Plots",
-        img: "kha.webp",
+        label: "Panvel Plots",
+        img: "img3.jpg",
         url: "#",
     },
     {
-        label: "Vindhane Plots",
-        img: "vind.webp",
+        label: "Uran Plots",
+        img: "img2.jpg",
         url: "#",
     },
     {
-        label: "Chowk Panvel Plots",
-        img: "pan.webp",
+        label: "Third Mumbai",
+        img: "img1.jpg",
         url: "#",
     },
+    // {
+    //     label: "Thane Plots",
+    //     img: "tha.webp",
+    //     url: "#",
+    // },
+    // {
+    //     label: "Khalapur Plots",
+    //     img: "kha.webp",
+    //     url: "#",
+    // },
+    // {
+    //     label: "Vindhane Plots",
+    //     img: "vind.webp",
+    //     url: "#",
+    // },
+    // {
+    //     label: "Chowk Panvel Plots",
+    //     img: "pan.webp",
+    //     url: "#",
+    // },
 ]
 
 const TopLocations = () => {
@@ -67,7 +67,7 @@ const TopLocations = () => {
                                         <CardHeader className="p-0 flex flex-grow-0 rounded-tl-lg">
                                             <div className="flex relative aspect-video rounded-t-lg overflow-hidden">
                                                 <Image
-                                                    src={`/assets/top-locations/${location.img}`}
+                                                    src={`/assets/top-location/${location.img}`}
                                                     alt="locations"
                                                     fill
                                                     className="rounded-lg object-cover group-hover:scale-110 transition-all object-center"
