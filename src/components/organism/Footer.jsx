@@ -30,7 +30,7 @@ const Footer = () => {
                                     <FaFacebookSquare className="fab fa-facebook-f text-blue-600 text-2xl" />
                                 </a>
                                 <a href="#">
-                                    <FaSquareXTwitter className="fab fa-twitter text-blue-400 text-2xl" />
+                                    <FaSquareXTwitter className="fab fa-twitter text-[#0000FF] text-2xl" />
                                 </a>
                                 <a href="#">
                                     <FaLinkedin className="fab fa-linkedin-in text-blue-700 text-2xl" />

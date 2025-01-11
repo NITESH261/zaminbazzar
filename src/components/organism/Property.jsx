@@ -12,6 +12,10 @@ import {
     CarouselNext,
     CarouselPrevious,
 } from "../ui/carousel";
+import useZaminwaleStore from "@/store";
+import { Store } from "lucide-react";
+import { IndianRupeeIcon } from "lucide-react";
+import { formatCurrency } from "@/lib/utils";
 
 const Cards = [
     {
@@ -46,6 +50,7 @@ const Cards = [
 const Property = () => {
     // const cards = Array.from({ length: 4 }, (_, i) => i + 1);
     const [hoveredIndex, setHoveredIndex] = useState(null);
+    const propertyList = useZaminwaleStore((store) => store.propertyList);
 
     const handleMouseEnter = (index) => {
         setHoveredIndex(index);
@@ -88,7 +93,7 @@ const Property = () => {
                             className="flex w-full h-full"
                         >
                             <CarouselContent>
-                                {Cards.map((card, index) => (
+                                {propertyList?.map((card, index) => (
                                     <CarouselItem
                                         key={`${index}-plot-img`}
                                         className="sm:basis-1/2 lg:basis-1/3 xl:basis-1/4"
@@ -109,22 +114,32 @@ const Property = () => {
                                             <div className="p-4 relative space-y-2">
                                                 <div className="w-full">
                                                     <span className="text-sm">
-                                                        1 BHK Flat
+                                                        {card.propertyType}
                                                     </span>
-                                                    <h2 className="text-base font-medium">
-                                                        &#8377; 30 Lac | 1000
-                                                        sqft
+                                                    <h2 className="text-base flex items-center font-medium">
+                                                        <IndianRupeeIcon className="!size-4" />{" "}
+                                                        {formatCurrency(
+                                                            card.priceTotal
+                                                        )}
+                                                        | {card.plotArea?.value}{" "}
+                                                        {card.plotArea?.unit}
                                                     </h2>
-                                                    <p className="text-gray-600 text-sm">
-                                                        Vinay Nagar, Mumbai
+                                                    <p className="text-gray-600 gap-2 flex text-sm">
+                                                        {card.locality},&nbsp;
+                                                        {card.city}
                                                     </p>
                                                 </div>
                                                 <span className="hidden md:flex">
                                                     Ready Move
                                                 </span>
                                                 <div className="flex w-full md:absolute md:px-4 pb-3 md:left-0 md:-bottom-40 md:group-hover:bottom-0 md:transition-all">
-                                                    <Button asChild className="w-full h-[unset] rounded-full bg-[#0000FF]">
-                                                        <Link href={"/"}>
+                                                    <Button
+                                                        asChild
+                                                        className="w-full h-[unset] rounded-full bg-[#0000FF]"
+                                                    >
+                                                        <Link
+                                                            href={`/properties/${card.propertyId}`}
+                                                        >
                                                             View Details
                                                         </Link>
                                                     </Button>

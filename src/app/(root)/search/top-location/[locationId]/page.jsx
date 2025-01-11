@@ -63,11 +63,11 @@ const page = () => {
                                     <Link
                                         href={`/properties/${card.propertyId}`}
                                         key={i}
-                                        className="flex flex-col p-4 sm:flex-row border w-full gap-2 rounded-3xl bg-white border-neutral-200 hover:border-blue-400 hover:shadow-md transition-all"
+                                        className="flex flex-col p-4 sm:flex-row border w-full gap-2 rounded-3xl bg-white border-neutral-200 hover:border-[#0000FF] hover:shadow-md transition-all"
                                     >
                                         <div className="flex w-full sm:w-2/5 relative aspect-video sm:aspect-[3/2]">
                                             <Image
-                                                src="/assets/popular-property/property-1.jpg"
+                                                src="/assets/recommonded-property/recomonded-property9.jpeg"
                                                 alt="property img"
                                                 fill
                                                 className="object-cover rounded-2xl"
@@ -136,7 +136,7 @@ const page = () => {
                                                 </p>
                                                 <div className="flex flex-wrap w-full overflow-x-auto scrollbar-hide">
                                                     <div className="flex w-fit gap-2 items-center">
-                                                        <span className="flex w-fit whitespace-nowrap text-sm font-medium text-blue-500">
+                                                        <span className="flex w-fit whitespace-nowrap text-sm font-medium text-white">
                                                             Near By:
                                                         </span>
                                                         <ul className="w-fit flex gap-2">

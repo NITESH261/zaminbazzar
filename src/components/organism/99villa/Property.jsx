@@ -9,6 +9,9 @@ import {
     CarouselNext,
     CarouselPrevious,
 } from "@/components/ui/carousel";
+import { formatCurrency } from "@/lib/utils";
+import useZaminwaleStore from "@/store";
+import { IndianRupeeIcon } from "lucide-react";
 import { ArrowRight } from "lucide-react";
 import Link from "next/link";
 import { useState } from "react";
@@ -46,6 +49,11 @@ const Cards = [
 const Property = () => {
     // const cards = Array.from({ length: 4 }, (_, i) => i + 1);
     const [hoveredIndex, setHoveredIndex] = useState(null);
+    const propertyList = useZaminwaleStore((store) => store.propertyList);
+
+    console.log(
+        propertyList?.filter((property) => property.locality === "Panvel")
+    );
 
     const handleMouseEnter = (index) => {
         setHoveredIndex(index);
@@ -88,46 +96,52 @@ const Property = () => {
                             className="flex w-full h-full"
                         >
                             <CarouselContent>
-                                {Cards.map((card, index) => (
-                                    <CarouselItem
-                                        key={`${index}-plot-img`}
-                                        className="sm:basis-1/2 lg:basis-1/3 xl:basis-1/4"
-                                    >
-                                        <div
-                                            className="flex flex-col w-full border border-neutral-200 rounded-lg group hover:shadow-lg"
-                                            onMouseEnter={() =>
-                                                handleMouseEnter(index)
-                                            }
-                                            onMouseLeave={handleMouseLeave}
+                                {propertyList
+                                    ?.filter(
+                                        (property) =>
+                                            property.locality === "Panvel"
+                                    )
+                                    ?.map((card, index) => (
+                                        <CarouselItem
+                                            key={`${index}-plot-img`}
+                                            className="sm:basis-1/2 lg:basis-1/3 xl:basis-1/4"
                                         >
-                                            <ImageScroll
-                                                card={card}
-                                                isHovered={
-                                                    hoveredIndex === index
+                                            <div
+                                                className="flex flex-col w-full border border-neutral-200 rounded-lg group hover:shadow-lg"
+                                                onMouseEnter={() =>
+                                                    handleMouseEnter(index)
                                                 }
-                                            />
-                                            <div className="p-4 space-y-2">
-                                                <div className="w-full">
+                                                onMouseLeave={handleMouseLeave}
+                                            >
+                                                <ImageScroll
+                                                    card={card}
+                                                    isHovered={
+                                                        hoveredIndex === index
+                                                    }
+                                                />
+                                                <div className="p-4 space-y-2">
                                                     <span className="text-sm">
-                                                        1 BHK Flat
+                                                        {card.propertyType}
                                                     </span>
-                                                    <h2 className="text-lg font-medium">
-                                                        &#8377; 30 Lac | 1000
-                                                        sqft
+                                                    <h2 className="text-base flex items-center font-medium">
+                                                        <IndianRupeeIcon className="!size-4" />{" "}
+                                                        {formatCurrency(
+                                                            card.priceTotal
+                                                        )}
+                                                        | {card.plotArea?.value}{" "}
+                                                        {card.plotArea?.unit}
                                                     </h2>
-                                                </div>
-                                                <div className="flex flex-col space-y-1 w-full">
-                                                    <p className="text-gray-600 text-sm">
-                                                        Vinay Nagar, Mumbai
+                                                    <p className="text-gray-600 gap-2 flex text-sm">
+                                                        {card.locality},&nbsp;
+                                                        {card.city}
                                                     </p>
+                                                    <Button className="rounded-full bg-[#0000FF]">
+                                                        View Details
+                                                    </Button>
                                                 </div>
-                                                <Button className="rounded-full bg-[#0000FF]">
-                                                    View Details
-                                                </Button>
                                             </div>
-                                        </div>
-                                    </CarouselItem>
-                                ))}
+                                        </CarouselItem>
+                                    ))}
                             </CarouselContent>
                             <CarouselPrevious className="left-0 lg:-left-8" />
                             <CarouselNext className="right-0 lg:-right-8" />

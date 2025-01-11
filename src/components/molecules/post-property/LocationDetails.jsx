@@ -1,21 +1,32 @@
 import { Button } from "@/components/ui/button";
-import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import {
+    Form,
+    FormControl,
+    FormField,
+    FormItem,
+    FormLabel,
+    FormMessage,
+} from "@/components/ui/form";
+import {
+    Select,
+    SelectContent,
+    SelectItem,
+    SelectTrigger,
+    SelectValue,
+} from "@/components/ui/select";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { ArrowLeft } from "lucide-react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 
 const LocationDetailsSchema = z.object({
-    city: z
-        .string({
-            required_error: "Please select city.",
-        }),
-    locality: z
-        .string({
-            required_error: "Please select locality.",
-        }),
-})
+    city: z.string({
+        required_error: "Please select city.",
+    }),
+    locality: z.string({
+        required_error: "Please select locality.",
+    }),
+});
 
 const Step2Data = [
     {
@@ -24,7 +35,7 @@ const Step2Data = [
             { value: "Mumbai", label: "Mumbai" },
             { value: "Navi Mumbai", label: "Navi Mumbai" },
             { value: "Third Mumbai", label: "Third Mumbai" },
-        ]
+        ],
     },
     {
         label: "Locality",
@@ -33,15 +44,21 @@ const Step2Data = [
             { label: "Panvel", value: "Panvel" },
             { label: "Uran", value: "Uran" },
             { label: "Third Mumbai", value: "Third Mumbai" },
-        ]
+        ],
     },
 ];
 
-const LocationDetails = ({ onSubmit, prev, currentStep, loading, formData }) => {
+const LocationDetails = ({
+    onSubmit,
+    prev,
+    currentStep,
+    loading,
+    formData,
+}) => {
     const form = useForm({
         resolver: zodResolver(LocationDetailsSchema),
-        defaultValues: formData
-    })
+        defaultValues: formData,
+    });
 
     return (
         <>
@@ -52,7 +69,10 @@ const LocationDetails = ({ onSubmit, prev, currentStep, loading, formData }) => 
                             <span className="text-xl md:text-2xl font-semibold">
                                 Where is your property located
                             </span>
-                            <span className="text-sm md:text-base">An accurate location helps you to connect with buyers</span>
+                            <span className="text-sm md:text-base">
+                                An accurate location helps you to connect with
+                                buyers
+                            </span>
                         </div>
                         <FormField
                             control={form.control}
@@ -71,11 +91,16 @@ const LocationDetails = ({ onSubmit, prev, currentStep, loading, formData }) => 
                                                 </SelectTrigger>
                                             </FormControl>
                                             <SelectContent>
-                                                {Step2Data[0].data.map(({ value, label }) => (
-                                                    <SelectItem key={label} value={value}>
-                                                        {label}
-                                                    </SelectItem>
-                                                ))}
+                                                {Step2Data[0].data.map(
+                                                    ({ value, label }) => (
+                                                        <SelectItem
+                                                            key={label}
+                                                            value={value}
+                                                        >
+                                                            {label}
+                                                        </SelectItem>
+                                                    )
+                                                )}
                                             </SelectContent>
                                         </Select>
                                     </FormControl>
@@ -100,11 +125,16 @@ const LocationDetails = ({ onSubmit, prev, currentStep, loading, formData }) => 
                                                 </SelectTrigger>
                                             </FormControl>
                                             <SelectContent>
-                                                {Step2Data[1].data.map(({ value, label }) => (
-                                                    <SelectItem key={label} value={value}>
-                                                        {label}
-                                                    </SelectItem>
-                                                ))}
+                                                {Step2Data[1].data.map(
+                                                    ({ value, label }) => (
+                                                        <SelectItem
+                                                            key={label}
+                                                            value={value}
+                                                        >
+                                                            {label}
+                                                        </SelectItem>
+                                                    )
+                                                )}
                                             </SelectContent>
                                         </Select>
                                     </FormControl>
@@ -122,7 +152,7 @@ const LocationDetails = ({ onSubmit, prev, currentStep, loading, formData }) => 
                             </Button>
                             <Button
                                 type="submit"
-                                className="px-4 py-2 bg-blue-500 text-white rounded-lg"
+                                className="px-4 py-2 bg-[#0000FF] text-white rounded-lg"
                                 disabled={loading}
                             >
                                 {loading ? "Loading" : "Continue"}

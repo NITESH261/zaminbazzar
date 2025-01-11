@@ -5,7 +5,7 @@ const Aboutmap = () => {
     return (
         <div className="relative aspect-video h-[450px] w-full flex bg-no-repeat">
             <Image
-                src="/assets/about/map.png"
+                src="/assets/about/map.PNG"
                 alt="banner-img"
                 fill
                 className="object-cover object-center h-full w-full"
