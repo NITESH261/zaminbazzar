@@ -1,13 +1,10 @@
-"use server"
-
 import { getAllProperty } from "@/actions/property";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import Link from "next/link";
 
 const page = async () => {
-
-    const { result = {} } = await getAllProperty()
+    const { result = {} } = await getAllProperty();
 
     return (
         <div className="flex w-full flex-1">
@@ -26,7 +23,10 @@ const page = async () => {
                             >
                                 <div className="relative aspect-video bg-cover rounded-t-lg flex w-full overflow-hidden">
                                     <Image
-                                        src={property.propertyPhotos[0] ?? "/assets/property/commercial.webp"}
+                                        src={
+                                            property.propertyPhotos[0] ??
+                                            "/assets/property/commercial.webp"
+                                        }
                                         alt="house"
                                         fill
                                         className="rounded-t-lg group-hover:scale-110 transition-all object-cover"
@@ -34,13 +34,18 @@ const page = async () => {
                                 </div>
                                 <div className="flex flex-col p-4 relative w-full overflow-hidden space-y-2">
                                     <div className="w-full">
-                                        <span className="text-sm">{property.propertyType}</span>
+                                        <span className="text-sm">
+                                            {property.propertyType}
+                                        </span>
                                         <h2 className="text-base font-medium">
-                                            &#8377; {property.priceTotal} Lac | {property.plotArea?.value}{" "}{property.plotArea?.unit}
+                                            &#8377; {property.priceTotal} Lac |{" "}
+                                            {property.plotArea?.value}{" "}
+                                            {property.plotArea?.unit}
                                         </h2>
                                         <div className="flex flex-col space-y-1 w-full">
                                             <p className="text-gray-600 text-sm">
-                                                {property.locality} | {property.city}
+                                                {property.locality} |{" "}
+                                                {property.city}
                                             </p>
                                         </div>
                                     </div>
@@ -48,8 +53,13 @@ const page = async () => {
                                         Ready Move
                                     </span>
                                     <div className="flex w-full md:absolute md:px-4 pb-3 md:left-0 md:-bottom-40 md:group-hover:bottom-0 md:transition-all">
-                                        <Button asChild className="w-full h-[unset] rounded-full bg-[#0078DB]">
-                                            <Link href={`/properties/${property.propertyId}`}>
+                                        <Button
+                                            asChild
+                                            className="w-full h-[unset] rounded-full bg-[#0078DB]"
+                                        >
+                                            <Link
+                                                href={`/properties/${property.propertyId}`}
+                                            >
                                                 View Details
                                             </Link>
                                         </Button>
@@ -61,9 +71,7 @@ const page = async () => {
                 </div>
             </div>
         </div>
-    )
-}
+    );
+};
 
-export default page
-
-
+export default page;

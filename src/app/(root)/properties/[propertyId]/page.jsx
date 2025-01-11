@@ -1,6 +1,5 @@
 import BentoGridScroll from "@/components/molecules/BentoGridScroll";
 import EnquireForm from "@/components/molecules/EnquireForm";
-import SimilarExterior from "@/components/molecules/SimilarExterior";
 import SimilarProperty from "@/components/molecules/SimilarProperty";
 import Footer from "@/components/organism/Footer";
 import NearByLocations from "@/components/organism/NearByLocations";
@@ -14,7 +13,6 @@ import { ImPriceTags } from "react-icons/im";
 import { RxAllSides, RxDimensions } from "react-icons/rx";
 import About_accordion from "@/components/molecules/post-property/About_accordion";
 import { getOneProperty } from "@/actions/property";
-import { formatCurrency } from "@/lib/utils";
 
 const page = async ({ params }) => {
     const PropertyId = (await params).propertyId;
