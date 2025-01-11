@@ -13,42 +13,42 @@ import {
 
 const PlotsData = [
     {
-        image: "sea view.webp",
+        image: "6.jpg",
         title: "Navi - Mumbai International Airport",
         description:
             "It’s also in close proximity to Navi Mumbai International Airport, offering residents convenient access to air travel.",
         link: "#enquire-now",
     },
     {
-        image: "large-government-warehouse.webp",
+        image: "1.jpg",
         title: "Mumbai-Pune Highway (Old & Express)",
         description:
             "The plot sits just 5 to 10 minutes from the old Mumbai- Pune highway, offering a convenient gateway to both cities.",
         link: "#enquire-now",
     },
     {
-        image: "istockphoto-623754774-612x612.webp",
+        image: "2.jpg",
         title: "Chouk Railway Station",
         description:
             "The convenient proximity to Chouk Railway Station makes commuting effortless, offering easy access to transportation links.",
         link: "#enquire-now",
     },
     {
-        image: "istockphoto-1199749863-612x612.webp",
+        image: "5.jpg",
         title: "Atal Setu Sealink",
         description:
             "The plot is located on a convenient 20-minute drive from the Atal Setu, the iconic sealink connecting Mumbai.",
         link: "#enquire-now",
     },
     {
-        image: "investment.webp",
+        image: "4.jpg",
         title: "Mumbai - Goa Highway",
         description:
             "The plot is conveniently situated near the bustling Mumbai- Goa highway, providing easy access to both Mumbai and Goa.",
         link: "#enquire-now",
     },
     {
-        image: "commercial.webp",
+        image: "3.jpg",
         title: "Karjat, Neral, Matheran",
         description:
             "Karjat, Neral, and Matheran are nearby charming spots perfect for a quick getaway. Karjat offers lush landscapes and trekking trails",
@@ -91,7 +91,7 @@ const Aboutconnectivity = () => {
                                             <CardHeader className="p-0 flex flex-grow-0 rounded-tl-lg">
                                                 <div className="flex relative aspect-video rounded-t-lg overflow-hidden">
                                                     <Image
-                                                        src={`/assets/property/${plot.image}`}
+                                                        src={`/assets/aboutconnectivity/${plot.image}`}
                                                         alt="plots"
                                                         fill
                                                         className="rounded-lg object-cover group-hover:scale-110 transition-all object-center"
