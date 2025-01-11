@@ -6,6 +6,7 @@ export const initialState = {
     user: null,
     isAuthenticated: false,
     searchList: null,
+    propertyList: null,
 }
 
 const useZaminwaleStore = create(

@@ -38,7 +38,9 @@ const ImageScroll = ({ card, isHovered }) => {
             {!isHovered ? (
                 <div className="relative aspect-video h-44 bg-cover rounded-t-lg flex w-full overflow-hidden">
                     <Image
-                        src={`/assets/recommonded-property/${card.img}`}
+                        src={`/assets/recommonded-property/${
+                            card.img ?? "recomonded-property1.jpeg"
+                        }`}
                         alt={"house"}
                         fill
                         className="rounded-t-lg transition-all object-cover"
