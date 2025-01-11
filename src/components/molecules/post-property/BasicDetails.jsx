@@ -1,5 +1,12 @@
 import { Button } from "@/components/ui/button";
-import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
+import {
+    Form,
+    FormControl,
+    FormField,
+    FormItem,
+    FormLabel,
+    FormMessage,
+} from "@/components/ui/form";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { ArrowLeft } from "lucide-react";
@@ -10,25 +17,20 @@ const BasicDetailsSchema = z.object({
     listingType: z.enum(["Sell", "Rent/Lease"], {
         required_error: "You need to select type.",
     }),
-    propertyType: z.enum(
-        [
-            "Residential",
-            "Commercial",
-            "Villa/bungalow"
-        ],
-        { required_error: "You need to select Property Type." }
-    ),
+    propertyType: z.enum(["Residential", "Commercial", "Villa/bungalow"], {
+        required_error: "You need to select Property Type.",
+    }),
     propertyCategories: z.enum(
         [
             "Flat/Apartment",
             "Plot/Land",
             "Other",
             "Independent House/villa",
-            "Farmhouse"
+            "Farmhouse",
         ],
         { required_error: "You need to select Property Type." }
     ),
-})
+});
 
 const Step1Data = [
     {
@@ -36,7 +38,7 @@ const Step1Data = [
         data: [
             { value: "Sell", label: "Sell" },
             { value: "Rent/Lease", label: "Rent/Lease" },
-        ]
+        ],
     },
     {
         label: "What kind of property do you have?",
@@ -47,18 +49,17 @@ const Step1Data = [
                 data: [
                     {
                         label: "Flat/Apartment",
-                        value: "Flat/Apartment"
+                        value: "Flat/Apartment",
                     },
                     {
                         label: "Plot/Land",
-                        value: "Plot/Land"
+                        value: "Plot/Land",
                     },
                     {
                         label: "Other",
-                        value: "Other"
+                        value: "Other",
                     },
-
-                ]
+                ],
             },
             {
                 label: "Commercial",
@@ -66,13 +67,13 @@ const Step1Data = [
                 data: [
                     {
                         label: "Independent House/villa",
-                        value: "Independent House/villa"
+                        value: "Independent House/villa",
                     },
                     {
                         label: "Farmhouse",
-                        value: "Farmhouse"
+                        value: "Farmhouse",
                     },
-                ]
+                ],
             },
             {
                 label: "Villa/bungalow",
@@ -80,26 +81,25 @@ const Step1Data = [
                 data: [
                     {
                         label: "Independent House/villa",
-                        value: "Independent House/villa"
+                        value: "Independent House/villa",
                     },
                     {
                         label: "Farmhouse",
-                        value: "Farmhouse"
+                        value: "Farmhouse",
                     },
-                ]
+                ],
             },
-        ]
-    }
-
+        ],
+    },
 ];
 
 const BasicDetails = ({ onSubmit, prev, currentStep, loading, formData }) => {
     const form = useForm({
         resolver: zodResolver(BasicDetailsSchema),
-        defaultValues: formData
-    })
+        defaultValues: formData,
+    });
 
-    const type = form.watch("propertyType")
+    const type = form.watch("propertyType");
 
     return (
         <>
@@ -108,7 +108,9 @@ const BasicDetails = ({ onSubmit, prev, currentStep, loading, formData }) => {
                     <div className="flex flex-1 gap-10 flex-col w-full">
                         <div className="flex w-full">
                             <span className="text-xl md:text-2xl font-semibold">
-                                Welcome back, Akash! <br className="hidden md:flex" /> Fill out your basic details
+                                Welcome back, Akash!{" "}
+                                <br className="hidden md:flex" /> Fill out your
+                                basic details
                             </span>
                         </div>
                         <FormField
@@ -123,18 +125,28 @@ const BasicDetails = ({ onSubmit, prev, currentStep, loading, formData }) => {
                                             defaultValue={field.value}
                                             className="flex w-full flex-wrap"
                                         >
-                                            {Step1Data[0].data.map(({ value, label }) => (
-                                                <FormItem
-                                                    key={value}
-                                                    className={`flex items-center space-y-0 ${field.value === value ? "bg-blue-100 border-blue-400" : "bg-white border"
+                                            {Step1Data[0].data.map(
+                                                ({ value, label }) => (
+                                                    <FormItem
+                                                        key={value}
+                                                        className={`flex items-center space-y-0 ${
+                                                            field.value ===
+                                                            value
+                                                                ? "bg-blue-100 border-[#0000FF]"
+                                                                : "bg-white border"
                                                         } rounded-full px-4 py-2`}
-                                                >
-                                                    <FormControl className="sr-only">
-                                                        <RadioGroupItem value={value} />
-                                                    </FormControl>
-                                                    <FormLabel className="font-normal">{label}</FormLabel>
-                                                </FormItem>
-                                            ))}
+                                                    >
+                                                        <FormControl className="sr-only">
+                                                            <RadioGroupItem
+                                                                value={value}
+                                                            />
+                                                        </FormControl>
+                                                        <FormLabel className="font-normal">
+                                                            {label}
+                                                        </FormLabel>
+                                                    </FormItem>
+                                                )
+                                            )}
                                         </RadioGroup>
                                     </FormControl>
                                     <FormMessage />
@@ -153,99 +165,144 @@ const BasicDetails = ({ onSubmit, prev, currentStep, loading, formData }) => {
                                             defaultValue={field.value}
                                             className="flex w-full flex-wrap"
                                         >
-                                            {Step1Data[1].data.map(({ value, label }) => (
-                                                <FormItem
-                                                    key={value}
-                                                    className={`flex items-center space-y-0 ${field.value === value ? "bg-blue-100 border-blue-400" : "bg-white border"
+                                            {Step1Data[1].data.map(
+                                                ({ value, label }) => (
+                                                    <FormItem
+                                                        key={value}
+                                                        className={`flex items-center space-y-0 ${
+                                                            field.value ===
+                                                            value
+                                                                ? "bg-blue-100 border-[#0000FF]"
+                                                                : "bg-white border"
                                                         } rounded-full px-4 py-2`}
-                                                >
-                                                    <FormControl className="sr-only">
-                                                        <RadioGroupItem value={value} />
-                                                    </FormControl>
-                                                    <FormLabel className="font-normal">{label}</FormLabel>
-                                                </FormItem>
-                                            ))}
+                                                    >
+                                                        <FormControl className="sr-only">
+                                                            <RadioGroupItem
+                                                                value={value}
+                                                            />
+                                                        </FormControl>
+                                                        <FormLabel className="font-normal">
+                                                            {label}
+                                                        </FormLabel>
+                                                    </FormItem>
+                                                )
+                                            )}
                                         </RadioGroup>
                                     </FormControl>
                                     <FormMessage />
                                 </FormItem>
                             )}
                         />
-                        {
-                            type && (
-                                <>
-                                    {
-                                        ["Residential"].includes(type) && (
-                                            <FormField
-                                                control={form.control}
-                                                name="propertyCategories"
-                                                render={({ field }) => (
-                                                    <FormItem className="flex flex-col gap-2">
-                                                        <FormLabel>Select type</FormLabel>
-                                                        <FormControl>
-                                                            <RadioGroup
-                                                                onValueChange={field.onChange}
-                                                                defaultValue={field.value}
-                                                                className="flex w-full flex-wrap"
-                                                            >
-                                                                {Step1Data[1].data[0].data.map(({ value, label }) => (
-                                                                    <FormItem
-                                                                        key={value}
-                                                                        className={`flex items-center space-y-0 ${field.value === value ? "bg-blue-100 border-blue-400" : "bg-white border"
-                                                                            } rounded-full px-4 py-2`}
-                                                                    >
-                                                                        <FormControl className="sr-only">
-                                                                            <RadioGroupItem value={value} />
-                                                                        </FormControl>
-                                                                        <FormLabel className="font-normal">{label}</FormLabel>
-                                                                    </FormItem>
-                                                                ))}
-                                                            </RadioGroup>
-                                                        </FormControl>
-                                                        <FormMessage />
-                                                    </FormItem>
-                                                )}
-                                            />
-                                        )
-                                    }
-                                    {
-                                        ["Commercial"].includes(type) && (
-                                            <FormField
-                                                control={form.control}
-                                                name="propertyCategories"
-                                                render={({ field }) => (
-                                                    <FormItem className="flex flex-col gap-2">
-                                                        <FormLabel>Select type</FormLabel>
-                                                        <FormControl>
-                                                            <RadioGroup
-                                                                onValueChange={field.onChange}
-                                                                defaultValue={field.value}
-                                                                className="flex w-full flex-wrap"
-                                                            >
-                                                                {Step1Data[1].data[1].data.map(({ value, label }) => (
-                                                                    <FormItem
-                                                                        key={value}
-                                                                        className={`flex items-center space-y-0 ${field.value === value ? "bg-blue-100 border-blue-400" : "bg-white border"
-                                                                            } rounded-full px-4 py-2`}
-                                                                    >
-                                                                        <FormControl className="sr-only">
-                                                                            <RadioGroupItem value={value} />
-                                                                        </FormControl>
-                                                                        <FormLabel className="font-normal">{label}</FormLabel>
-                                                                    </FormItem>
-                                                                ))}
-                                                            </RadioGroup>
-                                                        </FormControl>
-                                                        <FormMessage />
-                                                    </FormItem>
-                                                )}
-                                            />
-                                        )
-                                    }
-                                </>
-
-                            )
-                        }
+                        {type && (
+                            <>
+                                {["Residential"].includes(type) && (
+                                    <FormField
+                                        control={form.control}
+                                        name="propertyCategories"
+                                        render={({ field }) => (
+                                            <FormItem className="flex flex-col gap-2">
+                                                <FormLabel>
+                                                    Select type
+                                                </FormLabel>
+                                                <FormControl>
+                                                    <RadioGroup
+                                                        onValueChange={
+                                                            field.onChange
+                                                        }
+                                                        defaultValue={
+                                                            field.value
+                                                        }
+                                                        className="flex w-full flex-wrap"
+                                                    >
+                                                        {Step1Data[1].data[0].data.map(
+                                                            ({
+                                                                value,
+                                                                label,
+                                                            }) => (
+                                                                <FormItem
+                                                                    key={value}
+                                                                    className={`flex items-center space-y-0 ${
+                                                                        field.value ===
+                                                                        value
+                                                                            ? "bg-blue-100 border-[#0000FF]"
+                                                                            : "bg-white border"
+                                                                    } rounded-full px-4 py-2`}
+                                                                >
+                                                                    <FormControl className="sr-only">
+                                                                        <RadioGroupItem
+                                                                            value={
+                                                                                value
+                                                                            }
+                                                                        />
+                                                                    </FormControl>
+                                                                    <FormLabel className="font-normal">
+                                                                        {label}
+                                                                    </FormLabel>
+                                                                </FormItem>
+                                                            )
+                                                        )}
+                                                    </RadioGroup>
+                                                </FormControl>
+                                                <FormMessage />
+                                            </FormItem>
+                                        )}
+                                    />
+                                )}
+                                {["Commercial"].includes(type) && (
+                                    <FormField
+                                        control={form.control}
+                                        name="propertyCategories"
+                                        render={({ field }) => (
+                                            <FormItem className="flex flex-col gap-2">
+                                                <FormLabel>
+                                                    Select type
+                                                </FormLabel>
+                                                <FormControl>
+                                                    <RadioGroup
+                                                        onValueChange={
+                                                            field.onChange
+                                                        }
+                                                        defaultValue={
+                                                            field.value
+                                                        }
+                                                        className="flex w-full flex-wrap"
+                                                    >
+                                                        {Step1Data[1].data[1].data.map(
+                                                            ({
+                                                                value,
+                                                                label,
+                                                            }) => (
+                                                                <FormItem
+                                                                    key={value}
+                                                                    className={`flex items-center space-y-0 ${
+                                                                        field.value ===
+                                                                        value
+                                                                            ? "bg-blue-100 border-[#0000FF]"
+                                                                            : "bg-white border"
+                                                                    } rounded-full px-4 py-2`}
+                                                                >
+                                                                    <FormControl className="sr-only">
+                                                                        <RadioGroupItem
+                                                                            value={
+                                                                                value
+                                                                            }
+                                                                        />
+                                                                    </FormControl>
+                                                                    <FormLabel className="font-normal">
+                                                                        {label}
+                                                                    </FormLabel>
+                                                                </FormItem>
+                                                            )
+                                                        )}
+                                                    </RadioGroup>
+                                                </FormControl>
+                                                <FormMessage />
+                                            </FormItem>
+                                        )}
+                                    />
+                                )}
+                            </>
+                        )}
                         <div className="flex w-full mt-4">
                             <Button
                                 onClick={prev}
@@ -256,7 +313,7 @@ const BasicDetails = ({ onSubmit, prev, currentStep, loading, formData }) => {
                             </Button>
                             <Button
                                 type="submit"
-                                className="px-4 py-2 bg-blue-500 text-white rounded-lg"
+                                className="px-4 py-2 bg-[#0000FF] text-white rounded-lg"
                                 disabled={loading}
                             >
                                 {loading ? "Loading" : "Continue"}
@@ -266,7 +323,7 @@ const BasicDetails = ({ onSubmit, prev, currentStep, loading, formData }) => {
                 </form>
             </Form>
         </>
-    )
-}
+    );
+};
 
-export default BasicDetails
+export default BasicDetails;

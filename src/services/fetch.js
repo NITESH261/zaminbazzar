@@ -103,9 +103,9 @@ const customFetch = async (
 		let jsonResp;
 		try {
 			jsonResp = await res.json();
-			console.log("API response JSON:", jsonResp);
+			console.log("API response JSON:");
 		} catch (parseError) {
-			console.error("Failed to parse API response:", parseError);
+			console.error("Failed to parse API response:");
 			throw new Error("Failed to parse API response");
 		}
 

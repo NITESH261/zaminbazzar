@@ -1,13 +1,18 @@
-"use client"
+"use client";
 
 import { DialogTitle } from "@radix-ui/react-dialog";
 import Autoplay from "embla-carousel-autoplay";
 import Image from "next/image";
 import { useState } from "react";
 import { Button } from "../ui/button";
-import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "../ui/carousel";
+import {
+    Carousel,
+    CarouselContent,
+    CarouselItem,
+    CarouselNext,
+    CarouselPrevious,
+} from "../ui/carousel";
 import { Dialog, DialogContent, DialogHeader } from "../ui/dialog";
-
 
 const BannerImages = [
     { img: "banner-img-1.jpg", alt: "First banner image" },
@@ -19,7 +24,7 @@ const BannerImages = [
 ];
 
 const StorySwiper = () => {
-    const [open, setOpen] = useState(false)
+    const [open, setOpen] = useState(false);
     return (
         <>
             <Carousel
@@ -41,7 +46,10 @@ const StorySwiper = () => {
                             className="pl-2 basis-1/2 sm:basis-1/3 md:basis-1/4 lg:basis-1/5 "
                         >
                             <div className="w-full h-full gap-4 flex flex-col items-center justify-center">
-                                <div onClick={() => setOpen(true)} className="relative aspect-square border-4 border-blue-400 w-3/4 p-0 rounded-full">
+                                <div
+                                    onClick={() => setOpen(true)}
+                                    className="relative aspect-square border-4 border-[#0000FF] w-3/4 p-0 rounded-full"
+                                >
                                     <Image
                                         src={`/assets/banner-img/${card.img}`}
                                         alt={card.alt}
@@ -50,9 +58,15 @@ const StorySwiper = () => {
                                     />
                                 </div>
                                 <div className="flex gap-0.5 flex-col w-full items-center justify-center">
-                                    <span className="text-sm font-medium">Prime Plots</span>
-                                    <span className="text-xs text-neutral-500 text-center">Land in Uran, Navi Mumbai</span>
-                                    <span className="text-sm font-bold">₹ 8 - 12 L</span>
+                                    <span className="text-sm font-medium">
+                                        Prime Plots
+                                    </span>
+                                    <span className="text-xs text-neutral-500 text-center">
+                                        Land in Uran, Navi Mumbai
+                                    </span>
+                                    <span className="text-sm font-bold">
+                                        ₹ 8 - 12 L
+                                    </span>
                                 </div>
                             </div>
                         </CarouselItem>
@@ -61,8 +75,7 @@ const StorySwiper = () => {
                 <CarouselPrevious className="-left-8 sm:left-0 !size-8 !px-1 bg-[#0000FF] text-white" />
                 <CarouselNext className="-right-8 sm:right-0 !size-8 !px-1 bg-[#0000FF] text-white" />
             </Carousel>
-            <Dialog open={open}
-                onOpenChange={setOpen}>
+            <Dialog open={open} onOpenChange={setOpen}>
                 <DialogContent className="py-0 px-0 max-w-sm rounded-lg text-white">
                     <DialogHeader className={"sr-only"}>
                         <DialogTitle>Heading</DialogTitle>
@@ -108,13 +121,20 @@ const StorySwiper = () => {
                                                         </div>
                                                     </div>
                                                     <div className="flex flex-col w-full">
-                                                        <span className="text-sm font-medium text-white">Prime Plots</span>
-                                                        <span className="text-xs text-neutral-200 ">Land in Uran, Navi Mumbai</span>
+                                                        <span className="text-sm font-medium text-white">
+                                                            Prime Plots
+                                                        </span>
+                                                        <span className="text-xs text-neutral-200 ">
+                                                            Land in Uran, Navi
+                                                            Mumbai
+                                                        </span>
                                                     </div>
                                                 </div>
                                                 <div className="flex items-end rounded-lg bg-gradient-to-t from-black to-transparent justify-center w-full h-1/5 gap-4 p-4">
                                                     <div className="flex w-full">
-                                                        <Button className="w-full bg-[#0000FF]">View Details</Button>
+                                                        <Button className="w-full bg-[#0000FF]">
+                                                            View Details
+                                                        </Button>
                                                     </div>
                                                 </div>
                                             </div>
@@ -129,7 +149,7 @@ const StorySwiper = () => {
                 </DialogContent>
             </Dialog>
         </>
-    )
-}
+    );
+};
 
-export default StorySwiper
+export default StorySwiper;
