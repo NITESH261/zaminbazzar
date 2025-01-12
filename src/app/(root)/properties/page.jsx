@@ -65,7 +65,7 @@ const page = async () => {
                                     <div className="flex w-full md:absolute md:px-4 pb-1 sm:pb-3 md:left-0 md:-bottom-40 md:group-hover:bottom-0 md:transition-all">
                                         <Button
                                             asChild
-                                            className="w-full h-[unset] py-1 sm:py-1.5 text-xs sm:text-base rounded-full bg-[#0078DB]"
+                                            className="w-full h-[unset] py-1 sm:py-1.5 text-xs sm:text-base rounded-full bg-[#0000ff]"
                                         >
                                             <Link
                                                 href={`/properties/${property.propertyId}`}

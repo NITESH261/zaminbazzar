@@ -21,7 +21,7 @@ const page = async ({ params }) => {
     const { result = {} } = await getOneProperty(PropertyId);
 
     return (
-        <div className="flex flex-col w-full h-[calc(100vh-64px)] overflow-y-auto">
+        <div className="flex flex-col w-full h-[calc(100vh-64px)] overflow-y-auto scrollbar">
             <div className="grid grid-cols-1 xl:grid-cols-8 gap-4 px-4 py-6 md:py-8 lg:py-10 xl:py-12 w-full max-w-7xl mx-auto h-auto relative">
                 <div className="flex w-full lg:col-span-6 h-auto">
                     <div className="flex w-full h-full gap-8 flex-col">
@@ -157,12 +157,12 @@ const page = async ({ params }) => {
                                     </div>
                                 </div>
                                 <div className="flex gap-4 w-full">
-                                    <Button className="rounded-3xl text-sm bg-[#0078DB]">
+                                    <Button className="rounded-3xl text-sm bg-[#0000ff]">
                                         Contact Owner
                                     </Button>
                                     <Button
                                         variant="outline"
-                                        className="rounded-3xl text-sm border-[#0078DB] text-[#0078DB]"
+                                        className="rounded-3xl text-sm border-[#0000ff] text-[#0000ff]"
                                     >
                                         Get Callback
                                     </Button>

@@ -28,7 +28,7 @@ const Navbar = () => {
     return (
         <header className="flex sticky top-0 z-20 w-full bg-[#0000FF]">
             <div className="flex w-full h-16 items-center max-w-[1480px] mx-auto gap-4 px-4">
-                <div className="flex w-fit">
+                <div className="flex h-fit w-fit">
                     <Link href={"/"}>
                         <Logo />
                     </Link>
