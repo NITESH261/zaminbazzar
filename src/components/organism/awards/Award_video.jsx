@@ -1,4 +1,4 @@
-'use client'
+"use client";
 
 import Autoplay from "embla-carousel-autoplay";
 import {
@@ -11,31 +11,40 @@ import {
 
 const PlotsData = [
     {
-        youtubeLink: "https://www.youtube.com/embed/EDg07q0bDx4?si=uWl_fW_yrC5RVMyC", // Replace with actual YouTube video link
+        youtubeLink:
+            "https://www.youtube.com/embed/EDg07q0bDx4?si=uWl_fW_yrC5RVMyC", // Replace with actual YouTube video link
     },
     {
-        youtubeLink: "https://www.youtube.com/embed/aMzeN5LC7So?si=9vr2ty6ckHjPOefx", // Replace with actual YouTube video link
+        youtubeLink:
+            "https://www.youtube.com/embed/aMzeN5LC7So?si=9vr2ty6ckHjPOefx", // Replace with actual YouTube video link
     },
     {
-        youtubeLink: "https://www.youtube.com/embed/tEMoP5vEHx8?si=yfhJoVjv75YQyDyR", // Replace with actual YouTube video link
+        youtubeLink:
+            "https://www.youtube.com/embed/tEMoP5vEHx8?si=yfhJoVjv75YQyDyR", // Replace with actual YouTube video link
     },
     {
-        youtubeLink: "https://www.youtube.com/embed/uXchFB_Ofyg?si=pbmKan33WEXWRRVr", // Replace with actual YouTube video link
+        youtubeLink:
+            "https://www.youtube.com/embed/uXchFB_Ofyg?si=pbmKan33WEXWRRVr", // Replace with actual YouTube video link
     },
     {
-        youtubeLink: "https://www.youtube.com/embed/glsYUKyQzq4?si=CbJrn-liiPNqlXMx", // Replace with actual YouTube video link
+        youtubeLink:
+            "https://www.youtube.com/embed/glsYUKyQzq4?si=CbJrn-liiPNqlXMx", // Replace with actual YouTube video link
     },
     {
-        youtubeLink: "https://www.youtube.com/embed/yy-arzpVXLQ?si=VH7411_XlTIe2Vzg", // Replace with actual YouTube video link
+        youtubeLink:
+            "https://www.youtube.com/embed/yy-arzpVXLQ?si=VH7411_XlTIe2Vzg", // Replace with actual YouTube video link
     },
     {
-        youtubeLink: "https://www.youtube.com/embed/2pLJBC54wqg?si=fYA7CMC_-t9N92fO", // Replace with actual YouTube video link
+        youtubeLink:
+            "https://www.youtube.com/embed/2pLJBC54wqg?si=fYA7CMC_-t9N92fO", // Replace with actual YouTube video link
     },
     {
-        youtubeLink: "https://www.youtube.com/embed/N5YQF5Iqw60?si=pKDwYe19rhpOkUO5", // Replace with actual YouTube video link
+        youtubeLink:
+            "https://www.youtube.com/embed/N5YQF5Iqw60?si=pKDwYe19rhpOkUO5", // Replace with actual YouTube video link
     },
     {
-        youtubeLink: "https://www.youtube.com/embed/m0lfwXxFZHQ?si=lbQrKSFPiKDBSIYd", // Replace with actual YouTube video link
+        youtubeLink:
+            "https://www.youtube.com/embed/m0lfwXxFZHQ?si=lbQrKSFPiKDBSIYd", // Replace with actual YouTube video link
     },
 ];
 
@@ -72,7 +81,9 @@ const Award_video = () => {
                                             {/* Embed YouTube Video using iframe */}
                                             <iframe
                                                 src={card.youtubeLink}
-                                                title={`YouTube Video ${index + 1}`}
+                                                title={`YouTube Video ${
+                                                    index + 1
+                                                }`}
                                                 frameBorder="0"
                                                 allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
                                                 allowFullScreen
@@ -82,8 +93,8 @@ const Award_video = () => {
                                     </CarouselItem>
                                 ))}
                             </CarouselContent>
-                            <CarouselPrevious className="left-0 lg:-left-8" />
-                            <CarouselNext className="right-0 lg:-right-8" />
+                            <CarouselPrevious className="-left-3 sm:left-0 lg:-left-8" />
+                            <CarouselNext className="-right-3 sm:right-0 lg:-right-8" />
                         </Carousel>
                     </div>
                 </div>

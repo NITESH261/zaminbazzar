@@ -122,7 +122,7 @@ const Page = () => {
                                 )}
                             />
                             <Button
-                                className="w-full bg-[#0078DB]"
+                                className="w-full bg-[#0000ff]"
                                 type="submit"
                                 disabled={loading}
                             >

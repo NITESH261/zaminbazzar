@@ -1,4 +1,4 @@
-'use client'
+"use client";
 
 import Autoplay from "embla-carousel-autoplay";
 import Image from "next/image";
@@ -65,7 +65,10 @@ const Booking_img = () => {
                         >
                             <CarouselContent>
                                 {PlotsData.map((card, index) => (
-                                    <CarouselItem key={index} className="sm:basis-full md:basis-1/2 lg:basis-1/3 xl:basis-1/4">
+                                    <CarouselItem
+                                        key={index}
+                                        className="sm:basis-full md:basis-1/2 lg:basis-1/3 xl:basis-1/4"
+                                    >
                                         <div className="relative rounded-2xl aspect-video md:aspect-square lg:aspect-video flex w-full">
                                             <Image
                                                 src={`/assets/testimonial/${card.image}`}
@@ -77,8 +80,8 @@ const Booking_img = () => {
                                     </CarouselItem>
                                 ))}
                             </CarouselContent>
-                            <CarouselPrevious className="left-0 lg:-left-8" />
-                            <CarouselNext className="right-0 lg:-right-8" />
+                            <CarouselPrevious className="-left-3 sm:left-0 lg:-left-8" />
+                            <CarouselNext className="-right-3 sm:right-0 lg:-right-8" />
                         </Carousel>
                     </div>
                 </div>

@@ -29,9 +29,9 @@ import {
 
 const Location = [
     { thane: "Thane" },
-    { "navi-mumbai": "Navi Mumbai" },
+    { "third-mumbai": "Third Mumbai" },
     { panvel: "Panvel" },
-    { khalapur: "Khalapur" },
+    { uran: "Uran" },
 ];
 
 const SearchTrigger = (locationId) => {
@@ -136,7 +136,7 @@ const SearchFilter = () => {
                     >
                         <Button
                             type="submit"
-                            className="px-4 w-full py-2 bg-blue-500 text-white rounded-lg"
+                            className="px-4 w-full py-2 bg-[#0000ff] text-white rounded-lg"
                         >
                             Apply Filter
                         </Button>
@@ -1147,7 +1147,7 @@ const SearchFilter = () => {
                         />
                         <Button
                             type="submit"
-                            className="px-4 w-full py-2 bg-blue-500 text-white rounded-lg"
+                            className="px-4 w-full py-2 bg-[#0000ff] text-white rounded-lg"
                         >
                             Apply Filter
                         </Button>

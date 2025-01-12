@@ -1,9 +1,15 @@
-"use client"
+"use client";
 
 import Autoplay from "embla-carousel-autoplay";
 import Image from "next/image";
 import { Card, CardContent, CardHeader } from "../ui/card";
-import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "../ui/carousel";
+import {
+    Carousel,
+    CarouselContent,
+    CarouselItem,
+    CarouselNext,
+    CarouselPrevious,
+} from "../ui/carousel";
 
 const TrendingNews = () => {
     const cards = Array.from({ length: 8 }, (_, i) => i + 1);
@@ -34,28 +40,38 @@ const TrendingNews = () => {
                                 {cards.map((index) => (
                                     <CarouselItem
                                         key={`${index}-plot-img`}
-                                        className="sm:basis-1/2 lg:basis-1/3 xl:basis-1/4"
+                                        className="basis-44 sm:basis-1/2 lg:basis-1/3 xl:basis-1/4"
                                     >
                                         <Card className="rounded-lg group p-0 h-full w-full transition-all border-none">
                                             <CardHeader className="p-0 flex flex-grow-0 rounded-tl-lg">
                                                 <div className="flex relative aspect-video rounded-t-lg overflow-hidden">
                                                     <Image
-                                                        src={"/assets/house/house1.webp"}
+                                                        src={
+                                                            "/assets/house/house1.webp"
+                                                        }
                                                         alt="plots"
                                                         fill
                                                         className="rounded-lg object-cover group-hover:scale-110 transition-all object-center"
                                                     />
                                                 </div>
                                             </CardHeader>
-                                            <CardContent className="w-full p-4">
-                                                <div className="flex flex-col w-full gap-2 p-4">
-                                                    <span className="text-sm md:text-base font-medium">
-                                                        All You Need To Know About Godrej Emerald Thane West
+                                            <CardContent className="w-full p-2 sm:p-4">
+                                                <div className="flex flex-col w-full gap-2">
+                                                    <span className="text-xs sm:text-sm md:text-base font-medium">
+                                                        All You Need To Know
+                                                        About Godrej Emerald
+                                                        Thane West
                                                     </span>
-                                                    <p className="text-xs">
-                                                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae error sit consectetur nesciunt magnam harum suscipit nobis animi,...
+                                                    <p className="text-[10px] sm:text-xs">
+                                                        Lorem ipsum dolor sit
+                                                        amet consectetur
+                                                        adipisicing elit.
+                                                        Recusandae error sit
+                                                        consectetur nesciunt
+                                                        magnam harum suscipit
+                                                        nobis animi,...
                                                     </p>
-                                                    <div className="flex text-xs text-neutral-500 justify-between w-full">
+                                                    <div className="flex text-[10px] sm:text-xs text-neutral-500 justify-between w-full">
                                                         <span>By Lorem</span>
                                                         <span>17th Aug 18</span>
                                                     </div>
@@ -65,8 +81,8 @@ const TrendingNews = () => {
                                     </CarouselItem>
                                 ))}
                             </CarouselContent>
-                            <CarouselPrevious className="left-0 lg:-left-8" />
-                            <CarouselNext className="right-0 lg:-right-8" />
+                            <CarouselPrevious className="-left-3 sm:left-0 lg:-left-8" />
+                            <CarouselNext className="-right-3 sm:right-0 lg:-right-8" />
                         </Carousel>
                     </div>
                 </div>

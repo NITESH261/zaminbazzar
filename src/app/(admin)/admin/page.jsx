@@ -1,12 +1,19 @@
-"use client"
+"use client";
 
-import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form"
-import { Input } from "@/components/ui/input"
-import { zodResolver } from "@hookform/resolvers/zod"
-import { useForm } from "react-hook-form"
-import { z } from "zod"
+import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import {
+    Form,
+    FormControl,
+    FormField,
+    FormItem,
+    FormLabel,
+    FormMessage,
+} from "@/components/ui/form";
+import { Input } from "@/components/ui/input";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useForm } from "react-hook-form";
+import { z } from "zod";
 
 const formSchema = z.object({
     email: z.string().min(2, {
@@ -15,21 +22,20 @@ const formSchema = z.object({
     password: z.string().min(2, {
         message: "Password must be at least 8 characters.",
     }),
-})
+});
 
 const page = () => {
-
     const form = useForm({
         resolver: zodResolver(formSchema),
         defaultValues: {
             email: "",
             password: "",
         },
-    })
+    });
 
-    const onSubmit = values => {
+    const onSubmit = (values) => {
         console.log(values);
-    }
+    };
 
     return (
         <div className="flex w-full h-full max-w-7xl mx-auto p-4 items-center justify-center">
@@ -77,7 +83,7 @@ const page = () => {
                                 )}
                             />
                             <Button
-                                className="w-full bg-[#0078DB]"
+                                className="w-full bg-[#0000ff]"
                                 type="submit"
                             >
                                 Log In
@@ -87,7 +93,7 @@ const page = () => {
                 </CardContent>
             </Card>
         </div>
-    )
-}
+    );
+};
 
-export default page
+export default page;

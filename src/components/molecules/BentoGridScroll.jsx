@@ -1,38 +1,44 @@
-"use client"
+"use client";
 
-import Autoplay from "embla-carousel-autoplay"
-import Image from "next/image"
-import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "../ui/carousel"
+import Autoplay from "embla-carousel-autoplay";
+import Image from "next/image";
+import {
+    Carousel,
+    CarouselContent,
+    CarouselItem,
+    CarouselNext,
+    CarouselPrevious,
+} from "../ui/carousel";
 
 const Cards = [
     {
-        img: "recomonded-property1.jpeg"
+        img: "recomonded-property1.jpeg",
     },
     {
-        img: "recomonded-property2.jpeg"
+        img: "recomonded-property2.jpeg",
     },
     {
-        img: "recomonded-property3.jpeg"
+        img: "recomonded-property3.jpeg",
     },
     {
-        img: "recomonded-property4.jpeg"
+        img: "recomonded-property4.jpeg",
     },
     {
-        img: "recomonded-property5.jpeg"
+        img: "recomonded-property5.jpeg",
     },
     {
-        img: "recomonded-property6.jpeg"
+        img: "recomonded-property6.jpeg",
     },
     {
-        img: "recomonded-property7.jpeg"
+        img: "recomonded-property7.jpeg",
     },
     {
-        img: "recomonded-property8.jpeg"
+        img: "recomonded-property8.jpeg",
     },
     {
-        img: "recomonded-property9.jpeg"
-    }
-]
+        img: "recomonded-property9.jpeg",
+    },
+];
 
 const BentoGridScroll = () => {
     return (
@@ -66,8 +72,8 @@ const BentoGridScroll = () => {
                                     </CarouselItem>
                                 ))}
                             </CarouselContent>
-                            <CarouselPrevious className="left-0" />
-                            <CarouselNext className="right-0" />
+                            <CarouselPrevious className="-left-3 sm:left-0" />
+                            <CarouselNext className="-right-3 sm:right-0" />
                         </Carousel>
                     </div>
                 </div>
@@ -96,11 +102,10 @@ const BentoGridScroll = () => {
                             className="object-cover rounded-br-2xl"
                         />
                     </div>
-
                 </div>
             </div>
         </>
-    )
-}
+    );
+};
 
-export default BentoGridScroll
+export default BentoGridScroll;
