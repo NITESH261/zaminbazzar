@@ -1,40 +1,51 @@
-"use client"
+"use client";
 
-import { DialogTitle } from "@radix-ui/react-dialog"
-import Autoplay from "embla-carousel-autoplay"
-import { PlayCircle } from "lucide-react"
-import Image from "next/image"
-import { Card, CardContent, CardHeader } from "../ui/card"
-import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "../ui/carousel"
-import { Dialog, DialogContent, DialogHeader, DialogTrigger } from "../ui/dialog"
+import { DialogTitle } from "@radix-ui/react-dialog";
+import Autoplay from "embla-carousel-autoplay";
+import { PlayCircle } from "lucide-react";
+import Image from "next/image";
+import { Card, CardContent, CardHeader } from "../ui/card";
+import {
+    Carousel,
+    CarouselContent,
+    CarouselItem,
+    CarouselNext,
+    CarouselPrevious,
+} from "../ui/carousel";
+import {
+    Dialog,
+    DialogContent,
+    DialogHeader,
+    DialogTrigger,
+} from "../ui/dialog";
 
 const YoutubeLinks = [
     {
         videoId: "kupu6t-46S0",
         videoImg: "kupu6t-46S0hd.jpg",
-        label: "Navi Mumbai International Airport"
+        label: "Navi Mumbai International Airport",
     },
     {
         videoId: "WGKXgIOJLD0",
         videoImg: "WGKXgIOJLD0hd.jpg",
-        label: "Sewri - Nhava Sheva Sealink"
+        label: "Sewri - Nhava Sheva Sealink",
     },
     {
         videoId: "VUROQlxtHtQ",
         videoImg: "VUROQlxtHtQhq.jpg",
-        label: "Alibaug to Virar Multimodel Corridor"
+        label: "Alibaug to Virar Multimodel Corridor",
     },
     {
         videoId: "cDAZKHC0YCA",
         videoImg: "cDAZKHC0YCAhd.jpg",
-        label: "JNPT Port"
+        label: "JNPT Port",
     },
     {
         videoId: "g7XSpnQ7CVs",
         videoImg: "g7XSpnQ7CVshd.jpg",
-        label: "Belapur to Uran, Panvel to Uran Railway Connectivity"
+        label: "Belapur to Uran, Panvel to Uran Railway Connectivity",
     },
-]
+];
 
 const Connectivity = () => {
     return (
@@ -88,7 +99,9 @@ const Connectivity = () => {
                                             </DialogTrigger>
                                             <DialogContent className="max-w-6xl">
                                                 <DialogHeader>
-                                                    <DialogTitle>{video.label}</DialogTitle>
+                                                    <DialogTitle>
+                                                        {video.label}
+                                                    </DialogTitle>
                                                 </DialogHeader>
                                                 <div className="flex relative w-full aspect-video rounded-t-lg overflow-hidden">
                                                     <iframe
@@ -104,18 +117,17 @@ const Connectivity = () => {
                                                 </div>
                                             </DialogContent>
                                         </Dialog>
-
                                     </CarouselItem>
                                 ))}
                             </CarouselContent>
-                            <CarouselPrevious className="left-0 lg:-left-8" />
-                            <CarouselNext className="right-0 lg:-right-8" />
+                            <CarouselPrevious className="-left-3 sm:left-0 lg:-left-8" />
+                            <CarouselNext className="-right-3 sm:right-0 lg:-right-8" />
                         </Carousel>
                     </div>
                 </div>
             </div>
         </>
-    )
-}
+    );
+};
 
-export default Connectivity
+export default Connectivity;

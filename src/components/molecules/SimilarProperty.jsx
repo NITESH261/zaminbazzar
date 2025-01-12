@@ -1,41 +1,47 @@
-"use client"
-import React from 'react'
-import Link from "next/link"
+"use client";
+import React from "react";
+import Link from "next/link";
 import { Button } from "../ui/button";
-import { ArrowRight } from "lucide-react"
-import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "../ui/carousel";
-import Autoplay from "embla-carousel-autoplay"
-import Image from "next/image"
+import { ArrowRight } from "lucide-react";
+import {
+    Carousel,
+    CarouselContent,
+    CarouselItem,
+    CarouselNext,
+    CarouselPrevious,
+} from "../ui/carousel";
+import Autoplay from "embla-carousel-autoplay";
+import Image from "next/image";
 
 const Cards = [
     {
-        img: "recomonded-property1.jpeg"
+        img: "recomonded-property1.jpeg",
     },
     {
-        img: "recomonded-property2.jpeg"
+        img: "recomonded-property2.jpeg",
     },
     {
-        img: "recomonded-property3.jpeg"
+        img: "recomonded-property3.jpeg",
     },
     {
-        img: "recomonded-property4.jpeg"
+        img: "recomonded-property4.jpeg",
     },
     {
-        img: "recomonded-property5.jpeg"
+        img: "recomonded-property5.jpeg",
     },
     {
-        img: "recomonded-property6.jpeg"
+        img: "recomonded-property6.jpeg",
     },
     {
-        img: "recomonded-property7.jpeg"
+        img: "recomonded-property7.jpeg",
     },
     {
-        img: "recomonded-property8.jpeg"
+        img: "recomonded-property8.jpeg",
     },
     {
-        img: "recomonded-property9.jpeg"
-    }
-]
+        img: "recomonded-property9.jpeg",
+    },
+];
 
 const SimilarProperty = () => {
     return (
@@ -46,8 +52,13 @@ const SimilarProperty = () => {
                         <h2 className="text-lg font-medium md:text-xl lg:text-2xl">
                             Similar Property
                         </h2>
-                        <Link href={"/"} className="flex items-center gap-2 hover:text-black text-[#0000FF] text-lg md:text-xl">
-                            <span className="hidden md:flex">See More Properties</span>
+                        <Link
+                            href={"/"}
+                            className="flex items-center gap-2 hover:text-black text-[#0000FF] text-lg md:text-xl"
+                        >
+                            <span className="hidden md:flex">
+                                See More Properties
+                            </span>
                             <ArrowRight />
                         </Link>
                     </div>
@@ -81,9 +92,12 @@ const SimilarProperty = () => {
                                             </div>
                                             <div className=" p-4 space-y-2">
                                                 <div className="w-full">
-                                                    <span className="text-sm">1 BHK Flat</span>
+                                                    <span className="text-sm">
+                                                        1 BHK Flat
+                                                    </span>
                                                     <h2 className="text-lg font-medium">
-                                                        &#8377; 30 Lac | 1000 sqft
+                                                        &#8377; 30 Lac | 1000
+                                                        sqft
                                                     </h2>
                                                 </div>
                                                 <div className="flex flex-col space-y-1 w-full">
@@ -99,14 +113,14 @@ const SimilarProperty = () => {
                                     </CarouselItem>
                                 ))}
                             </CarouselContent>
-                            <CarouselPrevious className="left-0 lg:-left-8" />
-                            <CarouselNext className="right-0 lg:-right-8" />
+                            <CarouselPrevious className="-left-3 sm:left-0 lg:-left-8" />
+                            <CarouselNext className="-right-3 sm:right-0 lg:-right-8" />
                         </Carousel>
                     </div>
                 </div>
             </div>
         </>
-    )
-}
+    );
+};
 
-export default SimilarProperty
+export default SimilarProperty;

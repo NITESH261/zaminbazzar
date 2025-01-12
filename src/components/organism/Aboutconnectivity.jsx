@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import Autoplay from "embla-carousel-autoplay";
 import Image from "next/image";
@@ -54,7 +54,6 @@ const PlotsData = [
             "Karjat, Neral, and Matheran are nearby charming spots perfect for a quick getaway. Karjat offers lush landscapes and trekking trails",
         link: "#enquire-now",
     },
-
 ];
 
 const Aboutconnectivity = () => {
@@ -112,8 +111,8 @@ const Aboutconnectivity = () => {
                                     </CarouselItem>
                                 ))}
                             </CarouselContent>
-                            <CarouselPrevious className="left-0 lg:-left-8" />
-                            <CarouselNext className="right-0 lg:-right-8" />
+                            <CarouselPrevious className="-left-3 sm:left-0 lg:-left-8" />
+                            <CarouselNext className="-right-3 sm:right-0 lg:-right-8" />
                         </Carousel>
                     </div>
                 </div>
