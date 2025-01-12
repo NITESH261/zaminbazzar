@@ -6,19 +6,20 @@ import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { Button } from "../ui/button";
+import { Form, FormControl, FormField, FormItem } from "../ui/form";
 import {
-    Form,
-    FormControl,
-    FormField,
-    FormItem
-} from "../ui/form";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "../ui/select";
+    Select,
+    SelectContent,
+    SelectItem,
+    SelectTrigger,
+    SelectValue,
+} from "../ui/select";
 
 const PropertyLocations = [
-    { label: "Navi Mumbai", value: "navi-mumbai" },
     { label: "Thane", value: "thane" },
     { label: "Panvel", value: "panvel" },
-    { label: "Khalapur", value: "khalapur" },
+    { label: "Uran", value: "uran" },
+    { label: "Third Mumbai", value: "third-mumbai" },
 ];
 
 const FormSchema = z.object({
@@ -28,15 +29,14 @@ const FormSchema = z.object({
 });
 
 const SearchBar = () => {
-
-    const router = useRouter()
+    const router = useRouter();
 
     const form = useForm({
         resolver: zodResolver(FormSchema),
     });
 
     const onSubmit = (values) => {
-        router.push(`/search/top-location/${values.location}`)
+        router.push(`/search/top-location/${values.location}`);
     };
 
     return (
@@ -64,8 +64,8 @@ const SearchBar = () => {
                                         </SelectTrigger>
                                     </FormControl>
                                     <SelectContent>
-                                        {
-                                            PropertyLocations.map((location, i) =>
+                                        {PropertyLocations.map(
+                                            (location, i) => (
                                                 <SelectItem
                                                     key={i}
                                                     value={location.value}
@@ -73,7 +73,7 @@ const SearchBar = () => {
                                                     {location.label}
                                                 </SelectItem>
                                             )
-                                        }
+                                        )}
                                     </SelectContent>
                                 </Select>
                             </FormItem>
@@ -81,7 +81,8 @@ const SearchBar = () => {
                     />
                     <Button type="submit" className="rounded-full bg-[#0000FF]">
                         <Search />
-                        Search</Button>
+                        Search
+                    </Button>
                 </form>
             </Form>
         </>

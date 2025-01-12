@@ -11,8 +11,8 @@ const About_accordion = ({ ...props }) => {
         <div>
             <Accordion type="single" collapsible className="w-full">
                 <AccordionItem value="item-1">
-                    <AccordionTrigger>
-                        Unique Features About property
+                    <AccordionTrigger className="hover:no-underline md:text-lg">
+                        About property
                     </AccordionTrigger>
                     <AccordionContent>
                         <p className="text-sm md:text-base">

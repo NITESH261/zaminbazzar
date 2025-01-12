@@ -1,40 +1,46 @@
-"use client"
+"use client";
 
-import Autoplay from "embla-carousel-autoplay"
-import { ArrowRight, Circle } from "lucide-react"
-import Image from "next/image"
-import Link from "next/link"
-import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "../ui/carousel"
+import Autoplay from "embla-carousel-autoplay";
+import { ArrowRight, Circle } from "lucide-react";
+import Image from "next/image";
+import Link from "next/link";
+import {
+    Carousel,
+    CarouselContent,
+    CarouselItem,
+    CarouselNext,
+    CarouselPrevious,
+} from "../ui/carousel";
 
 const Cards = [
     {
-        img: "recomonded-property1.jpeg"
+        img: "recomonded-property1.jpeg",
     },
     {
-        img: "recomonded-property2.jpeg"
+        img: "recomonded-property2.jpeg",
     },
     {
-        img: "recomonded-property3.jpeg"
+        img: "recomonded-property3.jpeg",
     },
     {
-        img: "recomonded-property4.jpeg"
+        img: "recomonded-property4.jpeg",
     },
     {
-        img: "recomonded-property5.jpeg"
+        img: "recomonded-property5.jpeg",
     },
     {
-        img: "recomonded-property6.jpeg"
+        img: "recomonded-property6.jpeg",
     },
     {
-        img: "recomonded-property7.jpeg"
+        img: "recomonded-property7.jpeg",
     },
     {
-        img: "recomonded-property8.jpeg"
+        img: "recomonded-property8.jpeg",
     },
     {
-        img: "recomonded-property9.jpeg"
-    }
-]
+        img: "recomonded-property9.jpeg",
+    },
+];
 
 const SimilarExterior = () => {
     return (
@@ -45,8 +51,13 @@ const SimilarExterior = () => {
                         <h2 className="text-lg font-medium md:text-xl lg:text-2xl">
                             Home With Similar Exterior
                         </h2>
-                        <Link href={"/"} className="flex items-center gap-2 hover:text-black text-[#0000FF] text-lg md:text-xl">
-                            <span className="hidden md:flex">See More Properties</span>
+                        <Link
+                            href={"/"}
+                            className="flex items-center gap-2 hover:text-black text-[#0000FF] text-lg md:text-xl"
+                        >
+                            <span className="hidden md:flex">
+                                See More Properties
+                            </span>
                             <ArrowRight />
                         </Link>
                     </div>
@@ -82,12 +93,19 @@ const SimilarExterior = () => {
                                                 <div className="w-full">
                                                     <div className="flex items-center gap-2">
                                                         <Circle className="!size-3 fill-green-400" />
-                                                        <span className="text-sm">For Sale</span>
+                                                        <span className="text-sm">
+                                                            For Sale
+                                                        </span>
                                                     </div>
                                                     <h2 className="text-2xl text-neutral-600 font-bold">
                                                         &#8377; 30 Lac
                                                     </h2>
-                                                    <span className="text-sm"><b className="text-neutral-600">1,440</b> sqft</span>
+                                                    <span className="text-sm">
+                                                        <b className="text-neutral-600">
+                                                            1,440
+                                                        </b>{" "}
+                                                        sqft
+                                                    </span>
                                                 </div>
                                                 <div className="flex flex-col space-y-1 w-full">
                                                     <p className="text-gray-600 text-sm">
@@ -99,14 +117,14 @@ const SimilarExterior = () => {
                                     </CarouselItem>
                                 ))}
                             </CarouselContent>
-                            <CarouselPrevious className="left-0 lg:-left-8" />
-                            <CarouselNext className="right-0 lg:-right-8" />
+                            <CarouselPrevious className="-left-3 sm:left-0 lg:-left-8" />
+                            <CarouselNext className="-right-3 sm:right-0 lg:-right-8" />
                         </Carousel>
                     </div>
                 </div>
             </div>
         </>
-    )
-}
+    );
+};
 
-export default SimilarExterior
+export default SimilarExterior;

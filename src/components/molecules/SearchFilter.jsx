@@ -29,9 +29,9 @@ import {
 
 const Location = [
     { thane: "Thane" },
-    { "navi-mumbai": "Navi Mumbai" },
+    { "third-mumbai": "Third Mumbai" },
     { panvel: "Panvel" },
-    { khalapur: "Khalapur" },
+    { uran: "Uran" },
 ];
 
 const SearchTrigger = (locationId) => {
