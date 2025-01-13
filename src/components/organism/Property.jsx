@@ -1,6 +1,5 @@
 "use client";
 
-import { ArrowRight } from "lucide-react";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import ImageScroll from "../molecules/ImageScroll";
@@ -18,6 +17,7 @@ import { getAllProperty } from "@/actions/property";
 import { FaS } from "react-icons/fa6";
 import { Skeleton } from "../ui/skeleton";
 import SkeletonCard from "../atoms/SkeletonCard";
+import SectionHeading from "../atoms/SectionHeading";
 
 const Cards = [
     {
@@ -80,23 +80,14 @@ const Property = () => {
         <>
             <div className="flex w-full">
                 <div className="flex flex-col gap-4 md:gap-6 w-full max-w-7xl mx-auto px-4 py-6 md:py-8 lg:py-10 xl:py-12">
-                    <div className="flex w-full items-center justify-between">
-                        <h2 className="text-lg font-medium md:text-xl lg:text-2xl flex  flex-col w-fit">
-                            <span>Popular Properties </span>
-                            <span className="h-1.5 w-20 bg-[#0000FF] rounded-full"></span>
-                        </h2>
-                        <Link
-                            href={"/properties"}
-                            className="flex items-center gap-2 hover:text-black text-[#0000FF] text-lg md:text-xl"
-                        >
-                            <span className="hidden md:flex">
-                                See More Properties
-                            </span>
-                            <ArrowRight />
-                        </Link>
-                    </div>
+                    <SectionHeading
+                        title="Popular Properties"
+                        link
+                        linkHref="/properties"
+                        linkLabel="See More Properties"
+                    />
                     <div className="flex w-full">
-                        {loading ? (
+                        {loading && property.length === 0 ? (
                             <SkeletonCard />
                         ) : (
                             <Carousel
