@@ -10,7 +10,8 @@ const BannerCarousel = () => {
     return (
         <div className="relative aspect-video h-full w-full flex">
             <Image
-                src="/assets/banner-img/home-banner-1.jpg"
+                loading="lazy"
+                src="/assets/banner-img/hero-image.webp"
                 alt="banner-img"
                 fill
                 className="object-cover lg:object-cover object-center h-full w-full"
