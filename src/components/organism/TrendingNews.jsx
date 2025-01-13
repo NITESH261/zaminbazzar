@@ -10,6 +10,7 @@ import {
     CarouselNext,
     CarouselPrevious,
 } from "../ui/carousel";
+import SectionHeading from "../atoms/SectionHeading";
 
 const TrendingNews = () => {
     const cards = Array.from({ length: 8 }, (_, i) => i + 1);
@@ -17,12 +18,12 @@ const TrendingNews = () => {
         <>
             <div className="flex w-full">
                 <div className="flex flex-col gap-4 md:gap-6 w-full max-w-7xl mx-auto px-4 py-4 md:py-6 lg:py-8 xl:py-14">
-                    <div className="flex w-full">
-                        <h2 className="text-lg font-medium md:text-xl lg:text-2xl flex flex-col gap-1">
-                            <span>News & Blogs</span>
-                            <span className="h-1.5 w-20 bg-[#0000FF] rounded-full"></span>
-                        </h2>
-                    </div>
+                    <SectionHeading
+                        title="News & Blogs"
+                        link
+                        linkHref="/blog"
+                        linkLabel="See More blogs"
+                    />
                     <div className="flex w-full">
                         <Carousel
                             plugins={[
