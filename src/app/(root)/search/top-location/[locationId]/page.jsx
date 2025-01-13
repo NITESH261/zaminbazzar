@@ -155,12 +155,12 @@ const page = () => {
                                                 </div>
                                             </div>
                                             <div className="flex w-full gap-2 sm:gap-4 md:justify-end sm:flex-grow-0 h-1/5">
-                                                <Button className="rounded-full w-full md:w-fit text-xs bg-[#0078db]">
+                                                <Button className="rounded-full w-full md:w-fit text-xs bg-[#0000ff]">
                                                     <PhoneCallIcon /> Contact Us
                                                 </Button>
                                                 <Button
                                                     variant="outline"
-                                                    className="rounded-full w-full md:w-fit text-xs border-[#0078db] text-[#0078db]"
+                                                    className="rounded-full w-full md:w-fit text-xs border-[#0000ff] text-[#0000ff]"
                                                 >
                                                     View Number
                                                 </Button>
