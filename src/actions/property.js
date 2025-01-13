@@ -18,8 +18,8 @@ const formatFilterForQuery = (filter) => {
     return queryString.toString();
 };
 
-export const getAllProperty = async () => {
-    let resp = await fetchWithoutToken("/property/getAll", {
+export const getAllProperty = async ({ page, limit }) => {
+    let resp = await fetchWithoutToken(`/property/getAll?page=${page}&limit=${limit}`, {
         method: "GET"
     })
     resp = resp.results.data
