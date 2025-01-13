@@ -1,6 +1,5 @@
 "use client";
 
-import { ArrowRight } from "lucide-react";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import ImageScroll from "../molecules/ImageScroll";
@@ -13,40 +12,10 @@ import {
     CarouselPrevious,
 } from "../ui/carousel";
 import { formatCurrency } from "@/lib/utils";
-import useZaminwaleStore from "@/store";
 import { IndianRupeeIcon } from "lucide-react";
 import { getAllProperty } from "@/actions/property";
 import SkeletonCard from "../atoms/SkeletonCard";
-
-const Cards = [
-    {
-        img: "recomonded-property1.jpeg",
-    },
-    {
-        img: "recomonded-property2.jpeg",
-    },
-    {
-        img: "recomonded-property3.jpeg",
-    },
-    {
-        img: "recomonded-property4.jpeg",
-    },
-    {
-        img: "recomonded-property5.jpeg",
-    },
-    {
-        img: "recomonded-property6.jpeg",
-    },
-    {
-        img: "recomonded-property7.jpeg",
-    },
-    {
-        img: "recomonded-property8.jpeg",
-    },
-    {
-        img: "recomonded-property9.jpeg",
-    },
-];
+import SectionHeading from "../atoms/SectionHeading";
 
 const Property = () => {
     const [property, setProperty] = useState([]);
@@ -86,7 +55,7 @@ const Property = () => {
                         linkLabel="See More Properties"
                     />
                     <div className="flex w-full">
-                        {loading ? (
+                        {loading && property.length === 0 ? (
                             <SkeletonCard />
                         ) : (
                             <Carousel

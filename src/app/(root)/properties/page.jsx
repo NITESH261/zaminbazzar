@@ -1,30 +1,29 @@
 "use client";
 
 import { getAllProperty } from "@/actions/property";
+import SectionHeading from "@/components/atoms/SectionHeading";
 import SkeletonCard from "@/components/atoms/SkeletonCard";
 import { Button } from "@/components/ui/button";
-import { Skeleton } from "@/components/ui/skeleton";
 import { formatCurrency } from "@/lib/utils";
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 
 const page = () => {
-    const [loading, setLoading] = useState(false);
     const [page, setPage] = useState(1);
     const [properties, setProperties] = useState([]);
+    const [pagination, setPagination] = useState([]);
 
     const loadMore = () => {
         setPage(page + 1);
     };
 
     const fetchData = async () => {
-        setLoading(true);
-        const { result } = await getAllProperty({
+        const { result, pagination = [] } = await getAllProperty({
             page,
             limit: 20,
         });
-
+        setPagination(pagination);
         setProperties((prev) => {
             const processedResult = result.map((item, index) => ({
                 ...item,
@@ -39,8 +38,6 @@ const page = () => {
 
             return unique;
         });
-
-        setLoading(false);
     };
 
     useEffect(() => {
@@ -50,13 +47,9 @@ const page = () => {
 
     return (
         <div className="flex w-full flex-1">
-            <div className="flex flex-col gap-4 w-full max-w-7xl mx-auto px-4 py-4 md:py-6 lg:py-8 xl:py-10">
-                <div className="flex w-full items-center justify-between">
-                    <h2 className="text-lg font-medium md:text-xl lg:text-2xl">
-                        All Properties
-                    </h2>
-                </div>
-                {loading ? (
+            <div className="flex flex-col gap-4 md:gap-8 w-full max-w-7xl mx-auto px-4 py-4 md:py-6 lg:py-8 xl:py-10">
+                <SectionHeading title="All Properties" />
+                {properties.length == 0 ? (
                     <SkeletonCard />
                 ) : (
                     <div className="flex w-full">
@@ -126,15 +119,19 @@ const page = () => {
                         </div>
                     </div>
                 )}
-                <div className="flex w-full mt-6 items-center justify-center">
-                    <Button
-                        onClick={loadMore}
-                        disabled={loading}
-                        className="rounded-full bg-[#0000ff]"
-                    >
-                        Load More Properties
-                    </Button>
-                </div>
+                {pagination.next ? (
+                    <div className="flex w-full mt-6 items-center justify-center">
+                        <Button
+                            onClick={loadMore}
+                            disabled={!properties}
+                            className="rounded-full bg-[#0000ff]"
+                        >
+                            Load More Properties
+                        </Button>
+                    </div>
+                ) : (
+                    ""
+                )}
             </div>
         </div>
     );

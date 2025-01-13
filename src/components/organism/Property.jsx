@@ -17,6 +17,7 @@ import { getAllProperty } from "@/actions/property";
 import { FaS } from "react-icons/fa6";
 import { Skeleton } from "../ui/skeleton";
 import SkeletonCard from "../atoms/SkeletonCard";
+import SectionHeading from "../atoms/SectionHeading";
 
 const Cards = [
     {
@@ -86,7 +87,7 @@ const Property = () => {
                         linkLabel="See More Properties"
                     />
                     <div className="flex w-full">
-                        {loading ? (
+                        {loading && property.length === 0 ? (
                             <SkeletonCard />
                         ) : (
                             <Carousel
