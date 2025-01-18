@@ -12,7 +12,7 @@ import Logo from "../atoms/Logo";
 const Footer = () => {
     return (
         <div className="bg-gray-100 text-gray-800 w-full">
-            <div className="container max-w-7xl mx-auto py-8 px-4">
+            <div className="max-w-7xl mx-auto py-8 px-4">
                 <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-8">
                     <div>
                         <Logo className={"text-black"} />
@@ -105,9 +105,8 @@ const Footer = () => {
                     </div>
                 </div>
             </div>
-
             <div className="bg-gray-800 py-4">
-                <div className="container mx-auto text-center text-sm text-gray-400">
+                <div className="mx-auto text-center text-sm text-gray-400">
                     <p>
                         All trademarks, logos and names are properties of their
                         respective owners. All Rights Reserved. © Copyright 2024
