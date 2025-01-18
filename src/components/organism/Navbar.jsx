@@ -1,6 +1,6 @@
 "use client";
 
-import { AlignRightIcon, House, Tag, User } from "lucide-react";
+import { AlignRightIcon, House, Tag } from "lucide-react";
 import Link from "next/link";
 import Logo from "../atoms/Logo";
 import LogoutBtn from "../atoms/LogoutBtn";
@@ -11,11 +11,6 @@ import {
     AccordionTrigger,
 } from "../ui/accordion";
 import { Button } from "../ui/button";
-import {
-    DropdownMenu,
-    DropdownMenuContent,
-    DropdownMenuTrigger,
-} from "../ui/dropdown-menu";
 import {
     Sheet,
     SheetContent,
@@ -126,19 +121,7 @@ const Navbar = () => {
                                 </span>
                             </Link>
                         </Button>
-                        <DropdownMenu>
-                            <DropdownMenuTrigger asChild>
-                                <Button
-                                    variant="outline"
-                                    className="hidden md:flex h-[unset] rounded-full"
-                                >
-                                    <User className="!size-4" /> Login
-                                </Button>
-                            </DropdownMenuTrigger>
-                            <DropdownMenuContent align="end">
-                                <LogoutBtn />
-                            </DropdownMenuContent>
-                        </DropdownMenu>
+                        <LogoutBtn />
                         <Sheet>
                             <SheetTrigger asChild>
                                 <Button className="rounded-md px-3 py-0 bg-transparent hover:text-[#0000FF] hover:bg-white">

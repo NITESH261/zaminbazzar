@@ -3,6 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { Card, CardContent, CardHeader } from "../ui/card";
+import SectionHeading from "../atoms/SectionHeading";
 
 const Locations = [
     {
@@ -52,12 +53,7 @@ const TopLocations = () => {
         <>
             <div className="flex w-full">
                 <div className="flex flex-col gap-4 w-full max-w-7xl mx-auto px-4 py-4 md:py-6 lg:py-8 xl:py-10">
-                    <div className="flex w-full">
-                        <h2 className="text-lg font-medium md:text-xl lg:text-2xl flex flex-col gap-1">
-                            <span>Top Locations</span>
-                            <span className="h-1.5 w-20 bg-[#0000FF] rounded-full"></span>
-                        </h2>
-                    </div>
+                    <SectionHeading title="Top Locations" />
                     <div className="flex w-full overflow-auto scrollbar-hide">
                         <div className="flex w-fit md:grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 md:w-full gap-2 md:gap-4">
                             {Locations.map((location, index) => (

@@ -5,6 +5,8 @@ export function cn(...inputs) {
     return twMerge(clsx(inputs));
 }
 
+export const getFirstName = text => text.split(' ')[0];
+
 export const getType = key => Object.prototype.toString.call(key).slice(8, -1)
 
 export const formatCurrency = (value) => {

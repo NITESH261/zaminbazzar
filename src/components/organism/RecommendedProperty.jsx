@@ -1,6 +1,5 @@
 "use client";
 
-import { ArrowRight } from "lucide-react";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import ImageScroll from "../molecules/ImageScroll";
@@ -13,40 +12,10 @@ import {
     CarouselPrevious,
 } from "../ui/carousel";
 import { formatCurrency } from "@/lib/utils";
-import useZaminwaleStore from "@/store";
 import { IndianRupeeIcon } from "lucide-react";
 import { getAllProperty } from "@/actions/property";
 import SkeletonCard from "../atoms/SkeletonCard";
-
-const Cards = [
-    {
-        img: "recomonded-property1.jpeg",
-    },
-    {
-        img: "recomonded-property2.jpeg",
-    },
-    {
-        img: "recomonded-property3.jpeg",
-    },
-    {
-        img: "recomonded-property4.jpeg",
-    },
-    {
-        img: "recomonded-property5.jpeg",
-    },
-    {
-        img: "recomonded-property6.jpeg",
-    },
-    {
-        img: "recomonded-property7.jpeg",
-    },
-    {
-        img: "recomonded-property8.jpeg",
-    },
-    {
-        img: "recomonded-property9.jpeg",
-    },
-];
+import SectionHeading from "../atoms/SectionHeading";
 
 const Property = () => {
     const [property, setProperty] = useState([]);
@@ -79,23 +48,14 @@ const Property = () => {
         <>
             <div className="flex w-full">
                 <div className="flex flex-col gap-4 md:gap-6 w-full max-w-7xl mx-auto px-4 py-6 md:py-8 lg:py-10 xl:py-12">
-                    <div className="flex w-full items-center justify-between">
-                        <h2 className="text-lg font-medium md:text-xl lg:text-2xl flex flex-col gap-1">
-                            <span>Recommended Property</span>
-                            <span className="h-1.5 w-20 bg-[#0000FF] rounded-full"></span>
-                        </h2>
-                        <Link
-                            href={"/properties"}
-                            className="flex items-center gap-2 hover:text-black text-[#0000FF] text-lg md:text-xl"
-                        >
-                            <span className="hidden md:flex">
-                                See More Properties
-                            </span>
-                            <ArrowRight />
-                        </Link>
-                    </div>
+                    <SectionHeading
+                        title="Recommended Property"
+                        link
+                        linkHref="/properties"
+                        linkLabel="See More Properties"
+                    />
                     <div className="flex w-full">
-                        {loading ? (
+                        {loading && property.length === 0 ? (
                             <SkeletonCard />
                         ) : (
                             <Carousel

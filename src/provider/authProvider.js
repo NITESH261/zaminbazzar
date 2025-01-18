@@ -26,7 +26,6 @@ const AuthProvider = ({ children }) => {
                         payload: { user, isAuthenticated: true }
                     })
                     setLoading(false)
-                    router.push("/post-property/create-property")
                 })
                 .catch(err => {
                     console.log(err.message)

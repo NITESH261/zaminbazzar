@@ -10,6 +10,7 @@ import {
     CarouselNext,
     CarouselPrevious,
 } from "../ui/carousel";
+import SectionHeading from "../atoms/SectionHeading";
 
 const PlotsData = [
     {
@@ -75,12 +76,7 @@ const DreamPlots = () => {
         <>
             <div className="flex w-full">
                 <div className="flex flex-col gap-4 md:gap-6 w-full max-w-7xl mx-auto px-4 py-6 md:py-8 lg:py-10 xl:py-12">
-                    <div className="flex w-full">
-                        <h2 className="text-lg font-medium md:text-xl lg:text-2xl flex flex-col gap-1">
-                            <span>Find Your Dream Plots With Zaminwale.</span>
-                            <span className="h-1.5 w-20 bg-[#0000FF] rounded-full"></span>
-                        </h2>
-                    </div>
+                    <SectionHeading title="Find Your Dream Plots With Zaminwale." />
                     <div className="flex w-full">
                         <Carousel
                             plugins={[

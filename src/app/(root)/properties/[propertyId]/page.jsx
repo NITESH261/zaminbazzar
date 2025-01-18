@@ -1,20 +1,20 @@
+import { getOneProperty } from "@/actions/property";
 import BentoGridScroll from "@/components/molecules/BentoGridScroll";
 import EnquireForm from "@/components/molecules/EnquireForm";
+import About_accordion from "@/components/molecules/post-property/About_accordion";
 import SimilarProperty from "@/components/molecules/SimilarProperty";
 import Footer from "@/components/organism/Footer";
 import NearByLocations from "@/components/organism/NearByLocations";
 import SendEnquiry from "@/components/organism/SendEnquiry";
 import { Button } from "@/components/ui/button";
+import { formatCurrency } from "@/lib/utils";
+import { IndianRupee } from "lucide-react";
 import { AiTwotoneCompass } from "react-icons/ai";
 import { BiSolidDirections } from "react-icons/bi";
 import { GiGate, GiParkBench } from "react-icons/gi";
 import { HiMiniClipboardDocumentCheck } from "react-icons/hi2";
 import { ImPriceTags } from "react-icons/im";
 import { RxAllSides } from "react-icons/rx";
-import About_accordion from "@/components/molecules/post-property/About_accordion";
-import { getOneProperty } from "@/actions/property";
-import { formatCurrency } from "@/lib/utils";
-import { IndianRupee } from "lucide-react";
 
 const page = async ({ params }) => {
     const PropertyId = (await params).propertyId;
@@ -197,60 +197,10 @@ const page = async ({ params }) => {
                     </div>
                 </div>
             </div>
-            {/* <div className="flex flex-col gap-4 md:gap-6 lg:gap-8 xl:gap-10 px-4 py-6 md:py-8 lg:py-10 xl:py-12 w-full max-w-7xl mx-auto h-auto relative bg-blue-100 rounded-2xl">
-                <div className="flex w-full items-center justify-center">
-                    <h2 className="text-lg font-medium md:text-xl text-center lg:text-2xl">
-                        Why You Should Consider This Property
-                    </h2>
-                </div>
-                <div className="grid grid-cols-1 md:grid-cols-3 xl:grid-cols-5 gap-4 w-full max-w-6xl mx-auto">
-                    <div className="gap-2 rounded-lg flex w-full items-center justify-center flex-col">
-                        <GiArcheryTarget className="!size-10 md:!size-14 lg:!size-16 text-orange-400" />
-                        <span className="font-semibold text-lg md:text-xl lg:text-2xl">
-                            Key Highlights
-                        </span>
-                        <p className="text-sm md:text-base">
-                            of the property
-                        </p>
-                    </div>
-                    <div className="md:col-span-2 xl:col-span-4 bg-white rounded-2xl w-full h-full flex justify-center items-center py-6">
-                        <ul className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 w-fit gap-4 md:gap-8 h-fit">
-                            <li className="w-full gap-4 flex">
-                                <Check className="text-[#0000FF] !size-6" />
-                                <span className="text-lg font-medium">North-East Facing</span>
-                            </li>
-                            <li className="w-full gap-4 flex">
-                                <Check className="text-[#0000FF] !size-6" />
-                                <span className="text-lg font-medium">Close to School</span>
-                            </li>
-                            <li className="w-full gap-4 flex">
-                                <Check className="text-[#0000FF] !size-6" />
-                                <span className="text-lg font-medium">Close to Hospital</span>
-                            </li>
-                            <li className="w-full gap-4 flex">
-                                <Check className="text-[#0000FF] !size-6" />
-                                <span className="text-lg font-medium">Close to Market</span>
-                            </li>
-                            <li className="w-full gap-4 flex">
-                                <Check className="text-[#0000FF] !size-6" />
-                                <span className="text-lg font-medium">North-East Facing</span>
-                            </li>
-                            <li className="w-full gap-4 flex">
-                                <Check className="text-[#0000FF] !size-6" />
-                                <span className="text-lg font-medium">Close to School</span>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div> */}
 
             <SendEnquiry />
 
-            {/* <AboutProperty /> */}
-
             <SimilarProperty />
-
-            {/* <SimilarExterior /> */}
 
             <NearByLocations />
 
