@@ -1,7 +1,12 @@
 "use client";
 
+import { getAllProperty } from "@/actions/property";
+import { formatCurrency } from "@/lib/utils";
+import { IndianRupeeIcon } from "lucide-react";
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import SectionHeading from "../atoms/SectionHeading";
+import SkeletonCard from "../atoms/SkeletonCard";
 import ImageScroll from "../molecules/ImageScroll";
 import { Button } from "../ui/button";
 import {
@@ -11,43 +16,6 @@ import {
     CarouselNext,
     CarouselPrevious,
 } from "../ui/carousel";
-import { IndianRupeeIcon } from "lucide-react";
-import { formatCurrency } from "@/lib/utils";
-import { getAllProperty } from "@/actions/property";
-import { FaS } from "react-icons/fa6";
-import { Skeleton } from "../ui/skeleton";
-import SkeletonCard from "../atoms/SkeletonCard";
-import SectionHeading from "../atoms/SectionHeading";
-
-const Cards = [
-    {
-        img: "recomonded-property1.jpeg",
-    },
-    {
-        img: "recomonded-property2.jpeg",
-    },
-    {
-        img: "recomonded-property3.jpeg",
-    },
-    {
-        img: "recomonded-property4.jpeg",
-    },
-    {
-        img: "recomonded-property5.jpeg",
-    },
-    {
-        img: "recomonded-property6.jpeg",
-    },
-    {
-        img: "recomonded-property7.jpeg",
-    },
-    {
-        img: "recomonded-property8.jpeg",
-    },
-    {
-        img: "recomonded-property9.jpeg",
-    },
-];
 
 const Property = () => {
     const [property, setProperty] = useState([]);
