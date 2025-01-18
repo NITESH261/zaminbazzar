@@ -71,7 +71,7 @@ export default function MainLayout({ children }) {
                     open_sans.variable
                 )}
             >
-                <div className="flex relative w-full h-full flex-col overflow-y-auto items-start overflow-x-hidden scrollbar-hide md:scrollbar">
+                <div className="flex relative w-full flex-1 flex-col">
                     {children}
                 </div>
                 <Toaster richColors />
