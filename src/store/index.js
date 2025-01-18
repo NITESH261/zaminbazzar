@@ -7,6 +7,7 @@ export const initialState = {
     isAuthenticated: false,
     searchList: null,
     propertyList: null,
+    popupEnquiry: true,
 }
 
 const useZaminwaleStore = create(

@@ -1,38 +1,8 @@
+import PopupEnquiry from "@/components/molecules/PopupEnquiry";
 import { Toaster } from "@/components/ui/sonner";
 import { cn } from "@/lib/utils";
 import { Open_Sans } from "next/font/google";
 import "./globals.css";
-
-// const galanoGrotesque = localFont({
-//     src: [
-//         {
-//             path: "./fonts/GalanoGrotesqueAltMedium.otf",
-//             weight: "500",
-//             style: "normal",
-//         },
-//         {
-//             path: "./fonts/GalanoGrotesqueAltMediumItalic.otf",
-//             weight: "500",
-//             style: "italic",
-//         },
-//         {
-//             path: "./fonts/GalanoGrotesqueRegular.otf",
-//             weight: "400",
-//             style: "normal",
-//         },
-//         {
-//             path: "./fonts/GalanoGrotesqueAltBold.otf",
-//             weight: "700",
-//             style: "normal",
-//         },
-//         {
-//             path: "./fonts/GalanoGrotesqueAltBoldItalic.otf",
-//             weight: "700",
-//             style: "italic",
-//         },
-//     ],
-//     variable: "--font-galano-Grotesque-alt",
-// });
 
 const open_sans = Open_Sans({
     subsets: ["latin"],
@@ -40,12 +10,6 @@ const open_sans = Open_Sans({
     weight: ["300", "400", "500", "600", "700", "800"],
     variable: "--font-open-sans",
 });
-
-// const nunito = Nunito({
-//     subsets: ['latin'],
-//     display: 'swap',
-//     variable: '--font-nunito',
-// })
 
 export const metadata = {
     title: "Create Next App",
@@ -73,6 +37,7 @@ export default function MainLayout({ children }) {
             >
                 <div className="flex relative w-full flex-1 flex-col">
                     {children}
+                    <PopupEnquiry />
                 </div>
                 <Toaster richColors />
             </body>
