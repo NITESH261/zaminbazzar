@@ -104,17 +104,16 @@ const Footer = () => {
                         </div>
                     </div>
                 </div>
-                <div className="bg-gray-800 py-4">
-                    <div className="mx-auto text-center text-sm text-gray-400">
-                        <p>
-                            All trademarks, logos and names are properties of their
-                            respective owners. All Rights Reserved. © Copyright 2024
-                            zaminwale Pvt Limited.
-                        </p>
-                    </div>
+            </div>
+            <div className="bg-gray-800 py-4">
+                <div className="mx-auto text-center text-sm text-gray-400">
+                    <p>
+                        All trademarks, logos and names are properties of their
+                        respective owners. All Rights Reserved. © Copyright 2024
+                        zaminwale Pvt Limited.
+                    </p>
                 </div>
             </div>
-
         </div>
     );
 };
