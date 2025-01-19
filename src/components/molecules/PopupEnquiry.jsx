@@ -1,39 +1,54 @@
-"use client"
+"use client";
 
-import useZaminwaleStore from "@/store"
-import { zodResolver } from "@hookform/resolvers/zod"
-import Cookies from "js-cookie"
-import { usePathname } from "next/navigation"
-import { useEffect, useState } from "react"
-import { useForm } from "react-hook-form"
-import { z } from "zod"
-import { Button } from "../ui/button"
-import { Dialog, DialogContent, DialogHeader, DialogTitle } from "../ui/dialog"
-import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "../ui/form"
-import { Input } from "../ui/input"
-import { Textarea } from "../ui/textarea"
+import useZaminwaleStore from "@/store";
+import { zodResolver } from "@hookform/resolvers/zod";
+import Cookies from "js-cookie";
+import { usePathname } from "next/navigation";
+import { useEffect, useState } from "react";
+import { useForm } from "react-hook-form";
+import { z } from "zod";
+import { Button } from "../ui/button";
+import { Dialog, DialogContent, DialogHeader, DialogTitle } from "../ui/dialog";
+import {
+    Form,
+    FormControl,
+    FormField,
+    FormItem,
+    FormLabel,
+    FormMessage,
+} from "../ui/form";
+import { Input } from "../ui/input";
+import { Textarea } from "../ui/textarea";
+import {
+    Select,
+    SelectContent,
+    SelectItem,
+    SelectTrigger,
+    SelectValue,
+} from "../ui/select";
 
 const EnquireFormSchema = z.object({
-    fullname: z.string().min(2, {
+    name: z.string().min(2, {
         message: "Fullname must be at least 2 characters.",
     }),
-    mobile: z.string().min(2, {
-        message: "Fullname must be at least 2 characters.",
+    mobileNo: z.string().min(10, {
+        message: "Mobile No must be at least 10 Digit.",
     }),
     email: z.string().email(),
-    message: z.string().optional()
-})
+    advertisement: z.string(),
+    message: z.string().optional(),
+});
 
 const PopupEnquiry = () => {
-    const [open, setOpen] = useState(false)
-    const pathname = usePathname()
-    const dispatch = useZaminwaleStore(store => store.dispatch)
-    const popupEnquiry = useZaminwaleStore(store => store.popupEnquiry)
+    const [open, setOpen] = useState(true);
+    const pathname = usePathname();
+    const dispatch = useZaminwaleStore((store) => store.dispatch);
+    const popupEnquiry = useZaminwaleStore((store) => store.popupEnquiry);
 
     const form = useForm({
         resolver: zodResolver(EnquireFormSchema),
-        defaultValues: {} || ""
-    })
+        defaultValues: {} || "",
+    });
 
     const onSubmit = async (values) => {
         console.log(values);
@@ -41,13 +56,13 @@ const PopupEnquiry = () => {
             type: "SET_STATE",
             payload: { popupEnquiry: false },
         });
-        setOpen(false)
-        Cookies.set('popup_closed', 'true', { expires: 1 })
-    }
+        setOpen(false);
+        Cookies.set("popup_closed", "true", { expires: 1 });
+    };
 
     useEffect(() => {
-        let onloadTimer
-        const isPopupClosed = Cookies.get('popup_closed') === 'true';
+        let onloadTimer;
+        const isPopupClosed = Cookies.get("popup_closed") === "true";
 
         if (!isPopupClosed) {
             dispatch({
@@ -63,9 +78,9 @@ const PopupEnquiry = () => {
                 }, 1000 * 15);
             }
         }
-        return () => clearTimeout(onloadTimer)
+        return () => clearTimeout(onloadTimer);
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [pathname, popupEnquiry, dispatch])
+    }, [pathname, popupEnquiry, dispatch]);
 
     return (
         <>
@@ -76,19 +91,24 @@ const PopupEnquiry = () => {
                     </DialogHeader>
                     <div className="w-full p">
                         <Form {...form}>
-                            <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
+                            <form
+                                onSubmit={form.handleSubmit(onSubmit)}
+                                className="space-y-4"
+                            >
                                 <div className="w-full space-y-2 py-2">
                                     <FormField
                                         control={form.control}
-                                        name="fullname"
+                                        name="name"
                                         render={({ field }) => (
                                             <FormItem className="w-full">
-                                                <FormLabel>Fullname</FormLabel>
+                                                <FormLabel>Name</FormLabel>
                                                 <FormControl className="w-full">
                                                     <Input
-                                                        placeholder="Enter your fullname"
+                                                        placeholder="Enter Your Name"
                                                         {...field}
-                                                        value={field.value || ""}
+                                                        value={
+                                                            field.value || ""
+                                                        }
                                                     />
                                                 </FormControl>
                                                 <FormMessage />
@@ -97,16 +117,20 @@ const PopupEnquiry = () => {
                                     />
                                     <FormField
                                         control={form.control}
-                                        name="mobile"
+                                        name="mobileNo"
                                         render={({ field }) => (
                                             <FormItem className="w-full">
-                                                <FormLabel>Mobile No.</FormLabel>
+                                                <FormLabel>
+                                                    Mobile No.
+                                                </FormLabel>
                                                 <FormControl className="w-full">
                                                     <Input
                                                         type="number"
-                                                        placeholder="Enter your Mobile no"
+                                                        placeholder="Enter Your Mobile No"
                                                         {...field}
-                                                        value={field.value || ""}
+                                                        value={
+                                                            field.value || ""
+                                                        }
                                                     />
                                                 </FormControl>
                                                 <FormMessage />
@@ -122,11 +146,51 @@ const PopupEnquiry = () => {
                                                 <FormControl className="w-full">
                                                     <Input
                                                         type="email"
-                                                        placeholder="Enter your email id"
+                                                        placeholder="Enter Your Email Id"
                                                         {...field}
-                                                        value={field.value || ""}
+                                                        value={
+                                                            field.value || ""
+                                                        }
                                                     />
                                                 </FormControl>
+                                                <FormMessage />
+                                            </FormItem>
+                                        )}
+                                    />
+                                    <FormField
+                                        control={form.control}
+                                        name="advertisement"
+                                        render={({ field }) => (
+                                            <FormItem>
+                                                <FormLabel>
+                                                    Where You See Property Ads
+                                                </FormLabel>
+                                                <Select
+                                                    onValueChange={
+                                                        field.onChange
+                                                    }
+                                                    defaultValue={field.value}
+                                                >
+                                                    <FormControl>
+                                                        <SelectTrigger>
+                                                            <SelectValue placeholder="Select Option" />
+                                                        </SelectTrigger>
+                                                    </FormControl>
+                                                    <SelectContent className="max-h-40">
+                                                        {AdvertisementData.map(
+                                                            (item, i) => (
+                                                                <SelectItem
+                                                                    key={i}
+                                                                    value={
+                                                                        item.value
+                                                                    }
+                                                                >
+                                                                    {item.label}
+                                                                </SelectItem>
+                                                            )
+                                                        )}
+                                                    </SelectContent>
+                                                </Select>
                                                 <FormMessage />
                                             </FormItem>
                                         )}
@@ -136,12 +200,14 @@ const PopupEnquiry = () => {
                                         name="message"
                                         render={({ field }) => (
                                             <FormItem className="w-full">
-                                                <FormLabel>Email</FormLabel>
+                                                <FormLabel>Message</FormLabel>
                                                 <FormControl className="w-full">
                                                     <Textarea
-                                                        placeholder="Enter your Message"
+                                                        placeholder="Enter Your Message"
                                                         {...field}
-                                                        value={field.value || ""}
+                                                        value={
+                                                            field.value || ""
+                                                        }
                                                     />
                                                 </FormControl>
                                                 <FormMessage />
@@ -158,7 +224,42 @@ const PopupEnquiry = () => {
                 </DialogContent>
             </Dialog>
         </>
-    )
-}
+    );
+};
 
-export default PopupEnquiry
+export default PopupEnquiry;
+
+const AdvertisementData = [
+    {
+        label: "Google",
+        value: "Google",
+    },
+    {
+        label: "Facebook",
+        value: "Facebook",
+    },
+    {
+        label: "Instagram",
+        value: "Instagram",
+    },
+    {
+        label: "Youtube",
+        value: "Youtube",
+    },
+    {
+        label: "Train",
+        value: "Train",
+    },
+    {
+        label: "TV",
+        value: "TV",
+    },
+    {
+        label: "News Paper",
+        value: "News Paper",
+    },
+    {
+        label: "Hoarding",
+        value: "Hoarding",
+    },
+];
