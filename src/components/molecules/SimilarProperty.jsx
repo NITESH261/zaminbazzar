@@ -17,7 +17,7 @@ import {
     CarouselPrevious,
 } from "../ui/carousel";
 
-const Property = () => {
+const SimilarProperty = () => {
     const [property, setProperty] = useState([]);
     const [hoveredIndex, setHoveredIndex] = useState(null);
     const [loading, setLoading] = useState(false);
@@ -49,7 +49,7 @@ const Property = () => {
             <div className="flex w-full">
                 <div className="flex flex-col gap-4 md:gap-6 w-full max-w-7xl mx-auto px-4 py-6 md:py-8 lg:py-10 xl:py-12">
                     <SectionHeading
-                        title="Similar Property"
+                        title="Popular Properties"
                         link
                         linkHref="/properties"
                         linkLabel="See More Properties"
@@ -84,7 +84,7 @@ const Property = () => {
                                                 onMouseLeave={handleMouseLeave}
                                             >
                                                 <ImageScroll
-                                                    card={card}
+                                                    card={card.propertyPhotos}
                                                     isHovered={
                                                         hoveredIndex === index
                                                     }
@@ -146,4 +146,4 @@ const Property = () => {
     );
 };
 
-export default Property;
+export default SimilarProperty;
