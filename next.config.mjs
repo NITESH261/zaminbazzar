@@ -11,6 +11,10 @@ const nextConfig = {
             },
             {
                 protocol: "https",
+                hostname: "zaminwale-private.s3.ap-south-1.amazonaws.com",
+            },
+            {
+                protocol: "https",
                 hostname: "zaminwale-api.onrender.com"
             }
         ]
