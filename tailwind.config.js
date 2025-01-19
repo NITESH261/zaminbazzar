@@ -10,6 +10,9 @@ module.exports = {
 		fontFamily: {
 			openSans: [
 				'var(--font-open-sans)'
+			],
+			rubik: [
+				'var(--font-rubik)'
 			]
 			// galanoGrotesque: [
 			// 	'var(--font-galano-Grotesque-alt)'
