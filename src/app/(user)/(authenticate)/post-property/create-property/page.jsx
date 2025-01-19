@@ -23,7 +23,7 @@ const Page = () => {
     const [loading, setLoading] = useState(false);
     const [step, setStep] = useState(0);
     const [formData, setFormData] = useState({});
-    const router = useRouter()
+    const router = useRouter();
 
     const onSubmit = (values) => {
         const handleFormData = () => {
@@ -43,9 +43,9 @@ const Page = () => {
                 ...formData,
                 plotArea: formData.plotArea
                     ? {
-                        value: parseInt(formData.plotArea.split(" ")[0], 10),
-                        unit: formData.plotArea.split(" ")[1],
-                    }
+                          value: parseInt(formData.plotArea.split(" ")[0], 10),
+                          unit: formData.plotArea.split(" ")[1],
+                      }
                     : null,
                 ...values,
             };
@@ -60,8 +60,6 @@ const Page = () => {
                 toast.error(error.message);
             }
         };
-
-
 
         if (step < 4) {
             handleFormData();
@@ -92,8 +90,8 @@ const Page = () => {
                             step > index
                                 ? "complete"
                                 : step === index
-                                    ? "current"
-                                    : "upcoming";
+                                ? "current"
+                                : "upcoming";
 
                         return (
                             <StepCard

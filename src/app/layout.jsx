@@ -1,7 +1,7 @@
 import PopupEnquiry from "@/components/molecules/PopupEnquiry";
 import { Toaster } from "@/components/ui/sonner";
 import { cn } from "@/lib/utils";
-import { Open_Sans } from "next/font/google";
+import { Open_Sans, Rubik } from "next/font/google";
 import "./globals.css";
 
 const open_sans = Open_Sans({
@@ -9,6 +9,13 @@ const open_sans = Open_Sans({
     display: "swap",
     weight: ["300", "400", "500", "600", "700", "800"],
     variable: "--font-open-sans",
+});
+
+const rubik = Rubik({
+    subsets: ["latin"],
+    display: "swap",
+    weight: ["300", "400", "500", "600", "700", "800"],
+    variable: "--font-rubik",
 });
 
 export const metadata = {
@@ -31,8 +38,8 @@ export default function MainLayout({ children }) {
         <html lang="en" suppressHydrationWarning>
             <body
                 className={cn(
-                    "h-screen flex flex-col font-openSans w-screen overflow-hidden ",
-                    open_sans.variable
+                    "h-screen flex flex-col font-rubik w-screen overflow-hidden ",
+                    rubik.variable
                 )}
             >
                 <div className="flex relative w-full flex-1 flex-col">

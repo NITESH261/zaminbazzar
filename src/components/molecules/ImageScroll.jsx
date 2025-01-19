@@ -3,39 +3,9 @@ import Image from "next/image";
 import { Carousel, CarouselContent, CarouselItem } from "../ui/carousel";
 import { cn } from "@/lib/utils";
 
-const Cards = [
-    {
-        img: "recomonded-property1.jpeg",
-    },
-    {
-        img: "recomonded-property2.jpeg",
-    },
-    {
-        img: "recomonded-property3.jpeg",
-    },
-    {
-        img: "recomonded-property4.jpeg",
-    },
-    {
-        img: "recomonded-property5.jpeg",
-    },
-    {
-        img: "recomonded-property6.jpeg",
-    },
-    {
-        img: "recomonded-property7.jpeg",
-    },
-    {
-        img: "recomonded-property8.jpeg",
-    },
-    {
-        img: "recomonded-property9.jpeg",
-    },
-];
-
 const ImageScroll = ({ card, isHovered, className }) => {
     return (
-        <div>
+        <>
             {!isHovered ? (
                 <div
                     className={cn(
@@ -44,12 +14,10 @@ const ImageScroll = ({ card, isHovered, className }) => {
                     )}
                 >
                     <Image
-                        src={`/assets/recommonded-property/${
-                            card.img ?? "recomonded-property1.jpeg"
-                        }`}
+                        src={card[0]}
                         alt={"house"}
                         fill
-                        className="rounded-t-lg transition-all object-cover"
+                        className="rounded-t-lg transition-all object-cover h-full w-full"
                     />
                 </div>
             ) : (
@@ -66,7 +34,7 @@ const ImageScroll = ({ card, isHovered, className }) => {
                     className="flex w-full h-full"
                 >
                     <CarouselContent>
-                        {Cards.map((card, index) => (
+                        {card.map((card, index) => (
                             <CarouselItem
                                 key={`${index}-image`}
                                 className="basis-full"
@@ -78,7 +46,10 @@ const ImageScroll = ({ card, isHovered, className }) => {
                                     )}
                                 >
                                     <Image
-                                        src={`/assets/recommonded-property/${card.img}`}
+                                        src={
+                                            card ||
+                                            "/assets/recommonded-property/recomonded-property1.jpeg"
+                                        }
                                         alt={`house-${index}`}
                                         fill
                                         className="rounded-t-lg object-cover"
@@ -89,7 +60,7 @@ const ImageScroll = ({ card, isHovered, className }) => {
                     </CarouselContent>
                 </Carousel>
             )}
-        </div>
+        </>
     );
 };
 

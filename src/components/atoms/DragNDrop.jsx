@@ -1,22 +1,22 @@
-"use client"
+"use client";
 
-import { cn } from "@/lib/utils"
-import { TrashIcon } from "lucide-react"
-import Image from "next/image"
-import { useCallback, useEffect, useMemo, useRef, useState } from "react"
-import { FileIcon, defaultStyles } from "react-file-icon"
-import { toast } from "sonner"
+import { cn } from "@/lib/utils";
+import { TrashIcon } from "lucide-react";
+import Image from "next/image";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { FileIcon, defaultStyles } from "react-file-icon";
+import { toast } from "sonner";
 
-const getFileSizeConverted = _size => {
+const getFileSizeConverted = (_size) => {
     let fSExt = ["Bytes", "KB", "MB", "GB"],
-        i = 0
+        i = 0;
     while (_size > 900) {
-        _size /= 1024
-        i++
+        _size /= 1024;
+        i++;
     }
-    const size = Math.round(_size * 100) / 100
-    return size + " " + fSExt[i]
-}
+    const size = Math.round(_size * 100) / 100;
+    return size + " " + fSExt[i];
+};
 
 const DragNDrop = ({
     label = null,
@@ -32,24 +32,24 @@ const DragNDrop = ({
     maxWidth = "max-w-xl",
     ...props
 }) => {
-    const dropRef = useRef()
-    const dragCounter = useRef(0)
-    const dropHeight = useRef()
-    const dragging = useRef()
-    const [file, setFile] = useState(src)
+    const dropRef = useRef();
+    const dragCounter = useRef(0);
+    const dropHeight = useRef();
+    const dragging = useRef();
+    const [file, setFile] = useState(src);
 
     useEffect(() => {
-        setFile(src)
-    }, [src])
+        setFile(src);
+    }, [src]);
 
     const fileSizeValid = useCallback(
-        fileSize => {
-            if (maxSize === 0) return true
-            if (parseInt(fileSize / 1024) <= maxSize * 1000) return true
-            return false
+        (fileSize) => {
+            if (maxSize === 0) return true;
+            if (parseInt(fileSize / 1024) <= maxSize * 1000) return true;
+            return false;
         },
         [maxSize]
-    )
+    );
 
     const fileLink = useMemo(
         () =>
@@ -57,49 +57,48 @@ const DragNDrop = ({
                 ? file === src
                     ? src
                     : file
-                        ? Object.prototype.toString.call(file) ===
-                            "[object String]"
-                            ? file
-                            : URL.createObjectURL(file)
-                        : null
+                    ? Object.prototype.toString.call(file) === "[object String]"
+                        ? file
+                        : URL.createObjectURL(file)
+                    : null
                 : null,
         [file, formatType, src]
-    )
+    );
 
     const removeFile = () => {
-        setFile()
+        setFile();
         onFileChange({
             target: {
                 id: props.id,
                 files: [],
                 type: "file",
             },
-        })
-    }
+        });
+    };
 
-    const handleDrag = e => {
-        e.preventDefault()
-        e.stopPropagation()
-    }
-    const handleDragIn = e => {
-        e.preventDefault()
-        e.stopPropagation()
-        dragCounter.current++
+    const handleDrag = (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+    };
+    const handleDragIn = (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        dragCounter.current++;
         if (e.dataTransfer.items && e.dataTransfer.items.length > 0)
-            dragging.current = true
-    }
-    const handleDragOut = e => {
-        e.preventDefault()
-        e.stopPropagation()
-        dragCounter.current--
-        if (dragCounter.current === 0) dragging.current = false
-    }
-    const handleDrop = e => {
-        e.preventDefault()
-        e.stopPropagation()
-        dragging.current = false
+            dragging.current = true;
+    };
+    const handleDragOut = (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        dragCounter.current--;
+        if (dragCounter.current === 0) dragging.current = false;
+    };
+    const handleDrop = (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        dragging.current = false;
         if (e.dataTransfer.files && e.dataTransfer.files.length > 0) {
-            const inputFile = e.dataTransfer.files[0]
+            const inputFile = e.dataTransfer.files[0];
             if (fileSizeValid(inputFile.size)) {
                 // setFile(inputFile)
                 onFileChange({
@@ -108,36 +107,36 @@ const DragNDrop = ({
                         files: e.dataTransfer.files,
                         type: "file",
                     },
-                })
-                e.dataTransfer.clearData()
-                dragCounter.current = 0
-            } else toast.error(`File size should be less than ${maxSize}MB`)
+                });
+                e.dataTransfer.clearData();
+                dragCounter.current = 0;
+            } else toast.error(`File size should be less than ${maxSize}MB`);
         }
-    }
+    };
 
-    const handleFileInput = e => {
-        const inputFile = e.target.files[0]
+    const handleFileInput = (e) => {
+        const inputFile = e.target.files[0];
         if (fileSizeValid(inputFile.size)) {
             // setFile(inputFile)
-            onFileChange(e)
-        } else toast.error(`File size should be less than ${maxSize}MB`)
-    }
+            onFileChange(e);
+        } else toast.error(`File size should be less than ${maxSize}MB`);
+    };
 
     useEffect(() => {
-        const dropDiv = dropRef.current
-        dropHeight.current = dropDiv.offsetHeight
-        dropDiv.addEventListener("dragenter", handleDragIn)
-        dropDiv.addEventListener("dragleave", handleDragOut)
-        dropDiv.addEventListener("dragover", handleDrag)
-        dropDiv.addEventListener("drop", handleDrop)
+        const dropDiv = dropRef.current;
+        dropHeight.current = dropDiv.offsetHeight;
+        dropDiv.addEventListener("dragenter", handleDragIn);
+        dropDiv.addEventListener("dragleave", handleDragOut);
+        dropDiv.addEventListener("dragover", handleDrag);
+        dropDiv.addEventListener("drop", handleDrop);
         return () => {
-            dropDiv.removeEventListener("dragenter", handleDragIn)
-            dropDiv.removeEventListener("dragleave", handleDragOut)
-            dropDiv.removeEventListener("dragover", handleDrag)
-            dropDiv.removeEventListener("drop", handleDrop)
-        }
+            dropDiv.removeEventListener("dragenter", handleDragIn);
+            dropDiv.removeEventListener("dragleave", handleDragOut);
+            dropDiv.removeEventListener("dragover", handleDrag);
+            dropDiv.removeEventListener("drop", handleDrop);
+        };
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [])
+    }, []);
 
     return (
         <>
@@ -160,7 +159,7 @@ const DragNDrop = ({
                                         .split(",")[0]
                                         .replace(".", "")}
                                     {...defaultStyles[
-                                    formats.split(",")[0].replace(".", "")
+                                        formats.split(",")[0].replace(".", "")
                                     ]}
                                 />
                             </div>
@@ -206,7 +205,7 @@ const DragNDrop = ({
                             <div className="relative aspect-video h-full w-full border border-neutral-200 dark:border-neutral-700">
                                 <Image
                                     src={fileLink}
-                                    alt={label}
+                                    alt={label || "image"}
                                     fill
                                     priority
                                     className="object-contain transition-all duration-300 group-hover:opacity-50 group-hover:blur-sm"
@@ -227,7 +226,7 @@ const DragNDrop = ({
                 </div>
             </div>
         </>
-    )
-}
+    );
+};
 
-export default DragNDrop
+export default DragNDrop;
