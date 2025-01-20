@@ -16,7 +16,7 @@ const About_accordion = ({ ...props }) => {
                     </AccordionTrigger>
                     <AccordionContent>
                         <p className="text-sm md:text-base">
-                            {props.uniqueFeatures}
+                            {props.uniqueFeatures || ""}
                         </p>
                     </AccordionContent>
                 </AccordionItem>

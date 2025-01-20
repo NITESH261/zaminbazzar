@@ -142,11 +142,11 @@ const NavItems = [
             },
             {
                 label: "Blog",
-                link: "/blog",
+                link: "/blogs",
             },
             {
                 label: "Awards & Media",
-                link: "/awards-and-media",
+                link: "/awards",
             },
             {
                 label: "Booking & saledeed",

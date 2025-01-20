@@ -54,12 +54,12 @@ export const filterProperty = async (filter) => {
     return resp
 }
 
-export const uploadPropertyImage = async body => {
+export const uploadPropertyImage = async ({ body }) => {
     let resp = await fetchWithToken("/property/upload/file", {
         method: "POST",
         noContentType: true,
         body,
     })
-    resp = resp.results.data
+    resp = resp.results
     return resp
 }

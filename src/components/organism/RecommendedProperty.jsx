@@ -84,7 +84,7 @@ const Property = () => {
                                                 onMouseLeave={handleMouseLeave}
                                             >
                                                 <ImageScroll
-                                                    card={card}
+                                                    card={card.propertyPhotos}
                                                     isHovered={
                                                         hoveredIndex === index
                                                     }

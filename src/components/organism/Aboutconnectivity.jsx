@@ -84,7 +84,7 @@ const Aboutconnectivity = () => {
                                 {PlotsData.map((plot, index) => (
                                     <CarouselItem
                                         key={`${index}-plot-img`}
-                                        className="sm:basis-1/4 lg:basis-1/3 xl:basis-1/4"
+                                        className="basis-44 sm:basis-1/4 lg:basis-1/3 xl:basis-1/4"
                                     >
                                         <Card className="rounded-lg group hover:shadow-lg p-0 h-full w-full transition-all">
                                             <CardHeader className="p-0 flex flex-grow-0 rounded-tl-lg">
@@ -97,12 +97,12 @@ const Aboutconnectivity = () => {
                                                     />
                                                 </div>
                                             </CardHeader>
-                                            <CardContent className="w-full p-4">
-                                                <div className="w-full space-y-2">
-                                                    <span className="text-base font-medium">
+                                            <CardContent className="w-full p-2 sm:p-4">
+                                                <div className="w-full space-y-1 sm:space-y-2">
+                                                    <span className="text-sm sm:text-base font-medium">
                                                         {plot.title}
                                                     </span>
-                                                    <p className="text-sm text-neutral-800">
+                                                    <p className="text-xs sm:text-sm text-neutral-800">
                                                         {plot.description}
                                                     </p>
                                                 </div>

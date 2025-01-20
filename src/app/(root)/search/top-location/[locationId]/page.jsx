@@ -1,5 +1,6 @@
 "use client";
 
+import ImageScroll from "@/components/molecules/ImageScroll";
 import SearchFilter from "@/components/molecules/SearchFilter";
 import { Button } from "@/components/ui/button";
 import {
@@ -15,10 +16,20 @@ import { Filter, Heart, IndianRupee, PhoneCallIcon } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { useParams } from "next/navigation";
+import { useState } from "react";
 
 const page = () => {
     const params = useParams();
+    const [hoveredIndex, setHoveredIndex] = useState(null);
     const searchList = useZaminwaleStore((store) => store.searchList);
+
+    const handleMouseEnter = (index) => {
+        setHoveredIndex(index);
+    };
+
+    const handleMouseLeave = () => {
+        setHoveredIndex(null);
+    };
 
     return (
         <>
@@ -63,15 +74,20 @@ const page = () => {
                                     <Link
                                         href={`/properties/${card.propertyId}`}
                                         key={i}
-                                        className="flex flex-col p-4 sm:flex-row border w-full gap-2 rounded-3xl bg-white border-neutral-200 hover:border-[#0000FF] hover:shadow-md transition-all"
+                                        className="flex flex-col p-4 sm:flex-row xl:grid xl:grid-cols-5 border w-full gap-2 rounded-3xl bg-white border-neutral-200 hover:border-[#0000FF] hover:shadow-md transition-all"
+                                        onMouseEnter={() => handleMouseEnter(i)}
+                                        onMouseLeave={handleMouseLeave}
                                     >
-                                        <div className="flex w-full sm:w-2/5 relative aspect-video sm:aspect-[3/2]">
-                                            <Image
-                                                src="/assets/recommonded-property/recomonded-property9.jpeg"
-                                                alt="property img"
-                                                fill
-                                                className="object-cover rounded-2xl"
-                                            />
+                                        <div className="flex w-full relative sm:w-2/5 xl:w-full xl:col-span-2">
+                                            <div className="flex relative w-full">
+                                                <ImageScroll
+                                                    card={card.propertyPhotos}
+                                                    isHovered={
+                                                        hoveredIndex === i
+                                                    }
+                                                    className="!w-full !h-40 sm:!h-56 sm:!w-80 lg:!w-full !relative !rounded-lg"
+                                                />
+                                            </div>
                                             <Button
                                                 variant="ghost"
                                                 size="icon"
@@ -80,7 +96,7 @@ const page = () => {
                                                 <Heart className="!size-6 fill-neutral-200" />
                                             </Button>
                                         </div>
-                                        <div className="flex flex-col gap-2 w-full sm:w-3/5 md:px-4">
+                                        <div className="flex flex-col gap-2 w-full sm:w-3/5 md:px-4 xl:col-span-3 xl:w-full">
                                             <div className="flex flex-col gap-2 w-full sm:flex-grow">
                                                 <div className="flex flex-col w-full space-y-0.5">
                                                     <span className="text-base font-bold">
@@ -136,7 +152,7 @@ const page = () => {
                                                 </p>
                                                 <div className="flex flex-wrap w-full overflow-x-auto scrollbar-hide">
                                                     <div className="flex w-fit gap-2 items-center">
-                                                        <span className="flex w-fit whitespace-nowrap text-sm font-medium text-white">
+                                                        <span className="flex w-fit whitespace-nowrap text-sm font-medium text-[#0000FF]">
                                                             Near By:
                                                         </span>
                                                         <ul className="w-fit flex gap-2">
@@ -155,12 +171,12 @@ const page = () => {
                                                 </div>
                                             </div>
                                             <div className="flex w-full gap-2 sm:gap-4 md:justify-end sm:flex-grow-0 h-1/5">
-                                                <Button className="rounded-full w-full md:w-fit text-xs bg-[#0000ff]">
+                                                <Button className="rounded-full h-[unset] w-full md:w-fit text-xs bg-[#0000ff]">
                                                     <PhoneCallIcon /> Contact Us
                                                 </Button>
                                                 <Button
                                                     variant="outline"
-                                                    className="rounded-full w-full md:w-fit text-xs border-[#0000ff] text-[#0000ff]"
+                                                    className="rounded-full h-[unset] w-full md:w-fit text-xs border-[#0000ff] text-[#0000ff]"
                                                 >
                                                     View Number
                                                 </Button>
