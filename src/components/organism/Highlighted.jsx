@@ -54,7 +54,7 @@ const Property = () => {
                         linkHref="/properties"
                         linkLabel="See More Properties"
                     />
-                    <div className="flex lg:w-full sm:w-52 h-[254px]">
+                    <div className="flex px-6 lg:w-full sm:w-52 h-[314px]">
                         {loading ? (
                             <SkeletonCard />
                         ) : (
@@ -73,7 +73,7 @@ const Property = () => {
                                         >
                                             <Link href={'/propertie'}>
                                                 <div
-                                                    className="flex flex-col w-full rounded-lg group hover:shadow-lg"
+                                                    className="flex flex-col w-full rounded-2xl group hover:shadow-lg"
                                                     onMouseEnter={() =>
                                                         handleMouseEnter(index)
                                                     }
@@ -82,32 +82,34 @@ const Property = () => {
                                                     <Imagehighlight
                                                         disableAutoplay={true}
                                                     />
-                                                    <div className="p-2 sm:p-4 flex w-[600] justify-between  absolute bottom-0 space-y-2">
-                                                        <div className="w-fit">
-                                                            <span className="text-xs text-white sm:text-sm">
-                                                                {card.propertyType}
-                                                            </span>
-                                                            <p className="gap-2 text-white flex text-xs sm:text-sm">
-                                                                {card.locality}
-                                                                ,&nbsp;
-                                                                {card.city}
-                                                            </p>
-                                                        </div>
-                                                        <div className="flex flex-col items-center gap-1 sm:gap-2">
-                                                            <div className="flex">
-                                                                <IndianRupeeIcon className="!w-4 text-white !h-4 sm:!w-5 sm:!h-5" />
-                                                                <h4 className="text-sm sm:text-base text-white font-medium">
-                                                                    {formatCurrency(card.priceTotal)}
-                                                                </h4>
+                                                    <div className=" w-[97%] rounded-b-2xl bg-gradient-to-t from-gray-900 to-transparent absolute bottom-0 ">
+                                                        <div className="p-2 flex justify-between sm:p-4 space-y-2">
+                                                            <div className="w-fit">
+                                                                <span className="text-lg font-bold text-white sm:text-lg">
+                                                                    {card.propertyType}
+                                                                </span>
+                                                                <p className="gap-2 text-white flex text-xs font-thin sm:text-sm">
+                                                                    {card.locality}
+                                                                    ,&nbsp;
+                                                                    {card.city}
+                                                                </p>
                                                             </div>
-                                                            <p className="text-sm sm:text-sm text-white ">
-                                                                {card.plotArea.value}{""}|
-                                                                {card.plotArea.unit}
-                                                            </p>
+                                                            <div className="flex flex-col items-center gap-1 sm:gap-2">
+                                                                <div className="flex">
+                                                                    <IndianRupeeIcon className="!w-6 pt-1 text-white !h-6 sm:!w-6 sm:!h-6" />
+                                                                    <h4 className="text-sm sm:text-xl text-white font-medium">
+                                                                        {formatCurrency(card.priceTotal)}
+                                                                    </h4>
+                                                                </div>
+                                                                {/* <p className="text-sm sm:text-sm text-white ">
+                                                                    {card.plotArea.value}{""}|
+                                                                    {card.plotArea.unit}
+                                                                </p> */}
+                                                            </div>
+
+
+
                                                         </div>
-
-
-
                                                     </div>
                                                 </div>
                                             </Link>

@@ -6,7 +6,7 @@ import { cn } from "@/lib/utils";
 
 const Cards = [
     { img: "recomonded-property1.jpeg" },
-    { img: "recomonded-property2.jpeg" },
+    { img: "a2.png" },
     { img: "recomonded-property3.jpeg" },
     { img: "recomonded-property4.jpeg" },
     { img: "recomonded-property5.jpeg" },
@@ -27,14 +27,14 @@ const Imagehighlight = ({ disableAutoplay = false }) => {
             {!isHovered ? (
                 <div
                     className={cn(
-                        "relative aspect-video  h-[252px] sm:h-[252px] bg-cover rounded-lg flex w-full overflow-hidden"
+                        "relative aspect-video  h-[312px] sm:h-[312px] bg-cover rounded-2xl flex w-full overflow-hidden"
                     )}
                 >
                     <Image
                         src={`/assets/recommonded-property/${Cards[0]?.img || "recomonded-property1.jpeg"}`}
                         alt="house"
                         fill
-                        className="border-4  border-t-[#0000FF] rounded-lg transition-all object-cover"
+                        className=" rounded-2xl transition-all object-cover"
                     />
                 </div>
             ) : (
@@ -50,7 +50,7 @@ const Imagehighlight = ({ disableAutoplay = false }) => {
                     }
                     opts={{
                         align: "start",
-                        loop: true,
+                        loop: false,
                     }}
                     className="flex w-full h-full"
                 >
@@ -62,14 +62,14 @@ const Imagehighlight = ({ disableAutoplay = false }) => {
                             >
                                 <div
                                     className={cn(
-                                        "relative h-[252px] sm:h-[252px] aspect-video bg-cover rounded-lg flex w-full overflow-hidden"
+                                        "relative h-[312px] sm:h-[312px] aspect-video bg-cover rounded-2xl flex w-full overflow-hidden"
                                     )}
                                 >
                                     <Image
                                         src={`/assets/recommonded-property/${card.img}`}
                                         alt={`house-${index}`}
                                         fill
-                                        className="border-4  border-t-[#0000FF] rounded-lg object-cover"
+                                        className=" rounded-2xl object-cover"
                                     />
                                 </div>
                             </CarouselItem>
