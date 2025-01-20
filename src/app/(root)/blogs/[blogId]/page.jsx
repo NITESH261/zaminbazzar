@@ -95,19 +95,19 @@ When it comes time to buy land, having a realtor by your side can be extremely h
             <p>
            There is no doubt that real estate is one of the most fruitful and stable forms of investment. While residential homes have become almost synonymous with real estate investments, they aren’t the only option available. If you are considering making a real estate investment, here’s why purchasing a plot of land should top your list.
             </p>
-            <h3>
+            <h3 classname="text-lg font-medium md:text-xl lg:text-2xl ">
             1. It offers greater flexibility
             </h3>
             <p>
           When purchasing an apartment, buyers are often limited to the architect’s vision of the home. They can only make a few customizations to the property and changing the layout of the home is completely out of the question. A plot of land, in contrast, is like a blank canvas to build your dream home upon. You can design your home from scratch, add elements that are important to you and even use your choice of materials. A house lasts you a lifetime, therefore it’s important that you have the power to design it in a way that matches your personality and lifestyle.
             </p>
-            <h3>
+            <h3 classname="text-lg font-medium md:text-xl lg:text-2xl ">
            2. Initial investment is low
             </h3>
             <p>
            Residential homes, even the most affordable ones, are typically priced much higher than a plot of land. Because of this, most potential investors use a home loan to finance their purchase. A plot of land, on the other hand, is much more cost-effective. They have low entry ticket size means that even young investors can purchase them without any financial obstacle in their way. Many investors, in fact, choose to purchase land early in life and build a home on it later, when they have more savings. This can work out to be much cheaper than purchasing a home and paying EMIs for it.
             </p>
-
+            <h3 classname="text-lg font-medium md:text-xl lg:text-2xl ">
             3. Land is appreciating quickly
             </h3>
             <p>
@@ -131,25 +131,23 @@ const BlogPage = () => {
     if (!blog) {
         return (
             <div className="flex justify-center items-center h-screen">
-                <h1 className="text-2xl font-bold">Blog not found</h1>
+                <h1 className="text-2xl font-bold text-gray-600">Blog not found</h1>
             </div>
         );
     }
 
     return (
-        <div className="flex w-full mx-auto px-4 py-8">
-            <div className="flex w-full flex-col items-center">
-                <h1 className="text-3xl font-bold mb-4">{blog.title}</h1>
-                <img
-                    src={blog.image}
-                    alt={blog.title}
-                    className="w-full rounded-md mb-6"
-                />
-                <div
-                    className="prose max-w-7xl"
-                    dangerouslySetInnerHTML={{ __html: blog.content }}
-                />
-            </div>
+        <div className="max-w-4xl mx-auto px-6 py-12">
+            <h1 className="text-4xl font-bold text-gray-800 mb-6 text-center">{blog.title}</h1>
+            <img
+                src={blog.image}
+                alt={blog.title}
+                className="w-full h-auto rounded-lg shadow-md mb-8"
+            />
+            <div
+                className="prose prose-lg prose-gray max-w-none"
+                dangerouslySetInnerHTML={{ __html: blog.content }}
+            />
         </div>
     );
 };
