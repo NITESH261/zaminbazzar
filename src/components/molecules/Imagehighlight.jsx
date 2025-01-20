@@ -8,12 +8,7 @@ const Cards = [
     { img: "recomonded-property1.jpeg" },
     { img: "a2.png" },
     { img: "recomonded-property3.jpeg" },
-    { img: "recomonded-property4.jpeg" },
-    { img: "recomonded-property5.jpeg" },
-    { img: "recomonded-property6.jpeg" },
-    { img: "recomonded-property7.jpeg" },
-    { img: "recomonded-property8.jpeg" },
-    { img: "recomonded-property9.jpeg" },
+    { img: "recomonded-property4.jpeg" }
 ];
 
 const Imagehighlight = ({ disableAutoplay = false }) => {
@@ -27,7 +22,7 @@ const Imagehighlight = ({ disableAutoplay = false }) => {
             {!isHovered ? (
                 <div
                     className={cn(
-                        "relative aspect-video  h-[312px] sm:h-[312px] bg-cover rounded-2xl flex w-full overflow-hidden"
+                        "relative aspect-video  lg:h-[312px] h-[200px] bg-cover rounded-2xl flex w-full overflow-hidden"
                     )}
                 >
                     <Image
@@ -62,7 +57,7 @@ const Imagehighlight = ({ disableAutoplay = false }) => {
                             >
                                 <div
                                     className={cn(
-                                        "relative h-[312px] sm:h-[312px] aspect-video bg-cover rounded-2xl flex w-full overflow-hidden"
+                                        "relative lg:h-[312px] h-[200px]  aspect-video bg-cover rounded-2xl flex w-full overflow-hidden"
                                     )}
                                 >
                                     <Image

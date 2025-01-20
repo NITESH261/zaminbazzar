@@ -46,7 +46,7 @@ const Property = () => {
     return (
         <>
             <div className="flex w-full ">
-                <div className="flex flex-col gap-4 md:gap-6 w-full max-w-7xl mx-auto px-4 py-6 md:py-8 lg:py-10 xl:py-12">
+                <div className="flex flex-col gap-6 md:gap-8 w-full max-w-7xl mx-auto px-4 py-6 md:py-8 lg:py-10 xl:py-12">
                     <Sectionheadhighlight
                         title="Top highlighted projects"
                         subtitle="Noteworthy projects to watch"
@@ -54,7 +54,7 @@ const Property = () => {
                         linkHref="/properties"
                         linkLabel="See More Properties"
                     />
-                    <div className="flex px-6 lg:w-full sm:w-52 h-[314px]">
+                    <div className="flex lg:px-4 px-0 lg:w-full sm:w-52 h-[200px] lg:h-[314px]">
                         {loading ? (
                             <SkeletonCard />
                         ) : (
@@ -63,7 +63,7 @@ const Property = () => {
                                     align: "start",
                                     loop: true,
                                 }}
-                                className="flex w-full h-full "
+                                className="flex w-full h-full gap-8 sm:gap-8"
                             >
                                 <CarouselContent>
                                     {property.slice(0, 4).map((card, index) => (
@@ -71,7 +71,7 @@ const Property = () => {
                                             key={`${index}-plot-img`}
                                             className="basis-44 sm:basis-1/2"
                                         >
-                                            <Link href={'/propertie'}>
+                                            <Link href={'/properties'}>
                                                 <div
                                                     className="flex flex-col w-full rounded-2xl group hover:shadow-lg"
                                                     onMouseEnter={() =>
@@ -82,10 +82,10 @@ const Property = () => {
                                                     <Imagehighlight
                                                         disableAutoplay={true}
                                                     />
-                                                    <div className=" w-[97%] rounded-b-2xl bg-gradient-to-t from-gray-900 to-transparent absolute bottom-0 ">
+                                                    <div className="lg:w-[600px] w-[165px] rounded-b-2xl bg-gradient-to-t from-gray-900 to-transparent absolute bottom-0 ">
                                                         <div className="p-2 flex justify-between sm:p-4 space-y-2">
                                                             <div className="w-fit">
-                                                                <span className="text-lg font-bold text-white sm:text-lg">
+                                                                <span className="lg:text-lg  font-bold text-white text-base">
                                                                     {card.propertyType}
                                                                 </span>
                                                                 <p className="gap-2 text-white flex text-xs font-thin sm:text-sm">
@@ -97,7 +97,7 @@ const Property = () => {
                                                             <div className="flex flex-col items-center gap-1 sm:gap-2">
                                                                 <div className="flex">
                                                                     <IndianRupeeIcon className="!w-6 pt-1 text-white !h-6 sm:!w-6 sm:!h-6" />
-                                                                    <h4 className="text-sm sm:text-xl text-white font-medium">
+                                                                    <h4 className="lg:text-xl text-sm text-white lg:font-medium font-normal">
                                                                         {formatCurrency(card.priceTotal)}
                                                                     </h4>
                                                                 </div>
