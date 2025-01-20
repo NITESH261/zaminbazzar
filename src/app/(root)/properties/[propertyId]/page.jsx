@@ -9,146 +9,126 @@ import SendEnquiry from "@/components/organism/SendEnquiry";
 import { Button } from "@/components/ui/button";
 import { formatCurrency } from "@/lib/utils";
 import { IndianRupee } from "lucide-react";
-import { AiTwotoneCompass } from "react-icons/ai";
-import { BiSolidDirections } from "react-icons/bi";
-import { GiGate, GiParkBench } from "react-icons/gi";
-import { HiMiniClipboardDocumentCheck } from "react-icons/hi2";
-import { ImPriceTags } from "react-icons/im";
-import { RxAllSides } from "react-icons/rx";
 
 const page = async ({ params }) => {
     const PropertyId = (await params).propertyId;
     const { result = [] } = await getOneProperty(PropertyId);
 
+    console.log(result);
+
     return (
         <div className="flex flex-col w-full h-[calc(100vh-64px)] overflow-y-auto scrollbar">
-            <div className="grid grid-cols-1 xl:grid-cols-8 gap-4 px-4 py-6 md:py-8 lg:py-10 xl:py-12 w-full max-w-7xl mx-auto h-auto relative">
+            <div className="grid grid-cols-1 xl:grid-cols-8 gap-4 md:gap-6 px-4 py-6 md:py-8 lg:py-10 xl:py-12 w-full max-w-7xl mx-auto h-auto relative">
                 <div className="flex w-full lg:col-span-6 h-auto">
-                    <div className="flex w-full h-full gap-8 flex-col">
-                        <BentoGridScroll cards={result.propertyPhotos} />
-                        <div className="grid grid-cols-1 gap-x-4 gap-y-6 md:grid-cols-2 xl:grid-cols-3 w-full">
-                            <div className="flex flex-col gap-4 w-full xl:col-span-2">
-                                <div className="flex items-center gap-2 w-full">
-                                    <span className="size-3 bg-green-500 rounded-full"></span>
-                                    <span>{result.propertyType} Property</span>
-                                </div>
-                                <div className="flex gap-2 text-xl sm:text-2xl md:text-3xl items-center w-full">
-                                    <strong className="flex items-center">
-                                        <IndianRupee className="size-6" />{" "}
-                                        {formatCurrency(result.priceTotal)}
-                                    </strong>
-                                </div>
-                                <div className="flex flex-col gap-1 w-full">
-                                    <div className="flex w-fit gap-1">
-                                        <span className="font-medium">
-                                            <b>{result.plotArea?.value}</b> sqft
-                                        </span>{" "}
-                                        |
-                                        <span className="font-medium">
-                                            <b>{result.length || "-"}</b> cm
-                                        </span>{" "}
-                                        |
-                                        <span className="font-medium">
-                                            <b> {result.breadth || "-"} </b> cm
-                                        </span>
-                                    </div>
-                                    <p className="text-sm">
-                                        {result.locality}/{result.city}
-                                    </p>
-                                </div>
-                                <div className="grid grid-cols-2 md:grid-cols-3 w-full gap-4">
+                    <div className="flex w-full h-full gap-4 md:gap-6 flex-col">
+                        <BentoGridScroll
+                            // data={result}
+                            cards={result}
+                        />
+                        <div className="flex flex-col p-4 lg:p-6 gap-6 w-full border border-neutral-200 bg-white rounded-lg shadow">
+                            <div className="flex w-full">
+                                <span className="text-lg md:text-xl font-semibold text-neutral-700">
+                                    Property Details :
+                                </span>
+                            </div>
+                            <div className="flex flex-col gap-4 w-full col-span-full">
+                                <div className="grid grid-cols-2 md:grid-cols-3 w-full gap-4 md:gap-y-6">
                                     <div className="flex gap-1 w-full">
-                                        <div className="flex gap-2 items-center w-10">
-                                            <ImPriceTags className="!size-6 text-yellow-400" />
-                                        </div>
                                         <div className="flex flex-col w-fit">
-                                            <span className="font-semibold text-sm md:text-base">
-                                                Price:
+                                            <span className="font-thin text-sm md:text-base">
+                                                Price Per sqft:
                                             </span>
-                                            <span className="text-xs md:text-sm">
+                                            <span className="font-medium text-neutral-700 text-sm md:text-base">
                                                 {result.pricePerSQFT}/sqft
                                             </span>
                                         </div>
                                     </div>
                                     <div className="flex gap-1 w-full">
-                                        <div className="flex gap-2 items-center w-10">
-                                            <BiSolidDirections className="!size-6 text-green-400" />
-                                        </div>
                                         <div className="flex flex-col w-fit">
-                                            <span className="font-semibold text-sm md:text-base">
+                                            <span className="font-thin text-sm md:text-base">
                                                 location:
                                             </span>
-                                            <span className="text-xs md:text-sm">
+                                            <span className="font-medium text-neutral-700 text-sm md:text-base">
                                                 {result.locality} |{" "}
                                                 {result.city}
                                             </span>
                                         </div>
                                     </div>
                                     <div className="flex gap-1 w-full">
-                                        <div className="flex gap-2 items-center w-10">
-                                            <AiTwotoneCompass className="!size-6 text-yellow-400" />
-                                        </div>
                                         <div className="flex flex-col w-fit">
-                                            <span className="font-semibold text-sm md:text-base">
+                                            <span className="font-thin text-sm md:text-base">
                                                 Possession:
                                             </span>
-                                            <span className="text-xs md:text-sm">
+                                            <span className="font-medium text-neutral-700 text-sm md:text-base">
                                                 {result.possessionBy}
                                             </span>
                                         </div>
                                     </div>
                                     <div className="flex gap-1 w-full">
-                                        <div className="flex gap-2 items-center w-10">
-                                            <HiMiniClipboardDocumentCheck className="!size-6 text-yellow-400" />
-                                        </div>
                                         <div className="flex flex-col w-fit">
-                                            <span className="font-semibold text-sm md:text-base">
-                                                Authority:
+                                            <span className="font-thin text-sm md:text-base">
+                                                Ownership:
                                             </span>
-                                            <span className="text-xs md:text-sm">
-                                                Yes
+                                            <span className="font-medium text-neutral-700 text-sm md:text-base">
+                                                {result.ownership}
                                             </span>
                                         </div>
                                     </div>
                                     <div className="flex gap-1 w-full">
-                                        <div className="flex gap-2 items-center w-10">
-                                            <GiGate className="!size-6 text-yellow-400" />
-                                        </div>
                                         <div className="flex flex-col w-fit">
-                                            <span className="font-semibold text-sm md:text-base">
-                                                Gated Society:
+                                            <span className="font-thin text-sm md:text-base">
+                                                Any construction done:
                                             </span>
-                                            <span className="text-xs md:text-sm">
-                                                Yes
+                                            <span className="font-medium text-neutral-700 text-sm md:text-base">
+                                                {result.hasConstruction === true
+                                                    ? "Yes"
+                                                    : "No"}
                                             </span>
                                         </div>
                                     </div>
                                     <div className="flex gap-1 w-full">
-                                        <div className="flex gap-2 items-center w-10">
-                                            <GiParkBench className="!size-6 text-yellow-400" />
-                                        </div>
                                         <div className="flex flex-col w-fit">
-                                            <span className="font-semibold text-sm md:text-base">
-                                                Open Sides:
+                                            <span className="font-thin text-sm md:text-base">
+                                                boundry walls around the
+                                                property
                                             </span>
-                                            <span className="text-xs md:text-sm">
-                                                Yes
+                                            <span className="font-medium text-neutral-700 text-sm md:text-base">
+                                                {result.hasBoundaryWall === true
+                                                    ? "Yes"
+                                                    : "No"}
                                             </span>
                                         </div>
                                     </div>
-                                    <div className="flex gap-1 w-full col-span-2 sm:col-span-1">
-                                        <div className="flex gap-2 items-center w-10">
-                                            <RxAllSides className="!size-6 text-yellow-400" />
-                                        </div>
+                                    <div className="flex gap-1 w-full">
                                         <div className="flex flex-col w-fit">
-                                            <span className="font-semibold text-sm md:text-base">
+                                            <span className="font-thin text-sm md:text-base">
+                                                No. of open sides:
+                                            </span>
+                                            <span className="font-medium text-neutral-700 text-sm md:text-base">
+                                                {result.openSides}
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div className="flex gap-1 w-full">
+                                        <div className="flex flex-col w-fit">
+                                            <span className="font-thin text-sm md:text-base">
+                                                Floors allowed for construction:
+                                            </span>
+                                            <span className="font-medium text-neutral-700 text-sm md:text-base">
+                                                {result.allowedFloors}
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div className="flex gap-1 w-full">
+                                        <div className="flex flex-col w-fit">
+                                            <span className="font-thin text-sm md:text-base">
                                                 Overlooking:
                                             </span>
-                                            <p className="text-xs md:text-sm">
+                                            <p className="font-medium text-neutral-700 text-sm gap-2 md:text-base">
                                                 {result.overlooking.map(
                                                     (item, i) => (
                                                         <span key={i}>
-                                                            {item}
+                                                            {item} |{" "}
                                                         </span>
                                                     )
                                                 )}
@@ -156,38 +136,110 @@ const page = async ({ params }) => {
                                         </div>
                                     </div>
                                 </div>
-                                <div className="flex gap-4 w-full">
-                                    <Button className="rounded-3xl text-sm bg-[#0000ff]">
-                                        Contact Owner
-                                    </Button>
-                                    <Button
-                                        variant="outline"
-                                        className="rounded-3xl text-sm border-[#0000ff] text-[#0000ff]"
-                                    >
-                                        Get Callback
-                                    </Button>
-                                </div>
                             </div>
-                            <div className="flex w-full">
-                                <div className="flex aspect-square sm:h-1/2 relative w-full">
-                                    <iframe
-                                        src="https://www.google.com/maps/embed?pb=!1m23!1m12!1m3!1d60305.33779055373!2d72.9259711216797!3d19.14781700000001!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m8!3e2!4m0!4m5!1s0x3be7bf535f7a0159%3A0x75f95209b8033881!2sNatural%20Ice%20Cream%2C%20Mercury%20Tower%2C%20Plot%20No.%204%2C%20Mulund%20-%20Airoli%20Bridge%20Rd%2C%20Sec%20-8%2C%20Sector%206%2C%20Airoli%2C%20Navi%20Mumbai%2C%20Maharashtra%20400708!3m2!1d19.1478584!2d72.99807!5e0!3m2!1sen!2sin!4v1732642581562!5m2!1sen!2sin"
-                                        width="100%"
-                                        height="100%"
-                                        allowFullScreen
-                                        loading="lazy"
-                                        referrerPolicy="no-referrer-when-downgrade"
-                                    ></iframe>
-                                </div>
+                            <hr />
+                            <div className="flex gap-4 w-full">
+                                <Button className="rounded-3xl h-[unset] text-sm bg-[#0000ff]">
+                                    Contact Owner
+                                </Button>
+                                <Button
+                                    variant="outline"
+                                    className="rounded-3xl h-[unset] text-sm border-[#0000ff] text-[#0000ff]"
+                                >
+                                    Get Callback
+                                </Button>
                             </div>
                         </div>
-                        <div>
-                            <About_accordion {...result} />
+                        <div className="flex flex-col p-4 lg:p-6 gap-6 w-full border border-neutral-200 bg-white rounded-lg shadow">
+                            <div className="flex w-full">
+                                <span className="text-lg md:text-xl font-semibold text-neutral-700">
+                                    More Details :
+                                </span>
+                            </div>
+                            <div className="flex flex-col w-full gap-4">
+                                <div className="grid grid-cols-3 md:grid-cols-4 text-sm md:text-base w-full gap-2">
+                                    <span className="w-full font-thin">
+                                        Property Price
+                                    </span>
+                                    <span className="flex w-full col-span-2 md:col-span-3 items-center font-normal text-neutral-800">
+                                        <IndianRupee className="size-4" />{" "}
+                                        {formatCurrency(result.priceTotal)}
+                                    </span>
+                                </div>
+                                <div className="grid grid-cols-3 md:grid-cols-4 text-sm md:text-base w-full gap-2">
+                                    <span className="w-full font-thin">
+                                        Unique Features
+                                    </span>
+                                    <span className="flex w-full col-span-2 md:col-span-3 items-center font-normal text-neutral-800">
+                                        {result.uniqueFeatures}
+                                    </span>
+                                </div>
+                                <div className="grid grid-cols-3 md:grid-cols-4 text-sm md:text-base w-full gap-2">
+                                    <span className="w-full font-thin">
+                                        Property Facing
+                                    </span>
+                                    <span className="flex w-full col-span-2 md:col-span-3 items-center font-normal text-neutral-800">
+                                        {result.propertyFacing}
+                                    </span>
+                                </div>
+                                <div className="grid grid-cols-3 md:grid-cols-4 text-sm md:text-base w-full gap-2">
+                                    <span className="w-full font-thin">
+                                        Amenities
+                                    </span>
+                                    <span className="flex w-full col-span-2 gap-2 md:col-span-3 items-center font-normal text-neutral-800">
+                                        {result.amenities.map((item, i) => (
+                                            <span key={i}>{item}, </span>
+                                        ))}
+                                    </span>
+                                </div>
+                                <div className="grid grid-cols-3 md:grid-cols-4 text-sm md:text-base w-full gap-2">
+                                    <span className="w-full font-thin">
+                                        Location Advantages
+                                    </span>
+                                    <span className="flex w-full col-span-2 gap-2 md:col-span-3 items-center font-normal text-neutral-800">
+                                        {result.locationAdvantages.map(
+                                            (item, i) => (
+                                                <span key={i}>{item}, </span>
+                                            )
+                                        )}
+                                    </span>
+                                </div>
+                                <div className="grid grid-cols-3 md:grid-cols-4 text-sm md:text-base w-full gap-2">
+                                    <span className="w-full font-thin">
+                                        All inlcusice price
+                                    </span>
+                                    <span className="flex w-full col-span-2 md:col-span-3 items-center font-normal text-neutral-800">
+                                        {result.inclusivePrice === true
+                                            ? "Yes"
+                                            : "No"}
+                                    </span>
+                                </div>
+                                <div className="grid grid-cols-3 md:grid-cols-4 text-sm md:text-base w-full gap-2">
+                                    <span className="w-full font-thin">
+                                        Tax and Govt. charges exclude
+                                    </span>
+                                    <span className="flex w-full col-span-2 md:col-span-3 items-center font-normal text-neutral-800">
+                                        {result.isTaxExcluded === true
+                                            ? "Yes"
+                                            : "No"}
+                                    </span>
+                                </div>
+                                <div className="grid grid-cols-3 md:grid-cols-4 text-sm md:text-base w-full gap-2">
+                                    <span className="w-full font-thin">
+                                        Price Negotiable
+                                    </span>
+                                    <span className="flex w-full col-span-2 md:col-span-3 items-center font-normal text-neutral-800">
+                                        {result.isPriceNegotiable === true
+                                            ? "Yes"
+                                            : "No"}
+                                    </span>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
                 <div className="hidden xl:flex xl:col-span-2 sticky top-2 h-full max-h-[calc(100vh-80px)] w-full">
-                    <div className="flex flex-col w-full gap-4 border border-gray-200 rounded-2xl h-fit px-4 py-6">
+                    <div className="flex flex-col w-full gap-4 bg-white border border-gray-200 rounded-lg shadow h-fit px-4 py-6">
                         <div className="flex w-full justify-center">
                             <span className="font-semibold text-lg">
                                 Fill Form To Get More Details
