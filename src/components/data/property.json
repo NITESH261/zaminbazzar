@@ -13,7 +13,7 @@
     {
         "propertyId": "2",
         "propertyType": "Villa",
-        "priceTotal": 12000000,
+        "priceTotal": 18000000,
         "plotArea": {
             "value": 2400,
             "unit": "sq.ft"
@@ -25,7 +25,7 @@
     {
         "propertyId": "2",
         "propertyType": "Villa",
-        "priceTotal": 12000000,
+        "priceTotal": 14000000,
         "plotArea": {
             "value": 2400,
             "unit": "sq.ft"
@@ -37,7 +37,7 @@
     {
         "propertyId": "2",
         "propertyType": "Villa",
-        "priceTotal": 12000000,
+        "priceTotal": 17000000,
         "plotArea": {
             "value": 2400,
             "unit": "sq.ft"

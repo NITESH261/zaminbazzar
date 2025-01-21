@@ -22,14 +22,14 @@ const PlotsData = [
     },
     {
         image: "istockphoto-623754774-612x612.webp",
-        title: "Kharghar",
+        title: "Uran",
         description:
             "Factories plots are massive plots of land providing space to varied type of Factories and offices under one area.",
         link: "#enquire-now",
     },
     {
         image: "istockphoto-1199749863-612x612.webp",
-        title: "Karjat",
+        title: "Third Mumbai",
         description:
             "The biggest is for the land to be convenient for either travelers or the local population. After that the land needs to be zoned (ie given permission) for that use.",
         link: "#enquire-now",

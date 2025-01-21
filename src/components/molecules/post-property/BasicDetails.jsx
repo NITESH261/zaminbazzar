@@ -1,3 +1,5 @@
+"use client";
+
 import { Button } from "@/components/ui/button";
 import {
     Form,
@@ -8,6 +10,7 @@ import {
     FormMessage,
 } from "@/components/ui/form";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
+import useZaminwaleStore from "@/store";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { ArrowLeft } from "lucide-react";
 import { useForm } from "react-hook-form";
@@ -94,6 +97,7 @@ const Step1Data = [
 ];
 
 const BasicDetails = ({ onSubmit, prev, currentStep, loading, formData }) => {
+    const user = useZaminwaleStore((store) => store.user);
     const form = useForm({
         resolver: zodResolver(BasicDetailsSchema),
         defaultValues: formData,
@@ -108,7 +112,7 @@ const BasicDetails = ({ onSubmit, prev, currentStep, loading, formData }) => {
                     <div className="flex flex-1 gap-10 flex-col w-full">
                         <div className="flex w-full">
                             <span className="text-xl md:text-2xl font-semibold">
-                                Welcome back, Akash!{" "}
+                                Welcome back, {user?.name}!{" "}
                                 <br className="hidden md:flex" /> Fill out your
                                 basic details
                             </span>

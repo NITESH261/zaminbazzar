@@ -300,15 +300,19 @@ const NavItems = [
                 data: [
                     {
                         label: "Thane",
-                        link: "/",
+                        link: "/search/top-location/thane",
                     },
                     {
                         label: "Panvel",
-                        link: "/",
+                        link: "/search/top-location/panvel",
                     },
                     {
-                        label: "Khalapur",
-                        link: "/",
+                        label: "Uran",
+                        link: "/search/top-location/uran",
+                    },
+                    {
+                        label: "Third Mumbai",
+                        link: "/search/top-location/third-mumbai",
                     },
                 ],
             },
