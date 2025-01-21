@@ -30,36 +30,6 @@ const formSchema = z.object({
     }),
 });
 
-const Cards = [
-    {
-        img: "recomonded-property1.jpeg",
-    },
-    {
-        img: "recomonded-property2.jpeg",
-    },
-    {
-        img: "recomonded-property3.jpeg",
-    },
-    {
-        img: "recomonded-property4.jpeg",
-    },
-    {
-        img: "recomonded-property5.jpeg",
-    },
-    {
-        img: "recomonded-property6.jpeg",
-    },
-    {
-        img: "recomonded-property7.jpeg",
-    },
-    {
-        img: "recomonded-property8.jpeg",
-    },
-    {
-        img: "recomonded-property9.jpeg",
-    },
-];
-
 const SendEnquiry = ({ cards }) => {
     const form = useForm({
         resolver: zodResolver(formSchema),
@@ -70,13 +40,13 @@ const SendEnquiry = ({ cards }) => {
         console.log(values);
     }
     return (
-        <div className="flex flex-col gap-4 md:gap-6 lg:gap-8 xl:gap-10 px-4 py-6 md:py-8 lg:py-10 xl:py-12 w-full  h-auto relative">
+        <div className="flex flex-col gap-4 md:gap-6 lg:gap-8 xl:gap-10 px-4 py-6 md:py-8 lg:py-10 w-full max-w-[1360px] border border-neutral-200 shadow-md mx-auto rounded-3xl h-auto relative bg-white">
             <div className="flex w-full items-center justify-center">
                 <h2 className="text-lg font-medium md:text-xl lg:text-2xl">
                     Send Enquiry
                 </h2>
             </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 md:gap-4 bg-white w-full max-w-7xl mx-auto border border-neutral-200 rounded-2xl">
+            <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 md:gap-4 bg-white w-full max-w-6xl mx-auto border border-neutral-200 rounded-2xl">
                 <div className="flex flex-col space-y-2 items-center justify-center w-full p-6">
                     <Form {...form}>
                         <form
@@ -138,7 +108,7 @@ const SendEnquiry = ({ cards }) => {
                                     <FormItem>
                                         <FormLabel>Message</FormLabel>
                                         <FormControl>
-                                            <Textarea
+                                            <Input
                                                 placeholder="Enter your message"
                                                 {...field}
                                             />

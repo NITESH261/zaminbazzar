@@ -14,7 +14,7 @@ import { IndianRupee } from "lucide-react";
 
 const BentoGridScroll = ({ cards }) => {
     return (
-        <div className="flex w-full p-4 gap-4 lg:p-6 bg-white shadow border border-neutral-200 rounded-lg flex-col">
+        <>
             <div className="flex flex-col gap-1 w-full">
                 <div className="flex items-center gap-2 w-full">
                     <span className="size-3 bg-green-500 rounded-full"></span>
@@ -98,7 +98,7 @@ const BentoGridScroll = ({ cards }) => {
                     </div>
                 </div>
             </div>
-        </div>
+        </>
     );
 };
 
