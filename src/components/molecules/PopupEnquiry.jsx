@@ -41,9 +41,6 @@ const EnquireFormSchema = z.object({
 
 const PopupEnquiry = () => {
     const [open, setOpen] = useState(true);
-    const pathname = usePathname();
-    const dispatch = useZaminwaleStore((store) => store.dispatch);
-    const popupEnquiry = useZaminwaleStore((store) => store.popupEnquiry);
 
     const form = useForm({
         resolver: zodResolver(EnquireFormSchema),
@@ -52,35 +49,17 @@ const PopupEnquiry = () => {
 
     const onSubmit = async (values) => {
         console.log(values);
-        dispatch({
-            type: "SET_STATE",
-            payload: { popupEnquiry: false },
-        });
         setOpen(false);
-        Cookies.set("popup_closed", "true", { expires: 1 });
     };
 
     useEffect(() => {
         let onloadTimer;
-        const isPopupClosed = Cookies.get("popup_closed") === "true";
-
-        if (!isPopupClosed) {
-            dispatch({
-                type: "SET_STATE",
-                payload: { popupEnquiry: true },
-            });
-        }
-
-        if (pathname === "/" && !isPopupClosed) {
-            if (popupEnquiry) {
-                onloadTimer = setTimeout(() => {
-                    setOpen(true);
-                }, 1000 * 15);
-            }
-        }
+        onloadTimer = setTimeout(() => {
+            setOpen(true);
+        }, 1000 * 15);
         return () => clearTimeout(onloadTimer);
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [pathname, popupEnquiry, dispatch]);
+    }, []);
 
     return (
         <>
