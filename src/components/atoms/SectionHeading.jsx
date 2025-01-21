@@ -2,14 +2,23 @@ import { ArrowRight } from "lucide-react";
 import Link from "next/link";
 import React from "react";
 
-const SectionHeading = ({ title, link, linkHref, linkLabel }) => {
+const SectionHeading = ({ title, subtitle, link, linkHref, linkLabel }) => {
     return (
         <>
             <div className="flex w-full items-center justify-between">
-                <h2 className="text-lg font-medium md:text-xl lg:text-2xl flex flex-col w-fit">
-                    <span>{title}</span>
-                    <span className="h-1.5 w-20 bg-[#0000FF] rounded-full"></span>
-                </h2>
+                <div className="flex flex-col gap-2 w-fit">
+                    <h2 className="text-lg font-medium md:text-xl lg:text-2xl flex flex-col w-fit">
+                        <span>{title}</span>
+                        <span className="h-1.5 w-20 bg-[#0000FF] rounded-full"></span>
+                    </h2>
+                    {subtitle ? (
+                        <span className="text-sm text-gray-500 font-medium md:text-sm lg:text-sm flex flex-col w-fit">
+                            {subtitle}
+                        </span>
+                    ) : (
+                        ""
+                    )}
+                </div>
                 {link ? (
                     <Link
                         href={linkHref}

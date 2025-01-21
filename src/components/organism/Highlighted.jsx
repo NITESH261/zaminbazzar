@@ -16,45 +16,34 @@ import {
     CarouselPrevious,
 } from "../ui/carousel";
 
-// Import static JSON data
 import propertyData from "../data/property.json";
 import Sectionheadhighlight from "../atoms/Sectionheadhighlight";
 import Imagehighlight from "../molecules/Imagehighlight";
 
 const Property = () => {
     const [property, setProperty] = useState([]);
-    const [hoveredIndex, setHoveredIndex] = useState(null);
     const [loading, setLoading] = useState(false);
 
-    const handleMouseEnter = (index) => {
-        setHoveredIndex(index);
-    };
-
-    const handleMouseLeave = () => {
-        setHoveredIndex(null);
-    };
-
     useEffect(() => {
-        // Simulate loading and use static JSON data
         setLoading(true);
         setTimeout(() => {
-            setProperty(propertyData); // Set the static JSON data
+            setProperty(propertyData);
             setLoading(false);
-        }, 500); // Simulated loading delay
+        }, 500);
     }, []);
 
     return (
         <>
             <div className="flex w-full ">
                 <div className="flex flex-col gap-6 md:gap-8 w-full max-w-7xl mx-auto px-4 py-6 md:py-8 lg:py-10 xl:py-12">
-                    <Sectionheadhighlight
+                    <SectionHeading
                         title="Top highlighted projects"
-                        subtitle="Noteworthy projects to watch"
+                        // subtitle="Noteworthy projects to watch"
                         link
                         linkHref="/properties"
                         linkLabel="See More Properties"
                     />
-                    <div className="flex lg:px-4 px-0 lg:w-full sm:w-52 h-[200px] lg:h-[314px]">
+                    <div className="flex w-full">
                         {loading ? (
                             <SkeletonCard />
                         ) : (
@@ -63,7 +52,7 @@ const Property = () => {
                                     align: "start",
                                     loop: true,
                                 }}
-                                className="flex w-full h-full gap-8 sm:gap-8"
+                                className="flex w-full h-full"
                             >
                                 <CarouselContent>
                                     {property.slice(0, 4).map((card, index) => (
@@ -71,34 +60,34 @@ const Property = () => {
                                             key={`${index}-plot-img`}
                                             className="basis-44 sm:basis-1/2"
                                         >
-                                            <Link href={'/properties'}>
-                                                <div
-                                                    className="flex flex-col w-full rounded-2xl group hover:shadow-lg"
-                                                    onMouseEnter={() =>
-                                                        handleMouseEnter(index)
-                                                    }
-                                                    onMouseLeave={handleMouseLeave}
-                                                >
+                                            <Link href={"/properties"}>
+                                                <div className="flex flex-col relative w-full h-[200px] lg:h-[314px] rounded-3xl group hover:shadow-lg">
                                                     <Imagehighlight
                                                         disableAutoplay={true}
                                                     />
-                                                    <div className="lg:w-[600px] w-[165px] rounded-b-2xl bg-gradient-to-t from-gray-900 to-transparent absolute bottom-0 ">
-                                                        <div className="p-2 flex justify-between sm:p-4 space-y-2">
+                                                    <div className="w-full rounded-b-2xl bg-gradient-to-t from-gray-950 to-transparent absolute bottom-0 ">
+                                                        <div className="p-2 flex flex-col md:flex-row justify-between sm:p-4 space-y-2">
                                                             <div className="w-fit">
                                                                 <span className="lg:text-lg  font-bold text-white text-base">
-                                                                    {card.propertyType}
+                                                                    {
+                                                                        card.propertyType
+                                                                    }
                                                                 </span>
                                                                 <p className="gap-2 text-white flex text-xs font-thin sm:text-sm">
-                                                                    {card.locality}
+                                                                    {
+                                                                        card.locality
+                                                                    }
                                                                     ,&nbsp;
                                                                     {card.city}
                                                                 </p>
                                                             </div>
                                                             <div className="flex flex-col items-center gap-1 sm:gap-2">
-                                                                <div className="flex">
-                                                                    <IndianRupeeIcon className="!w-6 pt-1 text-white !h-6 sm:!w-6 sm:!h-6" />
+                                                                <div className="flex w-full md:w-fit">
+                                                                    <IndianRupeeIcon className="text-white !size-4 md:!size-6" />
                                                                     <h4 className="lg:text-xl text-sm text-white lg:font-medium font-normal">
-                                                                        {formatCurrency(card.priceTotal)}
+                                                                        {formatCurrency(
+                                                                            card.priceTotal
+                                                                        )}
                                                                     </h4>
                                                                 </div>
                                                                 {/* <p className="text-sm sm:text-sm text-white ">
@@ -106,9 +95,6 @@ const Property = () => {
                                                                     {card.plotArea.unit}
                                                                 </p> */}
                                                             </div>
-
-
-
                                                         </div>
                                                     </div>
                                                 </div>
