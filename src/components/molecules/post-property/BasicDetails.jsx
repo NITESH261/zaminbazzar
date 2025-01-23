@@ -28,7 +28,8 @@ const BasicDetailsSchema = z.object({
             "Flat/Apartment",
             "Plot/Land",
             "Other",
-            "Independent House/villa",
+            "Villa",
+            "Bungalow",
             "Farmhouse",
         ],
         { required_error: "You need to select Property Type." }
@@ -69,12 +70,16 @@ const Step1Data = [
                 value: "Commercial",
                 data: [
                     {
-                        label: "Independent House/villa",
-                        value: "Independent House/villa",
+                        label: "Flat/Apartment",
+                        value: "Flat/Apartment",
                     },
                     {
-                        label: "Farmhouse",
-                        value: "Farmhouse",
+                        label: "Plot/Land",
+                        value: "Plot/Land",
+                    },
+                    {
+                        label: "Other",
+                        value: "Other",
                     },
                 ],
             },
@@ -83,8 +88,12 @@ const Step1Data = [
                 value: "Villa/bungalow",
                 data: [
                     {
-                        label: "Independent House/villa",
-                        value: "Independent House/villa",
+                        label: "Villa",
+                        value: "Villa",
+                    },
+                    {
+                        label: "Bungalow",
+                        value: "Bungalow",
                     },
                     {
                         label: "Farmhouse",
@@ -272,6 +281,59 @@ const BasicDetails = ({ onSubmit, prev, currentStep, loading, formData }) => {
                                                         className="flex w-full flex-wrap"
                                                     >
                                                         {Step1Data[1].data[1].data.map(
+                                                            ({
+                                                                value,
+                                                                label,
+                                                            }) => (
+                                                                <FormItem
+                                                                    key={value}
+                                                                    className={`flex items-center space-y-0 ${
+                                                                        field.value ===
+                                                                        value
+                                                                            ? "bg-blue-100 border-[#0000FF]"
+                                                                            : "bg-white border"
+                                                                    } rounded-full px-4 py-2`}
+                                                                >
+                                                                    <FormControl className="sr-only">
+                                                                        <RadioGroupItem
+                                                                            value={
+                                                                                value
+                                                                            }
+                                                                        />
+                                                                    </FormControl>
+                                                                    <FormLabel className="font-normal">
+                                                                        {label}
+                                                                    </FormLabel>
+                                                                </FormItem>
+                                                            )
+                                                        )}
+                                                    </RadioGroup>
+                                                </FormControl>
+                                                <FormMessage />
+                                            </FormItem>
+                                        )}
+                                    />
+                                )}
+                                {["Villa/bungalow"].includes(type) && (
+                                    <FormField
+                                        control={form.control}
+                                        name="propertyCategories"
+                                        render={({ field }) => (
+                                            <FormItem className="flex flex-col gap-2">
+                                                <FormLabel>
+                                                    Select type
+                                                </FormLabel>
+                                                <FormControl>
+                                                    <RadioGroup
+                                                        onValueChange={
+                                                            field.onChange
+                                                        }
+                                                        defaultValue={
+                                                            field.value
+                                                        }
+                                                        className="flex w-full flex-wrap"
+                                                    >
+                                                        {Step1Data[1].data[2].data.map(
                                                             ({
                                                                 value,
                                                                 label,
