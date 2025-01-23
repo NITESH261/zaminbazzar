@@ -8,15 +8,26 @@ const BannerImages = [{ img: "banner-img-1.jpeg" }];
 
 const BannerCarousel = () => {
     return (
-        <div className="relative aspect-video h-full w-full flex">
-            <Image
-                loading="lazy"
-                src="/assets/banner-img/hero-image.webp"
-                alt="banner-img"
-                fill
-                className="object-cover lg:object-cover object-center h-full w-full"
-            />
-        </div>
+        <>
+            <div className="relative aspect-video h-full w-full flex md:hidden">
+                <Image
+                    loading="lazy"
+                    src="/assets/banner-img/mobile-hero-banner.jpeg"
+                    alt="banner-img"
+                    fill
+                    className="object-cover lg:object-cover object-center h-full w-full"
+                />
+            </div>
+            <div className="relative aspect-video h-full w-full hidden md:flex">
+                <Image
+                    loading="lazy"
+                    src="/assets/banner-img/hero-image.webp"
+                    alt="banner-img"
+                    fill
+                    className="object-cover lg:object-cover object-center h-full w-full"
+                />
+            </div>
+        </>
     );
 };
 
