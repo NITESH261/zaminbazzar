@@ -14,23 +14,24 @@ module.exports = {
 			rubik: [
 				'var(--font-rubik)'
 			]
-			// galanoGrotesque: [
-			// 	'var(--font-galano-Grotesque-alt)'
-			// ],
-			// nunito: [
-			// 	'var(--font-nunito)'
-			// ]
 		},
 		extend: {
-			backgroundImage: {
-				'hero-pattern': "url('/path/to/image.jpg')"
-			},
 			boxShadow: {
 				'3xl': '0 35px 60px -15px rgba(0, 0, 0, 0.3)'
 			},
 			colors: {
 				background: 'var(--background)',
-				foreground: 'var(--foreground)'
+				foreground: 'var(--foreground)',
+				sidebar: {
+					DEFAULT: 'hsl(var(--sidebar-background))',
+					foreground: 'hsl(var(--sidebar-foreground))',
+					primary: 'hsl(var(--sidebar-primary))',
+					'primary-foreground': 'hsl(var(--sidebar-primary-foreground))',
+					accent: 'hsl(var(--sidebar-accent))',
+					'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
+					border: 'hsl(var(--sidebar-border))',
+					ring: 'hsl(var(--sidebar-ring))'
+				}
 			},
 			borderRadius: {
 				lg: 'var(--radius)',
