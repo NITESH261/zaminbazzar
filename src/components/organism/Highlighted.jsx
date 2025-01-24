@@ -58,7 +58,7 @@ const Property = () => {
                                     {property.slice(0, 4).map((card, index) => (
                                         <CarouselItem
                                             key={`${index}-plot-img`}
-                                            className="basis-44 sm:basis-1/2"
+                                            className="basis-44 sm:basis-1/2 md:basis-1/3"
                                         >
                                             <Link href={"/properties"}>
                                                 <div className="flex flex-col relative w-full h-[200px] lg:h-[314px] rounded-3xl group hover:shadow-lg">
@@ -68,7 +68,7 @@ const Property = () => {
                                                     <div className="w-full rounded-b-2xl bg-gradient-to-t from-gray-950 to-transparent absolute bottom-0 ">
                                                         <div className="p-2 flex flex-col md:flex-row justify-between sm:p-4 space-y-2">
                                                             <div className="w-fit">
-                                                                <span className="lg:text-lg  font-bold text-white text-base">
+                                                                <span className="lg:text-2xl font-medium text-white text-base">
                                                                     {
                                                                         card.propertyType
                                                                     }

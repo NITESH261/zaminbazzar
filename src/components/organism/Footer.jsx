@@ -45,7 +45,7 @@ const Footer = () => {
                         </div>
                     </div>
                     <div className="flex flex-col ">
-                        <h2 className="font-bold text-lg mb-4">Company</h2>
+                        <h2 className="font-bold text-lg mt-4 mb-4">Company</h2>
                         <div className="flex flex-col gap-4  w-full">
                             <p className="text-base flex flex-col gap-2">
                                 {NavItems[0].data.map((item, i) => (
@@ -60,7 +60,7 @@ const Footer = () => {
                             </p>
                         </div>
                     </div>
-                    <div className="lg:col-span-2 md:col-span-1 col-span-1 py-5">
+                    <div className="lg:col-span-2 md:col-span-1 col-span-1 py-4">
                         {/* <h2 className="font-bold text-lg mb-4">Company</h2>
                         <div className="flex flex-col gap-4 w-full">
                             <p className="text-base">
@@ -147,10 +147,6 @@ const NavItems = [
             {
                 label: "Awards & Media",
                 link: "/awards",
-            },
-            {
-                label: "Booking & saledeed",
-                link: "/booking-and-saledeed",
             },
         ],
     },
