@@ -88,7 +88,10 @@ const BlogPage = () => {
                                         <p className="text-sm text-gray-600">
                                             {blog.excerpt}
                                         </p>
-                                        <Button asChild className="mt-2 w-full bg-[#0000ff] text-white rounded-full py-1.5 text-sm">
+                                        <Button
+                                            asChild
+                                            className="mt-2 w-full bg-[#0000ff] text-white rounded-full py-1.5 text-sm"
+                                        >
                                             <Link href={`/blogs/${blog.id}`}>
                                                 Read More
                                             </Link>
@@ -105,45 +108,11 @@ const BlogPage = () => {
                                 disabled={loading}
                                 className="bg-[#0000ff] text-white rounded-full py-2 px-4"
                             >
-                                <div className="relative aspect-video w-full">
-                                    <Image
-                                        src={blog.image}
-                                        alt={blog.title}
-                                        fill
-                                        className="object-cover transition-transform group-hover:scale-110"
-                                    />
-                                </div>
-                                <div className="flex flex-col p-4 space-y-2">
-                                    <h3 className="text-base font-medium">
-                                        {blog.title}
-                                    </h3>
-                                    <p className="text-sm text-gray-600">
-                                        {blog.excerpt}
-                                    </p>
-                                    <Button
-                                        asChild
-                                        className="mt-2 w-full bg-[#0000ff] text-white rounded-full py-1.5 text-sm"
-                                    >
-                                        <Link href={`/blogs/${blog.id}`}>
-                                            Read More
-                                        </Link>
-                                    </Button>
-                                </div>
-                            </div>
-                        ))}
-                    </div>
-                )}
-                {paginatedBlogs.length < blogsData.length && (
-                    <div className="flex justify-center mt-6">
-                        <Button
-                            onClick={loadMore}
-                            disabled={loading}
-                            className="bg-[#0000ff] text-white rounded-full py-2 px-4"
-                        >
-                            {loading ? "Loading..." : "Load More"}
-                        </Button>
-                    </div>
-                )}
+                                {loading ? "Loading..." : "Load More"}
+                            </Button>
+                        </div>
+                    )}
+                </div>
             </div>
             <Footer />
         </>
