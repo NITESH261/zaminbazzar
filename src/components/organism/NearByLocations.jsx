@@ -1,66 +1,36 @@
-"use client"
+"use client";
 
 import Autoplay from "embla-carousel-autoplay";
 import Image from "next/image";
 import SectionHeading from "../atoms/SectionHeading";
-import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "../ui/carousel";
+import {
+    Carousel,
+    CarouselContent,
+    CarouselItem,
+    CarouselNext,
+    CarouselPrevious,
+} from "../ui/carousel";
 
-const PlotsData = [
+const Locations = [
     {
-        image: "sea view.webp",
-        title: "Thane",
-        description:
-            "A sea view bungalow situated near the coastline or beach, offering a scenic view of the sea or ocean.",
-        link: "#enquire-now",
+        label: "Thane Plots",
+        img: "img4.jpg",
+        url: "#",
     },
     {
-        image: "large-government-warehouse.webp",
-        title: "Panvel",
-        description:
-            "As of the current trend, the inclination of the people has shifted towards investing in commercial land.",
-        link: "#enquire-now",
+        label: "Panvel Plots",
+        img: "img3.jpg",
+        url: "#",
     },
     {
-        image: "istockphoto-623754774-612x612.webp",
-        title: "Uran",
-        description:
-            "Factories plots are massive plots of land providing space to varied type of Factories and offices under one area.",
-        link: "#enquire-now",
+        label: "Uran Plots",
+        img: "img2.jpg",
+        url: "#",
     },
     {
-        image: "istockphoto-1199749863-612x612.webp",
-        title: "Third Mumbai",
-        description:
-            "The biggest is for the land to be convenient for either travelers or the local population. After that the land needs to be zoned (ie given permission) for that use.",
-        link: "#enquire-now",
-    },
-    {
-        image: "investment.webp",
-        title: "Pune",
-        description:
-            "Your future prospects look great when you buy investment plots with regards to profitable returns.",
-        link: "#enquire-now",
-    },
-    {
-        image: "commercial.webp",
-        title: "Nashik",
-        description:
-            "Contact us for best returns on plots invested near junctions, stations highways, and busy market places.",
-        link: "#enquire-now",
-    },
-    {
-        image: "residential.webp",
-        title: "Mumbai",
-        description:
-            "In case you are a developer yourself and planning to expand your business venture, do contact us for the list of residential plots.",
-        link: "#enquire-now",
-    },
-    {
-        image: "353640073_20231016184851.webp",
-        title: "Vashi",
-        description:
-            "If you fancy living in a bungalow or a row-house with your own independent terrace, parking and garden.",
-        link: "#enquire-now",
+        label: "Third Mumbai",
+        img: "img1.jpg",
+        url: "#",
     },
 ];
 
@@ -88,19 +58,22 @@ const NearByLocations = () => {
                         className="w-full h-full"
                     >
                         <CarouselContent>
-                            {PlotsData.map((card, index) => (
-                                <CarouselItem key={index} className="basis-44 sm:basis-full md:basis-1/2 lg:basis-1/3 xl:basis-1/4">
+                            {Locations.map((card, index) => (
+                                <CarouselItem
+                                    key={index}
+                                    className="basis-44 sm:basis-full md:basis-1/2 lg:basis-1/3 xl:basis-1/4"
+                                >
                                     <div className="flex flex-col rounded-lg w-full border border-neutral-200">
                                         <div className="relative rounded-lg aspect-video md:aspect-square lg:aspect-video flex w-full ">
                                             <Image
-                                                src={`/assets/property/${card.image}`}
+                                                src={`/assets/top-location/${card.img}`}
                                                 alt="house"
                                                 fill
                                                 className="object-cover rounded-lg"
                                             />
                                         </div>
                                         <span className="text-sm md:text-base font-medium text-center py-1 md:py-2">
-                                            {card.title}
+                                            {card.label}
                                         </span>
                                     </div>
                                 </CarouselItem>
@@ -112,7 +85,7 @@ const NearByLocations = () => {
                 </div>
             </div>
         </div>
-    )
-}
+    );
+};
 
-export default NearByLocations
+export default NearByLocations;

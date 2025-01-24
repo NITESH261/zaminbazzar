@@ -8,7 +8,7 @@ const page = () => {
     return (
         <>
             <AwardList />
-            <Award_video />
+            {/* <Award_video /> */}
             <Footer />
         </>
     );

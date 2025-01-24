@@ -1,5 +1,6 @@
 import { getOneProperty } from "@/actions/property";
 import BentoGridScroll from "@/components/molecules/BentoGridScroll";
+import CityImage from "@/components/molecules/CityImage";
 import EnquireForm from "@/components/molecules/EnquireForm";
 import About_accordion from "@/components/molecules/post-property/About_accordion";
 import SimilarProperty from "@/components/molecules/SimilarProperty";
@@ -9,13 +10,14 @@ import SendEnquiry from "@/components/organism/SendEnquiry";
 import { Button } from "@/components/ui/button";
 import { formatCurrency } from "@/lib/utils";
 import { IndianRupee } from "lucide-react";
+import Image from "next/image";
 
 const page = async ({ params }) => {
     const PropertyId = (await params).propertyId;
     const { result = [] } = await getOneProperty(PropertyId);
 
     return (
-        <div className="flex flex-col w-full h-[calc(100vh-64px)] overflow-y-auto scrollbar">
+        <div className="flex flex-col w-full h-[calc(100vh-64px)] overflow-y-auto scrollbar-hide">
             <div className="grid grid-cols-1 xl:grid-cols-8 gap-4 md:gap-6 px-4 py-6 md:py-8 lg:py-10 xl:py-12 w-full max-w-7xl mx-auto h-auto relative">
                 <div className="flex w-full lg:col-span-6 h-auto">
                     <div className="flex w-full h-full gap-4 md:gap-6 flex-col">
@@ -121,12 +123,12 @@ const page = async ({ params }) => {
                                                 </span>
                                             </div>
                                         </div>
-                                        <div className="flex gap-1 w-full">
+                                        <div className="flex gap-1 w-full col-span-2 md:col-span-1">
                                             <div className="flex flex-col w-fit">
                                                 <span className="font-thin text-sm md:text-base">
                                                     Overlooking:
                                                 </span>
-                                                <p className="font-medium text-neutral-700 text-sm gap-2 flex md:text-base">
+                                                <p className="font-medium text-neutral-700 text-sm gap-2 flex md:text-base flex-wrap">
                                                     {result.overlooking.map(
                                                         (item, i) => (
                                                             <span key={i}>
@@ -164,7 +166,7 @@ const page = async ({ params }) => {
                                     <span className="w-full font-thin">
                                         Property Price
                                     </span>
-                                    <span className="flex w-full col-span-2 md:col-span-3 items-center font-normal text-neutral-900">
+                                    <span className="flex w-full col-span-2 md:col-span-3 items-center font-medium text-neutral-700 ">
                                         <IndianRupee className="size-4" />{" "}
                                         {formatCurrency(result.priceTotal)}
                                     </span>
@@ -173,7 +175,7 @@ const page = async ({ params }) => {
                                     <span className="w-full font-thin">
                                         Unique Features
                                     </span>
-                                    <span className="flex w-full col-span-2 md:col-span-3 items-center font-normal text-neutral-900">
+                                    <span className="flex w-full col-span-2 md:col-span-3 items-center font-medium text-neutral-700 ">
                                         {result.uniqueFeatures}
                                     </span>
                                 </div>
@@ -181,7 +183,7 @@ const page = async ({ params }) => {
                                     <span className="w-full font-thin">
                                         Property Facing
                                     </span>
-                                    <span className="flex w-full col-span-2 md:col-span-3 items-center font-normal text-neutral-900">
+                                    <span className="flex w-full col-span-2 md:col-span-3 items-center font-medium text-neutral-700 ">
                                         {result.propertyFacing}
                                     </span>
                                 </div>
@@ -189,7 +191,7 @@ const page = async ({ params }) => {
                                     <span className="w-full font-thin">
                                         Amenities
                                     </span>
-                                    <span className="flex w-full col-span-2 gap-2 md:col-span-3 items-center font-normal text-neutral-900">
+                                    <span className="flex w-full col-span-2 gap-2 md:col-span-3 items-center font-medium text-neutral-700  flex-wrap">
                                         {result.amenities.map((item, i) => (
                                             <span key={i}>{item}, </span>
                                         ))}
@@ -199,7 +201,7 @@ const page = async ({ params }) => {
                                     <span className="w-full font-thin">
                                         Location Advantages
                                     </span>
-                                    <span className="flex w-full col-span-2 gap-2 md:col-span-3 items-center font-normal text-neutral-900">
+                                    <span className="flex w-full col-span-2 gap-2 md:col-span-3 items-center font-medium text-neutral-700 ">
                                         {result.locationAdvantages.map(
                                             (item, i) => (
                                                 <span key={i}>{item}, </span>
@@ -211,7 +213,7 @@ const page = async ({ params }) => {
                                     <span className="w-full font-thin">
                                         All inlcusice price
                                     </span>
-                                    <span className="flex w-full col-span-2 md:col-span-3 items-center font-normal text-neutral-900">
+                                    <span className="flex w-full col-span-2 md:col-span-3 items-center font-medium text-neutral-700 ">
                                         {result.inclusivePrice === true
                                             ? "Yes"
                                             : "No"}
@@ -221,7 +223,7 @@ const page = async ({ params }) => {
                                     <span className="w-full font-thin">
                                         Tax and Govt. charges exclude
                                     </span>
-                                    <span className="flex w-full col-span-2 md:col-span-3 items-center font-normal text-neutral-900">
+                                    <span className="flex w-full col-span-2 md:col-span-3 items-center font-medium text-neutral-700 ">
                                         {result.isTaxExcluded === true
                                             ? "Yes"
                                             : "No"}
@@ -231,7 +233,7 @@ const page = async ({ params }) => {
                                     <span className="w-full font-thin">
                                         Price Negotiable
                                     </span>
-                                    <span className="flex w-full col-span-2 md:col-span-3 items-center font-normal text-neutral-900">
+                                    <span className="flex w-full col-span-2 md:col-span-3 items-center font-medium text-neutral-700 ">
                                         {result.isPriceNegotiable === true
                                             ? "Yes"
                                             : "No"}
@@ -241,7 +243,7 @@ const page = async ({ params }) => {
                         </div>
                     </div>
                 </div>
-                <div className="hidden xl:flex xl:col-span-2 sticky top-2 h-full max-h-[calc(100vh-80px)] w-full">
+                <div className="hidden xl:flex xl:flex-col xl:col-span-2 gap-6 sticky top-6 h-full max-h-[calc(100vh-80px)] w-full">
                     <div className="flex flex-col w-full gap-4 bg-white border border-gray-200 rounded-lg shadow h-fit px-4 py-6">
                         <div className="flex w-full justify-center">
                             <span className="font-semibold text-lg">
@@ -252,6 +254,8 @@ const page = async ({ params }) => {
                     </div>
                 </div>
             </div>
+
+            <CityImage city={result.locality} />
 
             <SendEnquiry cards={result.propertyPhotos} />
 

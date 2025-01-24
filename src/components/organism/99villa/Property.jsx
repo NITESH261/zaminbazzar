@@ -106,11 +106,11 @@ const Property = () => {
                                                                     card.propertyType
                                                                 }
                                                             </span>
-                                                            <h2 className="text-sm sm:text-base flex items-center font-medium">
+                                                            <div className="text-sm sm:text-base flex items-center font-medium gap-1">
                                                                 <IndianRupeeIcon className="!size-4" />{" "}
                                                                 {formatCurrency(
                                                                     card.priceTotal
-                                                                )}
+                                                                )}{" "}
                                                                 |{" "}
                                                                 {
                                                                     card
@@ -122,7 +122,7 @@ const Property = () => {
                                                                         .plotArea
                                                                         ?.unit
                                                                 }
-                                                            </h2>
+                                                            </div>
                                                             <p className="text-gray-600 gap-2 flex text-xs sm:text-sm">
                                                                 {card.locality}
                                                                 ,&nbsp;
