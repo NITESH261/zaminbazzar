@@ -1,4 +1,3 @@
-import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import React from "react";
 
@@ -27,11 +26,6 @@ const About = () => {
                         Riverhill by 99 Villa promises a peaceful retreat that
                         redefines weekend living.
                     </p>
-                    <div className="w-full space-x-4">
-                        <Button variant="outline" className="border-[#0000FF]">
-                            Know More
-                        </Button>
-                    </div>
                 </div>
                 <div className="flex w-full">
                     <div className="flex relative aspect-video w-full rounded-t-lg overflow-hidden">

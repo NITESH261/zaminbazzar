@@ -9,7 +9,7 @@ const page = () => {
         <>
             <Hero />
             <AwardList />
-            <Award_video />
+            {/* <Award_video /> */}
             <Footer />
         </>
     );
