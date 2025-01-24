@@ -17,14 +17,18 @@ const Footer = () => {
                     <div>
                         <Logo className={"text-black"} />
 
-                        <div className="mt-4">
+                        <div className="mt-2">
                             <p className="text-base">
                                 G-Square Buisness Park, 3<sup>rd</sup> Floor
                                 Office no 303 & 304, opposite of Sanpada Railway
                                 Station, Navi Mumbai, Maharashatra 400703
                             </p>
-                            <span>9555599299 / 9555599099</span> <br />
-                            <span>info@zaminwale.com</span>
+                            <div className="mt-3">
+                                <span>9555599299 / 9555599099</span>
+                            </div>
+                            <div className="mt-3">
+                                <span>info@zaminwale.com</span>
+                            </div>
                             <div className="flex space-x-2 mt-4">
                                 <a href="https://www.facebook.com/zaminwale2021/">
                                     <FaFacebookSquare className="fab fa-facebook-f text-blue-600 text-2xl" />
@@ -77,9 +81,11 @@ const Footer = () => {
                             </p>
                         </div> */}
                         <h2 className="font-bold text-lg">About zaminwale</h2>
-                        <p>
-                            As the largest platform connecting property buyers
-                            and sellers
+                        <p className="text-justify mt-2">
+                            At ZaminWale, we take pride in being your trusted partner in the world of real estate,
+                            specializing in land transactions across the picturesque locales of Thane, Panvel, Mahamumbai,
+                            and Navi Mumbai. With an unwavering commitment to excellence, we have established ourselves as a
+                            beacon of reliability and transparency in the real estate industry.
                         </p>
 
                         <h2 className="font-bold text-lg mt-4 mb-4">
@@ -125,8 +131,16 @@ const NavItems = [
         label: "Company",
         data: [
             {
+                label: "About Us",
+                link: "/about",
+            },
+            {
                 label: "Testimonials",
                 link: "/testimonials",
+            },
+            {
+                label: "Awards & Media",
+                link: "/awards",
             },
             {
                 label: "Terms & Conditions",
@@ -137,16 +151,8 @@ const NavItems = [
                 link: "/privacy-policy",
             },
             {
-                label: "Carrers",
-                link: "/carrers",
-            },
-            {
                 label: "Blog",
                 link: "/blogs",
-            },
-            {
-                label: "Awards & Media",
-                link: "/awards",
             },
         ],
     },
