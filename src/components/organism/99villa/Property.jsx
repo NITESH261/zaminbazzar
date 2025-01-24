@@ -44,6 +44,8 @@ const Property = () => {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
+    console.log(property);
+
     return (
         <>
             <div className="flex w-full">
@@ -74,7 +76,8 @@ const Property = () => {
                                     {property
                                         .filter(
                                             (property) =>
-                                                property.locality === "Panvel"
+                                                property.propertyType ===
+                                                "Villa/bungalow"
                                         )
                                         ?.map((card, index) => (
                                             <CarouselItem
