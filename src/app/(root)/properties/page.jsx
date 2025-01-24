@@ -5,6 +5,7 @@ import SectionHeading from "@/components/atoms/SectionHeading";
 import SkeletonCard from "@/components/atoms/SkeletonCard";
 import { Button } from "@/components/ui/button";
 import { formatCurrency } from "@/lib/utils";
+import { IndianRupeeIcon } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
@@ -75,22 +76,14 @@ const page = () => {
                                             <span className="text-xs sm:text-sm">
                                                 {property.propertyType}
                                             </span>
-                                            <h2 className="text-sm sm:text-base font-medium">
-                                                <span>
-                                                    &#8377;{" "}
-                                                    {formatCurrency(
-                                                        property.priceTotal
-                                                    )}{" "}
-                                                </span>
-                                                |
-                                                <span>
-                                                    {" "}
-                                                    {
-                                                        property.plotArea?.value
-                                                    }{" "}
-                                                    {property.plotArea?.unit}
-                                                </span>
-                                            </h2>
+                                            <div className="text-sm sm:text-base flex items-center font-medium gap-1">
+                                                <IndianRupeeIcon className="!size-4" />{" "}
+                                                {formatCurrency(
+                                                    property.priceTotal
+                                                )}{" "}
+                                                | {property.plotArea?.value}{" "}
+                                                {property.plotArea?.unit}
+                                            </div>
                                             <div className="flex flex-col space-y-1 w-full">
                                                 <p className="text-gray-600 text-xs sm:text-sm">
                                                     {property.locality} |{" "}
