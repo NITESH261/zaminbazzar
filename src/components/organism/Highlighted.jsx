@@ -6,8 +6,6 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import SectionHeading from "../atoms/SectionHeading";
 import SkeletonCard from "../atoms/SkeletonCard";
-import ImageScroll from "../molecules/ImageScroll";
-import { Button } from "../ui/button";
 import {
     Carousel,
     CarouselContent,
@@ -15,22 +13,28 @@ import {
     CarouselNext,
     CarouselPrevious,
 } from "../ui/carousel";
-
-import propertyData from "../data/property.json";
-import Sectionheadhighlight from "../atoms/Sectionheadhighlight";
-import Imagehighlight from "../molecules/Imagehighlight";
+import { getAllProperty } from "@/actions/property";
+import Image from "next/image";
 
 const Property = () => {
     const [property, setProperty] = useState([]);
     const [loading, setLoading] = useState(false);
 
     useEffect(() => {
-        setLoading(true);
-        setTimeout(() => {
-            setProperty(propertyData);
+        const fetchData = async () => {
+            setLoading(true);
+            const { result = [] } = await getAllProperty({
+                page: 1,
+                limit: 20,
+            });
+            setProperty(result.sort((a, b) => b.priceTotal - a.priceTotal));
             setLoading(false);
-        }, 500);
+        };
+        fetchData();
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
+
+    console.log(property);
 
     return (
         <>
@@ -55,16 +59,26 @@ const Property = () => {
                                 className="flex w-full h-full"
                             >
                                 <CarouselContent>
-                                    {property.slice(0, 4).map((card, index) => (
+                                    {property.slice(0, 5).map((card, index) => (
                                         <CarouselItem
                                             key={`${index}-plot-img`}
                                             className="basis-44 sm:basis-1/2 md:basis-1/3"
                                         >
-                                            <Link href={"/properties"}>
+                                            <Link
+                                                href={`/properties/${card.propertyId}`}
+                                            >
                                                 <div className="flex flex-col relative w-full h-[200px] lg:h-[314px] rounded-3xl group hover:shadow-lg">
-                                                    <Imagehighlight
-                                                        disableAutoplay={true}
-                                                    />
+                                                    <div className="relative aspect-video lg:h-[312px] h-[200px] bg-cover rounded-2xl flex w-full">
+                                                        <Image
+                                                            src={
+                                                                card
+                                                                    .propertyPhotos[0]
+                                                            }
+                                                            alt="house"
+                                                            fill
+                                                            className=" rounded-2xl transition-all object-cover"
+                                                        />
+                                                    </div>
                                                     <div className="w-full rounded-b-2xl bg-gradient-to-t from-gray-950 to-transparent absolute bottom-0 ">
                                                         <div className="p-2 flex flex-col md:flex-row justify-between sm:p-4 space-y-2">
                                                             <div className="w-fit">
