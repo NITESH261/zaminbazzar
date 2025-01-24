@@ -12,6 +12,7 @@ import {
 } from "../ui/carousel";
 import Link from "next/link";
 import SectionHeading from "../atoms/SectionHeading";
+import { sliceParagraph } from "@/lib/utils";
 
 const TrendingNews = () => {
     // const cards = Array.from({ length: 8 }, (_, i) => i + 1);
@@ -92,7 +93,9 @@ const TrendingNews = () => {
                                                             {blog.title}
                                                         </span>
                                                         <p className="text-[10px] sm:text-xs">
-                                                            {blog.excerpt}
+                                                            {sliceParagraph(
+                                                                blog.excerpt
+                                                            )}
                                                         </p>
                                                     </div>
                                                 </CardContent>

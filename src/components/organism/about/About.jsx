@@ -9,29 +9,32 @@ const About = () => {
                 <div className="flex flex-col space-y-4 md:space-y-6 w-full justify-center">
                     <div className="flex flex-col gap-4 w-full">
                         <h2 className="text-xl font-semibold md:text-2xl lg:text-3xl">
-                            About Zaminwala
+                            About Zaminwale
                         </h2>
-                        <span className="text-sm md:text-base lg:text-lg font-semibold">
+                        {/* <span className="text-sm md:text-base lg:text-lg font-semibold">
                             *Riverhill - With Nature In the Nature!
-                        </span>
+                        </span> */}
                     </div>
                     <p className="text-sm md:text-base">
-                        Explore the charm of Zaminwala latest project,
-                        Riverhill, where calm meets luxury. Nestled near Panvel,
-                        this exclusive gated community offers stunning views of
-                        serene rivers and majestic hills. Imagine your perfect
-                        weekend escape, surrounded by nature's beauty and the
-                        comforts of a modern home.
+                        We introduce yourself as land experts, we don't just
+                        sell plots; we offer a gateway to endless possibilities.
+                        Our expertise goes beyond transactions, providing you
+                        with a comprehensive box of opportunities. Whether
+                        you're looking to build your dream home, invest in a
+                        future asset, or simply explore new horizons, we guide
+                        you every step of the way. Trust us to turn your vision
+                        into reality, as we deliver not just land, but a canvas
+                        for your dreams.
                     </p>
                     <p className="text-sm md:text-base">
-                        Riverhill by Zaminwala promises a peaceful retreat that
-                        redefines weekend living.
+                        At ZaminWale, we take pride in being your trusted
+                        partner in the world of real estate, specializing in
+                        land transactions across the picturesque locales of
+                        Thane, Panvel, Mahamumbai, and Navi Mumbai. With an
+                        unwavering commitment to excellence, we have established
+                        ourselves as a beacon of reliability and transparency in
+                        the real estate industry.
                     </p>
-                    <div className="w-full space-x-4">
-                        <Button variant="outline" className="border-[#0000FF]">
-                            Know More
-                        </Button>
-                    </div>
                 </div>
                 <div className="flex w-full">
                     <div className="flex relative aspect-video w-full rounded-t-lg overflow-hidden">

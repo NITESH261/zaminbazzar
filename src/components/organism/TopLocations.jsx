@@ -26,26 +26,6 @@ const Locations = [
         img: "img1.jpg",
         url: "#",
     },
-    // {
-    //     label: "Thane Plots",
-    //     img: "tha.webp",
-    //     url: "#",
-    // },
-    // {
-    //     label: "Khalapur Plots",
-    //     img: "kha.webp",
-    //     url: "#",
-    // },
-    // {
-    //     label: "Vindhane Plots",
-    //     img: "vind.webp",
-    //     url: "#",
-    // },
-    // {
-    //     label: "Chowk Panvel Plots",
-    //     img: "pan.webp",
-    //     url: "#",
-    // },
 ];
 
 const TopLocations = () => {

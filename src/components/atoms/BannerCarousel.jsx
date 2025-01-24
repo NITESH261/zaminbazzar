@@ -15,16 +15,16 @@ const BannerCarousel = () => {
                     src="/assets/banner-img/mobile-hero-banner.jpeg"
                     alt="banner-img"
                     fill
-                    className="object-cover lg:object-cover object-center h-full w-full"
+                    className="object-contain sm:object-cover object-top sm:object-center h-full w-full"
                 />
             </div>
-            <div className="relative aspect-video h-full w-full hidden md:flex">
+            <div className="relative aspect-video h-full w-[calc(100%-100px)] rounded-b-3xl shadow-md hidden md:flex">
                 <Image
                     loading="lazy"
                     src="/assets/banner-img/hero-image.webp"
                     alt="banner-img"
                     fill
-                    className="object-cover lg:object-cover object-center h-full w-full"
+                    className="object-cover lg:object-cover object-center h-full w-full rounded-b-3xl"
                 />
             </div>
         </>
