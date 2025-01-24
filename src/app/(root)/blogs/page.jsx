@@ -1,5 +1,6 @@
 "use client";
 
+import Footer from "@/components/organism/Footer";
 import { Button } from "@/components/ui/button";
 import { Skeleton } from "@/components/ui/skeleton";
 import Image from "next/image";
@@ -49,63 +50,66 @@ const BlogPage = () => {
     };
 
     return (
-        <div className="flex w-full flex-1">
-            <div className="flex flex-col gap-6 w-full max-w-7xl mx-auto px-4 py-6 md:py-8 lg:py-10">
-                <h2 className="text-lg font-medium md:text-xl lg:text-2xl">
-                    Blog Posts
-                </h2>
-                {loading ? (
-                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                        {/* Skeleton cards for loading state */}
-                        {[...Array(3)].map((_, index) => (
-                            <SkeletonCard key={index} />
-                        ))}
-                    </div>
-                ) : (
-                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                        {paginatedBlogs.map((blog) => (
-                            <div
-                                key={blog.id}
-                                className="flex flex-col border border-neutral-200 rounded-lg overflow-hidden group hover:shadow-lg"
+        <>
+            <div className="flex w-full flex-1">
+                <div className="flex flex-col gap-6 w-full max-w-7xl mx-auto px-4 py-6 md:py-8 lg:py-10">
+                    <h2 className="text-lg font-medium md:text-xl lg:text-2xl">
+                        Blog Posts
+                    </h2>
+                    {loading ? (
+                        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                            {/* Skeleton cards for loading state */}
+                            {[...Array(3)].map((_, index) => (
+                                <SkeletonCard key={index} />
+                            ))}
+                        </div>
+                    ) : (
+                        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                            {paginatedBlogs.map((blog) => (
+                                <div
+                                    key={blog.id}
+                                    className="flex flex-col border border-neutral-200 rounded-lg overflow-hidden group hover:shadow-lg"
+                                >
+                                    <div className="relative aspect-video w-full">
+                                        <Image
+                                            src={blog.image}
+                                            alt={blog.title}
+                                            fill
+                                            className="object-cover transition-transform group-hover:scale-110"
+                                        />
+                                    </div>
+                                    <div className="flex flex-col p-4 space-y-2">
+                                        <h3 className="text-base font-medium">
+                                            {blog.title}
+                                        </h3>
+                                        <p className="text-sm text-gray-600">
+                                            {blog.excerpt}
+                                        </p>
+                                        <Button asChild className="mt-2 w-full bg-[#0000ff] text-white rounded-full py-1.5 text-sm">
+                                            <Link href={`/blogs/${blog.id}`}>
+                                                Read More
+                                            </Link>
+                                        </Button>
+                                    </div>
+                                </div>
+                            ))}
+                        </div>
+                    )}
+                    {paginatedBlogs.length < blogsData.length && (
+                        <div className="flex justify-center mt-6">
+                            <Button
+                                onClick={loadMore}
+                                disabled={loading}
+                                className="bg-[#0000ff] text-white rounded-full py-2 px-4"
                             >
-                                <div className="relative aspect-video w-full">
-                                    <Image
-                                        src={blog.image}
-                                        alt={blog.title}
-                                        fill
-                                        className="object-cover transition-transform group-hover:scale-110"
-                                    />
-                                </div>
-                                <div className="flex flex-col p-4 space-y-2">
-                                    <h3 className="text-base font-medium">
-                                        {blog.title}
-                                    </h3>
-                                    <p className="text-sm text-gray-600">
-                                        {blog.excerpt}
-                                    </p>
-                                    <Button asChild className="mt-2 w-full bg-[#0000ff] text-white rounded-full py-1.5 text-sm">
-                                        <Link href={`/blogs/${blog.id}`}>
-                                            Read More
-                                        </Link>
-                                    </Button>
-                                </div>
-                            </div>
-                        ))}
-                    </div>
-                )}
-                {paginatedBlogs.length < blogsData.length && (
-                    <div className="flex justify-center mt-6">
-                        <Button
-                            onClick={loadMore}
-                            disabled={loading}
-                            className="bg-[#0000ff] text-white rounded-full py-2 px-4"
-                        >
-                            {loading ? "Loading..." : "Load More"}
-                        </Button>
-                    </div>
-                )}
+                                {loading ? "Loading..." : "Load More"}
+                            </Button>
+                        </div>
+                    )}
+                </div>
             </div>
-        </div>
+            <Footer />
+        </>
     );
 };
 

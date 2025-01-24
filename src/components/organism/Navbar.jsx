@@ -421,7 +421,7 @@ const NavItems = [
                         link: "/post-property/",
                     },
                     {
-                        label: "+91 9870 260 930 / Email Us",
+                        label: "+91 9555599299",
                         link: "/",
                     },
                 ],
