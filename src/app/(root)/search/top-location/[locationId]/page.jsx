@@ -123,14 +123,8 @@ const page = () => {
                                                     </div>
                                                     <div className="flex flex-col w-full pl-4">
                                                         <span className="flex items-center text-sm sm:text-base md:text-lg lg:text-xl font-bold">
-                                                            {
-                                                                card.plotArea
-                                                                    ?.value
-                                                            }{" "}
-                                                            {
-                                                                card.plotArea
-                                                                    ?.unit
-                                                            }
+                                                            {card.plotArea}{" "}
+                                                            {card.plotAreaUnit}
                                                         </span>
                                                         <span className="flex items-center text-xs">
                                                             Plot Area

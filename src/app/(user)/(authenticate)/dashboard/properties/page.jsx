@@ -123,8 +123,8 @@ const page = () => {
                                         </div>
                                         <div className="flex flex-col w-full pl-4">
                                             <span className="flex items-center text-sm sm:text-base md:text-lg lg:text-xl font-bold">
-                                                {card.plotArea?.value}{" "}
-                                                {card.plotArea?.unit}
+                                                {card.plotArea}{" "}
+                                                {card.plotAreaUnit}
                                             </span>
                                             <span className="flex items-center text-xs">
                                                 Plot Area
@@ -174,8 +174,15 @@ const page = () => {
                                             View
                                         </Link>
                                     </Button>
-                                    <Button className="rounded-full h-[unset] w-full md:w-fit text-xs bg-[#0000ff]">
-                                        <Edit /> Edit
+                                    <Button
+                                        asChild
+                                        className="rounded-full h-[unset] w-full md:w-fit text-xs bg-[#0000ff]"
+                                    >
+                                        <Link
+                                            href={`/dashboard/edit/${card.propertyId}`}
+                                        >
+                                            <Edit /> Edit
+                                        </Link>
                                     </Button>
                                     <Button
                                         variant="outline"

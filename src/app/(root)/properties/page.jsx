@@ -81,8 +81,8 @@ const page = () => {
                                                 {formatCurrency(
                                                     property.priceTotal
                                                 )}{" "}
-                                                | {property.plotArea?.value}{" "}
-                                                {property.plotArea?.unit}
+                                                | {property.plotArea}{" "}
+                                                {property.plotAreaUnit}
                                             </div>
                                             <div className="flex flex-col space-y-1 w-full">
                                                 <p className="text-gray-600 text-xs sm:text-sm">
