@@ -9,16 +9,32 @@ const CityImage = ({ city }) => {
         "Third Mumbai": "/assets/ads/third-mumbai-ads.jpeg",
     };
 
+    const cityImagesMobile = {
+        Panvel: "/assets/ads/panvel-mobile.jpg",
+        Thane: "/assets/ads/thane-mobile.jpg",
+        "Third Mumbai": "/assets/ads/third-mumbai-mobile.jpg",
+    };
+
     const imageUrl = cityImages[city] || "/assets/ads/main-ads.jpeg";
+    const imageUrlMobile = cityImagesMobile[city] || "/assets/ads/main-ads-mobile.jpeg";
 
     return (
         <div className="max-w-7xl w-full p-4 mx-auto mb-4 md:mb-6">
             <div className="w-full border border-neutral-200 shadow h-40 relative rounded-2xl">
+                {/* Desktop Image (hidden on mobile) */}
                 <Image
                     src={imageUrl}
                     alt={`${city} banner`}
                     fill
-                    className="object-cover rounded-2xl object-center"
+                    className="object-cover rounded-2xl object-center hidden md:block"
+                />
+
+                {/* Mobile Image (hidden on larger screens) */}
+                <Image
+                    src={imageUrlMobile}
+                    alt={`${city} mobile banner`}
+                    fill
+                    className="md:object-cover sm:object-contain rounded-2xl object-center block md:hidden"
                 />
             </div>
         </div>
@@ -26,3 +42,7 @@ const CityImage = ({ city }) => {
 };
 
 export default CityImage;
+
+
+
+//panvel-mobile
