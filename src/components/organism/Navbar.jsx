@@ -109,7 +109,7 @@ const Navbar = () => {
                     <div className="flex flex-grow items-center  md:gap-4 justify-end">
                         <Button
                             asChild
-                            className="bg-white text-black hover:text-white rounded-full"
+                            className="bg-white  text-black hover:text-white hidden md:block rounded-full"
                         >
                             <Link
                                 href={"/post-property/create-property"}

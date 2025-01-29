@@ -1,5 +1,6 @@
 import BannerCarousel from "../atoms/BannerCarousel";
 import SearchBar from "../molecules/SearchBar";
+import Link from "next/link";
 
 const Hero = () => {
     return (
@@ -14,13 +15,19 @@ const Hero = () => {
                                     Buy
                                 </li>
                                 <li className="flex w-fit md:w-full items-center justify-center text-black md:text-black cursor-pointer hover:text-[#581a95] transition-all">
-                                    Resindential
+                                    <Link href={`/search/top-location/Villa/resindential}`} >
+                                        Resindential
+                                    </Link>
                                 </li>
                                 <li className="flex w-fit md:w-full items-center justify-center text-black md:text-black cursor-pointer hover:text-[#581a95] transition-all">
-                                    Commercial
+                                    <Link href={`/search/top-location/Villa/commercial}`} >
+                                        Commercial
+                                    </Link>
                                 </li>
                                 <li className="flex w-fit md:w-full items-center justify-center text-black md:text-black cursor-pointer hover:text-[#581a95] transition-all">
-                                    Villa/Banglow
+                                    <Link href={`/search/top-location/villa/banglow}`} >
+                                        Villa / Banglow
+                                    </Link>
                                 </li>
                             </ul>
                         </div>
@@ -29,7 +36,7 @@ const Hero = () => {
                         </div>
                     </div>
                 </div>
-            </div>
+            </div >
         </>
     );
 };
