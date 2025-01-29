@@ -139,7 +139,7 @@ const page = () => {
                                             </span>
                                         </div>
                                     </div>
-                                    <p className="text-xs md:text-sm">
+                                    <p className="text-xs md:text-sm h-10">
                                         {sliceParagraph(card.uniqueFeatures)}
                                     </p>
                                     <div className="flex flex-wrap w-full overflow-x-auto scrollbar-hide">

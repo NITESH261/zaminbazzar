@@ -14,16 +14,19 @@ import React from "react";
 
 const AppSidebar = () => {
     return (
-        <Sidebar className="space-y-6">
-            <SidebarHeader className="mt-20 px-4"></SidebarHeader>
-            <SidebarContent className="px-4">
+        <Sidebar className="space-y-6 px-4">
+            <SidebarHeader className="mt-16 px-4"></SidebarHeader>
+            <SidebarContent className="pt-6 px-4 border border-neutral-200 rounded-md">
                 <SidebarGroup>
                     <SidebarGroupContent>
                         <SidebarMenu className="space-y-1">
                             {SidebarList.map((item) => (
                                 <SidebarMenuItem key={item.title}>
                                     <SidebarMenuButton asChild>
-                                        <Link href={item.url} className="py-5">
+                                        <Link
+                                            href={item.url}
+                                            className="py-5 px-4"
+                                        >
                                             <span>{item.title}</span>
                                         </Link>
                                     </SidebarMenuButton>
