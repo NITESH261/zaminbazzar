@@ -1,6 +1,10 @@
 "use client";
 
-import { getOneProperty } from "@/actions/property";
+import {
+    getOneProperty,
+    updateProperty,
+    uploadPropertyImage,
+} from "@/actions/property";
 import DragNDrop from "@/components/atoms/DragNDrop";
 import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
@@ -23,9 +27,10 @@ import {
 } from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useParams } from "next/navigation";
+import { useParams, useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";
 import { useForm, useWatch } from "react-hook-form";
+import { toast } from "sonner";
 import { z } from "zod";
 
 const EditSchema = z.object({
@@ -42,9 +47,12 @@ const EditSchema = z.object({
     locality: z.string({
         required_error: "Please select locality.",
     }),
-    // plotArea: z.string({
-    //     required_error: "Please enter area.",
-    // }),
+    plotArea: z.string({
+        required_error: "Please enter area.",
+    }),
+    plotAreaUnit: z.string({
+        required_error: "Please enter area unit.",
+    }),
     length: z
         .string({
             required_error: "Please enter length.",
@@ -118,7 +126,8 @@ const EditSchema = z.object({
 
 const Page = () => {
     const { propertyId } = useParams();
-    const [property, setProperty] = useState(null);
+    const [loading, setLoading] = useState(false);
+    const router = useRouter();
 
     const form = useForm({
         resolver: zodResolver(EditSchema),
@@ -128,7 +137,8 @@ const Page = () => {
             propertyCategories: "",
             city: "",
             locality: "",
-            // plotArea: "",
+            plotArea: "",
+            plotAreaUnit: "",
             length: "",
             breadth: "",
             allowedFloors: "",
@@ -163,25 +173,14 @@ const Page = () => {
     useEffect(() => {
         const fetchProperty = async () => {
             const { result = {} } = await getOneProperty(propertyId);
-            setProperty(result);
-
             reset({
                 listingType: result?.listingType || "",
                 propertyType: result?.propertyType || "",
                 propertyCategories: result?.propertyCategories || "",
                 city: result?.city || "",
                 locality: result?.locality || "",
-                // plotArea: result?.plotArea
-                //     ? typeof result?.plotArea === "string"
-                //         ? {
-                //               value: parseInt(
-                //                   result?.plotArea.split(" ")[0],
-                //                   10
-                //               ), // Extract the numeric value
-                //               unit: result?.plotArea.split(" ")[1], // Extract the unit
-                //           }
-                //         : result?.plotArea // If it's already an object, use it as is
-                //     : null,
+                plotArea: result?.plotArea || "",
+                plotAreaUnit: result?.plotAreaUnit || "",
                 length: result?.length || "",
                 breadth: result?.breadth || "",
                 allowedFloors: result?.allowedFloors || "",
@@ -215,8 +214,40 @@ const Page = () => {
         setValue("propertyCategories", "");
     }, [selectedPropertyType, setValue]);
 
-    const onSubmit = (values) => {
-        console.log("Form submitted with values:", values);
+    const handleFileChange = async (e, fieldName) => {
+        const files = e.target.files;
+        if (files.length === 0) return;
+        const file = files[0];
+        const formData = new FormData();
+        formData.append("file", file);
+        const fileResp = await uploadPropertyImage({ body: formData });
+        const uploadedImageUrl = fileResp;
+        form.setValue(fieldName, uploadedImageUrl);
+        console.log(form.getValues(fieldName));
+    };
+
+    const onSubmit = async (values) => {
+        setLoading(true);
+        const body = {
+            ...values,
+            propertyId: propertyId,
+            propertyPhotos: [
+                values.image1,
+                values.image2,
+                values.image3,
+                values.image4,
+                values.image5,
+            ].filter(Boolean),
+        };
+        try {
+            const resp = await updateProperty(body);
+            setLoading(false);
+            toast.success(resp.message);
+            router.push("/dashboard/properties");
+        } catch (error) {
+            setLoading(false);
+            toast.error(error.message);
+        }
     };
 
     const filteredCategories =
@@ -455,80 +486,71 @@ const Page = () => {
                                     )}
                                 />
                             </div>
-
-                            {/* <FormField
-                                control={form.control}
-                                name="plotArea"
-                                render={({ field }) => {
-                                    const plotAreaValue =
-                                        field.value?.value || ""; // Get value or default to empty string
-                                    const plotAreaUnit =
-                                        field.value?.unit || ""; // Get unit or default to empty string
-
-                                    const handleInputChange = (e) => {
-                                        const inputValue = e.target.value; // Get the new value
-                                        field.onChange({
-                                            value: inputValue, // Update value field
-                                            unit: plotAreaUnit, // Keep the unit field unchanged
-                                        });
-                                    };
-
-                                    const handleSelectChange = (unitValue) => {
-                                        field.onChange({
-                                            value: plotAreaValue, // Keep the value field unchanged
-                                            unit: unitValue, // Update the unit field
-                                        });
-                                    };
-
-                                    return (
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <FormField
+                                    control={form.control}
+                                    name="plotArea"
+                                    render={({ field }) => (
                                         <FormItem className="flex flex-col gap-2">
                                             <FormLabel>
                                                 {Data[4].label}
                                             </FormLabel>
                                             <FormControl>
-                                                <div className="flex gap-4">
-                                                    <Input
-                                                        type="number"
-                                                        placeholder="Plot Area"
-                                                        value={plotAreaValue}
-                                                        onChange={
-                                                            handleInputChange
-                                                        }
-                                                    />
-                                                    <Select
-                                                        onValueChange={
-                                                            handleSelectChange
-                                                        }
-                                                        value={plotAreaUnit}
-                                                    >
-                                                        <SelectTrigger>
-                                                            <SelectValue placeholder="Select unit" />
-                                                        </SelectTrigger>
-                                                        <SelectContent>
-                                                            {Data[4].data.map(
-                                                                (item, i) => (
-                                                                    <SelectItem
-                                                                        key={i}
-                                                                        value={
-                                                                            item.value
-                                                                        }
-                                                                    >
-                                                                        {
-                                                                            item.label
-                                                                        }
-                                                                    </SelectItem>
-                                                                )
-                                                            )}
-                                                        </SelectContent>
-                                                    </Select>
-                                                </div>
+                                                <Input
+                                                    type="number"
+                                                    placeholder="Plot Area"
+                                                    {...field}
+                                                    value={field.value ?? ""}
+                                                />
                                             </FormControl>
                                             <FormMessage />
                                         </FormItem>
-                                    );
-                                }}
-                            /> */}
-
+                                    )}
+                                />
+                                <FormField
+                                    control={form.control}
+                                    name="plotAreaUnit"
+                                    render={({ field }) => (
+                                        <FormItem className="flex flex-col gap-2">
+                                            <FormLabel>
+                                                Plot Area Unit
+                                            </FormLabel>
+                                            <FormControl>
+                                                <Select
+                                                    onValueChange={
+                                                        field.onChange
+                                                    }
+                                                    value={field.value}
+                                                >
+                                                    <FormControl>
+                                                        <SelectTrigger>
+                                                            <SelectValue placeholder="Select City" />
+                                                        </SelectTrigger>
+                                                    </FormControl>
+                                                    <SelectContent>
+                                                        {Data[4].data.map(
+                                                            ({
+                                                                value,
+                                                                label,
+                                                            }) => (
+                                                                <SelectItem
+                                                                    key={value}
+                                                                    value={
+                                                                        value
+                                                                    }
+                                                                >
+                                                                    {label}
+                                                                </SelectItem>
+                                                            )
+                                                        )}
+                                                    </SelectContent>
+                                                </Select>
+                                            </FormControl>
+                                            <FormMessage />
+                                        </FormItem>
+                                    )}
+                                />
+                            </div>
                             <div className="flex w-full gap-4 flex-col">
                                 <FormLabel>{Data[5].label}</FormLabel>
                                 <div className="grid grid-cols-2 gap-4 w-full">
@@ -1336,7 +1358,7 @@ const Page = () => {
                                 // disabled={loading}
                             >
                                 {/* {loading ? "Loading" : "Update"} */}
-                                Update
+                                Update Property
                             </Button>
                         </form>
                     </Form>

@@ -43,6 +43,15 @@ export const createProperty = async (body) => {
     return resp
 }
 
+export const updateProperty = async (body) => {
+    let resp = await fetchWithToken("/user/properties/edit", {
+        method: "PUt",
+        body: JSON.stringify(body),
+    })
+    resp = resp.results.data
+    return resp
+}
+
 export const filterProperty = async (filter) => {
     const formattedFilter = formatFilterForQuery(filter)
     const queryParams = new URLSearchParams(formattedFilter).toString()
@@ -63,3 +72,4 @@ export const uploadPropertyImage = async ({ body }) => {
     resp = resp.results
     return resp
 }
+
