@@ -27,6 +27,9 @@ const PropertyDetailsSchema = z.object({
     plotArea: z.string({
         required_error: "Please enter area.",
     }),
+    plotAreaUnit: z.string({
+        required_error: "Please select area unit.",
+    }),
     length: z
         .string({
             required_error: "Please enter length.",
@@ -162,74 +165,62 @@ const PropertyProfile = ({
                                 Tell us about your property
                             </span>
                         </div>
-                        <FormField
-                            control={form.control}
-                            name="plotArea"
-                            render={({ field }) => {
-                                const handleInputChange = (e) => {
-                                    const inputValue = e.target.value;
-                                    const currentUnit =
-                                        field.value?.split(" ")[1] || "";
-                                    field.onChange(
-                                        `${inputValue} ${currentUnit}`.trim()
-                                    );
-                                };
-
-                                const handleSelectChange = (unitValue) => {
-                                    const currentInput =
-                                        field.value?.split(" ")[0] || "";
-                                    field.onChange(
-                                        `${currentInput} ${unitValue}`.trim()
-                                    );
-                                };
-
-                                return (
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 w-full">
+                            <FormField
+                                control={form.control}
+                                name="plotArea"
+                                render={({ field }) => (
                                     <FormItem className="flex flex-col gap-2">
                                         <FormLabel>
                                             {Step3Data[0].label}
                                         </FormLabel>
                                         <FormControl>
-                                            <div className="flex gap-4">
-                                                <Input
-                                                    type="number"
-                                                    placeholder="Plot Area"
-                                                    onChange={handleInputChange}
-                                                />
-                                                <Select
-                                                    onValueChange={
-                                                        handleSelectChange
-                                                    }
-                                                    defaultValue={
-                                                        field.value?.split(
-                                                            " "
-                                                        )[1] ?? ""
-                                                    }
-                                                >
-                                                    <SelectTrigger>
-                                                        <SelectValue placeholder="Select unit" />
-                                                    </SelectTrigger>
-                                                    <SelectContent>
-                                                        {Step3Data[0].data.map(
-                                                            (data, i) => (
-                                                                <SelectItem
-                                                                    key={i}
-                                                                    value={
-                                                                        data.value
-                                                                    }
-                                                                >
-                                                                    {data.label}
-                                                                </SelectItem>
-                                                            )
-                                                        )}
-                                                    </SelectContent>
-                                                </Select>
-                                            </div>
+                                            <Input
+                                                type="number"
+                                                placeholder="Plot Area"
+                                                {...field}
+                                                value={field.value ?? ""}
+                                            />
                                         </FormControl>
                                         <FormMessage />
                                     </FormItem>
-                                );
-                            }}
-                        />
+                                )}
+                            />
+                            <FormField
+                                control={form.control}
+                                name="plotAreaUnit"
+                                render={({ field }) => (
+                                    <FormItem className="flex flex-col gap-2">
+                                        <FormLabel>Area Unit</FormLabel>
+                                        <FormControl>
+                                            <Select
+                                                onValueChange={field.onChange}
+                                                defaultValue={field.value ?? ""}
+                                            >
+                                                <FormControl>
+                                                    <SelectTrigger>
+                                                        <SelectValue placeholder="Select Area Unit" />
+                                                    </SelectTrigger>
+                                                </FormControl>
+                                                <SelectContent>
+                                                    {Step3Data[0].data.map(
+                                                        ({ value, label }) => (
+                                                            <SelectItem
+                                                                key={label}
+                                                                value={value}
+                                                            >
+                                                                {label}
+                                                            </SelectItem>
+                                                        )
+                                                    )}
+                                                </SelectContent>
+                                            </Select>
+                                        </FormControl>
+                                        <FormMessage />
+                                    </FormItem>
+                                )}
+                            />
+                        </div>
                         <div className="flex w-full gap-4 flex-col">
                             <FormLabel>{Step3Data[1].label}</FormLabel>
                             <div className="grid grid-cols-2 gap-4 w-full">

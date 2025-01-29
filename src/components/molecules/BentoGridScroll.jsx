@@ -27,7 +27,7 @@ const BentoGridScroll = ({ cards }) => {
                             {formatCurrency(cards.priceTotal)}
                         </span>
                         <span className="text-xs lg:text-sm">
-                            {cards.plotArea?.value} sqft
+                            {cards.plotArea} sqft
                         </span>
                     </div>
                     <div className="flex w-fit">

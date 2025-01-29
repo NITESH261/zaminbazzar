@@ -99,15 +99,8 @@ const SimilarProperty = () => {
                                                             {formatCurrency(
                                                                 card.priceTotal
                                                             )}{" "}
-                                                            |{" "}
-                                                            {
-                                                                card.plotArea
-                                                                    ?.value
-                                                            }{" "}
-                                                            {
-                                                                card.plotArea
-                                                                    ?.unit
-                                                            }
+                                                            | {card.plotArea}{" "}
+                                                            {card.plotAreaUnit}
                                                         </div>
                                                         <p className="text-gray-600 gap-2 flex text-xs sm:text-sm">
                                                             {card.locality}
