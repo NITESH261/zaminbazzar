@@ -142,12 +142,11 @@ const BasicDetails = ({ onSubmit, prev, currentStep, loading, formData }) => {
                                                 ({ value, label }) => (
                                                     <FormItem
                                                         key={value}
-                                                        className={`flex items-center space-y-0 ${
-                                                            field.value ===
-                                                            value
-                                                                ? "bg-blue-100 border-[#0000FF]"
+                                                        className={`flex items-center space-y-0 ${field.value ===
+                                                                value
+                                                                ? "bg-blue-100 border-[#581a95]"
                                                                 : "bg-white border"
-                                                        } rounded-full px-4 py-2`}
+                                                            } rounded-full px-4 py-2`}
                                                     >
                                                         <FormControl className="sr-only">
                                                             <RadioGroupItem
@@ -182,12 +181,11 @@ const BasicDetails = ({ onSubmit, prev, currentStep, loading, formData }) => {
                                                 ({ value, label }) => (
                                                     <FormItem
                                                         key={value}
-                                                        className={`flex items-center space-y-0 ${
-                                                            field.value ===
-                                                            value
-                                                                ? "bg-blue-100 border-[#0000FF]"
+                                                        className={`flex items-center space-y-0 ${field.value ===
+                                                                value
+                                                                ? "bg-blue-100 border-[#581a95]"
                                                                 : "bg-white border"
-                                                        } rounded-full px-4 py-2`}
+                                                            } rounded-full px-4 py-2`}
                                                     >
                                                         <FormControl className="sr-only">
                                                             <RadioGroupItem
@@ -234,12 +232,11 @@ const BasicDetails = ({ onSubmit, prev, currentStep, loading, formData }) => {
                                                             }) => (
                                                                 <FormItem
                                                                     key={value}
-                                                                    className={`flex items-center space-y-0 ${
-                                                                        field.value ===
-                                                                        value
-                                                                            ? "bg-blue-100 border-[#0000FF]"
+                                                                    className={`flex items-center space-y-0 ${field.value ===
+                                                                            value
+                                                                            ? "bg-blue-100 border-[#581a95]"
                                                                             : "bg-white border"
-                                                                    } rounded-full px-4 py-2`}
+                                                                        } rounded-full px-4 py-2`}
                                                                 >
                                                                     <FormControl className="sr-only">
                                                                         <RadioGroupItem
@@ -287,12 +284,11 @@ const BasicDetails = ({ onSubmit, prev, currentStep, loading, formData }) => {
                                                             }) => (
                                                                 <FormItem
                                                                     key={value}
-                                                                    className={`flex items-center space-y-0 ${
-                                                                        field.value ===
-                                                                        value
-                                                                            ? "bg-blue-100 border-[#0000FF]"
+                                                                    className={`flex items-center space-y-0 ${field.value ===
+                                                                            value
+                                                                            ? "bg-blue-100 border-[#581a95]"
                                                                             : "bg-white border"
-                                                                    } rounded-full px-4 py-2`}
+                                                                        } rounded-full px-4 py-2`}
                                                                 >
                                                                     <FormControl className="sr-only">
                                                                         <RadioGroupItem
@@ -340,12 +336,11 @@ const BasicDetails = ({ onSubmit, prev, currentStep, loading, formData }) => {
                                                             }) => (
                                                                 <FormItem
                                                                     key={value}
-                                                                    className={`flex items-center space-y-0 ${
-                                                                        field.value ===
-                                                                        value
-                                                                            ? "bg-blue-100 border-[#0000FF]"
+                                                                    className={`flex items-center space-y-0 ${field.value ===
+                                                                            value
+                                                                            ? "bg-blue-100 border-[#581a95]"
                                                                             : "bg-white border"
-                                                                    } rounded-full px-4 py-2`}
+                                                                        } rounded-full px-4 py-2`}
                                                                 >
                                                                     <FormControl className="sr-only">
                                                                         <RadioGroupItem
@@ -379,7 +374,7 @@ const BasicDetails = ({ onSubmit, prev, currentStep, loading, formData }) => {
                             </Button>
                             <Button
                                 type="submit"
-                                className="px-4 py-2 bg-[#0000FF] text-white rounded-lg"
+                                className="px-4 py-2 bg-[#581a95] text-white rounded-lg"
                                 disabled={loading}
                             >
                                 {loading ? "Loading" : "Continue"}

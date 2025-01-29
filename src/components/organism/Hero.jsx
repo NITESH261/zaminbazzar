@@ -10,16 +10,16 @@ const Hero = () => {
                     <div className="flex absolute top-[70%] md:top-[90%] md:shadow-md flex-col divide-y w-[90%] sm:w-full max-w-3xl bg-white rounded-2xl md:border md:border-gray-200">
                         <div className="flex w-full text-sm md:text-base">
                             <ul className="flex gap-4 md:gap-0 items-center justify-center md:grid grid-cols-4 h-10 md:h-14 w-full">
-                                <li className="flex w-fit md:w-full items-center justify-center text-black md:text-black cursor-pointer hover:text-[#0000FF] transition-all">
+                                <li className="flex w-fit md:w-full items-center justify-center text-black md:text-black cursor-pointer hover:text-[#581a95] transition-all">
                                     Buy
                                 </li>
-                                <li className="flex w-fit md:w-full items-center justify-center text-black md:text-black cursor-pointer hover:text-[#0000FF] transition-all">
+                                <li className="flex w-fit md:w-full items-center justify-center text-black md:text-black cursor-pointer hover:text-[#581a95] transition-all">
                                     Resindential
                                 </li>
-                                <li className="flex w-fit md:w-full items-center justify-center text-black md:text-black cursor-pointer hover:text-[#0000FF] transition-all">
+                                <li className="flex w-fit md:w-full items-center justify-center text-black md:text-black cursor-pointer hover:text-[#581a95] transition-all">
                                     Commercial
                                 </li>
-                                <li className="flex w-fit md:w-full items-center justify-center text-black md:text-black cursor-pointer hover:text-[#0000FF] transition-all">
+                                <li className="flex w-fit md:w-full items-center justify-center text-black md:text-black cursor-pointer hover:text-[#581a95] transition-all">
                                     Villa/Banglow
                                 </li>
                             </ul>

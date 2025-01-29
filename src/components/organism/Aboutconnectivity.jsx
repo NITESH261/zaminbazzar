@@ -64,7 +64,7 @@ const Aboutconnectivity = () => {
                     <div className="flex w-full">
                         <h2 className="text-lg font-medium md:text-xl lg:text-2xl flex flex-col gap-1">
                             <span>Connectivity</span>
-                            <span className="h-1.5 w-20 bg-[#0000FF] rounded-full"></span>
+                            <span className="h-1.5 w-20 bg-[#581a95] rounded-full"></span>
                         </h2>
                     </div>
                     <div className="flex w-full">

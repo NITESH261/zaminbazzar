@@ -194,7 +194,7 @@ const PopupEnquiry = () => {
                                         )}
                                     />
                                 </div>
-                                <Button className="rounded-3xl w-full bg-[#0000FF]">
+                                <Button className="rounded-3xl w-full bg-[#581a95]">
                                     Book Enquiry
                                 </Button>
                             </form>

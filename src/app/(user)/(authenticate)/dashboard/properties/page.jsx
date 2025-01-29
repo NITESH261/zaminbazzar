@@ -77,7 +77,7 @@ const page = () => {
                         <div
                             // href={`/properties/${card.propertyId}`}
                             key={i}
-                            className="flex flex-col p-4 sm:flex-row xl:grid xl:grid-cols-5 border w-full gap-2 rounded-lg bg-white border-neutral-200 hover:border-[#0000FF] hover:shadow-md transition-all"
+                            className="flex flex-col p-4 sm:flex-row xl:grid xl:grid-cols-5 border w-full gap-2 rounded-lg bg-white border-neutral-200 hover:border-[#581a95] hover:shadow-md transition-all"
                             onMouseEnter={() => handleMouseEnter(i)}
                             onMouseLeave={handleMouseLeave}
                         >
@@ -144,7 +144,7 @@ const page = () => {
                                     </p>
                                     <div className="flex flex-wrap w-full overflow-x-auto scrollbar-hide">
                                         <div className="flex w-fit gap-2 items-center">
-                                            <span className="flex w-fit whitespace-nowrap text-sm font-medium text-[#0000FF]">
+                                            <span className="flex w-fit whitespace-nowrap text-sm font-medium text-[#581a95]">
                                                 Near By:
                                             </span>
                                             <ul className="w-fit flex gap-2">
@@ -165,7 +165,7 @@ const page = () => {
                                 <div className="flex w-full gap-2 sm:gap-4 md:justify-end sm:flex-grow-0 h-1/5">
                                     <Button
                                         asChild
-                                        className="rounded-full h-[unset] w-full md:w-fit text-xs bg-[#0000ff]"
+                                        className="rounded-full h-[unset] w-full md:w-fit text-xs bg-[#581a95]"
                                     >
                                         <Link
                                             href={`/properties/${card.propertyId}`}
@@ -174,12 +174,12 @@ const page = () => {
                                             View
                                         </Link>
                                     </Button>
-                                    <Button className="rounded-full h-[unset] w-full md:w-fit text-xs bg-[#0000ff]">
+                                    <Button className="rounded-full h-[unset] w-full md:w-fit text-xs bg-[#581a95]">
                                         <Edit /> Edit
                                     </Button>
                                     <Button
                                         variant="outline"
-                                        className="rounded-full h-[unset] w-full md:w-fit text-xs border-[#0000ff] text-[#0000ff]"
+                                        className="rounded-full h-[unset] w-full md:w-fit text-xs border-[#581a95] text-[#581a95]"
                                     >
                                         <Trash2 /> Delete
                                     </Button>
@@ -193,7 +193,7 @@ const page = () => {
                         <Button
                             onClick={loadMore}
                             disabled={!properties}
-                            className="rounded-full bg-[#0000ff]"
+                            className="rounded-full bg-[#581a95]"
                         >
                             Load More Properties
                         </Button>

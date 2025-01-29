@@ -13,7 +13,7 @@ const Sectionheadhighlight = ({ title, subtitle, link, linkHref, linkLabel }) =>
                 {link ? (
                     <Link
                         href={linkHref}
-                        className="flex items-center gap-2 hover:text-black text-[#0000FF] text-lg md:text-xl"
+                        className="flex items-center gap-2 hover:text-black text-[#581a95] text-lg md:text-xl"
                     >
                         <span className="hidden md:flex">{linkLabel}</span>
                         <ArrowRight />

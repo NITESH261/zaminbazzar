@@ -83,7 +83,7 @@ const page = () => {
                                 )}
                             />
                             <Button
-                                className="w-full bg-[#0000ff]"
+                                className="w-full bg-[#581a95]"
                                 type="submit"
                             >
                                 Log In
