@@ -1,6 +1,7 @@
 "use client";
 
 import { getUserProperty } from "@/actions/dashboard";
+import DeletePropertyBtn from "@/components/atoms/DeletePropertyBtn";
 import ImageScroll from "@/components/molecules/ImageScroll";
 import { Button } from "@/components/ui/button";
 import { formatCurrency, sliceParagraph } from "@/lib/utils";
@@ -139,7 +140,7 @@ const page = () => {
                                             </span>
                                         </div>
                                     </div>
-                                    <p className="text-xs md:text-sm">
+                                    <p className="text-xs md:text-sm h-10">
                                         {sliceParagraph(card.uniqueFeatures)}
                                     </p>
                                     <div className="flex flex-wrap w-full overflow-x-auto scrollbar-hide">
@@ -184,12 +185,9 @@ const page = () => {
                                             <Edit /> Edit
                                         </Link>
                                     </Button>
-                                    <Button
-                                        variant="outline"
-                                        className="rounded-full h-[unset] w-full md:w-fit text-xs border-[#0000ff] text-[#0000ff]"
-                                    >
-                                        <Trash2 /> Delete
-                                    </Button>
+                                    <DeletePropertyBtn
+                                        propertyId={card.propertyId}
+                                    />
                                 </div>
                             </div>
                         </div>
