@@ -52,6 +52,14 @@ export const updateProperty = async (body) => {
     return resp
 }
 
+export const deleteProperty = async (propertyId) => {
+    let resp = await fetchWithToken(`/user/properties/delete/${propertyId}`, {
+        method: "DELETE"
+    })
+    resp = resp.results.data
+    return resp
+}
+
 export const filterProperty = async (filter) => {
     const formattedFilter = formatFilterForQuery(filter)
     const queryParams = new URLSearchParams(formattedFilter).toString()
