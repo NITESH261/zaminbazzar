@@ -34,8 +34,6 @@ const Property = () => {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
-    console.log(property);
-
     return (
         <>
             <div className="flex w-full ">

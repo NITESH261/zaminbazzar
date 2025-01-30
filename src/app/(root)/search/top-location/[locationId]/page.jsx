@@ -51,7 +51,7 @@ const page = () => {
                                     <Filter className="!size-4" />
                                 </Button>
                             </SheetTrigger>
-                            <SheetContent className="p-4 space-y-4">
+                            <SheetContent className="py-4 space-y-2">
                                 <SheetHeader>
                                     <SheetTitle>Search filter</SheetTitle>
                                 </SheetHeader>
@@ -121,7 +121,7 @@ const page = () => {
                                                             / sqft
                                                         </span>
                                                     </div>
-                                                    <div className="flex flex-col w-full pl-4">
+                                                    <div className="flex flex-col w-full pl-2 md:pl-4">
                                                         <span className="flex items-center text-sm sm:text-base md:text-lg lg:text-xl font-bold">
                                                             {card.plotArea}{" "}
                                                             {card.plotAreaUnit}
@@ -130,7 +130,7 @@ const page = () => {
                                                             Plot Area
                                                         </span>
                                                     </div>
-                                                    <div className="flex flex-col w-full pl-4">
+                                                    <div className="flex flex-col w-full pl-2 md:pl-4">
                                                         <span className="flex items-center text-sm sm:text-base md:text-lg lg:text-xl font-bold">
                                                             {card.propertyType}
                                                         </span>
