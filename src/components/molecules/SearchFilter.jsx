@@ -81,7 +81,7 @@ const SearchFilter = () => {
     const form = useForm({
         resolver: zodResolver(FilterSchema),
         defaultValues: {
-            propertyType: propertyType,
+            propertyType: propertyType || "",
             propertyCategories: "",
             city: "",
             locality: SearchTrigger(params.locationId),

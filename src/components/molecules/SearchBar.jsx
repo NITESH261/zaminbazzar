@@ -81,7 +81,9 @@ const SearchBar = () => {
 
     const onSubmit = (values) => {
         router.push(
-            `/search/top-location/${values.location}?propertyType=${values.propertyType}`
+            `/search/top-location/${values.location}?propertyType=${
+                values.propertyType ?? "Residential"
+            }`
         );
     };
 
