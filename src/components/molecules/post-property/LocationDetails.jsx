@@ -152,7 +152,7 @@ const LocationDetails = ({
                             </Button>
                             <Button
                                 type="submit"
-                                className="px-4 py-2 bg-[#0000FF] text-white rounded-lg"
+                                className="px-4 py-2 bg-[#581a95] text-white rounded-lg"
                                 disabled={loading}
                             >
                                 {loading ? "Loading" : "Continue"}

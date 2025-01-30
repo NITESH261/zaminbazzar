@@ -9,7 +9,7 @@ const Logo = ({ className }) => {
                 fill
                 className="object-contain"
             /> */}
-            <span className={cn("flex text-xl md:text-3xl font-bold text-white", className)}>zaminwale</span>
+            <span className={cn("flex text-xl md:text-3xl font-bold text-white", className)}>zaminwale.com</span>
         </div>
     );
 };

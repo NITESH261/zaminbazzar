@@ -7,6 +7,7 @@ import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { Button } from "../ui/button";
 import { Form, FormControl, FormField, FormItem, FormLabel } from "../ui/form";
+import { RadioGroup, RadioGroupItem } from "../ui/radio-group";
 import {
     Select,
     SelectContent,
@@ -14,7 +15,6 @@ import {
     SelectTrigger,
     SelectValue,
 } from "../ui/select";
-import { RadioGroup, RadioGroupItem } from "../ui/radio-group";
 
 const SearchData = [
     {
@@ -81,8 +81,7 @@ const SearchBar = () => {
 
     const onSubmit = (values) => {
         router.push(
-            `/search/top-location/${values.location}?propertyType=${
-                values.propertyType ?? "Residential"
+            `/search/top-location/${values.location}?propertyType=${values.propertyType ?? "Residential"
             }`
         );
     };
@@ -110,12 +109,11 @@ const SearchBar = () => {
                                                 ({ value, label }) => (
                                                     <FormItem
                                                         key={value}
-                                                        className={`flex items-center justify-center space-y-0 ${
-                                                            field.value ===
+                                                        className={`flex items-center justify-center space-y-0 ${field.value ===
                                                             value
-                                                                ? "bg-[#581a95] text-white"
-                                                                : "bg-white"
-                                                        } rounded-full py-1 px-1 md:px-4 md:py-2 md:h-full`}
+                                                            ? "bg-[#581a95] text-white"
+                                                            : "bg-white"
+                                                            } rounded-full py-1 px-1 md:px-4 md:py-2 md:h-full`}
                                                     >
                                                         <FormControl className="sr-only">
                                                             <RadioGroupItem
@@ -170,7 +168,7 @@ const SearchBar = () => {
                         />
                         <Button
                             type="submit"
-                            className="rounded-full bg-[#0000FF]"
+                            className="rounded-full bg-[#581a95]"
                         >
                             <Search />
                             Search

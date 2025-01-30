@@ -82,7 +82,7 @@ const page = async ({ params }) => {
                                                 </span>
                                                 <span className="font-medium text-neutral-700 text-sm md:text-base">
                                                     {result.hasConstruction ===
-                                                    true
+                                                        true
                                                         ? "Yes"
                                                         : "No"}
                                                 </span>
@@ -96,7 +96,7 @@ const page = async ({ params }) => {
                                                 </span>
                                                 <span className="font-medium text-neutral-700 text-sm md:text-base">
                                                     {result.hasBoundaryWall ===
-                                                    true
+                                                        true
                                                         ? "Yes"
                                                         : "No"}
                                                 </span>
@@ -143,12 +143,12 @@ const page = async ({ params }) => {
                                 </div>
                                 <hr />
                                 <div className="flex gap-4 w-full">
-                                    <Button className="rounded-3xl h-[unset] text-sm bg-[#0000ff]">
+                                    <Button className="rounded-3xl h-[unset] text-sm bg-[#581a95]">
                                         Contact Owner
                                     </Button>
                                     <Button
                                         variant="outline"
-                                        className="rounded-3xl h-[unset] text-sm border-[#0000ff] text-[#0000ff]"
+                                        className="rounded-3xl h-[unset] text-sm border-[#581a95] text-[#581a95]"
                                     >
                                         Get Callback
                                     </Button>

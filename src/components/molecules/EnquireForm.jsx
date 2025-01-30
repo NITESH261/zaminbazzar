@@ -129,7 +129,7 @@ const EnquireForm = () => {
                             </FormItem>
                         )}
                     />
-                    <Button className="rounded-3xl w-full bg-[#0000FF]">Book Site Visit</Button>
+                    <Button className="rounded-3xl w-full bg-[#581a95]">Book Site Visit</Button>
                 </form>
             </Form>
         </div>

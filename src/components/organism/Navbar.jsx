@@ -21,7 +21,7 @@ import {
 
 const Navbar = () => {
     return (
-        <header className="flex sticky top-0 z-20 w-full bg-[#0000FF]">
+        <header className="flex sticky top-0 z-20 w-full bg-[#581a95]">
             <div className="flex w-full h-16 items-center max-w-[1480px] mx-auto gap-4 px-4">
                 <div className="flex h-fit w-fit">
                     <Link href={"/"}>
@@ -109,7 +109,7 @@ const Navbar = () => {
                     <div className="flex flex-grow items-center  md:gap-4 justify-end">
                         <Button
                             asChild
-                            className="bg-white text-black hover:text-white rounded-full"
+                            className="bg-white  text-black hover:text-white hidden md:flex rounded-full"
                         >
                             <Link
                                 href={"/post-property/create-property"}
@@ -124,7 +124,7 @@ const Navbar = () => {
                         <LogoutBtn />
                         <Sheet>
                             <SheetTrigger asChild>
-                                <Button className="rounded-md px-3 py-0 bg-transparent hover:text-[#0000FF] hover:bg-white">
+                                <Button className="rounded-md px-3 py-0 bg-transparent hover:text-[#581a95] hover:bg-white">
                                     <AlignRightIcon className="!size-5" />
                                 </Button>
                             </SheetTrigger>

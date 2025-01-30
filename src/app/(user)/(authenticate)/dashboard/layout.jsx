@@ -3,7 +3,6 @@
 import AppSidebar from "@/components/molecules/dashboard/AppSidebar";
 import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
 import useZaminwaleStore from "@/store";
-import React from "react";
 
 const DashboardLayout = ({ children }) => {
     const user = useZaminwaleStore((store) => store.user);

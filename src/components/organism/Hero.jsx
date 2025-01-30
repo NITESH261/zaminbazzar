@@ -11,7 +11,7 @@ const Hero = () => {
                         <SearchBar />
                     </div>
                 </div>
-            </div>
+            </div >
         </>
     );
 };
