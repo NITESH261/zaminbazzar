@@ -67,8 +67,7 @@ const ImageCarouselScroll = ({ cards, autoScroll }) => {
                                         <h2 className="text-sm sm:text-base flex items-center font-medium">
                                             <IndianRupeeIcon className="!size-4" />{" "}
                                             {formatCurrency(card.priceTotal)}|{" "}
-                                            {card.plotArea?.value}{" "}
-                                            {card.plotArea?.unit}
+                                            {card.plotArea} {card.plotAreaUnit}
                                         </h2>
                                         <p className="text-gray-600 gap-2 flex text-xs sm:text-sm">
                                             {card.locality},&nbsp;

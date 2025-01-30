@@ -1,8 +1,12 @@
+"use client";
+
 import AppSidebar from "@/components/molecules/dashboard/AppSidebar";
 import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
-import React from "react";
+import useZaminwaleStore from "@/store";
 
 const DashboardLayout = ({ children }) => {
+    const user = useZaminwaleStore((store) => store.user);
+
     return (
         <SidebarProvider>
             <AppSidebar />
@@ -14,11 +18,11 @@ const DashboardLayout = ({ children }) => {
                             variant="outline"
                         />
                         <div className="flex w-full gap-1 py-2 flex-col">
-                            <h2 className="text-2xl font-bold text-[#581a95]">
-                                Hey Akash!
+                            <h2 className="text-2xl font-bold text-[#0000FF]">
+                                Hey {user?.name}!
                             </h2>
                             <p className="w-full text-xs md:text-sm lg:text-base">
-                                Take a look to your uploaded property
+                                Take a look to your uploaded properties
                             </p>
                         </div>
                     </div>

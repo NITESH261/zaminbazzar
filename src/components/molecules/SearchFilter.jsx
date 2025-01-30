@@ -4,7 +4,7 @@ import { filterProperty } from "@/actions/property";
 import useZaminwaleStore from "@/store";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { CheckIcon, PlusIcon } from "lucide-react";
-import { useParams } from "next/navigation";
+import { useParams, useSearchParams } from "next/navigation";
 import { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
@@ -75,11 +75,13 @@ const FilterSchema = z.object({
 const SearchFilter = () => {
     const params = useParams();
     const dispatch = useZaminwaleStore((store) => store.dispatch);
+    const searchParams = useSearchParams();
+    const propertyType = searchParams.get("propertyType");
 
     const form = useForm({
         resolver: zodResolver(FilterSchema),
         defaultValues: {
-            propertyType: "",
+            propertyType: propertyType || "",
             propertyCategories: "",
             city: "",
             locality: SearchTrigger(params.locationId),
@@ -117,10 +119,13 @@ const SearchFilter = () => {
     };
 
     useEffect(() => {
-        if (params.locationId) {
+        if (params.locationId && propertyType) {
             const matchedLocality = SearchTrigger(params.locationId);
             if (matchedLocality) {
-                const initialFilter = { locality: matchedLocality };
+                const initialFilter = {
+                    locality: matchedLocality,
+                    propertyType: propertyType,
+                };
                 onSubmit(initialFilter);
             }
         }

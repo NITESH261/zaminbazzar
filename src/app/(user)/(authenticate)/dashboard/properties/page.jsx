@@ -1,17 +1,14 @@
 "use client";
 
 import { getUserProperty } from "@/actions/dashboard";
+import DeletePropertyBtn from "@/components/atoms/DeletePropertyBtn";
 import ImageScroll from "@/components/molecules/ImageScroll";
 import { Button } from "@/components/ui/button";
 import { formatCurrency, sliceParagraph } from "@/lib/utils";
-import { Trash2 } from "lucide-react";
-import { Eye } from "lucide-react";
-import { Edit } from "lucide-react";
-import { IndianRupee } from "lucide-react";
-import { Heart } from "lucide-react";
+import { Edit, Eye, Heart, IndianRupee } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 
 const page = () => {
     const [properties, setProperties] = useState([]);
@@ -123,8 +120,8 @@ const page = () => {
                                         </div>
                                         <div className="flex flex-col w-full pl-4">
                                             <span className="flex items-center text-sm sm:text-base md:text-lg lg:text-xl font-bold">
-                                                {card.plotArea?.value}{" "}
-                                                {card.plotArea?.unit}
+                                                {card.plotArea}{" "}
+                                                {card.plotAreaUnit}
                                             </span>
                                             <span className="flex items-center text-xs">
                                                 Plot Area
@@ -139,7 +136,7 @@ const page = () => {
                                             </span>
                                         </div>
                                     </div>
-                                    <p className="text-xs md:text-sm">
+                                    <p className="text-xs md:text-sm h-10">
                                         {sliceParagraph(card.uniqueFeatures)}
                                     </p>
                                     <div className="flex flex-wrap w-full overflow-x-auto scrollbar-hide">
@@ -181,8 +178,15 @@ const page = () => {
                                         variant="outline"
                                         className="rounded-full h-[unset] w-full md:w-fit text-xs border-[#581a95] text-[#581a95]"
                                     >
-                                        <Trash2 /> Delete
+                                        <Link
+                                            href={`/dashboard/edit/${card.propertyId}`}
+                                        >
+                                            <Edit /> Edit
+                                        </Link>
                                     </Button>
+                                    <DeletePropertyBtn
+                                        propertyId={card.propertyId}
+                                    />
                                 </div>
                             </div>
                         </div>

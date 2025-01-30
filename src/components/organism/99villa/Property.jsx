@@ -115,15 +115,9 @@ const Property = () => {
                                                                     card.priceTotal
                                                                 )}{" "}
                                                                 |{" "}
+                                                                {card.plotArea}{" "}
                                                                 {
-                                                                    card
-                                                                        .plotArea
-                                                                        ?.value
-                                                                }{" "}
-                                                                {
-                                                                    card
-                                                                        .plotArea
-                                                                        ?.unit
+                                                                    card.plotAreaUnit
                                                                 }
                                                             </div>
                                                             <p className="text-gray-600 gap-2 flex text-xs sm:text-sm">

@@ -41,12 +41,6 @@ const Page = () => {
 
             const body = {
                 ...formData,
-                plotArea: formData.plotArea
-                    ? {
-                          value: parseInt(formData.plotArea.split(" ")[0], 10),
-                          unit: formData.plotArea.split(" ")[1],
-                      }
-                    : null,
                 ...values,
             };
 
