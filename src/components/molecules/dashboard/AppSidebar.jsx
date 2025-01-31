@@ -10,7 +10,6 @@ import {
     SidebarMenuItem,
 } from "@/components/ui/sidebar";
 import Link from "next/link";
-import React from "react";
 
 const AppSidebar = () => {
     return (
@@ -49,7 +48,7 @@ const SidebarList = [
         url: "/dashboard",
     },
     {
-        title: "PropertIes",
+        title: "Properties",
         url: "/dashboard/properties",
     },
 ];

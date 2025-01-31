@@ -2,15 +2,14 @@ import { getOneProperty } from "@/actions/property";
 import BentoGridScroll from "@/components/molecules/BentoGridScroll";
 import CityImage from "@/components/molecules/CityImage";
 import EnquireForm from "@/components/molecules/EnquireForm";
-import About_accordion from "@/components/molecules/post-property/About_accordion";
 import SimilarProperty from "@/components/molecules/SimilarProperty";
 import Footer from "@/components/organism/Footer";
 import NearByLocations from "@/components/organism/NearByLocations";
 import SendEnquiry from "@/components/organism/SendEnquiry";
 import { Button } from "@/components/ui/button";
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import { formatCurrency } from "@/lib/utils";
 import { IndianRupee } from "lucide-react";
-import Image from "next/image";
 
 const page = async ({ params }) => {
     const PropertyId = (await params).propertyId;
@@ -143,15 +142,21 @@ const page = async ({ params }) => {
                                 </div>
                                 <hr />
                                 <div className="flex gap-4 w-full">
-                                    <Button className="rounded-3xl h-[unset] text-sm bg-[#581a95]">
-                                        Contact Owner
-                                    </Button>
-                                    <Button
-                                        variant="outline"
-                                        className="rounded-3xl h-[unset] text-sm border-[#581a95] text-[#581a95]"
-                                    >
-                                        Get Callback
-                                    </Button>
+                                    <Dialog>
+                                        <DialogTrigger asChild>
+                                            <Button className="rounded-3xl h-[unset] text-sm bg-[#581a95]">
+                                                Contact Owner
+                                            </Button>
+                                        </DialogTrigger>
+                                        <DialogContent className="max-w-sm">
+                                            <DialogHeader>
+                                                <DialogTitle>
+                                                    Fill details to contact
+                                                </DialogTitle>
+                                            </DialogHeader>
+                                            <EnquireForm propertyId={result.propertyId} uid={result.uid} />
+                                        </DialogContent>
+                                    </Dialog>
                                 </div>
                             </div>
                         </div>
@@ -250,7 +255,7 @@ const page = async ({ params }) => {
                                 Fill Form To Get More Details
                             </span>
                         </div>
-                        <EnquireForm />
+                        <EnquireForm propertyId={result.propertyId} uid={result.uid} />
                     </div>
                 </div>
             </div>

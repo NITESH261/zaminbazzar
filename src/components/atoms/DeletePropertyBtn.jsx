@@ -1,4 +1,7 @@
-import React from "react";
+import { deleteProperty } from "@/actions/property";
+import { Trash2 } from "lucide-react";
+import { useRouter } from "next/navigation";
+import { toast } from "sonner";
 import {
     AlertDialog,
     AlertDialogAction,
@@ -10,11 +13,7 @@ import {
     AlertDialogTitle,
     AlertDialogTrigger,
 } from "../ui/alert-dialog";
-import { deleteProperty } from "@/actions/property";
 import { Button } from "../ui/button";
-import { Trash2 } from "lucide-react";
-import { toast } from "sonner";
-import { useRouter } from "next/navigation";
 
 const DeletePropertyBtn = ({ propertyId }) => {
     const router = useRouter();
@@ -35,9 +34,9 @@ const DeletePropertyBtn = ({ propertyId }) => {
                 <AlertDialogTrigger asChild>
                     <Button
                         variant="outline"
-                        className="rounded-full h-[unset] w-full md:w-fit text-xs border-[#0000ff] text-[#0000ff]"
+                        className="rounded-full h-[unset] w-full md:w-fit text-xs border-[#581a95] text-[#581a95]"
                     >
-                        <Trash2 /> Delete
+                        <Trash2 /> <span className="hidden lg:flex">Delete</span>
                     </Button>
                 </AlertDialogTrigger>
                 <AlertDialogContent>
@@ -56,7 +55,7 @@ const DeletePropertyBtn = ({ propertyId }) => {
                         </AlertDialogCancel>
                         <AlertDialogAction
                             onClick={handleDelete}
-                            className="rounded-full h-[unset] bg-[#0000ff] w-full md:w-fit text-xs text-white"
+                            className="rounded-full h-[unset] bg-[#581a95] w-full md:w-fit text-xs text-white"
                         >
                             Continue
                         </AlertDialogAction>

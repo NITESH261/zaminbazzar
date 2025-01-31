@@ -6,6 +6,7 @@ import {
     uploadPropertyImage,
 } from "@/actions/property";
 import DragNDrop from "@/components/atoms/DragNDrop";
+import Loading from "@/components/atoms/Loading";
 import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
 import {
@@ -28,8 +29,8 @@ import {
 import { Textarea } from "@/components/ui/textarea";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useParams, useRouter } from "next/navigation";
-import React, { useEffect, useState } from "react";
-import { useForm, useWatch } from "react-hook-form";
+import { useEffect, useState } from "react";
+import { useForm } from "react-hook-form";
 import { toast } from "sonner";
 import { z } from "zod";
 
@@ -279,12 +280,11 @@ const Page = () => {
                                                     ({ value, label }) => (
                                                         <FormItem
                                                             key={value}
-                                                            className={`flex items-center space-y-0 ${
-                                                                field.value ===
+                                                            className={`flex items-center space-y-0 ${field.value ===
                                                                 value
-                                                                    ? "bg-blue-100 border-[#0000FF]"
-                                                                    : "bg-white border"
-                                                            } rounded-full px-4 py-2`}
+                                                                ? "bg-blue-100 border-[#581a95]"
+                                                                : "bg-white border"
+                                                                } rounded-full px-4 py-2`}
                                                         >
                                                             <FormControl className="sr-only">
                                                                 <RadioGroupItem
@@ -322,12 +322,11 @@ const Page = () => {
                                                     ({ value, label }) => (
                                                         <FormItem
                                                             key={value}
-                                                            className={`flex items-center space-y-0 ${
-                                                                field.value ===
+                                                            className={`flex items-center space-y-0 ${field.value ===
                                                                 value
-                                                                    ? "bg-blue-100 border-[#0000FF]"
-                                                                    : "bg-white border"
-                                                            } rounded-full px-4 py-2`}
+                                                                ? "bg-blue-100 border-[#581a95]"
+                                                                : "bg-white border"
+                                                                } rounded-full px-4 py-2`}
                                                         >
                                                             <FormControl className="sr-only">
                                                                 <RadioGroupItem
@@ -370,12 +369,11 @@ const Page = () => {
                                                         ({ value, label }) => (
                                                             <FormItem
                                                                 key={value}
-                                                                className={`flex items-center space-y-0 ${
-                                                                    field.value ===
+                                                                className={`flex items-center space-y-0 ${field.value ===
                                                                     value
-                                                                        ? "bg-blue-100 border-[#0000FF]"
-                                                                        : "bg-white border"
-                                                                } rounded-full px-4 py-2`}
+                                                                    ? "bg-blue-100 border-[#581a95]"
+                                                                    : "bg-white border"
+                                                                    } rounded-full px-4 py-2`}
                                                             >
                                                                 <FormControl className="sr-only">
                                                                     <RadioGroupItem
@@ -633,12 +631,11 @@ const Page = () => {
                                                         ({ value, label }) => (
                                                             <FormItem
                                                                 key={value}
-                                                                className={`flex items-center space-y-0 ${
-                                                                    field.value ===
+                                                                className={`flex items-center space-y-0 ${field.value ===
                                                                     value
-                                                                        ? "bg-blue-100 border-[#0000FF]"
-                                                                        : "bg-white border"
-                                                                } rounded-full px-4 py-2`}
+                                                                    ? "bg-blue-100 border-[#581a95]"
+                                                                    : "bg-white border"
+                                                                    } rounded-full px-4 py-2`}
                                                             >
                                                                 <FormControl className="sr-only">
                                                                     <RadioGroupItem
@@ -679,12 +676,11 @@ const Page = () => {
                                                         (data, i) => (
                                                             <FormItem
                                                                 key={i}
-                                                                className={`flex items-center space-y-0 ${
-                                                                    field.value ===
+                                                                className={`flex items-center space-y-0 ${field.value ===
                                                                     data?.value
-                                                                        ? "bg-blue-100 border-[#0000FF]"
-                                                                        : "bg-white border"
-                                                                } rounded-full px-4 py-2`}
+                                                                    ? "bg-blue-100 border-[#581a95]"
+                                                                    : "bg-white border"
+                                                                    } rounded-full px-4 py-2`}
                                                             >
                                                                 <FormControl className="sr-only">
                                                                     <RadioGroupItem
@@ -729,12 +725,11 @@ const Page = () => {
                                                         ({ value, label }) => (
                                                             <FormItem
                                                                 key={value}
-                                                                className={`flex items-center space-y-0 ${
-                                                                    field.value ===
+                                                                className={`flex items-center space-y-0 ${field.value ===
                                                                     value
-                                                                        ? "bg-blue-100 border-[#0000FF]"
-                                                                        : "bg-white border"
-                                                                } rounded-full px-4 py-2`}
+                                                                    ? "bg-blue-100 border-[#581a95]"
+                                                                    : "bg-white border"
+                                                                    } rounded-full px-4 py-2`}
                                                             >
                                                                 <FormControl className="sr-only">
                                                                     <RadioGroupItem
@@ -815,12 +810,11 @@ const Page = () => {
                                                     ({ value, label }) => (
                                                         <FormItem
                                                             key={value}
-                                                            className={`flex items-center space-y-0 ${
-                                                                field.value ===
+                                                            className={`flex items-center space-y-0 ${field.value ===
                                                                 value
-                                                                    ? "bg-blue-100 border-[#0000FF]"
-                                                                    : "bg-white border"
-                                                            } rounded-full px-4 py-2`}
+                                                                ? "bg-blue-100 border-[#581a95]"
+                                                                : "bg-white border"
+                                                                } rounded-full px-4 py-2`}
                                                         >
                                                             <FormControl className="sr-only">
                                                                 <RadioGroupItem
@@ -1094,31 +1088,30 @@ const Page = () => {
                                                                             ) => {
                                                                                 return checked
                                                                                     ? field.onChange(
-                                                                                          [
-                                                                                              ...field.value,
-                                                                                              item.value,
-                                                                                          ]
-                                                                                      )
+                                                                                        [
+                                                                                            ...field.value,
+                                                                                            item.value,
+                                                                                        ]
+                                                                                    )
                                                                                     : field.onChange(
-                                                                                          field.value?.filter(
-                                                                                              (
-                                                                                                  value
-                                                                                              ) =>
-                                                                                                  value !==
-                                                                                                  item.value
-                                                                                          )
-                                                                                      );
+                                                                                        field.value?.filter(
+                                                                                            (
+                                                                                                value
+                                                                                            ) =>
+                                                                                                value !==
+                                                                                                item.value
+                                                                                        )
+                                                                                    );
                                                                             }}
                                                                         />
                                                                     </FormControl>
                                                                     <FormLabel
-                                                                        className={`flex font-normal items-center space-y-0 ${
-                                                                            field.value?.includes(
-                                                                                item.value
-                                                                            )
-                                                                                ? "bg-blue-100 border-[#0000FF]"
-                                                                                : "bg-white border"
-                                                                        } rounded-full px-4 py-2`}
+                                                                        className={`flex font-normal items-center space-y-0 ${field.value?.includes(
+                                                                            item.value
+                                                                        )
+                                                                            ? "bg-blue-100 border-[#581a95]"
+                                                                            : "bg-white border"
+                                                                            } rounded-full px-4 py-2`}
                                                                     >
                                                                         {
                                                                             item.label
@@ -1161,31 +1154,30 @@ const Page = () => {
                                                                             ) => {
                                                                                 return checked
                                                                                     ? field.onChange(
-                                                                                          [
-                                                                                              ...field.value,
-                                                                                              item.value,
-                                                                                          ]
-                                                                                      )
+                                                                                        [
+                                                                                            ...field.value,
+                                                                                            item.value,
+                                                                                        ]
+                                                                                    )
                                                                                     : field.onChange(
-                                                                                          field.value?.filter(
-                                                                                              (
-                                                                                                  value
-                                                                                              ) =>
-                                                                                                  value !==
-                                                                                                  item.value
-                                                                                          )
-                                                                                      );
+                                                                                        field.value?.filter(
+                                                                                            (
+                                                                                                value
+                                                                                            ) =>
+                                                                                                value !==
+                                                                                                item.value
+                                                                                        )
+                                                                                    );
                                                                             }}
                                                                         />
                                                                     </FormControl>
                                                                     <FormLabel
-                                                                        className={`flex font-normal items-center space-y-0 ${
-                                                                            field.value?.includes(
-                                                                                item.value
-                                                                            )
-                                                                                ? "bg-blue-100 border-[#0000FF]"
-                                                                                : "bg-white border"
-                                                                        } rounded-full px-4 py-2`}
+                                                                        className={`flex font-normal items-center space-y-0 ${field.value?.includes(
+                                                                            item.value
+                                                                        )
+                                                                            ? "bg-blue-100 border-[#581a95]"
+                                                                            : "bg-white border"
+                                                                            } rounded-full px-4 py-2`}
                                                                     >
                                                                         {
                                                                             item.label
@@ -1258,12 +1250,11 @@ const Page = () => {
                                                     ({ value, label }) => (
                                                         <FormItem
                                                             key={value}
-                                                            className={`flex items-center space-y-0 ${
-                                                                field.value ===
+                                                            className={`flex items-center space-y-0 ${field.value ===
                                                                 value
-                                                                    ? "bg-blue-100 border-[#0000FF]"
-                                                                    : "bg-white border"
-                                                            } rounded-full px-4 py-2`}
+                                                                ? "bg-blue-100 border-[#581a95]"
+                                                                : "bg-white border"
+                                                                } rounded-full px-4 py-2`}
                                                         >
                                                             <FormControl className="sr-only">
                                                                 <RadioGroupItem
@@ -1310,31 +1301,30 @@ const Page = () => {
                                                                             ) => {
                                                                                 return checked
                                                                                     ? field.onChange(
-                                                                                          [
-                                                                                              ...field.value,
-                                                                                              item.value,
-                                                                                          ]
-                                                                                      )
+                                                                                        [
+                                                                                            ...field.value,
+                                                                                            item.value,
+                                                                                        ]
+                                                                                    )
                                                                                     : field.onChange(
-                                                                                          field.value?.filter(
-                                                                                              (
-                                                                                                  value
-                                                                                              ) =>
-                                                                                                  value !==
-                                                                                                  item.value
-                                                                                          )
-                                                                                      );
+                                                                                        field.value?.filter(
+                                                                                            (
+                                                                                                value
+                                                                                            ) =>
+                                                                                                value !==
+                                                                                                item.value
+                                                                                        )
+                                                                                    );
                                                                             }}
                                                                         />
                                                                     </FormControl>
                                                                     <FormLabel
-                                                                        className={`flex font-normal items-center space-y-0 ${
-                                                                            field.value?.includes(
-                                                                                item.value
-                                                                            )
-                                                                                ? "bg-blue-100 border-[#0000FF]"
-                                                                                : "bg-white border"
-                                                                        } rounded-full px-4 py-2`}
+                                                                        className={`flex font-normal items-center space-y-0 ${field.value?.includes(
+                                                                            item.value
+                                                                        )
+                                                                            ? "bg-blue-100 border-[#581a95]"
+                                                                            : "bg-white border"
+                                                                            } rounded-full px-4 py-2`}
                                                                     >
                                                                         {
                                                                             item.label
@@ -1354,11 +1344,10 @@ const Page = () => {
 
                             <Button
                                 type="submit"
-                                className="px-4 py-2 bg-[#0000FF] text-white rounded-lg"
-                                // disabled={loading}
+                                className="px-4 py-2 bg-[#581a95] text-white rounded-lg"
+                                disabled={loading}
                             >
-                                {/* {loading ? "Loading" : "Update"} */}
-                                Update Property
+                                {loading ? <Loading /> : "Update Property"}
                             </Button>
                         </form>
                     </Form>
