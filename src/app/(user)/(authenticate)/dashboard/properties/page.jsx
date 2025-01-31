@@ -5,7 +5,7 @@ import DeletePropertyBtn from "@/components/atoms/DeletePropertyBtn";
 import ImageScroll from "@/components/molecules/ImageScroll";
 import { Button } from "@/components/ui/button";
 import { formatCurrency, sliceParagraph } from "@/lib/utils";
-import { Edit, Eye, Heart, IndianRupee } from "lucide-react";
+import { Edit, Eye, IndianRupee, PhoneCall } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
@@ -86,13 +86,6 @@ const page = () => {
                                         className="!w-full !h-40 sm:!h-56 sm:!w-80 lg:!w-full !relative !rounded-lg"
                                     />
                                 </div>
-                                <Button
-                                    variant="ghost"
-                                    size="icon"
-                                    className="absolute right-2 top-2"
-                                >
-                                    <Heart className="!size-6 fill-neutral-200" />
-                                </Button>
                             </div>
                             <div className="flex flex-col gap-2 w-full sm:w-3/5 md:px-4 xl:col-span-3 xl:w-full">
                                 <div className="flex flex-col gap-2 w-full sm:flex-grow">
@@ -159,7 +152,7 @@ const page = () => {
                                         </div>
                                     </div>
                                 </div>
-                                <div className="flex w-full gap-2 sm:gap-4 md:justify-end sm:flex-grow-0 h-1/5">
+                                <div className="flex w-full gap-2 justify-end sm:flex-grow-0 h-1/5">
                                     <Button
                                         asChild
                                         className="rounded-full h-[unset] w-full md:w-fit text-xs bg-[#581a95]"
@@ -168,7 +161,7 @@ const page = () => {
                                             href={`/properties/${card.propertyId}`}
                                         >
                                             <Eye />
-                                            View
+                                            <span className="hidden lg:block">View</span>
                                         </Link>
                                     </Button>
                                     <Button
@@ -176,10 +169,10 @@ const page = () => {
                                         className="rounded-full h-[unset] w-full md:w-fit text-xs bg-[#581a95]"
                                     >
                                         <Link
-                                            href={`/properties/${card.propertyId}`}
+                                            href={`/dashboard/properties/${card.propertyId}`}
                                         >
-                                            <Eye />
-                                            View
+                                            <PhoneCall />
+                                            <span className="hidden lg:block">Enquires</span>
                                         </Link>
                                     </Button>
                                     <Button
@@ -190,7 +183,8 @@ const page = () => {
                                         <Link
                                             href={`/dashboard/edit/${card.propertyId}`}
                                         >
-                                            <Edit /> Edit
+                                            <Edit />
+                                            <span className="hidden lg:block">Edit</span>
                                         </Link>
                                     </Button>
                                     <DeletePropertyBtn

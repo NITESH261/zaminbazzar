@@ -1,8 +1,6 @@
 import Image from "next/image";
 
 const CityImage = ({ city }) => {
-    console.log(city);
-
     const cityImages = {
         Panvel: "/assets/ads/panvel-ads.jpeg",
         Thane: "/assets/ads/thane-ads.jpeg",
@@ -21,20 +19,17 @@ const CityImage = ({ city }) => {
     return (
         <div className="max-w-7xl w-full p-4 mx-auto mb-4 md:mb-6">
             <div className="w-full border border-neutral-200 shadow h-40 relative rounded-2xl">
-                {/* Desktop Image (hidden on mobile) */}
                 <Image
                     src={imageUrl}
                     alt={`${city} banner`}
                     fill
-                    className="object-cover rounded-2xl object-center hidden md:block"
+                    className="object-cover rounded-2xl object-center hidden md:flex"
                 />
-
-                {/* Mobile Image (hidden on larger screens) */}
                 <Image
                     src={imageUrlMobile}
                     alt={`${city} mobile banner`}
                     fill
-                    className="md:object-cover sm:object-contain rounded-2xl object-center block md:hidden"
+                    className="md:object-cover sm:object-contain rounded-2xl object-center flex md:hidden"
                 />
             </div>
         </div>
