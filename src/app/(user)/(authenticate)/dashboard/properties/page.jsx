@@ -171,10 +171,19 @@ const page = () => {
                                             View
                                         </Link>
                                     </Button>
-                                    <Button className="rounded-full h-[unset] w-full md:w-fit text-xs bg-[#581a95]">
-                                        <Edit /> Edit
+                                    <Button
+                                        asChild
+                                        className="rounded-full h-[unset] w-full md:w-fit text-xs bg-[#581a95]"
+                                    >
+                                        <Link
+                                            href={`/properties/${card.propertyId}`}
+                                        >
+                                            <Eye />
+                                            View
+                                        </Link>
                                     </Button>
                                     <Button
+                                        asChild
                                         variant="outline"
                                         className="rounded-full h-[unset] w-full md:w-fit text-xs border-[#581a95] text-[#581a95]"
                                     >

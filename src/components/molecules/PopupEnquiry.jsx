@@ -1,12 +1,13 @@
 "use client";
 
+import { createWebsiteEnquiry } from "@/actions/property";
 import useZaminwaleStore from "@/store";
 import { zodResolver } from "@hookform/resolvers/zod";
-import Cookies from "js-cookie";
-import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
+import { toast } from "sonner";
 import { z } from "zod";
+import Loading from "../atoms/Loading";
 import { Button } from "../ui/button";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "../ui/dialog";
 import {
@@ -18,7 +19,6 @@ import {
     FormMessage,
 } from "../ui/form";
 import { Input } from "../ui/input";
-import { Textarea } from "../ui/textarea";
 import {
     Select,
     SelectContent,
@@ -26,6 +26,7 @@ import {
     SelectTrigger,
     SelectValue,
 } from "../ui/select";
+import { Textarea } from "../ui/textarea";
 
 const EnquireFormSchema = z.object({
     name: z.string().min(2, {
@@ -40,7 +41,10 @@ const EnquireFormSchema = z.object({
 });
 
 const PopupEnquiry = () => {
-    const [open, setOpen] = useState(true);
+    const [open, setOpen] = useState(false);
+    const [loading, setLoading] = useState(false);
+    const popupEnquiry = useZaminwaleStore(store => store.popupEnquiry)
+    const dispatch = useZaminwaleStore(store => store.dispatch)
 
     const form = useForm({
         resolver: zodResolver(EnquireFormSchema),
@@ -48,18 +52,33 @@ const PopupEnquiry = () => {
     });
 
     const onSubmit = async (values) => {
-        console.log(values);
+        setLoading(true)
+        try {
+            const resp = await createWebsiteEnquiry(values)
+            setLoading(false)
+            form.reset()
+            toast.success(resp.message);
+            dispatch({
+                type: "SET_STATE",
+                payload: { popupEnquiry: false },
+            });
+        } catch (error) {
+            setLoading(false);
+            toast.error(error.message);
+        }
         setOpen(false);
     };
 
     useEffect(() => {
-        let onloadTimer;
-        onloadTimer = setTimeout(() => {
-            setOpen(true);
-        }, 1000 * 15);
-        return () => clearTimeout(onloadTimer);
+        if (popupEnquiry === true) {
+            let onloadTimer;
+            onloadTimer = setTimeout(() => {
+                setOpen(true);
+            }, 1000 * 15);
+            return () => clearTimeout(onloadTimer);
+        } else null
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, []);
+    }, [popupEnquiry]);
 
     return (
         <>
@@ -195,7 +214,7 @@ const PopupEnquiry = () => {
                                     />
                                 </div>
                                 <Button className="rounded-3xl w-full bg-[#581a95]">
-                                    Book Enquiry
+                                    {loading ? <Loading /> : "Submit"}
                                 </Button>
                             </form>
                         </Form>

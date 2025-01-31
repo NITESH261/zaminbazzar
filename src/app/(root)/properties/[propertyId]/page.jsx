@@ -2,7 +2,6 @@ import { getOneProperty } from "@/actions/property";
 import BentoGridScroll from "@/components/molecules/BentoGridScroll";
 import CityImage from "@/components/molecules/CityImage";
 import EnquireForm from "@/components/molecules/EnquireForm";
-import About_accordion from "@/components/molecules/post-property/About_accordion";
 import SimilarProperty from "@/components/molecules/SimilarProperty";
 import Footer from "@/components/organism/Footer";
 import NearByLocations from "@/components/organism/NearByLocations";
@@ -10,7 +9,6 @@ import SendEnquiry from "@/components/organism/SendEnquiry";
 import { Button } from "@/components/ui/button";
 import { formatCurrency } from "@/lib/utils";
 import { IndianRupee } from "lucide-react";
-import Image from "next/image";
 
 const page = async ({ params }) => {
     const PropertyId = (await params).propertyId;
@@ -250,7 +248,7 @@ const page = async ({ params }) => {
                                 Fill Form To Get More Details
                             </span>
                         </div>
-                        <EnquireForm />
+                        <EnquireForm propertyId={result.propertyId} uid={result.uid} />
                     </div>
                 </div>
             </div>
