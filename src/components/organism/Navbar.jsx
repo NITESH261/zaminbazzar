@@ -274,6 +274,22 @@ const Navbar = () => {
                                             )
                                         )}
                                     </ul>
+                                    <div className="flex mt-2 items-start flex-col w-full">
+                                        <Button
+                                            asChild
+                                            className="bg-white  text-black hover:text-white  md:flex rounded-full"
+                                        >
+                                            <Link
+                                                href={"/post-property/create-property"}
+                                                className="py-1 h-[unset] gap-2"
+                                            >
+                                                <span>Post Property</span>
+                                                <span className="text-[10px] bg-green-500 text-white font-semibold px-2 py-0 rounded-sm">
+                                                    FREE
+                                                </span>
+                                            </Link>
+                                        </Button>
+                                    </div>
                                 </div>
                             </SheetContent>
                         </Sheet>

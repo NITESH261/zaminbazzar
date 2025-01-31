@@ -7,7 +7,7 @@ const nextConfig = {
         remotePatterns: [
             {
                 protocol: "https",
-                hostname: "loremflickr.com",
+                hostname: "api.dicebear.com",
             },
             {
                 protocol: "https",

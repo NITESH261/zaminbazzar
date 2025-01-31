@@ -1,11 +1,15 @@
 "use client"
 
+import { createPropertyEnquiry } from "@/actions/property"
 import { cn } from "@/lib/utils"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { format } from "date-fns"
 import { CalendarIcon } from "lucide-react"
+import { useState } from "react"
 import { useForm } from "react-hook-form"
+import { toast } from "sonner"
 import { z } from "zod"
+import Loading from "../atoms/Loading"
 import { Button } from "../ui/button"
 import { Calendar } from "../ui/calendar"
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "../ui/form"
@@ -13,20 +17,40 @@ import { Input } from "../ui/input"
 import { Popover, PopoverContent, PopoverTrigger } from "../ui/popover"
 
 const formSchema = z.object({
-    username: z.string().min(2, {
+    name: z.string().min(2, {
         message: "Username must be at least 2 characters.",
+    }),
+    mobileNo: z.string().min(10, {
+        message: "Mobile No must be at least 10 Digit.",
+    }),
+    email: z.string().email(),
+    visitBy: z.coerce.date({
+        required_error: "Date is required.",
     }),
 })
 
-const EnquireForm = () => {
+const EnquireForm = ({ propertyId, uid }) => {
+
+    const [loading, setLoading] = useState(false)
+
     const form = useForm({
         resolver: zodResolver(formSchema),
         defaultValues: {},
     })
 
-    function onSubmit(values) {
-        console.log(values)
-    }
+    const onSubmit = async (values) => {
+        setLoading(true)
+        try {
+            let body = { ...values, uid }
+            const resp = await createPropertyEnquiry({ body, propertyId })
+            setLoading(false)
+            form.reset()
+            toast.success(resp.message);
+        } catch (error) {
+            setLoading(false);
+            toast.error(error.message);
+        }
+    };
 
     return (
         <div className="w-full">
@@ -34,7 +58,7 @@ const EnquireForm = () => {
                 <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-3">
                     <FormField
                         control={form.control}
-                        name="fullname"
+                        name="name"
                         render={({ field }) => (
                             <FormItem>
                                 <FormLabel>Fullname</FormLabel>
@@ -42,6 +66,9 @@ const EnquireForm = () => {
                                     <Input
                                         placeholder="Enter your fullname"
                                         {...field}
+                                        value={
+                                            field.value || ""
+                                        }
                                     />
                                 </FormControl>
                                 <FormMessage />
@@ -58,6 +85,9 @@ const EnquireForm = () => {
                                     <Input
                                         placeholder="Enter your Email"
                                         {...field}
+                                        value={
+                                            field.value || ""
+                                        }
                                     />
                                 </FormControl>
                                 <FormMessage />
@@ -66,7 +96,7 @@ const EnquireForm = () => {
                     />
                     <FormField
                         control={form.control}
-                        name="mobile"
+                        name="mobileNo"
                         render={({ field }) => (
                             <FormItem>
                                 <FormLabel>Mobile</FormLabel>
@@ -74,6 +104,9 @@ const EnquireForm = () => {
                                     <Input
                                         placeholder="Enter your mobile no."
                                         {...field}
+                                        value={
+                                            field.value || ""
+                                        }
                                     />
                                 </FormControl>
                                 <FormMessage />
@@ -82,7 +115,7 @@ const EnquireForm = () => {
                     />
                     <FormField
                         control={form.control}
-                        name="calender"
+                        name="visitBy"
                         render={({ field }) => (
                             <FormItem>
                                 <FormLabel>
@@ -106,7 +139,7 @@ const EnquireForm = () => {
                                                     )
                                                 ) : (
                                                     <span>
-                                                        Select Schedule Visit Date
+                                                        Select Date
                                                     </span>
                                                 )}
                                                 <CalendarIcon className="ml-auto h-4 w-4 opacity-50" />
@@ -129,7 +162,9 @@ const EnquireForm = () => {
                             </FormItem>
                         )}
                     />
-                    <Button className="rounded-3xl w-full bg-[#581a95]">Book Site Visit</Button>
+                    <Button className="rounded-3xl w-full bg-[#581a95]">
+                        {loading ? <Loading /> : "Submit"}
+                    </Button>
                 </form>
             </Form>
         </div>

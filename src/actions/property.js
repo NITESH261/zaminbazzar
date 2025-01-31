@@ -81,3 +81,28 @@ export const uploadPropertyImage = async ({ body }) => {
     return resp
 }
 
+export const createWebsiteEnquiry = async (body) => {
+    let resp = await fetchWithoutToken("/enquiry/website/add", {
+        method: "POST",
+        body: JSON.stringify(body),
+    })
+    resp = resp.results.data
+    return resp
+}
+
+export const createPropertyEnquiry = async ({ body, propertyId }) => {
+    let resp = await fetchWithoutToken(`/enquiry/property/add/${propertyId}`, {
+        method: "POST",
+        body: JSON.stringify(body),
+    })
+    resp = resp.results.data
+    return resp
+}
+
+export const getPropertyEnquiry = async (propertyId) => {
+    let resp = await fetchWithToken(`/enquiry/property/getAll/${propertyId}`, {
+        method: "GET"
+    })
+    resp = resp.results.data
+    return resp
+}

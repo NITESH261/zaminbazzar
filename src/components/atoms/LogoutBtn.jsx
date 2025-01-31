@@ -35,7 +35,7 @@ const LogoutBtn = () => {
                 <DropdownMenuTrigger asChild>
                     <Button
                         variant="outline"
-                        className="hidden md:flex h-[unset] rounded-full"
+                        className="md:flex h-[unset] rounded-full"
                     >
                         <User className="!size-4" />{" "}
                         {isAuthenticated ? getFirstName(user?.name) : "Login"}

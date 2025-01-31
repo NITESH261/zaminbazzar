@@ -18,7 +18,7 @@ const DashboardLayout = ({ children }) => {
                             variant="outline"
                         />
                         <div className="flex w-full gap-1 py-2 flex-col">
-                            <h2 className="text-2xl font-bold text-[#0000FF]">
+                            <h2 className="text-2xl font-bold text-[#581a95]">
                                 Hey {user?.name}!
                             </h2>
                             <p className="w-full text-xs md:text-sm lg:text-base">
