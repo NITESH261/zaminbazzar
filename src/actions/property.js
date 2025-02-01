@@ -106,3 +106,10 @@ export const getPropertyEnquiry = async (propertyId) => {
     resp = resp.results.data
     return resp
 }
+
+export const downloadPropertyEnquiry = async (propertyId) => {
+    let resp = await fetchWithToken(`/enquiry/property/export/${propertyId}`, {
+        method: "GET",
+    })
+    return resp
+}
