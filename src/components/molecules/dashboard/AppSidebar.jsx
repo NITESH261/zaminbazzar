@@ -1,3 +1,5 @@
+"use client";
+
 import {
     Sidebar,
     SidebarContent,
@@ -9,9 +11,12 @@ import {
     SidebarMenuButton,
     SidebarMenuItem,
 } from "@/components/ui/sidebar";
+import useZaminwaleStore from "@/store";
 import Link from "next/link";
 
 const AppSidebar = () => {
+    const user = useZaminwaleStore((store) => store.user);
+
     return (
         <Sidebar className="space-y-6 px-4">
             <SidebarHeader className="mt-16 px-4"></SidebarHeader>
@@ -31,6 +36,18 @@ const AppSidebar = () => {
                                     </SidebarMenuButton>
                                 </SidebarMenuItem>
                             ))}
+                            {user?.isAdmin === true ? (
+                                <SidebarMenuItem>
+                                    <SidebarMenuButton asChild>
+                                        <Link
+                                            href="/dashboard/enquiry"
+                                            className="py-5 px-4"
+                                        >
+                                            <span>Website Enquiry</span>
+                                        </Link>
+                                    </SidebarMenuButton>
+                                </SidebarMenuItem>
+                            ) : null}
                         </SidebarMenu>
                     </SidebarGroupContent>
                 </SidebarGroup>

@@ -18,8 +18,6 @@ const page = () => {
 
     const handleDownloadEnquiry = () => {
         downloadPropertyEnquiry(enquiryId).then((resp) => {
-            console.log(resp);
-
             const blob = new Blob([resp], { type: "text/csv" });
             const url = window.URL.createObjectURL(blob);
             const a = document.createElement("a");
@@ -43,7 +41,7 @@ const page = () => {
     }, [enquiryId]);
 
     return (
-        <>
+        <div className="flex w-full flex-col flex-1 overflow-y-auto scrollbar">
             {loading ? (
                 <div className="flex items-center h-fit justify-center w-full">
                     <Loading />
@@ -109,7 +107,7 @@ const page = () => {
                     </div>
                 </div>
             )}
-        </>
+        </div>
     );
 };
 
