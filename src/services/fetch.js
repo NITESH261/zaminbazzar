@@ -100,26 +100,35 @@ const customFetch = async (
 
 		logApiDetails(baseUrl, endpoint, options, res);
 
-		let jsonResp;
-		try {
-			jsonResp = await res.json();
-			console.log("API response JSON:");
-		} catch (parseError) {
-			console.error("Failed to parse API response:");
-			throw new Error("Failed to parse API response");
+		const contentType = res.headers.get("content-type");
+		let responseContent;
+
+		if (contentType && contentType.includes("application/json")) {
+			responseContent = await res.json();
+		} else {
+			responseContent = await res.text();
 		}
+
+		// let jsonResp;
+		// try {
+		// 	jsonResp = await res.json();
+		// 	console.log("API response JSON:");
+		// } catch (parseError) {
+		// 	console.error("Failed to parse API response:");
+		// 	throw new Error("Failed to parse API response");
+		// }
 
 		if (!res.ok) {
 			if (res.status === 401) {
 				handleTokenRefreshFailure();
 				throw new Error("Token expired. Please reauthenticate.");
 			}
-			const errorMessage = jsonResp?.results?.data?.error || "API error occurred";
+			const errorMessage = responseContent?.results?.data?.error || "API error occurred";
 			console.error(`API Error: ${errorMessage}`);
 			throw new Error(errorMessage);
 		}
 
-		return jsonResp;
+		return responseContent;
 	} catch (error) {
 		console.error(`Error in customFetch: ${error.message}`);
 		throw error;
