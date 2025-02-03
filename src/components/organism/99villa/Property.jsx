@@ -13,6 +13,7 @@ import {
     CarouselPrevious,
 } from "@/components/ui/carousel";
 import { formatCurrency } from "@/lib/utils";
+import { format } from "date-fns";
 import { IndianRupeeIcon } from "lucide-react";
 import Link from "next/link";
 import { useEffect, useState } from "react";
@@ -128,6 +129,12 @@ const Property = () => {
                                                         </div>
                                                         <span className="hidden md:flex">
                                                             Ready Move
+                                                            <span className="sr-only">
+                                                                {format(
+                                                                    card.createdAt,
+                                                                    "Pp"
+                                                                )}
+                                                            </span>
                                                         </span>
                                                         <div className="flex w-full md:absolute md:px-4 pb-1 sm:pb-3 md:left-0 md:-bottom-40 md:group-hover:bottom-0 md:transition-all">
                                                             <Button

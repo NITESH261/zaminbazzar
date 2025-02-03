@@ -14,6 +14,7 @@ import { formatCurrency } from "@/lib/utils";
 import { Button } from "../ui/button";
 import Link from "next/link";
 import Autoplay from "embla-carousel-autoplay";
+import { format } from "date-fns";
 
 const ImageCarouselScroll = ({ cards, autoScroll }) => {
     const [hoveredIndex, setHoveredIndex] = useState(null);
@@ -32,10 +33,10 @@ const ImageCarouselScroll = ({ cards, autoScroll }) => {
                 plugins={
                     autoScroll
                         ? [
-                            Autoplay({
-                                delay: 3000,
-                            }),
-                        ]
+                              Autoplay({
+                                  delay: 3000,
+                              }),
+                          ]
                         : ""
                 }
                 opts={{
@@ -76,6 +77,9 @@ const ImageCarouselScroll = ({ cards, autoScroll }) => {
                                     </div>
                                     <span className="hidden md:flex">
                                         Ready Move
+                                        <span className="sr-only">
+                                            {format(card.createdAt, "Pp")}
+                                        </span>
                                     </span>
                                     <div className="flex w-full md:absolute md:px-4 pb-1 sm:pb-3 md:left-0 md:-bottom-40 md:group-hover:bottom-0 md:transition-all">
                                         <Button
