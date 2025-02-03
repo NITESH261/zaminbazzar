@@ -9,8 +9,15 @@ import {
     CarouselNext,
     CarouselPrevious,
 } from "../ui/carousel";
-import { formatCurrency } from "@/lib/utils";
+import { cn, formatCurrency } from "@/lib/utils";
 import { IndianRupee } from "lucide-react";
+import {
+    Dialog,
+    DialogContent,
+    DialogHeader,
+    DialogTitle,
+    DialogTrigger,
+} from "../ui/dialog";
 
 const BentoGridScroll = ({ cards }) => {
     return (
@@ -72,30 +79,15 @@ const BentoGridScroll = ({ cards }) => {
                     </div>
                 </div>
                 <div className="hidden md:flex lg:flex-col w-full lg:w-1/4">
-                    <div className="flex relative aspect-video border border-white rounded-bl-lg lg:rounded-bl-none lg:rounded-tr-lg w-1/3 lg:w-full">
-                        <Image
-                            src={cards.propertyPhotos[1]}
-                            alt="house"
-                            fill
-                            className="object-cover rounded-bl-lg lg:rounded-bl-none lg:rounded-tr-lg"
-                        />
-                    </div>
-                    <div className="flex relative aspect-video border border-white w-1/3 lg:w-full">
-                        <Image
-                            src={cards.propertyPhotos[2]}
-                            alt="house"
-                            fill
-                            className="object-cover"
-                        />
-                    </div>
-                    <div className="flex relative aspect-video border border-white rounded-br-lg w-1/3 lg:w-full">
-                        <Image
-                            src={cards.propertyPhotos[3]}
-                            alt="house"
-                            fill
-                            className="object-cover rounded-br-lg"
-                        />
-                    </div>
+                    <ImagePopup
+                        image={cards.propertyPhotos[1]}
+                        className="rounded-bl-lg lg:rounded-bl-none lg:rounded-tr-lg"
+                    />
+                    <ImagePopup image={cards.propertyPhotos[2]} className="" />
+                    <ImagePopup
+                        image={cards.propertyPhotos[3]}
+                        className="rounded-br-lg"
+                    />
                 </div>
             </div>
         </>
@@ -103,3 +95,38 @@ const BentoGridScroll = ({ cards }) => {
 };
 
 export default BentoGridScroll;
+
+const ImagePopup = ({ image, className }) => {
+    return (
+        <>
+            <Dialog>
+                <DialogTrigger
+                    className={cn(
+                        "flex relative aspect-video border border-white w-1/3 lg:w-full",
+                        className
+                    )}
+                >
+                    <Image
+                        src={image}
+                        alt="house"
+                        fill
+                        className={cn("object-cover", className)}
+                    />
+                </DialogTrigger>
+                <DialogContent className="max-w-4xl p-0 rounded-lg">
+                    <DialogHeader className="sr-only">
+                        <DialogTitle></DialogTitle>
+                    </DialogHeader>
+                    <div className="flex w-full aspect-video relative">
+                        <Image
+                            src={image}
+                            alt="property"
+                            fill
+                            className="object-cover rounded-lg"
+                        />
+                    </div>
+                </DialogContent>
+            </Dialog>
+        </>
+    );
+};

@@ -107,8 +107,23 @@ export const getPropertyEnquiry = async (propertyId) => {
     return resp
 }
 
+export const getPropertyVisits = async (propertyId) => {
+    let resp = await fetchWithToken(`/enquiry/property/getAll/visit/${propertyId}`, {
+        method: "GET"
+    })
+    resp = resp.results.data
+    return resp
+}
+
 export const downloadPropertyEnquiry = async (propertyId) => {
     let resp = await fetchWithToken(`/enquiry/property/export/${propertyId}`, {
+        method: "GET",
+    })
+    return resp
+}
+
+export const downloadPropertyVisit = async (propertyId) => {
+    let resp = await fetchWithToken(`/enquiry/property/export/visit/${propertyId}`, {
         method: "GET",
     })
     return resp
@@ -119,5 +134,12 @@ export const getWebsiteEnquiry = async () => {
         method: "GET"
     })
     resp = resp.results.data
+    return resp
+}
+
+export const downloadWebsiteEnquiry = async () => {
+    let resp = await fetchWithToken(`/enquiry/website/export`, {
+        method: "GET",
+    })
     return resp
 }

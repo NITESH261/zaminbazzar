@@ -5,6 +5,7 @@ import DeletePropertyBtn from "@/components/atoms/DeletePropertyBtn";
 import ImageScroll from "@/components/molecules/ImageScroll";
 import { Button } from "@/components/ui/button";
 import { formatCurrency, sliceParagraph } from "@/lib/utils";
+import { MapIcon } from "lucide-react";
 import { Edit, Eye, IndianRupee, PhoneCall } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
@@ -56,7 +57,7 @@ const page = () => {
     }, [page]);
 
     return (
-        <div className="flex w-full rounded-lg flex-1 overflow-x-hidden overflow-y-auto scrollbar md:p-4">
+        <div className="flex w-full rounded-lg flex-1 overflow-x-hidden overflow-y-auto scrollbar">
             <div className="grid grid-cols-1 gap-4 w-full h-fit">
                 {properties.length === 0 ? (
                     <div className="flex items-center justify-center w-full flex-1">
@@ -89,7 +90,7 @@ const page = () => {
                             </div>
                             <div className="flex flex-col gap-2 w-full sm:w-3/5 md:px-4 xl:col-span-3 xl:w-full">
                                 <div className="flex flex-col gap-2 w-full sm:flex-grow">
-                                    <div className="flex flex-col w-full space-y-0.5">
+                                    <div className="flex flex-col w-full space-y-0.5 relative">
                                         <span className="text-base font-bold">
                                             {card.locality}
                                         </span>
@@ -97,6 +98,16 @@ const page = () => {
                                             {card.propertyType} Land /{" "}
                                             {card.city}
                                         </span>
+                                        <Button
+                                            asChild
+                                            className="absolute right-0 top-0 rounded-full bg-[#581a95] px-3"
+                                        >
+                                            <Link
+                                                href={`/properties/${card.propertyId}`}
+                                            >
+                                                <Eye className="size-4" />
+                                            </Link>
+                                        </Button>
                                     </div>
                                     <div className="grid divide-x md:divide-x-2 grid-cols-3 lg:grid-cols-3">
                                         <div className="flex flex-col w-full">
@@ -158,10 +169,12 @@ const page = () => {
                                         className="rounded-full h-[unset] w-full md:w-fit text-xs bg-[#581a95]"
                                     >
                                         <Link
-                                            href={`/properties/${card.propertyId}`}
+                                            href={`/dashboard/properties/visits/${card.propertyId}`}
                                         >
-                                            <Eye />
-                                            <span className="hidden lg:block">View</span>
+                                            <MapIcon />
+                                            <span className="hidden lg:block">
+                                                Visits
+                                            </span>
                                         </Link>
                                     </Button>
                                     <Button
@@ -169,10 +182,12 @@ const page = () => {
                                         className="rounded-full h-[unset] w-full md:w-fit text-xs bg-[#581a95]"
                                     >
                                         <Link
-                                            href={`/dashboard/properties/${card.propertyId}`}
+                                            href={`/dashboard/properties/enquiry/${card.propertyId}`}
                                         >
                                             <PhoneCall />
-                                            <span className="hidden lg:block">Enquires</span>
+                                            <span className="hidden lg:block">
+                                                Enquires
+                                            </span>
                                         </Link>
                                     </Button>
                                     <Button
@@ -184,7 +199,9 @@ const page = () => {
                                             href={`/dashboard/edit/${card.propertyId}`}
                                         >
                                             <Edit />
-                                            <span className="hidden lg:block">Edit</span>
+                                            <span className="hidden lg:block">
+                                                Edit
+                                            </span>
                                         </Link>
                                     </Button>
                                     <DeletePropertyBtn

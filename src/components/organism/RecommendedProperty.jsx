@@ -16,6 +16,7 @@ import { IndianRupeeIcon } from "lucide-react";
 import { getAllProperty } from "@/actions/property";
 import SkeletonCard from "../atoms/SkeletonCard";
 import SectionHeading from "../atoms/SectionHeading";
+import { format } from "date-fns";
 
 const Property = () => {
     const [property, setProperty] = useState([]);
@@ -110,6 +111,12 @@ const Property = () => {
                                                     </div>
                                                     <span className="hidden md:flex">
                                                         Ready Move
+                                                        <span className="sr-only">
+                                                            {format(
+                                                                card.createdAt,
+                                                                "Pp"
+                                                            )}
+                                                        </span>
                                                     </span>
                                                     <div className="flex w-full md:absolute md:px-4 pb-1 sm:pb-3 md:left-0 md:-bottom-40 md:group-hover:bottom-0 md:transition-all">
                                                         <Button
