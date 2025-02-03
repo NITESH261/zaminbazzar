@@ -161,7 +161,9 @@ const page = () => {
                                             href={`/properties/${card.propertyId}`}
                                         >
                                             <Eye />
-                                            <span className="hidden lg:block">View</span>
+                                            <span className="hidden lg:block">
+                                                View
+                                            </span>
                                         </Link>
                                     </Button>
                                     <Button
@@ -169,10 +171,12 @@ const page = () => {
                                         className="rounded-full h-[unset] w-full md:w-fit text-xs bg-[#581a95]"
                                     >
                                         <Link
-                                            href={`/dashboard/properties/${card.propertyId}`}
+                                            href={`/dashboard/properties/enquiry/${card.propertyId}`}
                                         >
                                             <PhoneCall />
-                                            <span className="hidden lg:block">Enquires</span>
+                                            <span className="hidden lg:block">
+                                                Enquires
+                                            </span>
                                         </Link>
                                     </Button>
                                     <Button
@@ -184,7 +188,9 @@ const page = () => {
                                             href={`/dashboard/edit/${card.propertyId}`}
                                         >
                                             <Edit />
-                                            <span className="hidden lg:block">Edit</span>
+                                            <span className="hidden lg:block">
+                                                Edit
+                                            </span>
                                         </Link>
                                     </Button>
                                     <DeletePropertyBtn

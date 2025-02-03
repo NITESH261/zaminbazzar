@@ -14,10 +14,10 @@ import { useEffect, useState } from "react";
 const page = () => {
     const [loading, setLoading] = useState(false);
     const [enquires, setEnquires] = useState();
-    const { enquiryId } = useParams();
+    const { propertyId } = useParams();
 
     const handleDownloadEnquiry = () => {
-        downloadPropertyEnquiry(enquiryId).then((resp) => {
+        downloadPropertyEnquiry(propertyId).then((resp) => {
             const blob = new Blob([resp], { type: "text/csv" });
             const url = window.URL.createObjectURL(blob);
             const a = document.createElement("a");
@@ -33,12 +33,12 @@ const page = () => {
     useEffect(() => {
         setLoading(true);
         const fetchEnquiry = async () => {
-            const { result = [] } = await getPropertyEnquiry(enquiryId);
+            const { result = [] } = await getPropertyEnquiry(propertyId);
             setEnquires(result);
             setLoading(false);
         };
         fetchEnquiry();
-    }, [enquiryId]);
+    }, [propertyId]);
 
     return (
         <div className="flex w-full flex-col flex-1 overflow-y-auto scrollbar">
