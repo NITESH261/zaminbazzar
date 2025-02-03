@@ -121,3 +121,10 @@ export const getWebsiteEnquiry = async () => {
     resp = resp.results.data
     return resp
 }
+
+export const downloadWebsiteEnquiry = async () => {
+    let resp = await fetchWithToken(`/enquiry/website/export`, {
+        method: "GET",
+    })
+    return resp
+}
