@@ -2,6 +2,7 @@ import { getOneProperty } from "@/actions/property";
 import BentoGridScroll from "@/components/molecules/BentoGridScroll";
 import CityImage from "@/components/molecules/CityImage";
 import EnquireForm from "@/components/molecules/EnquireForm";
+import PropertyVisitForm from "@/components/molecules/PropertyVisitForm";
 import SimilarProperty from "@/components/molecules/SimilarProperty";
 import Footer from "@/components/organism/Footer";
 import NearByLocations from "@/components/organism/NearByLocations";
@@ -261,10 +262,10 @@ const page = async ({ params }) => {
                     <div className="flex flex-col w-full gap-4 bg-white border border-gray-200 rounded-lg shadow h-fit px-4 py-6">
                         <div className="flex w-full justify-center">
                             <span className="font-semibold text-lg">
-                                Fill Form To Get More Details
+                                Schedule Site Visit Date
                             </span>
                         </div>
-                        <EnquireForm
+                        <PropertyVisitForm
                             propertyId={result.propertyId}
                             uid={result.uid}
                         />
@@ -274,7 +275,11 @@ const page = async ({ params }) => {
 
             <CityImage city={result.locality} />
 
-            <SendEnquiry cards={result.propertyPhotos} />
+            <SendEnquiry
+                propertyId={result.propertyId}
+                uid={result.uid}
+                cards={result.propertyPhotos}
+            />
 
             <SimilarProperty />
 
