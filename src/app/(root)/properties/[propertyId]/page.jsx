@@ -7,7 +7,13 @@ import Footer from "@/components/organism/Footer";
 import NearByLocations from "@/components/organism/NearByLocations";
 import SendEnquiry from "@/components/organism/SendEnquiry";
 import { Button } from "@/components/ui/button";
-import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
+import {
+    Dialog,
+    DialogContent,
+    DialogHeader,
+    DialogTitle,
+    DialogTrigger,
+} from "@/components/ui/dialog";
 import { formatCurrency } from "@/lib/utils";
 import { IndianRupee } from "lucide-react";
 
@@ -81,7 +87,7 @@ const page = async ({ params }) => {
                                                 </span>
                                                 <span className="font-medium text-neutral-700 text-sm md:text-base">
                                                     {result.hasConstruction ===
-                                                        true
+                                                    true
                                                         ? "Yes"
                                                         : "No"}
                                                 </span>
@@ -95,7 +101,7 @@ const page = async ({ params }) => {
                                                 </span>
                                                 <span className="font-medium text-neutral-700 text-sm md:text-base">
                                                     {result.hasBoundaryWall ===
-                                                        true
+                                                    true
                                                         ? "Yes"
                                                         : "No"}
                                                 </span>
@@ -154,7 +160,10 @@ const page = async ({ params }) => {
                                                     Fill details to contact
                                                 </DialogTitle>
                                             </DialogHeader>
-                                            <EnquireForm propertyId={result.propertyId} uid={result.uid} />
+                                            <EnquireForm
+                                                propertyId={result.propertyId}
+                                                uid={result.uid}
+                                            />
                                         </DialogContent>
                                     </Dialog>
                                 </div>
@@ -255,7 +264,10 @@ const page = async ({ params }) => {
                                 Fill Form To Get More Details
                             </span>
                         </div>
-                        <EnquireForm propertyId={result.propertyId} uid={result.uid} />
+                        <EnquireForm
+                            propertyId={result.propertyId}
+                            uid={result.uid}
+                        />
                     </div>
                 </div>
             </div>

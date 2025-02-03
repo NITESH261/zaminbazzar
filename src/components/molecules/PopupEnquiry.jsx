@@ -37,14 +37,13 @@ const EnquireFormSchema = z.object({
     }),
     email: z.string().email(),
     advertisement: z.string(),
-    message: z.string().optional(),
 });
 
 const PopupEnquiry = () => {
     const [open, setOpen] = useState(false);
     const [loading, setLoading] = useState(false);
-    const popupEnquiry = useZaminwaleStore(store => store.popupEnquiry)
-    const dispatch = useZaminwaleStore(store => store.dispatch)
+    const popupEnquiry = useZaminwaleStore((store) => store.popupEnquiry);
+    const dispatch = useZaminwaleStore((store) => store.dispatch);
 
     const form = useForm({
         resolver: zodResolver(EnquireFormSchema),
@@ -52,11 +51,11 @@ const PopupEnquiry = () => {
     });
 
     const onSubmit = async (values) => {
-        setLoading(true)
+        setLoading(true);
         try {
-            const resp = await createWebsiteEnquiry(values)
-            setLoading(false)
-            form.reset()
+            const resp = await createWebsiteEnquiry(values);
+            setLoading(false);
+            form.reset();
             toast.success(resp.message);
             dispatch({
                 type: "SET_STATE",
@@ -76,7 +75,7 @@ const PopupEnquiry = () => {
                 setOpen(true);
             }, 1000 * 15);
             return () => clearTimeout(onloadTimer);
-        } else null
+        } else null;
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [popupEnquiry]);
 
@@ -189,25 +188,6 @@ const PopupEnquiry = () => {
                                                         )}
                                                     </SelectContent>
                                                 </Select>
-                                                <FormMessage />
-                                            </FormItem>
-                                        )}
-                                    />
-                                    <FormField
-                                        control={form.control}
-                                        name="message"
-                                        render={({ field }) => (
-                                            <FormItem className="w-full">
-                                                <FormLabel>Message</FormLabel>
-                                                <FormControl className="w-full">
-                                                    <Textarea
-                                                        placeholder="Enter Your Message"
-                                                        {...field}
-                                                        value={
-                                                            field.value || ""
-                                                        }
-                                                    />
-                                                </FormControl>
                                                 <FormMessage />
                                             </FormItem>
                                         )}
