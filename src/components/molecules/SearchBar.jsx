@@ -54,8 +54,16 @@ const SearchData = [
                 value: "uran",
             },
             {
-                label: "Third Mumbai",
-                value: "third-mumbai",
+                label: "Chirle",
+                value: "chirle",
+            },
+            {
+                label: "Ranjanpada",
+                value: "ranjanpada",
+            },
+            {
+                label: "Vindhane",
+                value: "vindhane",
             },
         ],
     },
@@ -81,7 +89,8 @@ const SearchBar = () => {
 
     const onSubmit = (values) => {
         router.push(
-            `/search/top-location/${values.location}?propertyType=${values.propertyType ?? "Residential"
+            `/search/top-location/${values.location}?propertyType=${
+                values.propertyType ?? "Residential"
             }`
         );
     };
@@ -109,11 +118,12 @@ const SearchBar = () => {
                                                 ({ value, label }) => (
                                                     <FormItem
                                                         key={value}
-                                                        className={`flex items-center justify-center space-y-0 ${field.value ===
+                                                        className={`flex items-center justify-center space-y-0 ${
+                                                            field.value ===
                                                             value
-                                                            ? "bg-[#581a95] text-white"
-                                                            : "bg-white"
-                                                            } rounded-full py-1 px-1 md:px-4 md:py-2 md:h-full`}
+                                                                ? "bg-[#581a95] text-white"
+                                                                : "bg-white"
+                                                        } rounded-full py-1 px-1 md:px-4 md:py-2 md:h-full`}
                                                     >
                                                         <FormControl className="sr-only">
                                                             <RadioGroupItem

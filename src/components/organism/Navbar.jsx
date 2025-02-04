@@ -280,7 +280,9 @@ const Navbar = () => {
                                             className="bg-white  text-black hover:text-white  md:flex rounded-full"
                                         >
                                             <Link
-                                                href={"/post-property/create-property"}
+                                                href={
+                                                    "/post-property/create-property"
+                                                }
                                                 className="py-1 h-[unset] gap-2"
                                             >
                                                 <span>Post Property</span>
@@ -329,6 +331,18 @@ const NavItems = [
                     {
                         label: "Third Mumbai",
                         link: "/search/top-location/third-mumbai",
+                    },
+                    {
+                        label: "Chirle",
+                        link: "/search/top-location/chirle",
+                    },
+                    {
+                        label: "Ranjanpada",
+                        link: "/search/top-location/ranjanpada",
+                    },
+                    {
+                        label: "Vindhane",
+                        link: "/search/top-location/vindhane",
                     },
                 ],
             },

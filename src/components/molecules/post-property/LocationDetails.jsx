@@ -43,7 +43,9 @@ const Step2Data = [
             { value: "Thane", label: "Thane" },
             { label: "Panvel", value: "Panvel" },
             { label: "Uran", value: "Uran" },
-            { label: "Third Mumbai", value: "Third Mumbai" },
+            { label: "Chirle", value: "Chirle" },
+            { label: "Ranjanpada", value: "Ranjanpada" },
+            { label: "Vindhane", value: "Vindhane" },
         ],
     },
 ];
