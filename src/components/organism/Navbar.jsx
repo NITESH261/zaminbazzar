@@ -21,7 +21,7 @@ import {
 
 const Navbar = () => {
     return (
-        <header className="flex sticky top-0 z-20 w-full bg-[#581a95]">
+        <header className="flex sticky top-0 z-20 w-full bg-[#8661d5]">
             <div className="flex w-full h-16 items-center max-w-[1480px] mx-auto gap-4 px-4">
                 <div className="flex h-fit w-fit">
                     <Link href={"/"}>
@@ -124,7 +124,7 @@ const Navbar = () => {
                         <LogoutBtn />
                         <Sheet>
                             <SheetTrigger asChild>
-                                <Button className="rounded-md px-3 py-0 bg-transparent hover:text-[#581a95] hover:bg-white">
+                                <Button className="rounded-md px-3 py-0 bg-transparent hover:text-[#8661d5] hover:bg-white">
                                     <AlignRightIcon className="!size-5" />
                                 </Button>
                             </SheetTrigger>

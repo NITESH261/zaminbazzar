@@ -48,7 +48,7 @@ const StorySwiper = () => {
                             <div className="w-full h-full gap-4 flex flex-col items-center justify-center">
                                 <div
                                     onClick={() => setOpen(true)}
-                                    className="relative aspect-square border-4 border-[#581a95] w-3/4 p-0 rounded-full"
+                                    className="relative aspect-square border-4 border-[#8661d5] w-3/4 p-0 rounded-full"
                                 >
                                     <Image
                                         src={`/assets/banner-img/${card.img}`}
@@ -72,8 +72,8 @@ const StorySwiper = () => {
                         </CarouselItem>
                     ))}
                 </CarouselContent>
-                <CarouselPrevious className="-left-8 sm:left-0 !size-8 !px-1 bg-[#581a95] text-white" />
-                <CarouselNext className="-right-8 sm:right-0 !size-8 !px-1 bg-[#581a95] text-white" />
+                <CarouselPrevious className="-left-8 sm:left-0 !size-8 !px-1 bg-[#8661d5] text-white" />
+                <CarouselNext className="-right-8 sm:right-0 !size-8 !px-1 bg-[#8661d5] text-white" />
             </Carousel>
             <Dialog open={open} onOpenChange={setOpen}>
                 <DialogContent className="py-0 px-0 max-w-sm rounded-lg text-white">
@@ -132,7 +132,7 @@ const StorySwiper = () => {
                                                 </div>
                                                 <div className="flex items-end rounded-lg bg-gradient-to-t from-black to-transparent justify-center w-full h-1/5 gap-4 p-4">
                                                     <div className="flex w-full">
-                                                        <Button className="w-full bg-[#581a95]">
+                                                        <Button className="w-full bg-[#8661d5]">
                                                             View Details
                                                         </Button>
                                                     </div>
@@ -142,8 +142,8 @@ const StorySwiper = () => {
                                     </CarouselItem>
                                 ))}
                             </CarouselContent>
-                            <CarouselPrevious className="left-0 md:-left-12 !size-8 !px-1 bg-[#581a95] text-white" />
-                            <CarouselNext className="right-0 md:-right-12 !size-8 !px-1 bg-[#581a95] text-white" />
+                            <CarouselPrevious className="left-0 md:-left-12 !size-8 !px-1 bg-[#8661d5] text-white" />
+                            <CarouselNext className="right-0 md:-right-12 !size-8 !px-1 bg-[#8661d5] text-white" />
                         </Carousel>
                     </div>
                 </DialogContent>

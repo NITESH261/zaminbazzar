@@ -283,7 +283,7 @@ const Page = () => {
                                                             className={`flex items-center space-y-0 ${
                                                                 field.value ===
                                                                 value
-                                                                    ? "bg-blue-100 border-[#581a95]"
+                                                                    ? "bg-blue-100 border-[#8661d5]"
                                                                     : "bg-white border"
                                                             } rounded-full px-4 py-2`}
                                                         >
@@ -326,7 +326,7 @@ const Page = () => {
                                                             className={`flex items-center space-y-0 ${
                                                                 field.value ===
                                                                 value
-                                                                    ? "bg-blue-100 border-[#581a95]"
+                                                                    ? "bg-blue-100 border-[#8661d5]"
                                                                     : "bg-white border"
                                                             } rounded-full px-4 py-2`}
                                                         >
@@ -374,7 +374,7 @@ const Page = () => {
                                                                 className={`flex items-center space-y-0 ${
                                                                     field.value ===
                                                                     value
-                                                                        ? "bg-blue-100 border-[#581a95]"
+                                                                        ? "bg-blue-100 border-[#8661d5]"
                                                                         : "bg-white border"
                                                                 } rounded-full px-4 py-2`}
                                                             >
@@ -637,7 +637,7 @@ const Page = () => {
                                                                 className={`flex items-center space-y-0 ${
                                                                     field.value ===
                                                                     value
-                                                                        ? "bg-blue-100 border-[#581a95]"
+                                                                        ? "bg-blue-100 border-[#8661d5]"
                                                                         : "bg-white border"
                                                                 } rounded-full px-4 py-2`}
                                                             >
@@ -683,7 +683,7 @@ const Page = () => {
                                                                 className={`flex items-center space-y-0 ${
                                                                     field.value ===
                                                                     data?.value
-                                                                        ? "bg-blue-100 border-[#581a95]"
+                                                                        ? "bg-blue-100 border-[#8661d5]"
                                                                         : "bg-white border"
                                                                 } rounded-full px-4 py-2`}
                                                             >
@@ -733,7 +733,7 @@ const Page = () => {
                                                                 className={`flex items-center space-y-0 ${
                                                                     field.value ===
                                                                     value
-                                                                        ? "bg-blue-100 border-[#581a95]"
+                                                                        ? "bg-blue-100 border-[#8661d5]"
                                                                         : "bg-white border"
                                                                 } rounded-full px-4 py-2`}
                                                             >
@@ -819,7 +819,7 @@ const Page = () => {
                                                             className={`flex items-center space-y-0 ${
                                                                 field.value ===
                                                                 value
-                                                                    ? "bg-blue-100 border-[#581a95]"
+                                                                    ? "bg-blue-100 border-[#8661d5]"
                                                                     : "bg-white border"
                                                             } rounded-full px-4 py-2`}
                                                         >
@@ -1117,7 +1117,7 @@ const Page = () => {
                                                                             field.value?.includes(
                                                                                 item.value
                                                                             )
-                                                                                ? "bg-blue-100 border-[#581a95]"
+                                                                                ? "bg-blue-100 border-[#8661d5]"
                                                                                 : "bg-white border"
                                                                         } rounded-full px-4 py-2`}
                                                                     >
@@ -1184,7 +1184,7 @@ const Page = () => {
                                                                             field.value?.includes(
                                                                                 item.value
                                                                             )
-                                                                                ? "bg-blue-100 border-[#581a95]"
+                                                                                ? "bg-blue-100 border-[#8661d5]"
                                                                                 : "bg-white border"
                                                                         } rounded-full px-4 py-2`}
                                                                     >
@@ -1262,7 +1262,7 @@ const Page = () => {
                                                             className={`flex items-center space-y-0 ${
                                                                 field.value ===
                                                                 value
-                                                                    ? "bg-blue-100 border-[#581a95]"
+                                                                    ? "bg-blue-100 border-[#8661d5]"
                                                                     : "bg-white border"
                                                             } rounded-full px-4 py-2`}
                                                         >
@@ -1333,7 +1333,7 @@ const Page = () => {
                                                                             field.value?.includes(
                                                                                 item.value
                                                                             )
-                                                                                ? "bg-blue-100 border-[#581a95]"
+                                                                                ? "bg-blue-100 border-[#8661d5]"
                                                                                 : "bg-white border"
                                                                         } rounded-full px-4 py-2`}
                                                                     >
@@ -1355,7 +1355,7 @@ const Page = () => {
 
                             <Button
                                 type="submit"
-                                className="px-4 py-2 bg-[#581a95] text-white rounded-lg"
+                                className="px-4 py-2 bg-[#8661d5] text-white rounded-lg"
                                 disabled={loading}
                             >
                                 {loading ? <Loading /> : "Update Property"}

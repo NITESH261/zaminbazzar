@@ -154,30 +154,31 @@ const AmenitiesSection = ({
                                                                     ) => {
                                                                         return checked
                                                                             ? field.onChange(
-                                                                                [
-                                                                                    ...field.value,
-                                                                                    item.value,
-                                                                                ]
-                                                                            )
+                                                                                  [
+                                                                                      ...field.value,
+                                                                                      item.value,
+                                                                                  ]
+                                                                              )
                                                                             : field.onChange(
-                                                                                field.value?.filter(
-                                                                                    (
-                                                                                        value
-                                                                                    ) =>
-                                                                                        value !==
-                                                                                        item.value
-                                                                                )
-                                                                            );
+                                                                                  field.value?.filter(
+                                                                                      (
+                                                                                          value
+                                                                                      ) =>
+                                                                                          value !==
+                                                                                          item.value
+                                                                                  )
+                                                                              );
                                                                     }}
                                                                 />
                                                             </FormControl>
                                                             <FormLabel
-                                                                className={`flex font-normal items-center space-y-0 ${field.value?.includes(
-                                                                    item.value
-                                                                )
-                                                                        ? "bg-blue-100 border-[#581a95]"
+                                                                className={`flex font-normal items-center space-y-0 ${
+                                                                    field.value?.includes(
+                                                                        item.value
+                                                                    )
+                                                                        ? "bg-blue-100 border-[#8661d5]"
                                                                         : "bg-white border"
-                                                                    } rounded-full px-4 py-2`}
+                                                                } rounded-full px-4 py-2`}
                                                             >
                                                                 {item.label}
                                                             </FormLabel>
@@ -216,30 +217,31 @@ const AmenitiesSection = ({
                                                                     ) => {
                                                                         return checked
                                                                             ? field.onChange(
-                                                                                [
-                                                                                    ...field.value,
-                                                                                    item.value,
-                                                                                ]
-                                                                            )
+                                                                                  [
+                                                                                      ...field.value,
+                                                                                      item.value,
+                                                                                  ]
+                                                                              )
                                                                             : field.onChange(
-                                                                                field.value?.filter(
-                                                                                    (
-                                                                                        value
-                                                                                    ) =>
-                                                                                        value !==
-                                                                                        item.value
-                                                                                )
-                                                                            );
+                                                                                  field.value?.filter(
+                                                                                      (
+                                                                                          value
+                                                                                      ) =>
+                                                                                          value !==
+                                                                                          item.value
+                                                                                  )
+                                                                              );
                                                                     }}
                                                                 />
                                                             </FormControl>
                                                             <FormLabel
-                                                                className={`flex font-normal items-center space-y-0 ${field.value?.includes(
-                                                                    item.value
-                                                                )
-                                                                        ? "bg-blue-100 border-[#581a95]"
+                                                                className={`flex font-normal items-center space-y-0 ${
+                                                                    field.value?.includes(
+                                                                        item.value
+                                                                    )
+                                                                        ? "bg-blue-100 border-[#8661d5]"
                                                                         : "bg-white border"
-                                                                    } rounded-full px-4 py-2`}
+                                                                } rounded-full px-4 py-2`}
                                                             >
                                                                 {item.label}
                                                             </FormLabel>
@@ -305,11 +307,12 @@ const AmenitiesSection = ({
                                                 ({ value, label }) => (
                                                     <FormItem
                                                         key={value}
-                                                        className={`flex items-center space-y-0 ${field.value ===
-                                                                value
-                                                                ? "bg-blue-100 border-[#581a95]"
+                                                        className={`flex items-center space-y-0 ${
+                                                            field.value ===
+                                                            value
+                                                                ? "bg-blue-100 border-[#8661d5]"
                                                                 : "bg-white border"
-                                                            } rounded-full px-4 py-2`}
+                                                        } rounded-full px-4 py-2`}
                                                     >
                                                         <FormControl className="sr-only">
                                                             <RadioGroupItem
@@ -353,30 +356,31 @@ const AmenitiesSection = ({
                                                                     ) => {
                                                                         return checked
                                                                             ? field.onChange(
-                                                                                [
-                                                                                    ...field.value,
-                                                                                    item.value,
-                                                                                ]
-                                                                            )
+                                                                                  [
+                                                                                      ...field.value,
+                                                                                      item.value,
+                                                                                  ]
+                                                                              )
                                                                             : field.onChange(
-                                                                                field.value?.filter(
-                                                                                    (
-                                                                                        value
-                                                                                    ) =>
-                                                                                        value !==
-                                                                                        item.value
-                                                                                )
-                                                                            );
+                                                                                  field.value?.filter(
+                                                                                      (
+                                                                                          value
+                                                                                      ) =>
+                                                                                          value !==
+                                                                                          item.value
+                                                                                  )
+                                                                              );
                                                                     }}
                                                                 />
                                                             </FormControl>
                                                             <FormLabel
-                                                                className={`flex font-normal items-center space-y-0 ${field.value?.includes(
-                                                                    item.value
-                                                                )
-                                                                        ? "bg-blue-100 border-[#581a95]"
+                                                                className={`flex font-normal items-center space-y-0 ${
+                                                                    field.value?.includes(
+                                                                        item.value
+                                                                    )
+                                                                        ? "bg-blue-100 border-[#8661d5]"
                                                                         : "bg-white border"
-                                                                    } rounded-full px-4 py-2`}
+                                                                } rounded-full px-4 py-2`}
                                                             >
                                                                 {item.label}
                                                             </FormLabel>
@@ -400,7 +404,7 @@ const AmenitiesSection = ({
                             </Button>
                             <Button
                                 type="submit"
-                                className="px-4 py-2 bg-[#581a95] text-white rounded-lg"
+                                className="px-4 py-2 bg-[#8661d5] text-white rounded-lg"
                                 disabled={loading}
                             >
                                 {loading ? "Loading" : "Continue"}

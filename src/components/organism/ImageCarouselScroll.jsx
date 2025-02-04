@@ -84,7 +84,7 @@ const ImageCarouselScroll = ({ cards, autoScroll }) => {
                                     <div className="flex w-full md:absolute md:px-4 pb-1 sm:pb-3 md:left-0 md:-bottom-40 md:group-hover:bottom-0 md:transition-all">
                                         <Button
                                             asChild
-                                            className="w-full text-xs sm:text-sm h-[unset] rounded-full py-1 sm:py-1.5 bg-[#581a95]"
+                                            className="w-full text-xs sm:text-sm h-[unset] rounded-full py-1 sm:py-1.5 bg-[#8661d5]"
                                         >
                                             <Link
                                                 href={`/properties/${card.propertyId}`}

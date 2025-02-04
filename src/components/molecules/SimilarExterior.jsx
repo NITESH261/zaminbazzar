@@ -53,7 +53,7 @@ const SimilarExterior = () => {
                         </h2>
                         <Link
                             href={"/"}
-                            className="flex items-center gap-2 hover:text-black text-[#581a95] text-lg md:text-xl"
+                            className="flex items-center gap-2 hover:text-black text-[#8661d5] text-lg md:text-xl"
                         >
                             <span className="hidden md:flex">
                                 See More Properties

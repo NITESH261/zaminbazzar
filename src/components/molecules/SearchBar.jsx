@@ -121,7 +121,7 @@ const SearchBar = () => {
                                                         className={`flex items-center justify-center space-y-0 ${
                                                             field.value ===
                                                             value
-                                                                ? "bg-[#581a95] text-white"
+                                                                ? "bg-[#8661d5] text-white"
                                                                 : "bg-white"
                                                         } rounded-full py-1 px-1 md:px-4 md:py-2 md:h-full`}
                                                     >
@@ -178,7 +178,7 @@ const SearchBar = () => {
                         />
                         <Button
                             type="submit"
-                            className="rounded-full bg-[#581a95]"
+                            className="rounded-full bg-[#8661d5]"
                         >
                             <Search />
                             Search

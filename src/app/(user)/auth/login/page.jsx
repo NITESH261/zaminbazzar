@@ -122,7 +122,7 @@ const Page = () => {
                                 )}
                             />
                             <Button
-                                className="w-full bg-[#581a95]"
+                                className="w-full bg-[#8661d5]"
                                 type="submit"
                                 disabled={loading}
                             >
@@ -138,7 +138,7 @@ const Page = () => {
                     <Button
                         asChild
                         variant="link"
-                        className="hover:text-[#581a95]"
+                        className="hover:text-[#8661d5]"
                     >
                         <Link href={"/auth/register"}>Sign Up</Link>
                     </Button>

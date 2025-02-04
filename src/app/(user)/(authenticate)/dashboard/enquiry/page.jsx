@@ -52,7 +52,7 @@ const page = () => {
                     <div className="flex w-full">
                         <Button
                             onClick={handleDownloadEnquiry}
-                            className="w-full bg-[#581a95]"
+                            className="w-full bg-[#8661d5]"
                         >
                             Click to Download all Website Enquiry
                         </Button>
