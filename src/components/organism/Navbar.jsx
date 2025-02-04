@@ -18,10 +18,20 @@ import {
     SheetTitle,
     SheetTrigger,
 } from "../ui/sheet";
+import {
+    Dialog,
+    DialogContent,
+    DialogFooter,
+    DialogHeader,
+    DialogTitle,
+    DialogTrigger,
+} from "../ui/dialog";
+import { PhoneCallIcon } from "lucide-react";
+import { MailIcon } from "lucide-react";
 
 const Navbar = () => {
     return (
-        <header className="flex sticky top-0 z-20 w-full bg-[#8661d5]">
+        <header className="flex sticky top-0 z-20 w-full bg-[#6f272b]">
             <div className="flex w-full h-16 items-center max-w-[1480px] mx-auto gap-4 px-4">
                 <div className="flex h-fit w-fit">
                     <Link href={"/"}>
@@ -107,7 +117,55 @@ const Navbar = () => {
                         </ul>
                     </div>
                     <div className="flex flex-grow items-center  md:gap-4 justify-end">
-                        <Button
+                        <Dialog>
+                            <DialogTrigger asChild>
+                                <Button className="bg-white  text-black hover:text-white hidden md:flex rounded-full">
+                                    <span>Post Property</span>
+                                    <span className="text-[10px] bg-green-500 text-white font-semibold px-2 py-0 rounded-sm">
+                                        FREE
+                                    </span>
+                                </Button>
+                            </DialogTrigger>
+                            <DialogContent className="max-w-md">
+                                <DialogHeader>
+                                    <DialogTitle className="text-[#6f272b]">
+                                        List Your Property with Us
+                                    </DialogTitle>
+                                </DialogHeader>
+                                <div className="flex w-full">
+                                    <p className="text-sm md:text-base">
+                                        For property listings, please contact
+                                        our team for assistance., we assist you
+                                        directly with the listing process.
+                                        Please contact our team for personalized
+                                        support and guidance.
+                                    </p>
+                                </div>
+                                <DialogFooter>
+                                    <div className="flex w-full justify-between gap-2 flex-wrap">
+                                        <Link
+                                            href="tel:+919555599299"
+                                            className="flex gap-2 w-fit items-center"
+                                        >
+                                            <PhoneCallIcon />
+                                            <span className="text-base md:text-lg font-semibold">
+                                                9555599299
+                                            </span>
+                                        </Link>
+                                        <Link
+                                            href="tel:+919555599299"
+                                            className="flex gap-2 w-fit items-center"
+                                        >
+                                            <MailIcon />
+                                            <span className="text-base md:text-lg font-semibold">
+                                                info@zaminwale.com
+                                            </span>
+                                        </Link>
+                                    </div>
+                                </DialogFooter>
+                            </DialogContent>
+                        </Dialog>
+                        {/* <Button
                             asChild
                             className="bg-white  text-black hover:text-white hidden md:flex rounded-full"
                         >
@@ -120,11 +178,11 @@ const Navbar = () => {
                                     FREE
                                 </span>
                             </Link>
-                        </Button>
-                        <LogoutBtn />
+                        </Button> */}
+                        {/* <LogoutBtn /> */}
                         <Sheet>
                             <SheetTrigger asChild>
-                                <Button className="rounded-md px-3 py-0 bg-transparent hover:text-[#8661d5] hover:bg-white">
+                                <Button className="rounded-md px-3 py-0 bg-transparent hover:text-[#6f272b] hover:bg-white">
                                     <AlignRightIcon className="!size-5" />
                                 </Button>
                             </SheetTrigger>

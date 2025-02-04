@@ -1,8 +1,16 @@
 "use client";
 
+import Loading from "@/components/atoms/Loading";
+import EnquireForm from "@/components/molecules/EnquireForm";
 import ImageScroll from "@/components/molecules/ImageScroll";
 import SearchFilter from "@/components/molecules/SearchFilter";
 import { Button } from "@/components/ui/button";
+import {
+    DialogContent,
+    DialogHeader,
+    DialogTitle,
+    DialogTrigger,
+} from "@/components/ui/dialog";
 import {
     Sheet,
     SheetContent,
@@ -12,6 +20,8 @@ import {
 } from "@/components/ui/sheet";
 import { formatCurrency, sliceParagraph } from "@/lib/utils";
 import useZaminwaleStore from "@/store";
+import { Dialog } from "@radix-ui/react-dialog";
+import { Eye } from "lucide-react";
 import { Filter, Heart, IndianRupee, PhoneCallIcon } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
@@ -71,10 +81,10 @@ const page = () => {
                         <div className="flex flex-col w-full h-fit gap-6">
                             <div className="flex flex-col w-full h-fit rounded-2xl gap-4">
                                 {searchList?.map((card, i) => (
-                                    <Link
-                                        href={`/properties/${card.propertyId}`}
+                                    <div
+                                        // href={`/properties/${card.propertyId}`}
                                         key={i}
-                                        className="flex flex-col p-4 sm:flex-row xl:grid xl:grid-cols-5 border w-full gap-2 rounded-3xl bg-white border-neutral-200 hover:border-[#8661d5] hover:shadow-md transition-all"
+                                        className="flex flex-col p-4 sm:flex-row xl:grid xl:grid-cols-5 border w-full gap-2 rounded-3xl bg-white border-neutral-200 hover:border-[#6f272b] hover:shadow-md transition-all"
                                         onMouseEnter={() => handleMouseEnter(i)}
                                         onMouseLeave={handleMouseLeave}
                                     >
@@ -146,7 +156,7 @@ const page = () => {
                                                 </p>
                                                 <div className="flex flex-wrap w-full overflow-x-auto scrollbar-hide">
                                                     <div className="flex w-fit gap-2 items-center">
-                                                        <span className="flex w-fit whitespace-nowrap text-sm font-medium text-[#8661d5]">
+                                                        <span className="flex w-fit whitespace-nowrap text-sm font-medium text-[#6f272b]">
                                                             Near By:
                                                         </span>
                                                         <ul className="w-fit flex gap-2">
@@ -165,31 +175,63 @@ const page = () => {
                                                 </div>
                                             </div>
                                             <div className="flex w-full gap-2 sm:gap-4 md:justify-end sm:flex-grow-0 h-1/5">
-                                                <Button className="rounded-full h-[unset] w-full md:w-fit text-xs bg-[#8661d5]">
-                                                    <PhoneCallIcon /> Contact Us
-                                                </Button>
                                                 <Button
+                                                    asChild
                                                     variant="outline"
-                                                    className="rounded-full h-[unset] w-full md:w-fit text-xs border-[#8661d5] text-[#8661d5]"
+                                                    className="rounded-full h-[unset] w-full md:w-fit text-xs border-[#6f272b] text-[#6f272b]"
+                                                >
+                                                    <Link
+                                                        href={`/properties/${card.propertyId}`}
+                                                    >
+                                                        <Eye />
+                                                        View Details
+                                                    </Link>
+                                                </Button>
+                                                <Dialog>
+                                                    <DialogTrigger asChild>
+                                                        <Button className="rounded-full h-[unset] w-full md:w-fit text-xs bg-[#6f272b]">
+                                                            <PhoneCallIcon />{" "}
+                                                            Contact Us
+                                                        </Button>
+                                                    </DialogTrigger>
+                                                    <DialogContent className="max-w-sm">
+                                                        <DialogHeader>
+                                                            <DialogTitle>
+                                                                Fill details to
+                                                                contact
+                                                            </DialogTitle>
+                                                        </DialogHeader>
+                                                        <EnquireForm
+                                                            propertyId={
+                                                                card.propertyId
+                                                            }
+                                                            uid={card.uid}
+                                                        />
+                                                    </DialogContent>
+                                                </Dialog>
+                                                {/* <Button
+                                                    variant="outline"
+                                                    className="rounded-full h-[unset] w-full md:w-fit text-xs border-[#6f272b] text-[#6f272b]"
                                                 >
                                                     View Number
-                                                </Button>
+                                                </Button> */}
                                             </div>
                                         </div>
-                                    </Link>
+                                    </div>
                                 ))}
                             </div>
                         </div>
                     </div>
                 ) : (
                     <div className="flex items-center justify-center w-full flex-1">
-                        <div className="flex w-full aspect-square max-w-md relative">
-                            <Image
+                        <div className="flex w-full items-center justify-center relative">
+                            <Loading />
+                            {/* <Image
                                 src={"/assets/helper/404.png"}
                                 alt="404"
                                 fill
                                 className="object-contain"
-                            />
+                            /> */}
                         </div>
                     </div>
                 )}

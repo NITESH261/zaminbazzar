@@ -143,7 +143,7 @@ const SearchFilter = () => {
                     >
                         <Button
                             type="submit"
-                            className="px-4 w-full py-2 bg-[#8661d5] text-white rounded-lg"
+                            className="px-4 w-full py-2 bg-[#6f272b] text-white rounded-lg"
                         >
                             Apply Filter
                         </Button>
@@ -1154,7 +1154,7 @@ const SearchFilter = () => {
                         />
                         <Button
                             type="submit"
-                            className="px-4 w-full py-2 bg-[#8661d5] text-white rounded-lg"
+                            className="px-4 w-full py-2 bg-[#6f272b] text-white rounded-lg"
                         >
                             Apply Filter
                         </Button>

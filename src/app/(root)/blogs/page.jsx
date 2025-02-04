@@ -90,7 +90,7 @@ const BlogPage = () => {
                                         </p>
                                         <Button
                                             asChild
-                                            className="mt-2 w-full bg-[#8661d5] text-white rounded-full py-1.5 text-sm"
+                                            className="mt-2 w-full bg-[#6f272b] text-white rounded-full py-1.5 text-sm"
                                         >
                                             <Link href={`/blogs/${blog.id}`}>
                                                 Read More
@@ -106,7 +106,7 @@ const BlogPage = () => {
                             <Button
                                 onClick={loadMore}
                                 disabled={loading}
-                                className="bg-[#8661d5] text-white rounded-full py-2 px-4"
+                                className="bg-[#6f272b] text-white rounded-full py-2 px-4"
                             >
                                 {loading ? "Loading..." : "Load More"}
                             </Button>

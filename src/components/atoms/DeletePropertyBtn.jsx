@@ -34,7 +34,7 @@ const DeletePropertyBtn = ({ propertyId }) => {
                 <AlertDialogTrigger asChild>
                     <Button
                         variant="outline"
-                        className="rounded-full h-[unset] w-full md:w-fit text-xs border-[#8661d5] text-[#8661d5]"
+                        className="rounded-full h-[unset] w-full md:w-fit text-xs border-[#6f272b] text-[#6f272b]"
                     >
                         <Trash2 />{" "}
                         <span className="hidden lg:flex">Delete</span>
@@ -56,7 +56,7 @@ const DeletePropertyBtn = ({ propertyId }) => {
                         </AlertDialogCancel>
                         <AlertDialogAction
                             onClick={handleDelete}
-                            className="rounded-full h-[unset] bg-[#8661d5] w-full md:w-fit text-xs text-white"
+                            className="rounded-full h-[unset] bg-[#6f272b] w-full md:w-fit text-xs text-white"
                         >
                             Continue
                         </AlertDialogAction>

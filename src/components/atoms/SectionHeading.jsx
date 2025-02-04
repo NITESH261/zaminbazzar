@@ -9,7 +9,7 @@ const SectionHeading = ({ title, subtitle, link, linkHref, linkLabel }) => {
                 <div className="flex flex-col gap-2 w-fit">
                     <h2 className="text-lg font-medium md:text-xl lg:text-2xl flex flex-col w-fit">
                         <span>{title}</span>
-                        <span className="h-1.5 w-20 bg-[#8661d5] rounded-full"></span>
+                        <span className="h-1.5 w-20 bg-[#6f272b] rounded-full"></span>
                     </h2>
                     {subtitle ? (
                         <span className="text-sm text-gray-500 font-medium md:text-sm lg:text-sm flex flex-col w-fit">
@@ -22,7 +22,7 @@ const SectionHeading = ({ title, subtitle, link, linkHref, linkLabel }) => {
                 {link ? (
                     <Link
                         href={linkHref}
-                        className="flex items-center gap-2 hover:text-black text-[#8661d5] text-lg md:text-xl"
+                        className="flex items-center gap-2 hover:text-black text-[#6f272b] text-lg md:text-xl"
                     >
                         <span className="hidden md:flex">{linkLabel}</span>
                         <ArrowRight />

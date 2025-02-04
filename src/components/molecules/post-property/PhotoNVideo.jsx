@@ -169,7 +169,7 @@ const PhotoNVideo = ({ onSubmit, prev, currentStep, loading, formData }) => {
                     </Button>
                     <Button
                         type="submit"
-                        className="px-4 py-2 bg-[#8661d5] text-white rounded-lg"
+                        className="px-4 py-2 bg-[#6f272b] text-white rounded-lg"
                         disabled={loading}
                     >
                         {loading ? "Loading..." : "Continue"}
