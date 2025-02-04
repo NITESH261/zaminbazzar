@@ -95,7 +95,10 @@ const page = () => {
                                         <span className="hidden md:flex">
                                             Ready Move
                                             <span className="sr-only">
-                                                {format(card.createdAt, "Pp")}
+                                                {format(
+                                                    property.createdAt,
+                                                    "Pp"
+                                                )}
                                             </span>
                                         </span>
                                         <div className="flex w-full md:absolute md:px-4 pb-1 sm:pb-3 md:left-0 md:-bottom-40 md:group-hover:bottom-0 md:transition-all">
