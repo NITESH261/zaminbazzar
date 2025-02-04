@@ -118,19 +118,19 @@ const SearchBar = () => {
                                                 ({ value, label }) => (
                                                     <FormItem
                                                         key={value}
-                                                        className={`flex items-center justify-center space-y-0 ${
+                                                        className={`flex items-center justify-center space-y-0 border-b-2 ${
                                                             field.value ===
                                                             value
-                                                                ? "bg-[#6f272b] text-white"
-                                                                : "bg-white"
-                                                        } rounded-full py-1 px-1 md:px-4 md:py-2 md:h-full`}
+                                                                ? "border-[#6f272b] text-[#6f272b]"
+                                                                : "border-white"
+                                                        } py-1 px-1 md:px-4 md:py-2 md:h-full`}
                                                     >
                                                         <FormControl className="sr-only">
                                                             <RadioGroupItem
                                                                 value={value}
                                                             />
                                                         </FormControl>
-                                                        <FormLabel className="font-normal">
+                                                        <FormLabel className="font-normal md:font-medium md:text-lg">
                                                             {label}
                                                         </FormLabel>
                                                     </FormItem>

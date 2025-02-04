@@ -1,5 +1,6 @@
 "use client";
 
+import Loading from "@/components/atoms/Loading";
 import EnquireForm from "@/components/molecules/EnquireForm";
 import ImageScroll from "@/components/molecules/ImageScroll";
 import SearchFilter from "@/components/molecules/SearchFilter";
@@ -223,13 +224,14 @@ const page = () => {
                     </div>
                 ) : (
                     <div className="flex items-center justify-center w-full flex-1">
-                        <div className="flex w-full aspect-square max-w-md relative">
-                            <Image
+                        <div className="flex w-full items-center justify-center relative">
+                            <Loading />
+                            {/* <Image
                                 src={"/assets/helper/404.png"}
                                 alt="404"
                                 fill
                                 className="object-contain"
-                            />
+                            /> */}
                         </div>
                     </div>
                 )}

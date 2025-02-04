@@ -2,6 +2,7 @@
 
 import { getUserProperty } from "@/actions/dashboard";
 import DeletePropertyBtn from "@/components/atoms/DeletePropertyBtn";
+import Loading from "@/components/atoms/Loading";
 import ImageScroll from "@/components/molecules/ImageScroll";
 import { Button } from "@/components/ui/button";
 import { formatCurrency, sliceParagraph } from "@/lib/utils";
@@ -60,15 +61,16 @@ const page = () => {
         <div className="flex w-full rounded-lg flex-1 overflow-x-hidden overflow-y-auto scrollbar">
             <div className="grid grid-cols-1 gap-4 w-full h-fit">
                 {properties.length === 0 ? (
-                    <div className="flex items-center justify-center w-full flex-1">
-                        <div className="flex w-full aspect-square max-w-md relative">
+                    <div className="flex items-center justify-center h-[calc(100vh-200px)] w-full flex-1">
+                        <Loading />
+                        {/* <div className="flex w-full aspect-square max-w-md relative">
                             <Image
                                 src={"/assets/helper/404.png"}
                                 alt="404"
                                 fill
                                 className="object-contain"
                             />
-                        </div>
+                        </div> */}
                     </div>
                 ) : (
                     properties?.map((card, i) => (
