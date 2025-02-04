@@ -176,7 +176,7 @@ const AmenitiesSection = ({
                                                                     field.value?.includes(
                                                                         item.value
                                                                     )
-                                                                        ? "bg-blue-100 border-[#8661d5]"
+                                                                        ? "bg-blue-100 border-[#6f272b]"
                                                                         : "bg-white border"
                                                                 } rounded-full px-4 py-2`}
                                                             >
@@ -239,7 +239,7 @@ const AmenitiesSection = ({
                                                                     field.value?.includes(
                                                                         item.value
                                                                     )
-                                                                        ? "bg-blue-100 border-[#8661d5]"
+                                                                        ? "bg-blue-100 border-[#6f272b]"
                                                                         : "bg-white border"
                                                                 } rounded-full px-4 py-2`}
                                                             >
@@ -310,7 +310,7 @@ const AmenitiesSection = ({
                                                         className={`flex items-center space-y-0 ${
                                                             field.value ===
                                                             value
-                                                                ? "bg-blue-100 border-[#8661d5]"
+                                                                ? "bg-blue-100 border-[#6f272b]"
                                                                 : "bg-white border"
                                                         } rounded-full px-4 py-2`}
                                                     >
@@ -378,7 +378,7 @@ const AmenitiesSection = ({
                                                                     field.value?.includes(
                                                                         item.value
                                                                     )
-                                                                        ? "bg-blue-100 border-[#8661d5]"
+                                                                        ? "bg-blue-100 border-[#6f272b]"
                                                                         : "bg-white border"
                                                                 } rounded-full px-4 py-2`}
                                                             >
@@ -404,7 +404,7 @@ const AmenitiesSection = ({
                             </Button>
                             <Button
                                 type="submit"
-                                className="px-4 py-2 bg-[#8661d5] text-white rounded-lg"
+                                className="px-4 py-2 bg-[#6f272b] text-white rounded-lg"
                                 disabled={loading}
                             >
                                 {loading ? "Loading" : "Continue"}

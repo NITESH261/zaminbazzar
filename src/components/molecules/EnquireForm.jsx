@@ -108,7 +108,7 @@ const EnquireForm = ({ propertyId, uid }) => {
                             </FormItem>
                         )}
                     />
-                    <Button className="rounded-3xl w-full bg-[#8661d5]">
+                    <Button className="rounded-3xl w-full bg-[#6f272b]">
                         {loading ? <Loading /> : "Submit"}
                     </Button>
                 </form>

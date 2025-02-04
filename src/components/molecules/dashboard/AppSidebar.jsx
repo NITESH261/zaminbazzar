@@ -19,7 +19,7 @@ const AppSidebar = () => {
 
     return (
         <Sidebar className="space-y-6 px-4">
-            <SidebarHeader className="mt-16 px-4"></SidebarHeader>
+            <SidebarHeader className="md:mt-16 px-4"></SidebarHeader>
             <SidebarContent className="pt-6 px-4 border border-neutral-200 rounded-md">
                 <SidebarGroup>
                     <SidebarGroupContent>

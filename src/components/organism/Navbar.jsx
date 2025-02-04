@@ -31,7 +31,7 @@ import { MailIcon } from "lucide-react";
 
 const Navbar = () => {
     return (
-        <header className="flex sticky top-0 z-20 w-full bg-[#8661d5]">
+        <header className="flex sticky top-0 z-20 w-full bg-[#6f272b]">
             <div className="flex w-full h-16 items-center max-w-[1480px] mx-auto gap-4 px-4">
                 <div className="flex h-fit w-fit">
                     <Link href={"/"}>
@@ -128,7 +128,7 @@ const Navbar = () => {
                             </DialogTrigger>
                             <DialogContent className="max-w-md">
                                 <DialogHeader>
-                                    <DialogTitle className="text-[#8661d5]">
+                                    <DialogTitle className="text-[#6f272b]">
                                         List Your Property with Us
                                     </DialogTitle>
                                 </DialogHeader>
@@ -182,7 +182,7 @@ const Navbar = () => {
                         {/* <LogoutBtn /> */}
                         <Sheet>
                             <SheetTrigger asChild>
-                                <Button className="rounded-md px-3 py-0 bg-transparent hover:text-[#8661d5] hover:bg-white">
+                                <Button className="rounded-md px-3 py-0 bg-transparent hover:text-[#6f272b] hover:bg-white">
                                     <AlignRightIcon className="!size-5" />
                                 </Button>
                             </SheetTrigger>

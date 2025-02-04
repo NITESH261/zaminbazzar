@@ -91,7 +91,7 @@ const Review = () => {
                             )}
                             <a
                                 href="#"
-                                className="text-[#8661d5] cursor-pointer"
+                                className="text-[#6f272b] cursor-pointer"
                                 onClick={(e) => {
                                     e.preventDefault(); // Prevent the default anchor behavior
                                     toggleContent(index);

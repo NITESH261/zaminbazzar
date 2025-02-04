@@ -5,9 +5,9 @@ const StepCard = ({ stepNumber, status, title }) => {
         <div
             className={`flex flex-col md:flex-row items-center justify-center w-fit md:w-full border rounded-lg gap-2 p-2 md:p-4 ${
                 status === "complete"
-                    ? "border-[#8661d5] bg-[#8661d5] text-white"
+                    ? "border-[#6f272b] bg-[#6f272b] text-white"
                     : status === "current"
-                    ? "border-[#8661d5] bg-blue-50 text-black"
+                    ? "border-[#6f272b] bg-blue-50 text-black"
                     : "border-neutral-200"
             }`}
         >

@@ -75,7 +75,7 @@ const page = () => {
                         <div
                             // href={`/properties/${card.propertyId}`}
                             key={i}
-                            className="flex flex-col p-4 sm:flex-row xl:grid xl:grid-cols-5 border w-full gap-2 rounded-lg bg-white border-neutral-200 hover:border-[#8661d5] hover:shadow-md transition-all"
+                            className="flex flex-col p-4 sm:flex-row xl:grid xl:grid-cols-5 border w-full gap-2 rounded-lg bg-white border-neutral-200 hover:border-[#6f272b] hover:shadow-md transition-all"
                             onMouseEnter={() => handleMouseEnter(i)}
                             onMouseLeave={handleMouseLeave}
                         >
@@ -100,7 +100,7 @@ const page = () => {
                                         </span>
                                         <Button
                                             asChild
-                                            className="absolute right-0 top-0 rounded-full bg-[#8661d5] px-3"
+                                            className="absolute right-0 top-0 rounded-full bg-[#6f272b] px-3"
                                         >
                                             <Link
                                                 href={`/properties/${card.propertyId}`}
@@ -145,7 +145,7 @@ const page = () => {
                                     </p>
                                     <div className="flex flex-wrap w-full overflow-x-auto scrollbar-hide">
                                         <div className="flex w-fit gap-2 items-center">
-                                            <span className="flex w-fit whitespace-nowrap text-sm font-medium text-[#8661d5]">
+                                            <span className="flex w-fit whitespace-nowrap text-sm font-medium text-[#6f272b]">
                                                 Near By:
                                             </span>
                                             <ul className="w-fit flex gap-2">
@@ -166,7 +166,7 @@ const page = () => {
                                 <div className="flex w-full gap-2 justify-end sm:flex-grow-0 h-1/5">
                                     <Button
                                         asChild
-                                        className="rounded-full h-[unset] w-full md:w-fit text-xs bg-[#8661d5]"
+                                        className="rounded-full h-[unset] w-full md:w-fit text-xs bg-[#6f272b]"
                                     >
                                         <Link
                                             href={`/dashboard/properties/visits/${card.propertyId}`}
@@ -179,7 +179,7 @@ const page = () => {
                                     </Button>
                                     <Button
                                         asChild
-                                        className="rounded-full h-[unset] w-full md:w-fit text-xs bg-[#8661d5]"
+                                        className="rounded-full h-[unset] w-full md:w-fit text-xs bg-[#6f272b]"
                                     >
                                         <Link
                                             href={`/dashboard/properties/enquiry/${card.propertyId}`}
@@ -193,7 +193,7 @@ const page = () => {
                                     <Button
                                         asChild
                                         variant="outline"
-                                        className="rounded-full h-[unset] w-full md:w-fit text-xs border-[#8661d5] text-[#8661d5]"
+                                        className="rounded-full h-[unset] w-full md:w-fit text-xs border-[#6f272b] text-[#6f272b]"
                                     >
                                         <Link
                                             href={`/dashboard/edit/${card.propertyId}`}
@@ -217,7 +217,7 @@ const page = () => {
                         <Button
                             onClick={loadMore}
                             disabled={!properties}
-                            className="rounded-full bg-[#8661d5]"
+                            className="rounded-full bg-[#6f272b]"
                         >
                             Load More Properties
                         </Button>
