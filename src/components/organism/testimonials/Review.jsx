@@ -19,21 +19,20 @@ const Review = () => {
             text: "A highly trustworthy company for land dealings! The team is knowledgeable, supportive, and ensures a smooth transaction.",
             additionalText:
                 "They provide complete assistance, from paperwork to legal formalities, making the process easy and stress-free. I highly recommend for anyone looking to buy or invest in land....",
-
         },
         {
             name: "Santosh Shetty",
             location: "Uran",
             text: "Best Investments with Zaminwale, specially highlight site visit, It was trip to location rather than only site visit..",
-            additionalText: "Staff humour and knowledge is very clear and supportive only these traits made me invest 2000sqft land near Navi mumbai airport.thank you team Zaminwale",
-
+            additionalText:
+                "Staff humour and knowledge is very clear and supportive only these traits made me invest 2000sqft land near Navi mumbai airport.thank you team Zaminwale",
         },
         {
             name: "Macchindra Dhawale",
             location: "Panvel",
             text: "At Zaminwale we just learnt that what is the best deal called, We will forever belive that land investment is the best investment.",
-            additionalText: "..just all we need is better company with genuind vision.. Best land company in Mumbai.. Came from pune and booked 1 guntha land near MTHL..",
-
+            additionalText:
+                "..just all we need is better company with genuind vision.. Best land company in Mumbai.. Came from pune and booked 1 guntha land near MTHL..",
         },
         {
             name: "Shaikh Salim",
@@ -41,7 +40,6 @@ const Review = () => {
             text: "Be practical before buying any property , be analytical... Search a lot about company . Then finally invest here with Zaminwale 1sqft propery..",
             additionalText:
                 "Great company in all Navi mumbai region . Highly recommended for anyone who want to become land owner of property near Navi mumbai international airport.",
-
         },
         {
             name: "Akshay Jadhav",
@@ -49,7 +47,6 @@ const Review = () => {
             text: "When you want to experience good human morals with best professional service then Zaminwale is the best place for every land investment mind person.",
             additionalText:
                 "There hospitality , and project explanation services is far better than any other land bankers in Mumbai , thant why Zaminwale Is Number 1 in Real Estate....",
-
         },
         {
             name: "Samuel Ingle",
@@ -57,7 +54,6 @@ const Review = () => {
             text: "If you want most reliable and transparent deal in land investment sector then none othe place is better than Zaminwale,",
             additionalText:
                 "their purchase policy are unique and better than other companies in mumbai so highly recommended to every future land investor..",
-
         },
         {
             name: "Sameer Khan",
@@ -65,7 +61,6 @@ const Review = () => {
             text: "Zaminwale is serving people with their clear vision and attitude, even lower earning people can find better option for land investment ",
             additionalText:
                 "if you able to meet right team like Zaminwale. It's the only thing why Zaminwale is top most land banker in Mumbai. Thank you Zaminwale will visit again with my brother with another booking .",
-
         },
         {
             name: "Sohan Mate",
@@ -73,7 +68,6 @@ const Review = () => {
             text: "If you want justified investment for your hard earned money then none othe place is better than Zaminwale...",
             additionalText:
                 "very clear during dealing , accurate connectivities explanations with affordable rates made me purchase 2 guntha land in Third Mumbai.",
-
         },
     ];
 
@@ -97,7 +91,7 @@ const Review = () => {
                             )}
                             <a
                                 href="#"
-                                className="text-[#581a95] cursor-pointer"
+                                className="text-[#8661d5] cursor-pointer"
                                 onClick={(e) => {
                                     e.preventDefault(); // Prevent the default anchor behavior
                                     toggleContent(index);

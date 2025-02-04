@@ -74,7 +74,7 @@ const page = () => {
                                     <Link
                                         href={`/properties/${card.propertyId}`}
                                         key={i}
-                                        className="flex flex-col p-4 sm:flex-row xl:grid xl:grid-cols-5 border w-full gap-2 rounded-3xl bg-white border-neutral-200 hover:border-[#581a95] hover:shadow-md transition-all"
+                                        className="flex flex-col p-4 sm:flex-row xl:grid xl:grid-cols-5 border w-full gap-2 rounded-3xl bg-white border-neutral-200 hover:border-[#8661d5] hover:shadow-md transition-all"
                                         onMouseEnter={() => handleMouseEnter(i)}
                                         onMouseLeave={handleMouseLeave}
                                     >
@@ -146,7 +146,7 @@ const page = () => {
                                                 </p>
                                                 <div className="flex flex-wrap w-full overflow-x-auto scrollbar-hide">
                                                     <div className="flex w-fit gap-2 items-center">
-                                                        <span className="flex w-fit whitespace-nowrap text-sm font-medium text-[#581a95]">
+                                                        <span className="flex w-fit whitespace-nowrap text-sm font-medium text-[#8661d5]">
                                                             Near By:
                                                         </span>
                                                         <ul className="w-fit flex gap-2">
@@ -165,12 +165,12 @@ const page = () => {
                                                 </div>
                                             </div>
                                             <div className="flex w-full gap-2 sm:gap-4 md:justify-end sm:flex-grow-0 h-1/5">
-                                                <Button className="rounded-full h-[unset] w-full md:w-fit text-xs bg-[#581a95]">
+                                                <Button className="rounded-full h-[unset] w-full md:w-fit text-xs bg-[#8661d5]">
                                                     <PhoneCallIcon /> Contact Us
                                                 </Button>
                                                 <Button
                                                     variant="outline"
-                                                    className="rounded-full h-[unset] w-full md:w-fit text-xs border-[#581a95] text-[#581a95]"
+                                                    className="rounded-full h-[unset] w-full md:w-fit text-xs border-[#8661d5] text-[#8661d5]"
                                                 >
                                                     View Number
                                                 </Button>

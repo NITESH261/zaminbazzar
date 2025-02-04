@@ -151,7 +151,7 @@ const page = async ({ params }) => {
                                 <div className="flex gap-4 w-full">
                                     <Dialog>
                                         <DialogTrigger asChild>
-                                            <Button className="rounded-3xl h-[unset] text-sm bg-[#581a95]">
+                                            <Button className="rounded-3xl h-[unset] text-sm bg-[#8661d5]">
                                                 Contact Owner
                                             </Button>
                                         </DialogTrigger>

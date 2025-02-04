@@ -3,12 +3,13 @@ import { Circle, CircleCheck, CircleDot } from "lucide-react";
 const StepCard = ({ stepNumber, status, title }) => {
     return (
         <div
-            className={`flex flex-col md:flex-row items-center justify-center w-fit md:w-full border rounded-lg gap-2 p-2 md:p-4 ${status === "complete"
-                    ? "border-[#581a95] bg-[#581a95] text-white"
+            className={`flex flex-col md:flex-row items-center justify-center w-fit md:w-full border rounded-lg gap-2 p-2 md:p-4 ${
+                status === "complete"
+                    ? "border-[#8661d5] bg-[#8661d5] text-white"
                     : status === "current"
-                        ? "border-[#581a95] bg-blue-50 text-black"
-                        : "border-neutral-200"
-                }`}
+                    ? "border-[#8661d5] bg-blue-50 text-black"
+                    : "border-neutral-200"
+            }`}
         >
             {status === "complete" ? (
                 <CircleCheck className="text-white" />

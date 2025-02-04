@@ -43,7 +43,9 @@ const Step2Data = [
             { value: "Thane", label: "Thane" },
             { label: "Panvel", value: "Panvel" },
             { label: "Uran", value: "Uran" },
-            { label: "Third Mumbai", value: "Third Mumbai" },
+            { label: "Chirle", value: "Chirle" },
+            { label: "Ranjanpada", value: "Ranjanpada" },
+            { label: "Vindhane", value: "Vindhane" },
         ],
     },
 ];
@@ -152,7 +154,7 @@ const LocationDetails = ({
                             </Button>
                             <Button
                                 type="submit"
-                                className="px-4 py-2 bg-[#581a95] text-white rounded-lg"
+                                className="px-4 py-2 bg-[#8661d5] text-white rounded-lg"
                                 disabled={loading}
                             >
                                 {loading ? "Loading" : "Continue"}

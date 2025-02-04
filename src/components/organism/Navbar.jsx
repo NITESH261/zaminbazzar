@@ -21,7 +21,7 @@ import {
 
 const Navbar = () => {
     return (
-        <header className="flex sticky top-0 z-20 w-full bg-[#581a95]">
+        <header className="flex sticky top-0 z-20 w-full bg-[#8661d5]">
             <div className="flex w-full h-16 items-center max-w-[1480px] mx-auto gap-4 px-4">
                 <div className="flex h-fit w-fit">
                     <Link href={"/"}>
@@ -124,7 +124,7 @@ const Navbar = () => {
                         <LogoutBtn />
                         <Sheet>
                             <SheetTrigger asChild>
-                                <Button className="rounded-md px-3 py-0 bg-transparent hover:text-[#581a95] hover:bg-white">
+                                <Button className="rounded-md px-3 py-0 bg-transparent hover:text-[#8661d5] hover:bg-white">
                                     <AlignRightIcon className="!size-5" />
                                 </Button>
                             </SheetTrigger>
@@ -280,7 +280,9 @@ const Navbar = () => {
                                             className="bg-white  text-black hover:text-white  md:flex rounded-full"
                                         >
                                             <Link
-                                                href={"/post-property/create-property"}
+                                                href={
+                                                    "/post-property/create-property"
+                                                }
                                                 className="py-1 h-[unset] gap-2"
                                             >
                                                 <span>Post Property</span>
@@ -329,6 +331,18 @@ const NavItems = [
                     {
                         label: "Third Mumbai",
                         link: "/search/top-location/third-mumbai",
+                    },
+                    {
+                        label: "Chirle",
+                        link: "/search/top-location/chirle",
+                    },
+                    {
+                        label: "Ranjanpada",
+                        link: "/search/top-location/ranjanpada",
+                    },
+                    {
+                        label: "Vindhane",
+                        link: "/search/top-location/vindhane",
                     },
                 ],
             },
