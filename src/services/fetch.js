@@ -105,13 +105,15 @@ const customFetch = async (
 
 		if (contentType && contentType.includes("application/json")) {
 			responseContent = await res.json();
-		} else {
+		} else if (!contentType && !contentType.includes("application/json")) {
+			responseContent = await res.json();
+		}
+		else {
 			responseContent = await res.text();
 		}
 
-		// let jsonResp;
 		// try {
-		// 	jsonResp = await res.json();
+		// 	responseContent = await res.json();
 		// 	console.log("API response JSON:");
 		// } catch (parseError) {
 		// 	console.error("Failed to parse API response:");
