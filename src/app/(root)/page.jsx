@@ -1,6 +1,5 @@
 "use client";
 
-import { getAllProperty } from "@/actions/property";
 import AdsBanner from "@/components/atoms/AdsBanner";
 import About from "@/components/organism/About";
 import DreamPlots from "@/components/organism/DreamPlots";
