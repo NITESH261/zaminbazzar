@@ -3,6 +3,7 @@ import { Toaster } from "@/components/ui/sonner";
 import { cn } from "@/lib/utils";
 import { Open_Sans, Rubik } from "next/font/google";
 import "./globals.css";
+import Analytics from "@/provider/analytics";
 
 const open_sans = Open_Sans({
     subsets: ["latin"],
@@ -42,6 +43,7 @@ export default function MainLayout({ children }) {
                     rubik.variable
                 )}
             >
+                <Analytics />
                 <div className="flex relative w-full flex-1 flex-col">
                     {children}
                     <PopupEnquiry />

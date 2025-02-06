@@ -2,9 +2,9 @@ import Image from "next/image";
 
 const CityImage = ({ city }) => {
     const cityImages = {
-        Panvel: "/assets/ads/panvel-ads.jpeg",
-        Thane: "/assets/ads/thane-ads.jpeg",
-        "Third Mumbai": "/assets/ads/third-mumbai-ads.jpeg",
+        Panvel: "/assets/ads/panvel.avif",
+        Thane: "/assets/ads/thane.avif",
+        "Third Mumbai": "/assets/ads/3RD MUMBAI.avif",
     };
 
     const cityImagesMobile = {
@@ -14,7 +14,8 @@ const CityImage = ({ city }) => {
     };
 
     const imageUrl = cityImages[city] || "/assets/ads/main-ads.jpeg";
-    const imageUrlMobile = cityImagesMobile[city] || "/assets/ads/main-ads-mobile.jpeg";
+    const imageUrlMobile =
+        cityImagesMobile[city] || "/assets/ads/main-ads-mobile.jpeg";
 
     return (
         <div className="max-w-7xl w-full p-4 mx-auto mb-4 md:mb-6">
@@ -37,7 +38,5 @@ const CityImage = ({ city }) => {
 };
 
 export default CityImage;
-
-
 
 //panvel-mobile
