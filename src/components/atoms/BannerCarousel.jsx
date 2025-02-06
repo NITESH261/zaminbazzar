@@ -21,7 +21,7 @@ const BannerCarousel = () => {
             <div className="relative aspect-video h-full w-[calc(100%-100px)] rounded-b-3xl shadow-md hidden md:flex">
                 <Image
                     loading="lazy"
-                    src="/assets/banner-img/hero-image.webp"
+                    src="/assets/banner-img/website-hero-image.avif"
                     alt="banner-img"
                     fill
                     className="object-cover lg:object-cover object-center h-full w-full rounded-b-3xl"

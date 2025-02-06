@@ -18,9 +18,13 @@ const AdsBanner = () => {
 
     return (
         <div className="max-w-7xl w-full p-4 mx-auto mt-4 md:mt-10">
-            <div className="w-full border border-neutral-200 shadow h-32 relative rounded-2xl">
+            <div className="w-full border border-neutral-200 shadow h-40 relative rounded-2xl">
                 <Image
-                    src={isMobile ? "/assets/ads/main_mobileads.jpg" : "/assets/ads/main-ads.jpeg"}
+                    src={
+                        isMobile
+                            ? "/assets/ads/main_mobileads.jpg"
+                            : "/assets/ads/3RD MUMBAI.avif"
+                    }
                     alt="ads banner"
                     fill
                     className="md:object-cover sm:object-contain rounded-2xl object-center"
