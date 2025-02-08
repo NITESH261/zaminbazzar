@@ -39,7 +39,7 @@ const Property = () => {
             <div className="flex w-full ">
                 <div className="flex flex-col gap-6 md:gap-8 w-full max-w-7xl mx-auto px-4 py-6 md:py-8 lg:py-10 xl:py-12">
                     <SectionHeading
-                        title="Top highlighted projects"
+                        title="Top Highlighted Projects"
                         // subtitle="Noteworthy projects to watch"
                         link
                         linkHref="/properties"
