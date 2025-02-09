@@ -75,6 +75,7 @@ const PhotoNVideo = ({ onSubmit, prev, currentStep, loading, formData }) => {
                                 <FormLabel>Image 1</FormLabel>
                                 <FormControl>
                                     <DragNDrop
+                                        maxSize="5"
                                         src={field.value}
                                         onFileChange={(e) =>
                                             handleFileChange(e, "image1")
@@ -93,6 +94,7 @@ const PhotoNVideo = ({ onSubmit, prev, currentStep, loading, formData }) => {
                                 <FormLabel>Image 2</FormLabel>
                                 <FormControl>
                                     <DragNDrop
+                                        maxSize="5"
                                         src={field.value}
                                         onFileChange={(e) =>
                                             handleFileChange(e, "image2")
@@ -111,6 +113,7 @@ const PhotoNVideo = ({ onSubmit, prev, currentStep, loading, formData }) => {
                                 <FormLabel>Image 3</FormLabel>
                                 <FormControl>
                                     <DragNDrop
+                                        maxSize="5"
                                         src={field.value}
                                         onFileChange={(e) =>
                                             handleFileChange(e, "image3")
@@ -129,6 +132,7 @@ const PhotoNVideo = ({ onSubmit, prev, currentStep, loading, formData }) => {
                                 <FormLabel>Image 4</FormLabel>
                                 <FormControl>
                                     <DragNDrop
+                                        maxSize="5"
                                         src={field.value}
                                         onFileChange={(e) =>
                                             handleFileChange(e, "image4")
@@ -147,6 +151,7 @@ const PhotoNVideo = ({ onSubmit, prev, currentStep, loading, formData }) => {
                                 <FormLabel>Image 5</FormLabel>
                                 <FormControl>
                                     <DragNDrop
+                                        maxSize="5"
                                         src={field.value}
                                         onFileChange={(e) =>
                                             handleFileChange(e, "image5")

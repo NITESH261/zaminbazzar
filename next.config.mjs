@@ -18,7 +18,12 @@ const nextConfig = {
                 hostname: "zaminwale-api.onrender.com"
             }
         ]
-    }
+    },
+    experimental: {
+        serverActions: {
+            bodySizeLimit: '5mb',
+        },
+    },
 };
 
 export default nextConfig;
