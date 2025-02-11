@@ -23,7 +23,7 @@ const AdsBanner = () => {
                     src={
                         isMobile
                             ? "/assets/ads/main_mobileads.jpg"
-                            : "/assets/ads/3RD MUMBAI.avif"
+                            : "/assets/ads/3mumbai.jpg"
                     }
                     alt="ads banner"
                     fill

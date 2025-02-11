@@ -161,27 +161,27 @@ const NavItems = [
         data: [
             {
                 label: "Plot in Thane",
-                link: "/thane",
+                link: "/",
             },
             {
                 label: "Plot in Panvel",
-                link: "/panvel",
+                link: "/",
             },
             {
                 label: "Plot in Khalapur",
-                link: "/khalapur",
+                link: "/",
             },
             {
                 label: "Plot in Ranjanpada",
-                link: "/ranjanpada",
+                link: "/",
             },
             {
                 label: "Plot in Vindhane",
-                link: "/vindhane",
+                link: "/",
             },
             {
                 label: "Plot in Chirle",
-                link: "/chirle",
+                link: "/",
             },
         ],
     },
