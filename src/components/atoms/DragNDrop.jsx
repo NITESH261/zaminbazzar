@@ -21,8 +21,8 @@ const getFileSizeConverted = (_size) => {
 const DragNDrop = ({
     label = null,
     onFileChange = console.log,
-    accept = "image/png, image/jpeg, image/jpg, image/webp",
-    formats = ".png, .jpg, .jpeg, .webp",
+    accept = "image/png, image/jpeg, image/jpg, image/webp, video/mp4",
+    formats = ".png, .jpg, .jpeg, .webp, .mp4",
     formatType = "image",
     maxSize = 10,
     disabled = false,
@@ -203,16 +203,23 @@ const DragNDrop = ({
                     ) : formatType === "image" ? (
                         <>
                             <div className="relative aspect-video h-full w-full border border-neutral-200 dark:border-neutral-700">
-                                <Image
-                                    src={fileLink}
-                                    alt={label || "image"}
-                                    fill
-                                    priority
-                                    className="object-contain transition-all duration-300 group-hover:opacity-50 group-hover:blur-sm"
-                                />
+                                {fileLink?.endsWith(".mp4") ? (
+                                    <video
+                                        src={fileLink}
+                                        className="object-contain transition-all duration-300 group-hover:opacity-50 group-hover:blur-sm"
+                                    />
+                                ) : (
+                                    <Image
+                                        src={fileLink}
+                                        alt={label || "Video Uploaded"}
+                                        fill
+                                        priority
+                                        className="object-contain transition-all duration-300 group-hover:opacity-50 group-hover:blur-sm"
+                                    />
+                                )}
                             </div>
                             <div
-                                className="absolute inset-0 z-10 flex h-full w-full scale-0 cursor-pointer items-center justify-center transition-all duration-300 group-hover:scale-100"
+                                className="absolute inset-0 z-10 flex h-full w-full backdrop-blur-sm scale-0 cursor-pointer items-center justify-center transition-all duration-300 group-hover:scale-100"
                                 onClick={removeFile}
                             >
                                 <TrashIcon className="h-8 w-8 text-red-500" />
@@ -220,7 +227,18 @@ const DragNDrop = ({
                         </>
                     ) : (
                         <div className="flex h-full w-full flex-col items-center justify-center space-y-1 p-4 text-center">
-                            {label ? label : "File"} has been uploaded
+                            <div className="relative aspect-video h-full flex flex-col w-full items-center justify-center">
+                                <div className="mx-auto mb-3 w-8 text-slate-400">
+                                    <FileIcon extension="mp4" />
+                                </div>
+                                {label ? label : "Video"} has been uploaded
+                                <div
+                                    className="absolute inset-0 z-10 flex h-full w-full backdrop-blur-sm scale-0 cursor-pointer items-center justify-center transition-all duration-300 group-hover:scale-100"
+                                    onClick={removeFile}
+                                >
+                                    <TrashIcon className="h-8 w-8 text-red-500" />
+                                </div>
+                            </div>
                         </div>
                     )}
                 </div>
