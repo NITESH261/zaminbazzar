@@ -971,7 +971,7 @@ const Page = () => {
                                             <FormLabel>Image 1</FormLabel>
                                             <FormControl>
                                                 <DragNDrop
-                                                    maxSize="5"
+                                                    maxSize="10"
                                                     src={field.value}
                                                     onFileChange={(e) =>
                                                         handleFileChange(
@@ -993,7 +993,7 @@ const Page = () => {
                                             <FormLabel>Image 2</FormLabel>
                                             <FormControl>
                                                 <DragNDrop
-                                                    maxSize="5"
+                                                    maxSize="10"
                                                     src={field.value}
                                                     onFileChange={(e) =>
                                                         handleFileChange(
@@ -1015,7 +1015,7 @@ const Page = () => {
                                             <FormLabel>Image 3</FormLabel>
                                             <FormControl>
                                                 <DragNDrop
-                                                    maxSize="5"
+                                                    maxSize="10"
                                                     src={field.value}
                                                     onFileChange={(e) =>
                                                         handleFileChange(
@@ -1037,7 +1037,7 @@ const Page = () => {
                                             <FormLabel>Image 4</FormLabel>
                                             <FormControl>
                                                 <DragNDrop
-                                                    maxSize="5"
+                                                    maxSize="10"
                                                     src={field.value}
                                                     onFileChange={(e) =>
                                                         handleFileChange(
@@ -1059,7 +1059,7 @@ const Page = () => {
                                             <FormLabel>Image 5</FormLabel>
                                             <FormControl>
                                                 <DragNDrop
-                                                    maxSize="5"
+                                                    maxSize="10"
                                                     src={field.value}
                                                     onFileChange={(e) =>
                                                         handleFileChange(

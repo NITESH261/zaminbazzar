@@ -1,5 +1,6 @@
 import { uploadPropertyImage } from "@/actions/property";
 import DragNDrop from "@/components/atoms/DragNDrop";
+import Loading from "@/components/atoms/Loading";
 import { Button } from "@/components/ui/button";
 import {
     Form,
@@ -12,6 +13,7 @@ import {
 import { zodResolver } from "@hookform/resolvers/zod";
 import { ArrowLeft } from "lucide-react";
 import { useForm } from "react-hook-form";
+import { toast } from "sonner";
 import { z } from "zod";
 
 const PhotosNVideoSchema = z.object({
@@ -35,9 +37,11 @@ const PhotoNVideo = ({ onSubmit, prev, currentStep, loading, formData }) => {
         const formData = new FormData();
         formData.append("file", file);
         const fileResp = await uploadPropertyImage({ body: formData });
+        if (!fileResp) {
+            toast.error("Upload Failed");
+        }
         const uploadedImageUrl = fileResp;
         form.setValue(fieldName, uploadedImageUrl);
-        console.log(form.getValues(fieldName));
     };
 
     const handleSubmit = (data) => {
@@ -62,7 +66,7 @@ const PhotoNVideo = ({ onSubmit, prev, currentStep, loading, formData }) => {
             >
                 <div className="flex flex-col w-full">
                     <span className="text-xl md:text-2xl font-semibold">
-                        Add photos of your property (Optional)
+                        Add photos of your property
                     </span>
                 </div>
 
@@ -75,7 +79,7 @@ const PhotoNVideo = ({ onSubmit, prev, currentStep, loading, formData }) => {
                                 <FormLabel>Image 1</FormLabel>
                                 <FormControl>
                                     <DragNDrop
-                                        maxSize="5"
+                                        maxSize="10"
                                         src={field.value}
                                         onFileChange={(e) =>
                                             handleFileChange(e, "image1")
@@ -94,7 +98,7 @@ const PhotoNVideo = ({ onSubmit, prev, currentStep, loading, formData }) => {
                                 <FormLabel>Image 2</FormLabel>
                                 <FormControl>
                                     <DragNDrop
-                                        maxSize="5"
+                                        maxSize="10"
                                         src={field.value}
                                         onFileChange={(e) =>
                                             handleFileChange(e, "image2")
@@ -113,7 +117,7 @@ const PhotoNVideo = ({ onSubmit, prev, currentStep, loading, formData }) => {
                                 <FormLabel>Image 3</FormLabel>
                                 <FormControl>
                                     <DragNDrop
-                                        maxSize="5"
+                                        maxSize="10"
                                         src={field.value}
                                         onFileChange={(e) =>
                                             handleFileChange(e, "image3")
@@ -132,7 +136,7 @@ const PhotoNVideo = ({ onSubmit, prev, currentStep, loading, formData }) => {
                                 <FormLabel>Image 4</FormLabel>
                                 <FormControl>
                                     <DragNDrop
-                                        maxSize="5"
+                                        maxSize="10"
                                         src={field.value}
                                         onFileChange={(e) =>
                                             handleFileChange(e, "image4")
@@ -151,7 +155,7 @@ const PhotoNVideo = ({ onSubmit, prev, currentStep, loading, formData }) => {
                                 <FormLabel>Image 5</FormLabel>
                                 <FormControl>
                                     <DragNDrop
-                                        maxSize="5"
+                                        maxSize="10"
                                         src={field.value}
                                         onFileChange={(e) =>
                                             handleFileChange(e, "image5")
