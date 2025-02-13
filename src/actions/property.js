@@ -129,8 +129,8 @@ export const downloadPropertyVisit = async (propertyId) => {
     return resp
 }
 
-export const getWebsiteEnquiry = async () => {
-    let resp = await fetchWithToken("/enquiry/website/getAll/", {
+export const getWebsiteEnquiry = async ({ page, limit }) => {
+    let resp = await fetchWithToken(`/enquiry/website/getAll?page=${page}&limit=${limit}`, {
         method: "GET"
     })
     resp = resp.results.data

@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import useZaminwaleStore from "@/store";
 import Image from "next/image";
-import { useParams, useRouter } from "next/navigation";
+import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 
 const page = () => {
@@ -33,8 +33,11 @@ const page = () => {
         setLoading(true);
         if (user.isAdmin === true) {
             const fetchEnquiry = async () => {
-                const { result = [] } = await getWebsiteEnquiry();
-                setEnquires(result);
+                const { result = [] } = await getWebsiteEnquiry({
+                    page: 1,
+                    limit: 20,
+                });
+                setEnquires(result)
                 setLoading(false);
             };
             fetchEnquiry();
@@ -44,7 +47,7 @@ const page = () => {
     return (
         <div className="flex w-full flex-col flex-1 overflow-y-auto scrollbar">
             {loading ? (
-                <div className="flex items-center h-fit justify-center w-full">
+                <div className="flex items-center h-full justify-center w-full">
                     <Loading />
                 </div>
             ) : (
