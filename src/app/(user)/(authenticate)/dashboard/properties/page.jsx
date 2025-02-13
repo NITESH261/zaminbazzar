@@ -2,12 +2,11 @@
 
 import { getUserProperty } from "@/actions/dashboard";
 import DeletePropertyBtn from "@/components/atoms/DeletePropertyBtn";
-import Loading from "@/components/atoms/Loading";
+import SkeletonCard from "@/components/atoms/SkeletonCard";
 import ImageScroll from "@/components/molecules/ImageScroll";
 import { Button } from "@/components/ui/button";
 import { formatCurrency, sliceParagraph } from "@/lib/utils";
 import { Edit, Eye, IndianRupee, MapIcon, PhoneCall } from "lucide-react";
-import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 
@@ -16,7 +15,6 @@ const page = () => {
     const [hoveredIndex, setHoveredIndex] = useState(null);
     const [page, setPage] = useState(1);
     const [pagination, setPagination] = useState([]);
-    const [loading, setLoading] = useState(false)
 
     const handleMouseEnter = (index) => {
         setHoveredIndex(index);
@@ -31,27 +29,17 @@ const page = () => {
     };
 
     const fetchData = async () => {
-        setLoading(true)
         const { result, pagination = [] } = await getUserProperty({
             page,
             limit: 20,
         });
         setPagination(pagination);
         setProperties((prev) => {
-            const processedResult = result.map((item, index) => ({
-                ...item,
-                id: item.id || `${page}-${index}`,
-            }));
-
-            const merged = [...prev, ...processedResult];
-            const unique = merged.filter(
-                (item, index, self) =>
-                    index === self.findIndex((t) => t.id === item.id)
+            const newItems = result.filter(
+                (item) => !prev.some((prevItem) => prevItem._id === item._id)
             );
-
-            return unique;
+            return [...prev, ...newItems];
         });
-        setLoading(false)
     };
 
     useEffect(() => {
@@ -62,19 +50,7 @@ const page = () => {
     return (
         <div className="flex w-full rounded-lg flex-1 overflow-x-hidden overflow-y-auto scrollbar">
             <div className="grid grid-cols-1 gap-4 w-full h-fit">
-                {loading ? (
-                    <div className="flex items-center justify-center h-[calc(100vh-200px)] w-full flex-1">
-                        <Loading />
-                        {/* <div className="flex w-full aspect-square max-w-md relative">
-                            <Image
-                                src={"/assets/helper/404.png"}
-                                alt="404"
-                                fill
-                                className="object-contain"
-                            />
-                        </div> */}
-                    </div>
-                ) : properties.length > 0 ? (
+                {properties.length > 0 ? (
                     properties?.map((card, i) => (
                         <div
                             // href={`/properties/${card.propertyId}`}
@@ -216,13 +192,8 @@ const page = () => {
                         </div>
                     ))
                 ) : (
-                    <div className="flex w-full aspect-square max-w-md relative mx-auto">
-                        <Image
-                            src={"/assets/helper/404.png"}
-                            alt="404"
-                            fill
-                            className="object-contain"
-                        />
+                    <div className="flex w-full max-w-lg mx-auto">
+                        <SkeletonCard />
                     </div>
                 )}
                 {pagination.next ? (

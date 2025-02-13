@@ -1,6 +1,6 @@
 "use server"
 
-import { fetchWithoutToken, fetchWithToken } from "@/services/fetch"
+import { fetchWithToken } from "@/services/fetch"
 
 export const getUserProperty = async ({ page, limit }) => {
     let resp = await fetchWithToken(`/user/properties?page=${page}&limit=${limit}`, {
