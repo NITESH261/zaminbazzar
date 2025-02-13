@@ -1,6 +1,6 @@
 "use client";
 
-import { createPropertyEnquiry } from "@/actions/property";
+import { createPropertyVisit } from "@/actions/property";
 import { cn } from "@/lib/utils";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { format } from "date-fns";
@@ -31,7 +31,7 @@ const formSchema = z.object({
         message: "Mobile No must be at least 10 Digit.",
     }),
     email: z.string().email(),
-    visitBy: z.coerce.date({
+    visitAt: z.date({
         required_error: "Date is required.",
     }),
 });
@@ -45,10 +45,12 @@ const PropertyVisitForm = ({ propertyId, uid }) => {
     });
 
     const onSubmit = async (values) => {
+        console.log(values);
+
         setLoading(true);
         try {
             let body = { ...values, uid };
-            const resp = await createPropertyEnquiry({ body, propertyId });
+            const resp = await createPropertyVisit({ body, propertyId });
             setLoading(false);
             form.reset();
             toast.success(resp.message);
@@ -118,7 +120,7 @@ const PropertyVisitForm = ({ propertyId, uid }) => {
                     />
                     <FormField
                         control={form.control}
-                        name="visitBy"
+                        name="visitAt"
                         render={({ field }) => (
                             <FormItem>
                                 <FormLabel>Schedule Date</FormLabel>
