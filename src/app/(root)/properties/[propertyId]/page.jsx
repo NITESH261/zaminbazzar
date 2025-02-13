@@ -167,6 +167,27 @@ const page = async ({ params }) => {
                                             />
                                         </DialogContent>
                                     </Dialog>
+                                    <Dialog>
+                                        <DialogTrigger asChild>
+                                            <Button
+                                                variant="outline"
+                                                className="rounded-3xl h-[unset] text-sm border-[#6f272b]"
+                                            >
+                                                Schedule Visit
+                                            </Button>
+                                        </DialogTrigger>
+                                        <DialogContent className="max-w-sm">
+                                            <DialogHeader>
+                                                <DialogTitle>
+                                                    Schedule Site Visit Date
+                                                </DialogTitle>
+                                            </DialogHeader>
+                                            <PropertyVisitForm
+                                                propertyId={result.propertyId}
+                                                uid={result.uid}
+                                            />
+                                        </DialogContent>
+                                    </Dialog>
                                 </div>
                             </div>
                         </div>
