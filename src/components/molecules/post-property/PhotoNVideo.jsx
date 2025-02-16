@@ -34,7 +34,6 @@ const PhotoNVideo = ({ onSubmit, prev, currentStep, loading, formData }) => {
         const files = e.target.files;
         if (files.length === 0) return;
         const file = files[0];
-        console.log(file);
 
         const formData = new FormData();
         formData.append("file", file);
