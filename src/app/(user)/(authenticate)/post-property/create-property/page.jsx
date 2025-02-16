@@ -21,7 +21,7 @@ const Steps = [
 
 const Page = () => {
     const [loading, setLoading] = useState(false);
-    const [step, setStep] = useState(0);
+    const [step, setStep] = useState(3);
     const [formData, setFormData] = useState({});
     const router = useRouter();
 
