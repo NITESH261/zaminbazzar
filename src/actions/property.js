@@ -72,35 +72,35 @@ export const filterProperty = async (filter) => {
     return resp
 }
 
-// export const uploadPropertyImage = async ({ body }) => {
-//     let resp = await fetchWithToken("/property/upload/file", {
-//         method: "POST",
-//         noContentType: true,
-//         body,
-//     })
-//     resp = resp.results
-//     return resp
-// }
-
-export const uploadPropertyImage = async (body) => {
-    try {
-        const token = cookieService.getAccessToken()
-        const res = await fetch(
-            "http://3.111.32.86/api/v1/property/upload/file",
-            {
-                method: "POST",
-                headers: {
-                    Authorization: `Bearer ${token}`,
-                },
-                body: JSON.stringify(body)
-            }
-        ).then(res => res.json())
-        return res
-    } catch (error) {
-        console.log(error);
-        return {}
-    }
+export const uploadPropertyImage = async ({ body }) => {
+    let resp = await fetchWithToken("/property/upload/file", {
+        method: "POST",
+        noContentType: true,
+        body,
+    })
+    resp = resp.results
+    return resp
 }
+
+// export const uploadPropertyImage = async (body) => {
+//     try {
+//         const token = cookieService.getAccessToken()
+//         const res = await fetch(
+//             "http://3.111.32.86/api/v1/property/upload/file",
+//             {
+//                 method: "POST",
+//                 headers: {
+//                     Authorization: `Bearer ${token}`,
+//                 },
+//                 body: JSON.stringify(body)
+//             }
+//         ).then(res => res.json())
+//         return res
+//     } catch (error) {
+//         console.log(error);
+//         return {}
+//     }
+// }
 
 
 // Website Enquiry
