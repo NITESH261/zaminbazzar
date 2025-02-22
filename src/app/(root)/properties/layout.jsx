@@ -1,8 +1,6 @@
-import AwardList from "@/components/organism/awards/AwardList";
-import Footer from "@/components/organism/Footer";
 import React from "react";
 
-const metadata = {
+export const metadata = {
     title: "Zaminwale – Buying and Selling of Land",
     description:
         "Zaminwale.com is India's leading online platform for buying and selling land. Find verified listings, trusted sellers, and the best real estate deals.",
@@ -42,14 +40,8 @@ const metadata = {
     },
 };
 
-const page = () => {
-    return (
-        <>
-            <AwardList />
-            {/* <Award_video /> */}
-            <Footer />
-        </>
-    );
+const PropertiesLayout = ({ children }) => {
+    return <>{children}</>;
 };
 
-export default page;
+export default PropertiesLayout;
