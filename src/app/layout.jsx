@@ -41,6 +41,9 @@ export const metadata = {
         "residential plots",
         "Zaminwale",
     ],
+    verification: {
+        google: "e9G9-A11LLzgOrW4cFsc-2EuwHzF0TXMF_AwpRLn30Y",
+    },
     openGraph: {
         title: "Zaminwale – Buying and Selling of Land",
         description:
