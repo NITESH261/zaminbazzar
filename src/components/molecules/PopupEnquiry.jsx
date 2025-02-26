@@ -29,12 +29,20 @@ import {
 import { Textarea } from "../ui/textarea";
 
 const EnquireFormSchema = z.object({
-    name: z.string().min(2, {
-        message: "Fullname must be at least 2 characters.",
-    }),
-    mobileNo: z.string().min(10, {
-        message: "Mobile No must be at least 10 Digit.",
-    }),
+    name: z
+        .string()
+        .min(2, {
+            message: "Fullname must be at least 2 characters.",
+        })
+        .regex(/^[A-Za-z]+$/, "Only alphabets are allowed."),
+    mobileNo: z
+        .string()
+        .min(10, {
+            message: "Mobile No must be at least 10 Digit.",
+        })
+        .max(10, {
+            message: "Mobile No must be at Max 10 Digit.",
+        }),
     email: z.string().email(),
     advertisement: z.string(),
 });
