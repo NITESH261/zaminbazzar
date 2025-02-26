@@ -387,10 +387,6 @@ const NavItems = [
                         link: "/search/top-location/uran",
                     },
                     {
-                        label: "Third Mumbai",
-                        link: "/search/top-location/third-mumbai",
-                    },
-                    {
                         label: "Chirle",
                         link: "/search/top-location/chirle",
                     },
@@ -404,43 +400,43 @@ const NavItems = [
                     },
                 ],
             },
-            {
-                label: "Plot Types",
-                data: [
-                    {
-                        label: "Residential Plots",
-                        link: "/",
-                    },
-                    {
-                        label: "Commercial Plots",
-                        link: "/",
-                    },
-                    {
-                        label: "Investment Plots",
-                        link: "/",
-                    },
-                    {
-                        label: "Hill View Bunglow",
-                        link: "/",
-                    },
-                    {
-                        label: "Plots for Petrolpump",
-                        link: "/",
-                    },
-                    {
-                        label: "Plots for Factories",
-                        link: "/",
-                    },
-                    {
-                        label: "Plots for Warehouse",
-                        link: "/",
-                    },
-                    {
-                        label: "Sea View Bunglow",
-                        link: "/",
-                    },
-                ],
-            },
+            // {
+            //     label: "Plot Types",
+            //     data: [
+            //         {
+            //             label: "Residential Plots",
+            //             link: "/",
+            //         },
+            //         {
+            //             label: "Commercial Plots",
+            //             link: "/",
+            //         },
+            //         {
+            //             label: "Investment Plots",
+            //             link: "/",
+            //         },
+            //         {
+            //             label: "Hill View Bunglow",
+            //             link: "/",
+            //         },
+            //         {
+            //             label: "Plots for Petrolpump",
+            //             link: "/",
+            //         },
+            //         {
+            //             label: "Plots for Factories",
+            //             link: "/",
+            //         },
+            //         {
+            //             label: "Plots for Warehouse",
+            //             link: "/",
+            //         },
+            //         {
+            //             label: "Sea View Bunglow",
+            //             link: "/",
+            //         },
+            //     ],
+            // },
             {
                 label: "Budget",
                 data: [
@@ -462,31 +458,31 @@ const NavItems = [
                     },
                 ],
             },
-            {
-                label: "Services",
-                data: [
-                    {
-                        label: "Land buying & selling",
-                        link: "/",
-                    },
-                    {
-                        label: "Legal verification",
-                        link: "/",
-                    },
-                    {
-                        label: "Land consulting",
-                        link: "/",
-                    },
-                    {
-                        label: "Layout & Demaroation",
-                        link: "/",
-                    },
-                    {
-                        label: "EMI with 0% intrest",
-                        link: "/",
-                    },
-                ],
-            },
+            // {
+            //     label: "Services",
+            //     data: [
+            //         {
+            //             label: "Land buying & selling",
+            //             link: "/",
+            //         },
+            //         {
+            //             label: "Legal verification",
+            //             link: "/",
+            //         },
+            //         {
+            //             label: "Land consulting",
+            //             link: "/",
+            //         },
+            //         {
+            //             label: "Layout & Demaroation",
+            //             link: "/",
+            //         },
+            //         {
+            //             label: "EMI with 0% intrest",
+            //             link: "/",
+            //         },
+            //     ],
+            // },
         ],
     },
     {
@@ -498,15 +494,15 @@ const NavItems = [
                 data: [
                     {
                         label: "Post property",
-                        link: "/post-property/create-property",
+                        link: "/",
                     },
-                    {
-                        label: "My Dashboard",
-                        link: "/post-property/",
-                    },
+                    // {
+                    //     label: "My Dashboard",
+                    //     link: "/post-property/",
+                    // },
                     {
                         label: "Sell / Rent Ad Packages",
-                        link: "/post-property/",
+                        link: "/",
                     },
                     {
                         label: "+91 9555599299",
@@ -514,23 +510,23 @@ const NavItems = [
                     },
                 ],
             },
-            {
-                label: "Services",
-                data: [
-                    {
-                        label: "Property valuation",
-                        link: "/",
-                    },
-                    {
-                        label: "Legal assistance",
-                        link: "/",
-                    },
-                    {
-                        label: "Land marketing",
-                        link: "/",
-                    },
-                ],
-            },
+            // {
+            //     label: "Services",
+            //     data: [
+            //         {
+            //             label: "Property valuation",
+            //             link: "/",
+            //         },
+            //         {
+            //             label: "Legal assistance",
+            //             link: "/",
+            //         },
+            //         {
+            //             label: "Land marketing",
+            //             link: "/",
+            //         },
+            //     ],
+            // },
         ],
     },
 ];

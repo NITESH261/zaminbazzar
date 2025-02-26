@@ -9,17 +9,17 @@ const Locations = [
     {
         label: "Thane Plots",
         img: "img4.jpg",
-        url: "#",
+        url: "/search/top-location/thane?propertyType=Residential",
     },
     {
         label: "Panvel Plots",
         img: "img3.jpg",
-        url: "#",
+        url: "/search/top-location/panvel?propertyType=Residential",
     },
     {
         label: "Uran Plots",
         img: "img2.jpg",
-        url: "#",
+        url: "/search/top-location/uran?propertyType=Residential",
     },
     {
         label: "Third Mumbai",
