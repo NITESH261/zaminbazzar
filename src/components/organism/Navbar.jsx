@@ -442,19 +442,19 @@ const NavItems = [
                 data: [
                     {
                         label: "₹2Lac - ₹5Lac",
-                        link: "/",
+                        link: "/search/top-location/all?priceTotalMinValue=200000&priceTotalMaxValue=500000",
                     },
                     {
                         label: "₹10Lac - ₹20Lac",
-                        link: "/",
+                        link: "/search/top-location/all?priceTotalMinValue=1000000&priceTotalMaxValue=2000000",
                     },
                     {
                         label: "₹20Lac - ₹1Cr",
-                        link: "/",
+                        link: "/search/top-location/all?priceTotalMinValue=2000000&priceTotalMaxValue=10000000",
                     },
                     {
                         label: "Above ₹1Cr",
-                        link: "/",
+                        link: "/search/top-location/all?priceTotalMinValue=10000000&priceTotalMaxValue=100000000",
                     },
                 ],
             },
