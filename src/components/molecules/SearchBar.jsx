@@ -87,6 +87,8 @@ const SearchBar = () => {
         resolver: zodResolver(FormSchema),
     });
 
+    const getPropertyType = form.watch("propertyType");
+
     const onSubmit = (values) => {
         router.push(
             `/search/top-location/${values.location}?propertyType=${
@@ -118,7 +120,7 @@ const SearchBar = () => {
                                                 ({ value, label }) => (
                                                     <FormItem
                                                         key={value}
-                                                        className={`flex items-center justify-center space-y-0 border-b-2 ${
+                                                        className={`flex items-center justify-center space-y-0 border-b-2 transition-all delay-500 ${
                                                             field.value ===
                                                             value
                                                                 ? "border-[#6f272b] text-[#6f272b]"
@@ -157,7 +159,23 @@ const SearchBar = () => {
                                                 icon={false}
                                                 className="border-none ring-white focus:ring-white focus:border-none outline-none"
                                             >
-                                                <SelectValue placeholder="Select your location" />
+                                                <SelectValue
+                                                    placeholder={`${
+                                                        getPropertyType ===
+                                                        "Buy"
+                                                            ? "Select Your Location"
+                                                            : getPropertyType ===
+                                                              "Residential"
+                                                            ? "Residential Plots"
+                                                            : getPropertyType ===
+                                                              "Commercial"
+                                                            ? "Commercial Plots"
+                                                            : getPropertyType ===
+                                                              "Villa/bungalow"
+                                                            ? "Villa/bungalow Plots"
+                                                            : "Select Your Location"
+                                                    }`}
+                                                />
                                             </SelectTrigger>
                                         </FormControl>
                                         <SelectContent>
