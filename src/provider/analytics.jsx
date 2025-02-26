@@ -8,7 +8,7 @@ const GA_ID = process.env.GA_TAG_ID;
 const Analytics = () => {
     return (
         <>
-            <GoogleAnalytics gtmId={GA_ID} />
+            <GoogleAnalytics gaId={GA_ID} />
             <Script
                 id="collect-script"
                 strategy="afterInteractive"
