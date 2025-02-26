@@ -28,6 +28,7 @@ import {
 } from "../ui/select";
 
 const Location = [
+    { all: "All" },
     { thane: "Thane" },
     { panvel: "Panvel" },
     { uran: "Uran" },
@@ -79,6 +80,8 @@ const SearchFilter = () => {
     const dispatch = useZaminwaleStore((store) => store.dispatch);
     const searchParams = useSearchParams();
     const propertyType = searchParams.get("propertyType");
+    const priceTotalMinValue = searchParams.get("priceTotalMinValue");
+    const priceTotalMaxValue = searchParams.get("priceTotalMaxValue");
 
     const form = useForm({
         resolver: zodResolver(FilterSchema),
@@ -95,8 +98,8 @@ const SearchFilter = () => {
             // hasConstruction: false,
             possessionBy: "",
             ownership: "",
-            priceTotalMinValue: "",
-            priceTotalMaxValue: "",
+            priceTotalMinValue: priceTotalMinValue || "",
+            priceTotalMaxValue: priceTotalMaxValue || "",
             // inclusivePrice: false,
             isTaxExcluded: false,
             // isPriceNegotiable: false,
@@ -131,7 +134,23 @@ const SearchFilter = () => {
                 onSubmit(initialFilter);
             }
         }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [params.locationId]);
+
+    useEffect(() => {
+        if (params.locationId && priceTotalMinValue && priceTotalMaxValue) {
+            const matchedLocality = SearchTrigger(params.locationId);
+            if (matchedLocality) {
+                const initialFilter = {
+                    locality: matchedLocality,
+                    priceTotalMinValue,
+                    priceTotalMaxValue,
+                };
+                onSubmit(initialFilter);
+            }
+        }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [params.locationId, priceTotalMinValue, priceTotalMaxValue]);
 
     return (
         <>
@@ -1172,6 +1191,10 @@ const FilterData = [
         label: "Select Property Type",
         data: [
             {
+                label: "All",
+                value: "All",
+            },
+            {
                 label: "Residential",
                 value: "Residential",
             },
@@ -1231,6 +1254,10 @@ const FilterData = [
         label: "Select Locality",
         data: [
             {
+                label: "All",
+                value: "All",
+            },
+            {
                 label: "Thane",
                 value: "Thane",
             },
@@ -1271,22 +1298,23 @@ const FilterData = [
                     { label: "3 Lakhs", value: "300000" },
                     { label: "4 Lakhs", value: "400000" },
                     { label: "5 Lakhs", value: "500000" },
-                    { label: "6 Lakhs", value: "6000000" },
-                    { label: "7 Lakhs", value: "7000000" },
-                    { label: "8 Lakhs", value: "8000000" },
+                    { label: "6 Lakhs", value: "600000" },
+                    { label: "7 Lakhs", value: "700000" },
+                    { label: "8 Lakhs", value: "800000" },
                 ],
             },
             {
                 label: "Select Max Value",
                 data: [
-                    { label: "1 Lakh", value: "100000" },
-                    { label: "2 Lakhs", value: "200000" },
-                    { label: "3 Lakhs", value: "300000" },
-                    { label: "4 Lakhs", value: "400000" },
                     { label: "5 Lakhs", value: "500000" },
-                    { label: "6 Lakhs", value: "6000000" },
-                    { label: "7 Lakhs", value: "7000000" },
-                    { label: "8 Lakhs", value: "8000000" },
+                    { label: "10 Lakhs", value: "1000000" },
+                    { label: "20 Lakhs", value: "2000000" },
+                    { label: "30 Lakhs", value: "3000000" },
+                    { label: "40 Lakhs", value: "4000000" },
+                    { label: "50 Lakhs", value: "5000000" },
+                    { label: "60 Lakhs", value: "6000000" },
+                    { label: "70 Lakhs", value: "7000000" },
+                    { label: "80 Lakhs", value: "8000000" },
                 ],
             },
         ],
