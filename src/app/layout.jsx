@@ -26,7 +26,7 @@ export const metadata = {
     },
     description: {
         template:
-            "Zaminwale.com %s is India's leading online platform for buying and selling land. Find verified listings, trusted sellers, and the best real estate deals",
+            "Zaminwale.com %s is India's leading online platform for buying and selling land. Find verified listings, trusted sellers, and the best real estate deals.",
         default:
             "Zaminwale.com is India's leading online platform for buying and selling land. Find verified listings, trusted sellers, and the best real estate deals.",
     },
