@@ -24,7 +24,7 @@ const formSchema = z.object({
         .min(2, {
             message: "Fullname must be at least 2 characters.",
         })
-        .regex(/^[A-Za-z]+$/, "Only alphabets are allowed."),
+        .regex(/^[A-Za-z\s]+$/, "Only alphabets are allowed."),
     mobileNo: z
         .string()
         .min(10, {
