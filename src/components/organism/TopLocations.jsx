@@ -2,24 +2,24 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { Card, CardContent, CardHeader } from "../ui/card";
 import SectionHeading from "../atoms/SectionHeading";
+import { Card, CardContent, CardHeader } from "../ui/card";
 
 const Locations = [
     {
         label: "Thane Plots",
         img: "img4.jpg",
-        url: "/search/top-location/thane?propertyType=Residential",
+        url: "/search/top-location/thane",
     },
     {
         label: "Panvel Plots",
         img: "img3.jpg",
-        url: "/search/top-location/panvel?propertyType=Residential",
+        url: "/search/top-location/panvel",
     },
     {
         label: "Uran Plots",
         img: "img2.jpg",
-        url: "/search/top-location/uran?propertyType=Residential",
+        url: "/search/top-location/uran",
     },
     {
         label: "Third Mumbai",
