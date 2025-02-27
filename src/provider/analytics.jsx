@@ -1,14 +1,15 @@
+import { GoogleAnalytics, GoogleTagManager } from "@next/third-parties/google";
 import Script from "next/script";
-import React from "react";
-import { GoogleAnalytics } from "@next/third-parties/google";
 
 const CHAT_BOT_ID = process.env.CHAT_BOT_ID;
 const GA_ID = process.env.GA_TAG_ID;
+const GTM_ID = process.env.GTM_TAG_ID;
 
 const Analytics = () => {
     return (
         <>
             <GoogleAnalytics gaId={GA_ID} />
+            <GoogleTagManager gtmId={GTM_ID} />
             <Script
                 id="collect-script"
                 strategy="afterInteractive"
