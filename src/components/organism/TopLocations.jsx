@@ -24,7 +24,7 @@ const Locations = [
     {
         label: "Third Mumbai",
         img: "img1.jpg",
-        url: "#",
+        url: "/",
     },
 ];
 
