@@ -22,9 +22,14 @@ const Locations = [
         url: "/search/top-location/uran",
     },
     {
-        label: "Third Mumbai",
-        img: "img1.jpg",
-        url: "/",
+        label: "Chirle",
+        img: "img5.jpg",
+        url: "#",
+    },
+    {
+        label: "Ranjanpada",
+        img: "img6.jpg",
+        url: "#",
     },
 ];
 
