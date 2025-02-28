@@ -6,7 +6,7 @@ const Thankyouimg = () => {
         <>
             <div
                 className={cn(
-                    "flex w-full min-h-screen  bg-[url('/assets/thank/1.webp')] bg-no-repeat bg-cover bg-center",
+                    "flex w-full min-h-screen  bg-[url('/assets/thank/1.jpg')] bg-no-repeat bg-cover bg-center",
 
                 )}
             ></div>

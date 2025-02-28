@@ -22,8 +22,13 @@ const Locations = [
         url: "#",
     },
     {
-        label: "Third Mumbai",
-        img: "img1.jpg",
+        label: "Chirle",
+        img: "img5.jpg",
+        url: "#",
+    },
+    {
+        label: "Ranjanpada",
+        img: "img6.jpg",
         url: "#",
     },
 ];
