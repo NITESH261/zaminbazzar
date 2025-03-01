@@ -26,6 +26,7 @@ import {
     SelectTrigger,
     SelectValue,
 } from "../ui/select";
+import { useRouter } from "next/navigation";
 
 const EnquireFormSchema = z.object({
     name: z
@@ -49,6 +50,7 @@ const EnquireFormSchema = z.object({
 const PopupEnquiry = () => {
     const [open, setOpen] = useState(false);
     const [loading, setLoading] = useState(false);
+    const router = useRouter();
     const popupEnquiry = useZaminwaleStore((store) => store.popupEnquiry);
     const dispatch = useZaminwaleStore((store) => store.dispatch);
 
@@ -63,6 +65,7 @@ const PopupEnquiry = () => {
             const resp = await createWebsiteEnquiry(values);
             setLoading(false);
             form.reset();
+            router.push("/thank-you");
             toast.success(resp.message);
             dispatch({
                 type: "SET_STATE",
