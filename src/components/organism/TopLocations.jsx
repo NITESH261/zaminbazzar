@@ -17,7 +17,7 @@ const Locations = [
     { label: "Uran Plots", img: "img2.jpg", url: "/search/top-location/uran" },
     { label: "Chirle", img: "img5.jpg", url: "/search/top-location/chirle" },
     { label: "Ranjanpada", img: "img6.jpg", url: "/search/top-location/ranjanpada" },
-    { label: "Vindhane", img: "img6.jpg", url: "/search/top-location/vindhane" },
+    { label: "Vindhane", img: "img7.jpg", url: "/search/top-location/vindhane" },
 ];
 
 const TopLocations = () => {
