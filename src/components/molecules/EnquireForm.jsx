@@ -17,6 +17,7 @@ import {
     FormMessage,
 } from "../ui/form";
 import { Input } from "../ui/input";
+import { useRouter } from "next/navigation";
 
 const formSchema = z.object({
     name: z
@@ -38,6 +39,7 @@ const formSchema = z.object({
 
 const EnquireForm = ({ propertyId, uid }) => {
     const [loading, setLoading] = useState(false);
+    const router = useRouter();
 
     const form = useForm({
         resolver: zodResolver(formSchema),
@@ -51,6 +53,7 @@ const EnquireForm = ({ propertyId, uid }) => {
             const resp = await createPropertyEnquiry({ body, propertyId });
             setLoading(false);
             form.reset();
+            router.push("/thank-you");
             toast.success(resp.message);
         } catch (error) {
             setLoading(false);

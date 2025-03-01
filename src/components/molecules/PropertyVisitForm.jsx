@@ -22,6 +22,7 @@ import {
 } from "../ui/form";
 import { Input } from "../ui/input";
 import { Popover, PopoverContent, PopoverTrigger } from "../ui/popover";
+import { useRouter } from "next/navigation";
 
 const formSchema = z.object({
     name: z
@@ -46,6 +47,7 @@ const formSchema = z.object({
 
 const PropertyVisitForm = ({ propertyId, uid }) => {
     const [loading, setLoading] = useState(false);
+    const router = useRouter();
 
     const form = useForm({
         resolver: zodResolver(formSchema),
@@ -61,6 +63,7 @@ const PropertyVisitForm = ({ propertyId, uid }) => {
             const resp = await createPropertyVisit({ body, propertyId });
             setLoading(false);
             form.reset();
+            router.push("/thank-you");
             toast.success(resp.message);
         } catch (error) {
             setLoading(false);
@@ -140,7 +143,7 @@ const PropertyVisitForm = ({ propertyId, uid }) => {
                                                 className={cn(
                                                     "w-full pl-3 text-left font-normal",
                                                     !field.value &&
-                                                    "text-muted-foreground"
+                                                        "text-muted-foreground"
                                                 )}
                                             >
                                                 {field.value ? (
