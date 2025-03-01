@@ -5,7 +5,7 @@ import React from "react";
 const page = () => {
     return (
         <>
-            <div className="flex w-full h-[calc(100vh-70px)]">
+            <div className="flex w-full h-96">
                 <div className="flex flex-col w-full max-w-7xl items-center justify-center mx-auto">
                     <div className="flex aspect-square w-52 relative">
                         <Image
