@@ -15,31 +15,40 @@ import { useForm } from "react-hook-form";
 import { z } from "zod";
 
 const AmenitiesSchema = z.object({
-    amenities: z.array(z.string()).nonempty("Select at least one amenity"),
+    amenities: z
+        .array(z.string())
+        // .nonempty("Select at least one amenity")
+        .optional(),
     overlooking: z
         .array(z.string())
-        .nonempty("Select at least one overlooking option"),
-    otherFeatures: z.enum(["In a gated society", "Corner Property"], {
-        required_error: "You need to select an option",
-    }),
-    propertyFacing: z.enum(
-        [
-            "North",
-            "South",
-            "East",
-            "West",
-            "North-East",
-            "North-West",
-            "South-East",
-            "South-West",
-        ],
-        {
+        // .nonempty("Select at least one overlooking option")
+        .optional(),
+    otherFeatures: z
+        .enum(["In a gated society", "Corner Property"], {
             required_error: "You need to select an option",
-        }
-    ),
+        })
+        .optional(),
+    propertyFacing: z
+        .enum(
+            [
+                "North",
+                "South",
+                "East",
+                "West",
+                "North-East",
+                "North-West",
+                "South-East",
+                "South-West",
+            ],
+            {
+                required_error: "You need to select an option",
+            }
+        )
+        .optional(),
     locationAdvantages: z
         .array(z.string())
-        .nonempty("Select at least one location advantage"),
+        // .nonempty("Select at least one location advantage")
+        .optional(),
 });
 
 const Step5Data = [
