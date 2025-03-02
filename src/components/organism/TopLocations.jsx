@@ -15,8 +15,8 @@ const Locations = [
     { label: "Thane Plots", img: "img4.jpg", url: "/search/top-location/thane" },
     { label: "Panvel Plots", img: "img3.jpg", url: "/search/top-location/panvel" },
     { label: "Uran Plots", img: "img2.jpg", url: "/search/top-location/uran" },
-    { label: "Chirle", img: "img5.jpg", url: "/search/top-location/chirle" },
-    { label: "Ranjanpada", img: "img6.jpg", url: "/search/top-location/ranjanpada" },
+    { label: "Chirle", img: "img6.jpg", url: "/search/top-location/chirle" },
+    { label: "Ranjanpada", img: "img5.jpg", url: "/search/top-location/ranjanpada" },
     { label: "Vindhane", img: "img7.jpg", url: "/search/top-location/vindhane" },
 ];
 
