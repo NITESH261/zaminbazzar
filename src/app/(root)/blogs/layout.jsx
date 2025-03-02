@@ -1,7 +1,7 @@
 import React from "react";
 
 export const metadata = {
-    title: "Zaminwale – Buying and Selling of Land",
+    title: "Zaminwale Blogs – Buying and Selling of Land",
     description:
         "Zaminwale.com is India's leading online platform for buying and selling land. Find verified listings, trusted sellers, and the best real estate deals.",
     keywords: [
