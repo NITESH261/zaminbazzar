@@ -15,45 +15,36 @@ import { useForm } from "react-hook-form";
 import { z } from "zod";
 
 const AmenitiesSchema = z.object({
-    amenities: z
-        .array(z.string())
-        // .nonempty("Select at least one amenity")
-        .optional(),
+    amenities: z.array(z.string()).nonempty("Select at least one amenity"),
     overlooking: z
         .array(z.string())
-        // .nonempty("Select at least one overlooking option")
-        .optional(),
-    otherFeatures: z
-        .enum(["In a gated society", "Corner Property"], {
+        .nonempty("Select at least one overlooking option"),
+    otherFeatures: z.enum(["In a gated society", "Corner Property"], {
+        required_error: "You need to select an option",
+    }),
+    propertyFacing: z.enum(
+        [
+            "North",
+            "South",
+            "East",
+            "West",
+            "North-East",
+            "North-West",
+            "South-East",
+            "South-West",
+        ],
+        {
             required_error: "You need to select an option",
-        })
-        .optional(),
-    propertyFacing: z
-        .enum(
-            [
-                "North",
-                "South",
-                "East",
-                "West",
-                "North-East",
-                "North-West",
-                "South-East",
-                "South-West",
-            ],
-            {
-                required_error: "You need to select an option",
-            }
-        )
-        .optional(),
+        }
+    ),
     locationAdvantages: z
         .array(z.string())
-        // .nonempty("Select at least one location advantage")
-        .optional(),
+        .nonempty("Select at least one location advantage"),
 });
 
 const Step5Data = [
     {
-        label: "Amenities",
+        label: "Amenities ( Optional )",
         data: [
             { value: "Maintenance Staff", label: "Maintenance Staff" },
             { value: "Water Storage", label: "Water Storage" },
@@ -62,7 +53,7 @@ const Step5Data = [
         ],
     },
     {
-        label: "Overlooking",
+        label: "Overlooking ( Optional )",
         data: [
             { value: "Pool", label: "Pool" },
             { value: "Park/Garden", label: "Park/Garden" },
@@ -72,14 +63,14 @@ const Step5Data = [
         ],
     },
     {
-        label: "Other Features",
+        label: "Other Features ( Optional )",
         data: [
             { value: "In a gated society", label: "In a gated society" },
             { value: "Corner Property", label: "Corner Property" },
         ],
     },
     {
-        label: "Property Facing",
+        label: "Property Facing ( Optional )",
         data: [
             { value: "North", label: "North" },
             { value: "South", label: "South" },
@@ -92,7 +83,7 @@ const Step5Data = [
         ],
     },
     {
-        label: "Location Advantages",
+        label: "Location Advantages ( Optional )",
         data: [
             {
                 value: "Close to metro station",
