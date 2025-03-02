@@ -82,10 +82,13 @@ const Footer = () => {
                         </div> */}
                         <h2 className="font-bold text-lg">About zaminwale</h2>
                         <p className="text-justify mt-2">
-                            At ZaminWale, we take pride in being your trusted partner in the world of real estate,
-                            specializing in land transactions across the picturesque locales of Thane, Panvel, Mahamumbai,
-                            and Navi Mumbai. With an unwavering commitment to excellence, we have established ourselves as a
-                            beacon of reliability and transparency in the real estate industry.
+                            At ZaminWale, we take pride in being your trusted
+                            partner in the world of real estate, specializing in
+                            land transactions across the picturesque locales of
+                            Thane, Panvel, Mahamumbai, and Navi Mumbai. With an
+                            unwavering commitment to excellence, we have
+                            established ourselves as a beacon of reliability and
+                            transparency in the real estate industry.
                         </p>
 
                         <h2 className="font-bold text-lg mt-4 mb-4">
@@ -161,27 +164,27 @@ const NavItems = [
         data: [
             {
                 label: "Plot in Thane",
-                link: "/",
+                link: "/search/top-location/thane",
             },
             {
                 label: "Plot in Panvel",
-                link: "/",
+                link: "/search/top-location/panvel",
             },
             {
-                label: "Plot in Khalapur",
-                link: "/",
-            },
-            {
-                label: "Plot in Ranjanpada",
-                link: "/",
-            },
-            {
-                label: "Plot in Vindhane",
-                link: "/",
+                label: "Plot in Uran",
+                link: "/search/top-location/uran",
             },
             {
                 label: "Plot in Chirle",
-                link: "/",
+                link: "/search/top-location/chirle",
+            },
+            {
+                label: "Plot in Vindhane",
+                link: "/search/top-location/vindhane",
+            },
+            {
+                label: "Plot in Ranjanpada",
+                link: "/search/top-location/ranjanpada",
             },
         ],
     },
