@@ -5,14 +5,14 @@ import React from "react";
 const page = () => {
     return (
         <>
-            <div className="flex w-full h-96">
-                <div className="flex flex-col w-full max-w-7xl items-center justify-center mx-auto">
-                    <div className="flex aspect-square w-52 relative">
+            <div className="flex w-full h-auto">
+                <div className="flex flex-col w-full max-w-7xl px-4 py-6 items-center justify-center mx-auto">
+                    <div className="flex aspect-video w-52 relative">
                         <Image
                             src={"/assets/thank/thank.png"}
                             alt="thank-you-logo"
                             fill
-                            className="object-contain"
+                            className="object-contain object-center"
                         />
                     </div>
                     <div className="flex w-full text-center gap-4 flex-col">
