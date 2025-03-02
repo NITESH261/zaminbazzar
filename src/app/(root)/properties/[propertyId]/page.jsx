@@ -129,22 +129,24 @@ const page = async ({ params }) => {
                                                 </span>
                                             </div>
                                         </div>
-                                        <div className="flex gap-1 w-full col-span-2 md:col-span-1">
-                                            <div className="flex flex-col w-fit">
-                                                <span className="font-thin text-sm md:text-base">
-                                                    Overlooking:
-                                                </span>
-                                                <p className="font-medium text-neutral-700 text-sm gap-2 flex md:text-base flex-wrap">
-                                                    {result.overlooking.map(
-                                                        (item, i) => (
-                                                            <span key={i}>
-                                                                {item},
-                                                            </span>
-                                                        )
-                                                    )}
-                                                </p>
+                                        {result.overlooking && (
+                                            <div className="flex gap-1 w-full col-span-2 md:col-span-1">
+                                                <div className="flex flex-col w-fit">
+                                                    <span className="font-thin text-sm md:text-base">
+                                                        Overlooking:
+                                                    </span>
+                                                    <p className="font-medium text-neutral-700 text-sm gap-2 flex md:text-base flex-wrap">
+                                                        {result.overlooking.map(
+                                                            (item, i) => (
+                                                                <span key={i}>
+                                                                    {item},
+                                                                </span>
+                                                            )
+                                                        )}
+                                                    </p>
+                                                </div>
                                             </div>
-                                        </div>
+                                        )}
                                     </div>
                                 </div>
                                 <hr />
@@ -215,36 +217,44 @@ const page = async ({ params }) => {
                                         {result.uniqueFeatures}
                                     </span>
                                 </div>
-                                <div className="grid grid-cols-3 md:grid-cols-4 text-sm md:text-base w-full gap-2">
-                                    <span className="w-full font-thin">
-                                        Property Facing
-                                    </span>
-                                    <span className="flex w-full col-span-2 md:col-span-3 items-center font-medium text-neutral-700 ">
-                                        {result.propertyFacing}
-                                    </span>
-                                </div>
-                                <div className="grid grid-cols-3 md:grid-cols-4 text-sm md:text-base w-full gap-2">
-                                    <span className="w-full font-thin">
-                                        Amenities
-                                    </span>
-                                    <span className="flex w-full col-span-2 gap-2 md:col-span-3 items-center font-medium text-neutral-700  flex-wrap">
-                                        {result.amenities.map((item, i) => (
-                                            <span key={i}>{item}, </span>
-                                        ))}
-                                    </span>
-                                </div>
-                                <div className="grid grid-cols-3 md:grid-cols-4 text-sm md:text-base w-full gap-2">
-                                    <span className="w-full font-thin">
-                                        Location Advantages
-                                    </span>
-                                    <span className="flex w-full col-span-2 gap-2 md:col-span-3 items-center font-medium text-neutral-700 ">
-                                        {result.locationAdvantages.map(
-                                            (item, i) => (
+                                {result.propertyFacing && (
+                                    <div className="grid grid-cols-3 md:grid-cols-4 text-sm md:text-base w-full gap-2">
+                                        <span className="w-full font-thin">
+                                            Property Facing
+                                        </span>
+                                        <span className="flex w-full col-span-2 md:col-span-3 items-center font-medium text-neutral-700 ">
+                                            {result.propertyFacing}
+                                        </span>
+                                    </div>
+                                )}
+                                {result.amenities && (
+                                    <div className="grid grid-cols-3 md:grid-cols-4 text-sm md:text-base w-full gap-2">
+                                        <span className="w-full font-thin">
+                                            Amenities
+                                        </span>
+                                        <span className="flex w-full col-span-2 gap-2 md:col-span-3 items-center font-medium text-neutral-700  flex-wrap">
+                                            {result.amenities.map((item, i) => (
                                                 <span key={i}>{item}, </span>
-                                            )
-                                        )}
-                                    </span>
-                                </div>
+                                            ))}
+                                        </span>
+                                    </div>
+                                )}
+                                {result.locationAdvantages && (
+                                    <div className="grid grid-cols-3 md:grid-cols-4 text-sm md:text-base w-full gap-2">
+                                        <span className="w-full font-thin">
+                                            Location Advantages
+                                        </span>
+                                        <span className="flex w-full col-span-2 gap-2 md:col-span-3 items-center font-medium text-neutral-700 ">
+                                            {result.locationAdvantages.map(
+                                                (item, i) => (
+                                                    <span key={i}>
+                                                        {item},{" "}
+                                                    </span>
+                                                )
+                                            )}
+                                        </span>
+                                    </div>
+                                )}
                                 <div className="grid grid-cols-3 md:grid-cols-4 text-sm md:text-base w-full gap-2">
                                     <span className="w-full font-thin">
                                         All inlcusice price

@@ -129,15 +129,21 @@ const page = () => {
                                                 Near By:
                                             </span>
                                             <ul className="w-fit flex gap-2">
-                                                {card.locationAdvantages?.map(
-                                                    (item, i) => (
-                                                        <li
-                                                            key={i}
-                                                            className="w-fit px-3 py-1.5 rounded-full text-xs bg-blue-100 whitespace-nowrap"
-                                                        >
-                                                            {item}
-                                                        </li>
+                                                {card.locationAdvantages ? (
+                                                    card.locationAdvantages?.map(
+                                                        (item, i) => (
+                                                            <li
+                                                                key={i}
+                                                                className="w-fit px-3 py-1.5 rounded-full text-xs bg-blue-100 whitespace-nowrap"
+                                                            >
+                                                                {item}
+                                                            </li>
+                                                        )
                                                     )
+                                                ) : (
+                                                    <li className="w-fit px-3 py-1.5 rounded-full text-xs whitespace-nowrap">
+                                                        -
+                                                    </li>
                                                 )}
                                             </ul>
                                         </div>

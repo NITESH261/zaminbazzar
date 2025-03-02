@@ -28,46 +28,6 @@ import Link from "next/link";
 import { useParams } from "next/navigation";
 import { useState } from "react";
 
-const metadata = {
-    title: "Zaminwale – Buying and Selling of Land",
-    description:
-        "Zaminwale.com is India's leading online platform for buying and selling land. Find verified listings, trusted sellers, and the best real estate deals.",
-    keywords: [
-        "buy land",
-        "sell land",
-        "real estate",
-        "land marketplace",
-        "property for sale",
-        "farmland",
-        "commercial land",
-        "residential plots",
-        "Zaminwale",
-    ],
-    openGraph: {
-        title: "Zaminwale – Buying and Selling of Land",
-        description:
-            "Zaminwale.com is India's leading online platform for buying and selling land. Find verified listings, trusted sellers, and the best real estate deals.",
-        siteName: "LetsUpgrade",
-        images: [
-            {
-                url: "https://zaminwale-private.s3.ap-south-1.amazonaws.com/assets/property/images/f5eab6fc-6526-4a31-bfa3-2f1acc4ea435.png",
-                width: 1200,
-                height: 628,
-                alt: "Zaminwale",
-            },
-        ],
-    },
-    twitter: {
-        card: "summary_large_image",
-        title: "Zaminwale – Buying and Selling of Land",
-        description:
-            "Zaminwale.com is India's leading online platform for buying and selling land. Find verified listings, trusted sellers, and the best real estate deals.",
-        images: [
-            "https://zaminwale-private.s3.ap-south-1.amazonaws.com/assets/property/images/f5eab6fc-6526-4a31-bfa3-2f1acc4ea435.png",
-        ],
-    },
-};
-
 const page = () => {
     const params = useParams();
     const [hoveredIndex, setHoveredIndex] = useState(null);
@@ -80,7 +40,6 @@ const page = () => {
     const handleMouseLeave = () => {
         setHoveredIndex(null);
     };
-    console.log(searchList);
 
     return (
         <>
@@ -139,13 +98,13 @@ const page = () => {
                                                     className="!w-full !h-40 sm:!h-56 sm:!w-80 lg:!w-full !relative !rounded-lg"
                                                 />
                                             </div>
-                                            <Button
+                                            {/* <Button
                                                 variant="ghost"
                                                 size="icon"
                                                 className="absolute right-2 top-2"
                                             >
                                                 <Heart className="!size-6 fill-neutral-200" />
-                                            </Button>
+                                            </Button> */}
                                         </div>
                                         <div className="flex flex-col gap-2 w-full sm:w-3/5 md:px-4 xl:col-span-3 xl:w-full">
                                             <div className="flex flex-col gap-2 w-full sm:flex-grow">
@@ -185,12 +144,12 @@ const page = () => {
                                                         <span className="flex items-center text-sm sm:text-base md:text-lg lg:text-xl font-bold">
                                                             {card.propertyType}
                                                         </span>
-                                                        <span className="flex items-center text-xs">
+                                                        {/* <span className="flex items-center text-xs">
                                                             Plot Area
-                                                        </span>
+                                                        </span> */}
                                                     </div>
                                                 </div>
-                                                <p className="text-xs md:text-sm">
+                                                <p className="text-xs md:text-sm  h-10">
                                                     {sliceParagraph(
                                                         card.uniqueFeatures
                                                     )}
@@ -201,15 +160,28 @@ const page = () => {
                                                             Near By:
                                                         </span>
                                                         <ul className="w-fit flex gap-2">
-                                                            {card.locationAdvantages?.map(
-                                                                (item, i) => (
-                                                                    <li
-                                                                        key={i}
-                                                                        className="w-fit px-3 py-1.5 rounded-full text-xs bg-blue-100 whitespace-nowrap"
-                                                                    >
-                                                                        {item}
-                                                                    </li>
+                                                            {card.locationAdvantages ? (
+                                                                card.locationAdvantages?.map(
+                                                                    (
+                                                                        item,
+                                                                        i
+                                                                    ) => (
+                                                                        <li
+                                                                            key={
+                                                                                i
+                                                                            }
+                                                                            className="w-fit px-3 py-1.5 rounded-full text-xs bg-blue-100 whitespace-nowrap"
+                                                                        >
+                                                                            {
+                                                                                item
+                                                                            }
+                                                                        </li>
+                                                                    )
                                                                 )
+                                                            ) : (
+                                                                <li className="w-fit px-3 py-1.5 rounded-full text-xs whitespace-nowrap">
+                                                                    -
+                                                                </li>
                                                             )}
                                                         </ul>
                                                     </div>

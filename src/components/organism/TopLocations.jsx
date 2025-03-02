@@ -12,12 +12,36 @@ import {
 } from "../ui/carousel";
 
 const Locations = [
-    { label: "Thane Plots", img: "img4.jpg", url: "/search/top-location/thane" },
-    { label: "Panvel Plots", img: "img3.jpg", url: "/search/top-location/panvel" },
-    { label: "Uran Plots", img: "img2.jpg", url: "/search/top-location/uran" },
-    { label: "Chirle", img: "img6.jpg", url: "/search/top-location/chirle" },
-    { label: "Ranjanpada", img: "img5.jpg", url: "/search/top-location/ranjanpada" },
-    { label: "Vindhane", img: "img7.jpg", url: "/search/top-location/vindhane" },
+    {
+        label: "Thane Plots",
+        img: "img4.jpg",
+        url: "/search/top-location/thane",
+    },
+    {
+        label: "Panvel Plots",
+        img: "img3.jpg",
+        url: "/search/top-location/panvel",
+    },
+    {
+        label: "Uran Plots",
+        img: "img2.jpg",
+        url: "/search/top-location/uran",
+    },
+    {
+        label: "Chirle Plots",
+        img: "img6.jpg",
+        url: "/search/top-location/chirle",
+    },
+    {
+        label: "Ranjanpada Plots",
+        img: "img5.jpg",
+        url: "/search/top-location/ranjanpada",
+    },
+    {
+        label: "Vindhane Plots",
+        img: "img7.jpg",
+        url: "/search/top-location/vindhane",
+    },
 ];
 
 const TopLocations = () => {
@@ -37,7 +61,10 @@ const TopLocations = () => {
                                     key={index}
                                     className="basis-44 sm:basis-1/3 lg:basis-1/4"
                                 >
-                                    <Link href={location.url} className="w-full">
+                                    <Link
+                                        href={location.url}
+                                        className="w-full"
+                                    >
                                         <Card className="rounded-lg group hover:shadow-lg p-0 h-full w-full transition-all">
                                             <CardHeader className="p-0 flex flex-grow-0 rounded-tl-lg">
                                                 <div className="flex relative aspect-video rounded-t-lg overflow-hidden">

@@ -44,7 +44,7 @@ const AmenitiesSchema = z.object({
 
 const Step5Data = [
     {
-        label: "Amenities",
+        label: "Amenities ( Optional )",
         data: [
             { value: "Maintenance Staff", label: "Maintenance Staff" },
             { value: "Water Storage", label: "Water Storage" },
@@ -53,7 +53,7 @@ const Step5Data = [
         ],
     },
     {
-        label: "Overlooking",
+        label: "Overlooking ( Optional )",
         data: [
             { value: "Pool", label: "Pool" },
             { value: "Park/Garden", label: "Park/Garden" },
@@ -63,14 +63,14 @@ const Step5Data = [
         ],
     },
     {
-        label: "Other Features",
+        label: "Other Features ( Optional )",
         data: [
             { value: "In a gated society", label: "In a gated society" },
             { value: "Corner Property", label: "Corner Property" },
         ],
     },
     {
-        label: "Property Facing",
+        label: "Property Facing ( Optional )",
         data: [
             { value: "North", label: "North" },
             { value: "South", label: "South" },
@@ -83,7 +83,7 @@ const Step5Data = [
         ],
     },
     {
-        label: "Location Advantages",
+        label: "Location Advantages ( Optional )",
         data: [
             {
                 value: "Close to metro station",

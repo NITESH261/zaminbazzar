@@ -84,13 +84,13 @@ const Step3Data = [
         ],
     },
     {
-        label: "Property Dimesions",
+        label: "Property Dimesions ( Optional )",
     },
     {
         label: "Floors allowed for construction",
     },
     {
-        label: "Is there boundry walls around the property ?",
+        label: "Is there boundry walls around the property ? ( Optional )",
         data: [
             { value: true, label: "Yes" },
             { value: false, label: "No" },
@@ -106,7 +106,7 @@ const Step3Data = [
         ],
     },
     {
-        label: "Any construction done on this property",
+        label: "Any construction done on this property ? ( Optional )",
         data: [
             { value: true, label: "Yes" },
             { value: false, label: "No" },

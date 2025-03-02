@@ -70,7 +70,7 @@ const Property = () => {
                                                         <Image
                                                             src={
                                                                 card
-                                                                    .propertyPhotos[0]
+                                                                    ?.propertyPhotos[0]
                                                             }
                                                             alt="house"
                                                             fill
@@ -82,15 +82,15 @@ const Property = () => {
                                                             <div className="w-fit">
                                                                 <span className="lg:text-2xl font-medium text-white text-base">
                                                                     {
-                                                                        card.propertyType
+                                                                        card?.propertyType
                                                                     }
                                                                 </span>
                                                                 <p className="gap-2 text-white flex text-xs font-thin sm:text-sm">
                                                                     {
-                                                                        card.locality
+                                                                        card?.locality
                                                                     }
                                                                     ,&nbsp;
-                                                                    {card.city}
+                                                                    {card?.city}
                                                                 </p>
                                                             </div>
                                                             <div className="flex flex-col items-center gap-1 sm:gap-2">
@@ -98,7 +98,7 @@ const Property = () => {
                                                                     <IndianRupeeIcon className="text-white !size-4 md:!size-6" />
                                                                     <h4 className="lg:text-xl text-sm text-white lg:font-medium font-normal">
                                                                         {formatCurrency(
-                                                                            card.priceTotal
+                                                                            card?.priceTotal
                                                                         )}
                                                                     </h4>
                                                                 </div>
