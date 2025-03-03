@@ -15,22 +15,32 @@ const Locations = [
     {
         label: "Thane Plots",
         img: "img4.jpg",
-        url: "#",
+        url: "/search/top-location/thane",
     },
     {
         label: "Panvel Plots",
         img: "img3.jpg",
-        url: "#",
+        url: "/search/top-location/panvel",
     },
     {
         label: "Uran Plots",
         img: "img2.jpg",
-        url: "#",
+        url: "/search/top-location/uran",
     },
     {
-        label: "Third Mumbai",
-        img: "img1.jpg",
-        url: "#",
+        label: "Chirle Plots",
+        img: "img6.jpg",
+        url: "/search/top-location/chirle",
+    },
+    {
+        label: "Ranjanpada Plots",
+        img: "img5.jpg",
+        url: "/search/top-location/ranjanpada",
+    },
+    {
+        label: "Vindhane Plots",
+        img: "img7.jpg",
+        url: "/search/top-location/vindhane",
     },
 ];
 

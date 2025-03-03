@@ -4,8 +4,8 @@ import React from "react";
 
 const page = () => {
     return (
-        <>
-            <div className="flex w-full h-auto">
+        <div className="h-auto xl:h-[calc(100vh-64px)] w-full flex flex-col">
+            <div className="flex w-full flex-1">
                 <div className="flex flex-col w-full max-w-7xl px-4 py-6 items-center justify-center mx-auto">
                     <div className="flex aspect-video w-52 relative">
                         <Image
@@ -27,7 +27,7 @@ const page = () => {
                 </div>
             </div>
             <Footer />
-        </>
+        </div>
     );
 };
 

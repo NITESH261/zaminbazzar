@@ -21,9 +21,7 @@ import {
 import { formatCurrency, sliceParagraph } from "@/lib/utils";
 import useZaminwaleStore from "@/store";
 import { Dialog } from "@radix-ui/react-dialog";
-import { Eye } from "lucide-react";
-import { Filter, Heart, IndianRupee, PhoneCallIcon } from "lucide-react";
-import Image from "next/image";
+import { Eye, Filter, IndianRupee, PhoneCallIcon } from "lucide-react";
 import Link from "next/link";
 import { useParams } from "next/navigation";
 import { useState } from "react";
@@ -238,13 +236,13 @@ const page = () => {
                 ) : (
                     <div className="flex items-center justify-center w-full flex-1">
                         <div className="flex w-full h-full items-center justify-center relative">
-                            {/* <Loading /> */}
-                            <Image
+                            <Loading />
+                            {/* <Image
                                 src={"/assets/helper/404.png"}
                                 alt="404"
                                 fill
                                 className="object-contain"
-                            />
+                            /> */}
                         </div>
                     </div>
                 )}
