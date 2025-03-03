@@ -88,7 +88,7 @@ const page = async ({ params }) => {
                                                 </span>
                                                 <span className="font-medium text-neutral-700 text-sm md:text-base">
                                                     {result.hasConstruction ===
-                                                    true
+                                                        true
                                                         ? "Yes"
                                                         : "No"}
                                                 </span>
@@ -102,7 +102,7 @@ const page = async ({ params }) => {
                                                 </span>
                                                 <span className="font-medium text-neutral-700 text-sm md:text-base">
                                                     {result.hasBoundaryWall ===
-                                                    true
+                                                        true
                                                         ? "Yes"
                                                         : "No"}
                                                 </span>
@@ -129,7 +129,7 @@ const page = async ({ params }) => {
                                                 </span>
                                             </div>
                                         </div>
-                                        {result.overlooking && (
+                                        {result.overlooking.length > 0 && (
                                             <div className="flex gap-1 w-full col-span-2 md:col-span-1">
                                                 <div className="flex flex-col w-fit">
                                                     <span className="font-thin text-sm md:text-base">
@@ -227,7 +227,7 @@ const page = async ({ params }) => {
                                         </span>
                                     </div>
                                 )}
-                                {result.amenities && (
+                                {result.amenities.length > 0 && (
                                     <div className="grid grid-cols-3 md:grid-cols-4 text-sm md:text-base w-full gap-2">
                                         <span className="w-full font-thin">
                                             Amenities
@@ -239,7 +239,7 @@ const page = async ({ params }) => {
                                         </span>
                                     </div>
                                 )}
-                                {result.locationAdvantages && (
+                                {result.locationAdvantages.length > 0 && (
                                     <div className="grid grid-cols-3 md:grid-cols-4 text-sm md:text-base w-full gap-2">
                                         <span className="w-full font-thin">
                                             Location Advantages
