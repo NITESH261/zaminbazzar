@@ -1,36 +1,40 @@
+"use client";
+
+import useMediaQuery from "@/hooks/useMediaQuery";
 import Image from "next/image";
 
 const CityImage = ({ city }) => {
+    const isMD = useMediaQuery("(min-width: 768px)");
+
     const cityImages = {
-        Panvel: "/assets/ads/panvel.avif",
-        Thane: "/assets/ads/thane.avif",
-        "Third Mumbai": "/assets/ads/3RD MUMBAI.avif",
+        Panvel: "/assets/banner-img/panvel-ad.avif",
+        Thane: "/assets/banner-img/thane-ad.avif",
+        Uran: "/assets/banner-img/uran-ad.avif",
+        "Third Mumbai": "/assets/banner-img/3rd-mumbai-ad.avif",
     };
 
     const cityImagesMobile = {
-        Panvel: "/assets/ads/panvel-mobile.jpg",
-        Thane: "/assets/ads/thane-mobile.jpg",
-        "Third Mumbai": "/assets/ads/third-mumbai-mobile.jpg",
+        Panvel: "/assets/banner-img/panvel-ad-mob.avif",
+        Thane: "/assets/banner-img/thane-ad-mob.avif",
+        Uran: "/assets/banner-img/uran-ad-mob.avif",
+        "Third Mumbai": "/assets/banner-img/3rd-mumbai-mob.avif",
     };
 
-    const imageUrl = cityImages[city] || "/assets/ads/main-ads.jpeg";
+    const imageUrl =
+        cityImages[city] || "/assets/banner-img/3rd-mumbai-ad.avif";
     const imageUrlMobile =
-        cityImagesMobile[city] || "/assets/ads/main-ads-mobile.jpeg";
+        cityImagesMobile[city] || "/assets/banner-img/3rd-mumbai-mob.avif";
+
+    console.log(imageUrlMobile);
 
     return (
         <div className="max-w-7xl w-full p-4 mx-auto mb-4 md:mb-6">
-            <div className="w-full border border-neutral-200 shadow h-40 relative rounded-2xl">
+            <div className="w-full border border-neutral-200 shadow aspect-video md:aspect-none md:h-40 relative rounded-2xl">
                 <Image
-                    src={imageUrl}
+                    src={isMD ? imageUrl : imageUrlMobile}
                     alt={`${city} banner`}
                     fill
-                    className="object-cover rounded-2xl object-center hidden md:flex"
-                />
-                <Image
-                    src={imageUrlMobile}
-                    alt={`${city} mobile banner`}
-                    fill
-                    className="md:object-cover sm:object-contain rounded-2xl object-center flex md:hidden"
+                    className="object-cover rounded-2xl object-center flex"
                 />
             </div>
         </div>
@@ -38,5 +42,3 @@ const CityImage = ({ city }) => {
 };
 
 export default CityImage;
-
-//panvel-mobile
