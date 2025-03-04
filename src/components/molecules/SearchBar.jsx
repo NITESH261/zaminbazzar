@@ -65,6 +65,10 @@ const SearchData = [
                 label: "Vindhane",
                 value: "vindhane",
             },
+            {
+                label: "Karjat",
+                value: "karjat",
+            },
         ],
     },
 ];
