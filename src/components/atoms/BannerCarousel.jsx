@@ -55,7 +55,7 @@ const BannerCarousel = () => {
                                     key={`${index}-img`}
                                     className="flex w-full h-full items-center justify-center pl-0"
                                 >
-                                    <div className="relative aspect-video h-full w-[calc(100%-100px)] rounded-b-3xl shadow-md hidden md:flex">
+                                    <div className="relative aspect-video h-full w-full max-w-[1400px] mx-auto rounded-b-3xl shadow-md hidden md:flex">
                                         <Image
                                             loading="lazy"
                                             src={`/assets/banner-img/${card.img}`}
