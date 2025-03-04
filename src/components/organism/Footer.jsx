@@ -186,6 +186,10 @@ const NavItems = [
                 label: "Plot in Ranjanpada",
                 link: "/search/top-location/ranjanpada",
             },
+            {
+                label: "Plot in Karjat",
+                link: "/search/top-location/Karjat",
+            },
         ],
     },
 ];

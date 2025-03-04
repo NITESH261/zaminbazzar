@@ -46,6 +46,7 @@ const Step2Data = [
             { label: "Chirle", value: "Chirle" },
             { label: "Ranjanpada", value: "Ranjanpada" },
             { label: "Vindhane", value: "Vindhane" },
+            { label: "Karjat", value: "Karjat" },
         ],
     },
 ];
