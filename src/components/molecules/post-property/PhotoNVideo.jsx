@@ -10,6 +10,7 @@ import {
     FormLabel,
     FormMessage,
 } from "@/components/ui/form";
+import { Input } from "@/components/ui/input";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { ArrowLeft } from "lucide-react";
 import { useForm } from "react-hook-form";
@@ -17,6 +18,7 @@ import { toast } from "sonner";
 import { z } from "zod";
 
 const PhotosNVideoSchema = z.object({
+    propertyVideo: z.string().optional(),
     image1: z.string().optional(),
     image2: z.string().optional(),
     image3: z.string().optional(),
@@ -56,6 +58,8 @@ const PhotoNVideo = ({ onSubmit, prev, currentStep, loading, formData }) => {
                 data.image5,
             ].filter(Boolean),
         };
+        console.log(filteredData);
+
         onSubmit(filteredData);
     };
 
@@ -70,7 +74,23 @@ const PhotoNVideo = ({ onSubmit, prev, currentStep, loading, formData }) => {
                         Add photos of your property
                     </span>
                 </div>
-
+                <FormField
+                    control={form.control}
+                    name="propertyVideo"
+                    render={({ field }) => (
+                        <FormItem className="flex flex-col gap-2">
+                            <FormLabel>Video (Optional)</FormLabel>
+                            <FormControl>
+                                <Input
+                                    placeholder="Enter Youtube Video Url"
+                                    {...field}
+                                    value={field.value ?? ""}
+                                />
+                            </FormControl>
+                            <FormMessage />
+                        </FormItem>
+                    )}
+                />
                 <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-x-4 gap-y-10 lg:gap-y-20 w-full">
                     <FormField
                         control={form.control}
