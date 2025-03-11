@@ -60,6 +60,21 @@ const BentoGridScroll = ({ cards }) => {
                             className="w-full h-full"
                         >
                             <CarouselContent>
+                                {cards.propertyVideo && (
+                                    <CarouselItem>
+                                        <div className="relative rounded-lg lg:rounded-r-none lg:rounded-l-lg aspect-video flex w-full">
+                                            <iframe
+                                                src={`https://www.youtube.com/embed/${cards.propertyVideo}`}
+                                                title={"YouTube video player"}
+                                                frameBorder="0"
+                                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                                referrerPolicy="strict-origin-when-cross-origin"
+                                                allowFullScreen
+                                                className="absolute inset-0 z-10 h-full w-full rounded-md"
+                                            ></iframe>
+                                        </div>
+                                    </CarouselItem>
+                                )}
                                 {cards.propertyPhotos.map((card, index) => (
                                     <CarouselItem key={index}>
                                         <div className="relative rounded-lg lg:rounded-r-none lg:rounded-l-lg aspect-video flex w-full">
