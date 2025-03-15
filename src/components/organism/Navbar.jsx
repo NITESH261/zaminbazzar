@@ -398,6 +398,10 @@ const NavItems = [
                         label: "Vindhane",
                         link: "/search/top-location/vindhane",
                     },
+                    {
+                        label: "Karjat",
+                        link: "/search/top-location/karjat",
+                    },
                 ],
             },
             // {

@@ -2,20 +2,27 @@
 
 import { downloadPropertyVisit, getPropertyVisits } from "@/actions/property";
 import { Button } from "@/components/ui/button";
+import { Calendar } from "@/components/ui/calendar";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Dialog, DialogContent, DialogFooter, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import { format } from "date-fns";
 import Image from "next/image";
 import { useParams } from "next/navigation";
 import { useEffect, useState } from "react";
+import { toast } from "sonner";
 
 const page = () => {
     const [enquires, setEnquires] = useState([]);
     const { propertyId } = useParams();
     const [page, setPage] = useState(1);
     const [pagination, setPagination] = useState([]);
+    const [date, setDate] = useState()
+
+    const startDate = date?.from ? format(date.from, "yyyy-MM-dd") : "";
+    const endDate = date?.to ? format(date.to, "yyyy-MM-dd") : "";
 
     const handleDownloadEnquiry = () => {
-        downloadPropertyVisit(propertyId).then((resp) => {
+        downloadPropertyVisit({ propertyId, startDate, endDate }).then((resp) => {
             const blob = new Blob([resp], { type: "text/csv" });
             const url = window.URL.createObjectURL(blob);
             const a = document.createElement("a");
@@ -25,6 +32,8 @@ const page = () => {
             a.click();
             document.body.removeChild(a);
             window.URL.revokeObjectURL(url);
+        }).catch((err) => {
+            toast.warning("Property Visit Enquiry not found");
         });
     };
 
@@ -56,12 +65,50 @@ const page = () => {
         <div className="flex w-full flex-col flex-1 overflow-y-auto scrollbar">
             <div className="flex w-full flex-col gap-4">
                 <div className="flex w-full">
-                    <Button
+                    {/* <Button
                         onClick={handleDownloadEnquiry}
                         className="w-full bg-[#6f272b]"
                     >
                         Click to Download all Property Visits
-                    </Button>
+                    </Button> */}
+                    <Dialog>
+                        <DialogTrigger asChild>
+                            <Button
+                                className={"w-full bg-[#6f272b]"}
+                            >
+                                Click to Download Enquiry
+                            </Button>
+                        </DialogTrigger>
+                        <DialogContent className="w-full max-w-sm p-4">
+                            <DialogHeader>
+                                <DialogTitle>Select Date Range</DialogTitle>
+                            </DialogHeader>
+                            <div className="flex w-full flex-col gap-4">
+                                <div className="flex w-full items-center justify-center">
+                                    <Calendar
+                                        initialFocus
+                                        mode="range"
+                                        defaultMonth={date?.from}
+                                        selected={date}
+                                        onSelect={setDate}
+                                        numberOfMonths={1}
+                                    />
+                                </div>
+                            </div>
+                            <DialogFooter>
+                                <Button
+                                    onClick={handleDownloadEnquiry}
+                                    className="w-full bg-[#6f272b]"
+                                >
+                                    {
+                                        date?.from && date?.to
+                                            ? `Download From ${format(date?.from, "LLL dd")} - To ${format(date?.to, "LLL dd")}`
+                                            : "Click to Download all Enquiry"
+                                    }
+                                </Button>
+                            </DialogFooter>
+                        </DialogContent>
+                    </Dialog>
                 </div>
                 <div className="grid grid-cols-1 gap-4 md:grid-cols-2 w-full">
                     {enquires?.length > 0 ? (

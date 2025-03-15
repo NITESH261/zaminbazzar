@@ -118,7 +118,7 @@ const Footer = () => {
                 <div className="mx-auto text-center text-sm text-gray-400">
                     <p>
                         All trademarks, logos and names are properties of their
-                        respective owners. All Rights Reserved. © Copyright 2024
+                        respective owners. All Rights Reserved. © Copyright&nbsp;{new Date().getFullYear()}&nbsp;
                         zaminwale Pvt Limited.
                     </p>
                 </div>
@@ -185,6 +185,10 @@ const NavItems = [
             {
                 label: "Plot in Ranjanpada",
                 link: "/search/top-location/ranjanpada",
+            },
+            {
+                label: "Plot in Karjat",
+                link: "/search/top-location/Karjat",
             },
         ],
     },

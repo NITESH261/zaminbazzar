@@ -3,16 +3,15 @@
 import Autoplay from "embla-carousel-autoplay";
 import Image from "next/image";
 import { Carousel, CarouselContent, CarouselItem } from "../ui/carousel";
+import useMediaQuery from "@/hooks/useMediaQuery";
 
-const BannerImages = [{ img: "banner-img-1.jpeg" }];
-
-const BannerCarousel = () => {
+const BannerCarousel1 = () => {
     return (
         <>
             <div className="relative aspect-video h-full w-full flex md:hidden">
                 <Image
                     loading="lazy"
-                    src="/assets/banner-img/mobile-hero-banner.jpeg"
+                    src="/assets/banner-img/zaminwale-mob.avif"
                     alt="banner-img"
                     fill
                     className="object-contain sm:object-cover object-top sm:object-center h-full w-full"
@@ -21,7 +20,7 @@ const BannerCarousel = () => {
             <div className="relative aspect-video h-full w-[calc(100%-100px)] rounded-b-3xl shadow-md hidden md:flex">
                 <Image
                     loading="lazy"
-                    src="/assets/banner-img/website-hero-image.avif"
+                    src="/assets/banner-img/zaminwale.avif"
                     alt="banner-img"
                     fill
                     className="object-cover lg:object-cover object-center h-full w-full rounded-b-3xl"
@@ -31,7 +30,9 @@ const BannerCarousel = () => {
     );
 };
 
-const BannerCarousel1 = () => {
+const BannerCarousel = () => {
+    const isMD = useMediaQuery("(min-width: 768px)");
+
     return (
         <>
             <Carousel
@@ -44,24 +45,48 @@ const BannerCarousel1 = () => {
                     align: "start",
                     loop: true,
                 }}
-                className="w-full"
+                className="w-full h-full"
             >
-                <CarouselContent className="w-full h-96 flex ml-0">
-                    {BannerImages.map((card, index) => (
-                        <CarouselItem
-                            key={`${index}-img`}
-                            className="flex w-full h-full pl-0"
-                        >
-                            <div className="relative aspect-video h-full w-full flex">
-                                <Image
-                                    src={`/assets/banner-img/${card.img}`}
-                                    alt={`${index}-img`}
-                                    fill
-                                    className="object-contain object-center h-full w-full"
-                                />
-                            </div>
-                        </CarouselItem>
-                    ))}
+                <CarouselContent className="w-full h-[300px] lg:h-[400px] flex ml-0">
+                    {isMD ? (
+                        <>
+                            {WebsiteBanner.map((card, index) => (
+                                <CarouselItem
+                                    key={`${index}-img`}
+                                    className="flex w-full h-full items-center justify-center pl-0"
+                                >
+                                    <div className="relative aspect-video h-full w-full max-w-[1400px] mx-auto rounded-b-3xl shadow-md hidden md:flex">
+                                        <Image
+                                            loading="lazy"
+                                            src={`/assets/banner-img/${card.img}`}
+                                            alt="banner-img"
+                                            fill
+                                            className="object-cover lg:object-cover object-center h-full w-full rounded-b-3xl"
+                                        />
+                                    </div>
+                                </CarouselItem>
+                            ))}
+                        </>
+                    ) : (
+                        <>
+                            {MobileBanner.map((card, index) => (
+                                <CarouselItem
+                                    key={`${index}-img`}
+                                    className="flex w-full h-full items-center justify-center pl-0"
+                                >
+                                    <div className="relative aspect-video h-full w-full flex md:hidden">
+                                        <Image
+                                            loading="lazy"
+                                            src={`/assets/banner-img/${card.img}`}
+                                            alt="banner-img"
+                                            fill
+                                            className="object-contain sm:object-cover object-top sm:object-center h-full w-full"
+                                        />
+                                    </div>
+                                </CarouselItem>
+                            ))}
+                        </>
+                    )}
                 </CarouselContent>
             </Carousel>
         </>
@@ -69,3 +94,21 @@ const BannerCarousel1 = () => {
 };
 
 export default BannerCarousel;
+
+const WebsiteBanner = [
+    {
+        img: "zaminwale.avif",
+    },
+    {
+        img: "99villa.avif",
+    },
+];
+
+const MobileBanner = [
+    {
+        img: "zaminwale-mob.avif",
+    },
+    {
+        img: "99villa-mob.avif",
+    },
+];
