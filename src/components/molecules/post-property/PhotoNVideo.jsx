@@ -1,6 +1,5 @@
 import { uploadPropertyImage } from "@/actions/property";
 import DragNDrop from "@/components/atoms/DragNDrop";
-import Loading from "@/components/atoms/Loading";
 import { Button } from "@/components/ui/button";
 import {
     Form,
@@ -11,6 +10,7 @@ import {
     FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
+import { extractYouTubeVideoID } from "@/lib/utils";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { ArrowLeft } from "lucide-react";
 import { useForm } from "react-hook-form";
@@ -50,6 +50,7 @@ const PhotoNVideo = ({ onSubmit, prev, currentStep, loading, formData }) => {
     const handleSubmit = (data) => {
         const filteredData = {
             ...data,
+            propertyVideo: extractYouTubeVideoID(data.propertyVideo),
             propertyPhotos: [
                 data.image1,
                 data.image2,
@@ -58,8 +59,6 @@ const PhotoNVideo = ({ onSubmit, prev, currentStep, loading, formData }) => {
                 data.image5,
             ].filter(Boolean),
         };
-        console.log(filteredData);
-
         onSubmit(filteredData);
     };
 
