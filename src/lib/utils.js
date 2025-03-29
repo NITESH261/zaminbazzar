@@ -56,6 +56,6 @@ export const sliceParagraph = (paragraph, minWords = 10, maxWords = 15) => {
 
 export const extractYouTubeVideoID = (url) => {
     const regex = /(?:https?:\/\/)?(?:www\.)?(?:youtube\.com\/(?:[^\/]+\/.*|(?:v|e(?:mbed)?)\/|.*[?&]v=)|youtu\.be\/)([^"&?\/\s]{11})/;
-    const match = url.match(regex);
+    const match = url?.match(regex);
     return match ? match[1] : null;
 }

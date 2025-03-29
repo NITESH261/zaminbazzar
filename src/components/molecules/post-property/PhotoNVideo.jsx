@@ -18,7 +18,7 @@ import { toast } from "sonner";
 import { z } from "zod";
 
 const PhotosNVideoSchema = z.object({
-    propertyVideo: z.string().optional(),
+    propertyVideo: z.string().optional().nullable(),
     image1: z.string().optional(),
     image2: z.string().optional(),
     image3: z.string().optional(),
@@ -50,7 +50,7 @@ const PhotoNVideo = ({ onSubmit, prev, currentStep, loading, formData }) => {
     const handleSubmit = (data) => {
         const filteredData = {
             ...data,
-            propertyVideo: extractYouTubeVideoID(data.propertyVideo),
+            propertyVideo: extractYouTubeVideoID(data?.propertyVideo),
             propertyPhotos: [
                 data.image1,
                 data.image2,
