@@ -1,6 +1,8 @@
 "use client";
 
+import { cn, formatCurrency } from "@/lib/utils";
 import Autoplay from "embla-carousel-autoplay";
+import { IndianRupee } from "lucide-react";
 import Image from "next/image";
 import {
     Carousel,
@@ -9,8 +11,6 @@ import {
     CarouselNext,
     CarouselPrevious,
 } from "../ui/carousel";
-import { cn, formatCurrency } from "@/lib/utils";
-import { IndianRupee } from "lucide-react";
 import {
     Dialog,
     DialogContent,
@@ -47,50 +47,77 @@ const BentoGridScroll = ({ cards }) => {
             <div className="flex flex-col lg:flex-row h-fit w-full ">
                 <div className="flex w-full lg:w-3/4">
                     <div className="flex h-full w-full border border-white rounded-l-lg">
-                        <Carousel
-                            plugins={[
-                                Autoplay({
-                                    delay: 3000,
-                                }),
-                            ]}
-                            opts={{
-                                align: "start",
-                                loop: true,
-                            }}
-                            className="w-full h-full"
-                        >
-                            <CarouselContent>
-                                {cards.propertyVideo && (
-                                    <CarouselItem>
-                                        <div className="relative rounded-lg lg:rounded-r-none lg:rounded-l-lg aspect-video flex w-full">
-                                            <iframe
-                                                src={`https://www.youtube.com/embed/${cards.propertyVideo}`}
-                                                title={"YouTube video player"}
-                                                frameBorder="0"
-                                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                                                referrerPolicy="strict-origin-when-cross-origin"
-                                                allowFullScreen
-                                                className="absolute inset-0 z-10 h-full w-full rounded-md"
-                                            ></iframe>
-                                        </div>
-                                    </CarouselItem>
-                                )}
-                                {cards.propertyPhotos.map((card, index) => (
-                                    <CarouselItem key={index}>
-                                        <div className="relative rounded-lg lg:rounded-r-none lg:rounded-l-lg aspect-video flex w-full">
-                                            <Image
-                                                src={card}
-                                                alt="house"
-                                                fill
-                                                className="object-cover rounded-lg lg:rounded-r-none lg:rounded-l-lg"
-                                            />
-                                        </div>
-                                    </CarouselItem>
-                                ))}
-                            </CarouselContent>
-                            <CarouselPrevious className="-left-3 sm:left-0" />
-                            <CarouselNext className="-right-3 sm:right-0" />
-                        </Carousel>
+                        {cards.propertyVideo ?
+                            (<Carousel
+                                opts={{
+                                    align: "start",
+                                    loop: true,
+                                }}
+                                className="w-full h-full"
+                            >
+                                <CarouselContent>
+                                    {cards.propertyVideo && (
+                                        <CarouselItem>
+                                            <div className="relative rounded-lg lg:rounded-r-none lg:rounded-l-lg aspect-video flex w-full">
+                                                <iframe
+                                                    src={`https://www.youtube.com/embed/${cards.propertyVideo}?autoplay=1&mute=1`}
+                                                    title={"YouTube video player"}
+                                                    frameBorder="0"
+                                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                                    referrerPolicy="strict-origin-when-cross-origin"
+                                                    allowFullScreen
+                                                    className="absolute inset-0 z-10 h-full w-full rounded-md"
+                                                ></iframe>
+                                            </div>
+                                        </CarouselItem>
+                                    )}
+                                    {cards.propertyPhotos.map((card, index) => (
+                                        <CarouselItem key={index}>
+                                            <div className="relative rounded-lg lg:rounded-r-none lg:rounded-l-lg aspect-video flex w-full">
+                                                <Image
+                                                    src={card}
+                                                    alt="house"
+                                                    fill
+                                                    className="object-cover rounded-lg lg:rounded-r-none lg:rounded-l-lg"
+                                                />
+                                            </div>
+                                        </CarouselItem>
+                                    ))}
+                                </CarouselContent>
+                                <CarouselPrevious className="-left-3 sm:left-0" />
+                                <CarouselNext className="-right-3 sm:right-0" />
+                            </Carousel>
+                            ) : (
+                                <Carousel
+                                    plugins={[
+                                        Autoplay({
+                                            delay: 3000,
+                                        }),
+                                    ]}
+                                    opts={{
+                                        align: "start",
+                                        loop: true,
+                                    }}
+                                    className="w-full h-full"
+                                >
+                                    <CarouselContent>
+                                        {cards.propertyPhotos.map((card, index) => (
+                                            <CarouselItem key={index}>
+                                                <div className="relative rounded-lg lg:rounded-r-none lg:rounded-l-lg aspect-video flex w-full">
+                                                    <Image
+                                                        src={card}
+                                                        alt="house"
+                                                        fill
+                                                        className="object-cover rounded-lg lg:rounded-r-none lg:rounded-l-lg"
+                                                    />
+                                                </div>
+                                            </CarouselItem>
+                                        ))}
+                                    </CarouselContent>
+                                    <CarouselPrevious className="-left-3 sm:left-0" />
+                                    <CarouselNext className="-right-3 sm:right-0" />
+                                </Carousel>
+                            )}
                     </div>
                 </div>
                 <div className="hidden md:flex lg:flex-col w-full lg:w-1/4">

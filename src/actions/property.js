@@ -1,6 +1,5 @@
 "user server"
 
-import cookieService from "@/services/cookie";
 import { fetchWithoutToken, fetchWithToken } from "@/services/fetch";
 
 const formatFilterForQuery = (filter) => {
@@ -117,8 +116,8 @@ export const getWebsiteEnquiry = async ({ page, limit }) => {
     return resp
 }
 
-export const downloadWebsiteEnquiry = async () => {
-    let resp = await fetchWithToken(`/enquiry/website/export`, {
+export const downloadWebsiteEnquiry = async ({ startDate = null, endDate = null }) => {
+    let resp = await fetchWithToken(`/enquiry/website/export?startDate=${startDate}&endDate=${endDate}`, {
         method: "GET",
     })
     return resp
@@ -144,8 +143,8 @@ export const getPropertyEnquiry = async ({ propertyId, page, limit }) => {
     return resp
 }
 
-export const downloadPropertyEnquiry = async (propertyId) => {
-    let resp = await fetchWithToken(`/enquiry/property/export/${propertyId}`, {
+export const downloadPropertyEnquiry = async ({ propertyId, startDate = null, endDate = null }) => {
+    let resp = await fetchWithToken(`/enquiry/property/export/${propertyId}?startDate=${startDate}&endDate=${endDate}`, {
         method: "GET",
     })
     return resp
@@ -171,8 +170,8 @@ export const getPropertyVisits = async ({ propertyId, page, limit }) => {
     return resp
 }
 
-export const downloadPropertyVisit = async (propertyId) => {
-    let resp = await fetchWithToken(`/enquiry/property/export/visit/${propertyId}`, {
+export const downloadPropertyVisit = async ({ propertyId, startDate = null, endDate = null }) => {
+    let resp = await fetchWithToken(`/enquiry/property/export/visit/${propertyId}?startDate=${startDate}&endDate=${endDate}`, {
         method: "GET",
     })
     return resp

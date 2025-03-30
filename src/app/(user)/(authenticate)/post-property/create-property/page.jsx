@@ -84,8 +84,8 @@ const Page = () => {
                             step > index
                                 ? "complete"
                                 : step === index
-                                ? "current"
-                                : "upcoming";
+                                    ? "current"
+                                    : "upcoming";
 
                         return (
                             <StepCard
