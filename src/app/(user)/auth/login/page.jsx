@@ -30,9 +30,14 @@ import { toast } from "sonner";
 import { z } from "zod";
 
 const formSchema = z.object({
-    mobileNo: z.string().min(10, {
-        message: "Mobile must be at least 10 characters.",
-    }),
+    mobileNo: z
+        .string()
+        .min(10, {
+            message: "Mobile No must be at least 10 Digit.",
+        })
+        .max(10, {
+            message: "Mobile No must be at Max 10 Digit.",
+        }),
     password: z.string().min(8, {
         message: "Password must be at least 8 characters.",
     }),
