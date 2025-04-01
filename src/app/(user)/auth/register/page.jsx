@@ -30,9 +30,12 @@ import { toast } from "sonner";
 import { z } from "zod";
 
 const formSchema = z.object({
-    name: z.string().min(2, {
-        message: "Name must be at least 2 characters.",
-    }),
+    name: z
+        .string()
+        .min(2, {
+            message: "Fullname must be at least 2 characters.",
+        })
+        .regex(/^[A-Za-z\s]+$/, "Only alphabets are allowed."),
     email: z.string().email({
         message: "Please enter a valid email.",
     }),
