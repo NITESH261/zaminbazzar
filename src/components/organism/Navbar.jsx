@@ -144,16 +144,16 @@ const Navbar = () => {
                                 <DialogFooter>
                                     <div className="flex w-full justify-between gap-2 flex-wrap">
                                         <Link
-                                            href="tel:+919555599299"
+                                            href="tel:+919920320300"
                                             className="flex gap-2 w-fit items-center"
                                         >
                                             <PhoneCallIcon />
                                             <span className="text-base md:text-lg font-semibold">
-                                                9555599299
+                                                9920320300
                                             </span>
                                         </Link>
                                         <Link
-                                            href="tel:+919555599299"
+                                            href="tel:+919920320300"
                                             className="flex gap-2 w-fit items-center"
                                         >
                                             <MailIcon />
