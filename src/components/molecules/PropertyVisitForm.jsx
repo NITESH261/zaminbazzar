@@ -174,6 +174,9 @@ const PropertyVisitForm = ({ propertyId, uid }) => {
                     <Button className="rounded-3xl w-full bg-[#6f272b]">
                         {loading ? <Loading /> : "Submit"}
                     </Button>
+                    <p className="disclaimer">
+                                I authorize <strong> Zaminwale Private Limited </strong>  and its representatives to Call, SMS, Email or WhatsApp me about its products and offers. This consent overrides any registration for DNC / NDNC.
+                                  </p>
                 </form>
             </Form>
         </div>
