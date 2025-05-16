@@ -151,7 +151,7 @@ const NavItems = [
             },
             {
                 label: "Privacy Policy",
-                link: "/privacy-policy",
+                link: "/privacypolicy",
             },
             {
                 label: "Blog",
