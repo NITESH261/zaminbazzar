@@ -124,7 +124,7 @@ const EnquireForm = ({ propertyId, uid }) => {
                     </Button>
                     <p className="disclaimer">
                                 I authorize <strong> Zaminwale Private Limited </strong>  and its representatives to Call, SMS, Email or WhatsApp me about its products and offers. This consent overrides any registration for DNC / NDNC.
-                                  </p>
+                    </p>
                 </form>
             </Form>
         </div>
