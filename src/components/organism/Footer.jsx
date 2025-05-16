@@ -146,10 +146,6 @@ const NavItems = [
                 link: "/awards",
             },
             {
-                label: "Terms & Conditions",
-                link: "/terms-and-conditions",
-            },
-            {
                 label: "Privacy Policy",
                 link: "/Privacy-Policy",
             },
