@@ -135,7 +135,7 @@ const NavItems = [
         data: [
             {
                 label: "For Dealer",
-                link: "/Dealer",
+                link: "/dealer",
             },
             {
                 label: "About Us",
