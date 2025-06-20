@@ -134,6 +134,10 @@ const NavItems = [
         label: "Company",
         data: [
             {
+                label: "For Dealer",
+                link: "/Dealer",
+            },
+            {
                 label: "About Us",
                 link: "/about",
             },
