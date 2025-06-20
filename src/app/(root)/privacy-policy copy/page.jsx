@@ -11,7 +11,7 @@ const page = () => {
             <WhyChooseZaminWale/>
             <SubscriptionPlans/>
             <ClientTestimonials/>
-            <FaqAccordion.jsx/>
+            <FaqAccordion/>
             <Footer />
         </>
     );
