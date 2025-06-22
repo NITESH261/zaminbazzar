@@ -7,10 +7,7 @@ import ClientTestimonials from "@/components/organism/Privacy-Policy copy/Client
 const Page = () => {
   return (
     <div className="bg-[#fdf6f6] min-h-screen text-[#3b0a0a] font-sans">
-      {/* Optional Header */}
-      <header className="bg-[#800000] text-white py-4 text-center shadow-md">
-        <h1 className="text-2xl font-bold uppercase">ZaminWale Dealer Plans</h1>
-      </header>
+      
 
       <section className="py-10">
         <WhyChooseZaminWale />
