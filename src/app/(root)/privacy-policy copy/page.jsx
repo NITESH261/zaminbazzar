@@ -3,6 +3,7 @@ import Footer from "@/components/organism/Footer";
 import WhyChooseZaminWale from "@/components/organism/Privacy-Policy copy/WhyChooseZaminWale";
 import SubscriptionPlans from "@/components/organism/Privacy-Policy copy/SubscriptionPlans";
 import ClientTestimonials from "@/components/organism/Privacy-Policy copy/ClientTestimonials";
+import Faq from "@/components/organism/Privacy-Policy copy/Faq";
 
 const Page = () => {
   return (
@@ -21,10 +22,10 @@ const Page = () => {
         <ClientTestimonials />
       </section>
 
-      {/* Optional: Add FAQ section here */}
-      {/* <section className="py-10 bg-white">
-        <FAQ />
-      </section> */}
+     
+       <section className="bg-white">
+        <Faq/>
+      </section> 
 
       <footer className="bg-[#800000] text-white">
         <Footer />
