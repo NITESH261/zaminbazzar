@@ -3,7 +3,7 @@ import React from "react";
 const plans = [
   {
     name: "Basic",
-    price: "₹999",
+    price: "₹9999",
     per: "/month",
     description: "Perfect for individual agents",
     features: [
@@ -17,7 +17,7 @@ const plans = [
   },
   {
     name: "Premium",
-    price: "₹2,499",
+    price: "₹24,999",
     per: "/month",
     description: "For growing real estate businesses",
     features: [
@@ -31,7 +31,7 @@ const plans = [
   },
   {
     name: "Assist",
-    price: "₹4,999",
+    price: "₹49,999",
     per: "/month",
     description: "For established agencies",
     features: [
@@ -45,11 +45,11 @@ const plans = [
   },
   {
     name: "Assist Plus",
-    price: "₹7,999",
+    price: "₹99,999",
     per: "/month",
     description: "For premium real estate firms",
     features: [
-      "Unlimited Property Listings",
+      "100 Property Listings",
       "Top Listing Priority",
       "24/7 VIP Support",
       "Premium Digital Marketing",
