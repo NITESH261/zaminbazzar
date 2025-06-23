@@ -11,12 +11,14 @@ const Page = () => {
     <div className="bg-[#fdf6f6] min-h-screen text-[#3b0a0a] font-sans">
       
 
-      <section >
-        <WhyChooseZaminWale />
-      </section>
+      
 
       <section className=" bg-white shadow-inner">
         <SubscriptionPlans />
+      </section>
+
+      <section >
+        <WhyChooseZaminWale />
       </section>
 
       <section >
