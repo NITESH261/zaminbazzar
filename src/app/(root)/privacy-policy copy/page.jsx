@@ -23,9 +23,7 @@ const Page = () => {
       </section>
 
      
-       <section className="bg-white">
-        <Faq/>
-      </section> 
+
 
       <footer className="bg-[#800000] text-white">
         <Footer />
