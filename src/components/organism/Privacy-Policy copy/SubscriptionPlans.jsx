@@ -99,9 +99,7 @@ const SubscriptionPlans = () => {
                   })}
                 </ul>
               </div>
-              <button className="bg-[#800000] hover:bg-[#5a0000] text-white font-semibold py-2 px-6 rounded-lg shadow transition-all duration-300">
-                Subscribe Now
-              </button>
+             
             </div>
           ))}
         </div>
