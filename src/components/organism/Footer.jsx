@@ -135,7 +135,7 @@ const NavItems = [
         data: [
             {
                 label: "For Dealer",
-                link: "/privacy-policy copy",
+                link: "/DealerPackages",
             },
             {
                 label: "About Us",
