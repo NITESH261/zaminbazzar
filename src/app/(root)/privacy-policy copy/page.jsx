@@ -1,9 +1,9 @@
 import React from "react";
 import Footer from "@/components/organism/Footer";
-import WhyChooseZaminWale from "@/components/organism/Privacy-Policy copy/WhyChooseZaminWale";
-import SubscriptionPlans from "@/components/organism/Privacy-Policy copy/SubscriptionPlans";
-import ClientTestimonials from "@/components/organism/Privacy-Policy copy/ClientTestimonials";
-import FaqSection from "@/components/organism/Privacy-Policy copy/FaqSection";
+import WhyChooseZaminWale from "@/components/organism/DealerPackages/WhyChooseZaminWale";
+import SubscriptionPlans from "@/components/organism/DealerPackages/SubscriptionPlans";
+import ClientTestimonials from "@/components/organism/DealerPackages/ClientTestimonials";
+import FaqSection from "@/components/organism/DealerPackages/FaqSection";
 
 
 const Page = () => {
