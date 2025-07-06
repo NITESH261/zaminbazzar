@@ -27,7 +27,7 @@ const Footer = () => {
                                 <span>9555599299 / 9555599099</span>
                             </div>
                             <div className="mt-3">
-                                <span>info@zaminwale.com</span>
+                                <span>info@zaminwale.in</span>
                             </div>
                             <div className="flex space-x-2 mt-4">
                                 <a href="https://www.facebook.com/zaminwale2021/">
