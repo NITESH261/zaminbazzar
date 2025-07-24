@@ -31,7 +31,7 @@ import { MailIcon } from "lucide-react";
 
 const Navbar = () => {
     return (
-        <header className="flex sticky top-0 z-20 w-full bg-[#6f272b]">
+        <header className="flex sticky top-0 z-20 w-full bg-[#501b7b]">
             <div className="flex w-full h-16 items-center max-w-[1480px] mx-auto gap-4 px-4">
                 <div className="flex h-fit w-fit">
                     <Link href={"/"}>
