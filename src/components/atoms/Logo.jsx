@@ -3,13 +3,13 @@ import { cn } from "@/lib/utils";
 const Logo = ({ className }) => {
     return (
         <div className="flex h-16 items-center w-fit relative">
-            {/* <Image
-                src={"/assets/logo/zamin-logo.gif"}
+            { <Image
+                src={"/assets/logo/zaminb.png"}
                 alt="Zamin Wale Logo"
                 fill
                 className="object-contain"
             /> */}
-            <span className={cn("flex text-xl md:text-3xl font-bold text-white", className)}>zaminbazzar.com</span>
+            {/* <span className={cn("flex text-xl md:text-3xl font-bold text-white", className)}>zaminbazzar.com</span> */}
         </div>
     );
 };
