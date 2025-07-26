@@ -3,7 +3,7 @@ import { cn } from "@/lib/utils";
 
 const Logo = ({ className }) => {
     return (
-        <div className={cn("flex h-16 items-center w-fit relative", className)}>
+        <div className={cn("flex h-16 items-center w-40 relative", className)}>
             <Image
                 src="/assets/logo/zaminb.png"
                 alt="Zamin Wale Logo"
