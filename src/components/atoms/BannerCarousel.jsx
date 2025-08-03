@@ -97,10 +97,10 @@ export default BannerCarousel;
 
 const WebsiteBanner = [
     {
-        img: "zaminwale.avif",
+        img: "zaminb1.avif",
     },
     {
-        img: "99villa.avif",
+        img: "zaminb2.avif",
     },
 ];
 
