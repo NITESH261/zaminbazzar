@@ -102,13 +102,19 @@ const WebsiteBanner = [
     {
         img: "zaminb2.avif",
     },
+    {
+        img: "zaminb3.avif",
+    },
 ];
 
 const MobileBanner = [
     {
-        img: "zaminwale-mob.avif",
+        img: "zaminmb1.avif",
     },
     {
-        img: "99villa-mob.avif",
+        img: "zaminmb2.avif",
+    },
+    {
+        img: "zaminmb3.avif",
     },
 ];
