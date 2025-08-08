@@ -76,7 +76,7 @@ const DreamPlots = () => {
         <>
             <div className="flex w-full">
                 <div className="flex flex-col gap-4 md:gap-6 w-full max-w-7xl mx-auto px-4 py-6 md:py-8 lg:py-10 xl:py-12">
-                    <SectionHeading title="Find Your Dream Plots With Zaminwale." />
+                    <SectionHeading title="Find Your Dream Plots With ZaminBazzar." />
                     <div className="flex w-full">
                         <Carousel
                             plugins={[
