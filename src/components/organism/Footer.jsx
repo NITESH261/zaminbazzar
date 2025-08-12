@@ -24,10 +24,10 @@ const Footer = () => {
                                 Station, Navi Mumbai, Maharashatra 400703
                             </p>
                             <div className="mt-3">
-                                <span>9555599299 / 9555599099</span>
+                                <span>9920320300</span>
                             </div>
                             <div className="mt-3">
-                                <span>info@zaminwale.in</span>
+                                <span>info@zaminbazzar.com</span>
                             </div>
                             <div className="flex space-x-2 mt-4">
                                 <a href="https://www.facebook.com/zaminwale2021/">
@@ -82,13 +82,9 @@ const Footer = () => {
                         </div> */}
                         <h2 className="font-bold text-lg">About zaminwale</h2>
                         <p className="text-justify mt-2">
-                            At ZaminWale, we take pride in being your trusted
-                            partner in the world of real estate, specializing in
-                            land transactions across the picturesque locales of
-                            Thane, Panvel, Mahamumbai, and Navi Mumbai. With an
-                            unwavering commitment to excellence, we have
-                            established ourselves as a beacon of reliability and
-                            transparency in the real estate industry.
+                        At ZaminBazzar, we are redefining the way people buy, sell, and discover property. Whether you are a first-time buyer, an experienced investor, or a seller looking to reach the right audience, ZaminBazzar offers a seamless platform to connect with genuine opportunities.
+
+Specializing in residential, commercial, and land listings, we bring you verified properties from across India, ensuring transparency, trust, and ease in every transaction. Our mission is simple — to make real estate dealings more accessible, reliable, and hassle-free for everyone.
                         </p>
 
                         <h2 className="font-bold text-lg mt-4 mb-4">
@@ -119,7 +115,7 @@ const Footer = () => {
                     <p>
                         All trademarks, logos and names are properties of their
                         respective owners. All Rights Reserved. © Copyright&nbsp;{new Date().getFullYear()}&nbsp;
-                        zaminwale Pvt Limited.
+                        Zaminbazzar.
                     </p>
                 </div>
             </div>
