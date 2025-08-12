@@ -30,16 +30,11 @@ const Footer = () => {
                                 <span>info@zaminbazzar.com</span>
                             </div>
                             <div className="flex space-x-2 mt-4">
-                                <a href="https://www.facebook.com/zaminwale2021/">
+                                <a href="https://www.facebook.com/profile.php?id=61579299836270#">
                                     <FaFacebookSquare className="fab fa-facebook-f text-blue-600 text-2xl" />
                                 </a>
-                                <a href="https://x.com/ZaminwalePvtLtd">
-                                    <FaSquareXTwitter className="fab fa-twitter text-blue-400 text-2xl" />
-                                </a>
-                                <a href="https://in.linkedin.com/company/zaminwale">
-                                    <FaLinkedin className="fab fa-linkedin-in text-blue-700 text-2xl" />
-                                </a>
-                                <a href="https://www.instagram.com/zaminwale_/?hl=en">
+                                
+                                <a href="https://www.instagram.com/zaminbazzar/?fbclid=IwY2xjawMH3ppleHRuA2FlbQIxMQBicmlkETFNQ215UWRNRTNHY3VKQVNjAR46Kp22VpwkQaEIxCObXrtqnV7R9Gh9cn0uU_1178yIBIX00j2qBlp6Stpkgw_aem_a2ag0L0rjoYzNGLE7D8VKQ">
                                     <FaInstagram className="fab fa-instagram text-pink-600 text-2xl" />
                                 </a>
                                 <a href="https://www.youtube.com/@zaminwale">
