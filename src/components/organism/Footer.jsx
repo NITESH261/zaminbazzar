@@ -75,7 +75,7 @@ const Footer = () => {
                                 }
                             </p>
                         </div> */}
-                        <h2 className="font-bold text-lg">About zaminwale</h2>
+                        <h2 className="font-bold text-lg">About zaminbazzar</h2>
                         <p className="text-justify mt-2">
                         At ZaminBazzar, we are redefining the way people buy, sell, and discover property. Whether you are a first-time buyer, an experienced investor, or a seller looking to reach the right audience, ZaminBazzar offers a seamless platform to connect with genuine opportunities.
 
