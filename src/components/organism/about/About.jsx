@@ -9,7 +9,7 @@ const About = () => {
                 <div className="flex flex-col space-y-4 md:space-y-6 w-full justify-center">
                     <div className="flex flex-col gap-4 w-full">
                         <h2 className="text-xl font-semibold md:text-2xl lg:text-3xl">
-                            About Zaminwale
+                            About Zaminbazzar
                         </h2>
                         {/* <span className="text-sm md:text-base lg:text-lg font-semibold">
                             *Riverhill - With Nature In the Nature!
@@ -27,13 +27,10 @@ const About = () => {
                         for your dreams.
                     </p>
                     <p className="text-sm md:text-base">
-                        At ZaminWale, we take pride in being your trusted
-                        partner in the world of real estate, specializing in
-                        land transactions across the picturesque locales of
-                        Thane, Panvel, Mahamumbai, and Navi Mumbai. With an
-                        unwavering commitment to excellence, we have established
-                        ourselves as a beacon of reliability and transparency in
-                        the real estate industry.
+                    At Zaminbazzar, we take pride in being your trusted partner in real estate, specializing in land transactions.
+                     With a commitment to integrity, transparency, and excellence, 
+                     we provide secure and value-driven property solutions that empower our clients to make confident investment decisions.
+                      Our expertise and customer-first approach ensure a seamless journey towards land ownership and long-term growth.
                     </p>
                 </div>
                 <div className="flex w-full">
