@@ -1,6 +1,6 @@
 "use client";
 
-import AdsBanner from "@/components/atoms/AdsBanner";
+
 import About from "@/components/organism/About";
 import DreamPlots from "@/components/organism/DreamPlots";
 import Footer from "@/components/organism/Footer";
@@ -15,7 +15,6 @@ const page = () => {
     return (
         <>
             <Hero />
-            <AdsBanner />
             <Highlighted />
             <Property />
             <TopLocations />
