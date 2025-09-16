@@ -1,7 +1,6 @@
 "use client";
 
 
-import About from "@/components/organism/About";
 import DreamPlots from "@/components/organism/DreamPlots";
 import Footer from "@/components/organism/Footer";
 import Hero from "@/components/organism/Hero";
@@ -18,7 +17,6 @@ const page = () => {
             <Property />
             <RecommendedProperty />
             <DreamPlots />
-            <About />
             <TrendingNews />
             <Footer />
         </>
