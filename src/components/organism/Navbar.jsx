@@ -502,7 +502,7 @@ const NavItems = [
                         link: "/",
                     },
                     {
-                        label: "+91 9555599299",
+                        label: "+91 9920320300",
                         link: "/",
                     },
                 ],
