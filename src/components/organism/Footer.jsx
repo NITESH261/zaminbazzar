@@ -137,10 +137,6 @@ const NavItems = [
                 link: "/testimonials",
             },
             {
-                label: "Awards & Media",
-                link: "/awards",
-            },
-            {
                 label: "Privacy Policy",
                 link: "/privacy-policy",
             },
