@@ -383,21 +383,14 @@ const NavItems = [
                         link: "/search/top-location/panvel",
                     },
                     {
-                        label: "Uran",
-                        link: "/search/top-location/uran",
+                        label: "Alibaug",
+                        link: "/search/top-location/Alibaug",
                     },
                     {
-                        label: "Chirle",
-                        link: "/search/top-location/chirle",
+                        label: "Khopoli",
+                        link: "/search/top-location/Khopoli",
                     },
-                    {
-                        label: "Ranjanpada",
-                        link: "/search/top-location/ranjanpada",
-                    },
-                    {
-                        label: "Vindhane",
-                        link: "/search/top-location/vindhane",
-                    },
+                    
                     {
                         label: "Karjat",
                         link: "/search/top-location/karjat",
