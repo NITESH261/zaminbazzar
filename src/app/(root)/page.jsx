@@ -8,7 +8,6 @@ import Hero from "@/components/organism/Hero";
 import Highlighted from "@/components/organism/Highlighted";
 import Property from "@/components/organism/Property";
 import RecommendedProperty from "@/components/organism/RecommendedProperty";
-import TopLocations from "@/components/organism/TopLocations";
 import TrendingNews from "@/components/organism/TrendingNews";
 
 const page = () => {
@@ -17,7 +16,6 @@ const page = () => {
             <Hero />
             <Highlighted />
             <Property />
-            <TopLocations />
             <RecommendedProperty />
             <DreamPlots />
             <About />
