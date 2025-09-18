@@ -10,7 +10,6 @@ export const metadata = {
         "real estate",
         "land marketplace",
         "property for sale",
-        "farmland",
         "commercial land",
         "residential plots",
         "Zaminbazzar",
