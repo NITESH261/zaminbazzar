@@ -158,7 +158,7 @@ const Navbar = () => {
                                         >
                                             <MailIcon />
                                             <span className="text-base md:text-lg font-semibold">
-                                                info@zaminwale.com
+                                                info@zaminbazzar.com
                                             </span>
                                         </Link>
                                     </div>
